@@ -1,0 +1,87 @@
+ENCABEZADO
+        Nombre: CU-0006-ImprimirReciboPagoServicio
+        Paquete: PCU-CapturarAbono
+        Alcance del Diseño: Sistema Cajas.
+        Nivel: Meta de Usuario
+        Versión: 20110330.1316
+_________________________________________________________
+ACTORES
+        Primarios: Cajero / Acepta los mensajes enviados por el sistema.
+        Secundarios: Impresora / Se encarga de imprimir el recibo de pago de servicio.
+_________________________________________________________
+CONDICIONES
+        Pre-Condiciones: Se debe haber capturado el pago de algun servicio junto con el abono.
+        Garantías de Éxito: Imprimir el recibo de pago de servicios.
+        Garantías Mínimas: El sistema mostrará mensaje de correspondiente en caso que ocurra algun error.
+_________________________________________________________
+FLUJO PRINCIPAL
+
+        1.- El caso inicia cuando el sistema identifica si se hicieron pagos de servicio.
+        2.- El sistema obtiene importe total a pagar, el total a pagar de servicios, y el acumulado de servicio.
+        3.- El sistema identifica que tipo de pago se realizó.
+        4.- El sistema obtiene el folio para el recibo de pago de servicios.
+        5.- El sistema calcula los totales de pagos de servicios.
+        6.- El sistema identifica que no hay mas pagos de servicios.
+        7.- El sistema manda imprimir el recibo con los pagos de servicios obtenidos.
+        8.- El sistema graba la imagen del recibo de pago de servicios.
+        9.- Fin del caso de uso.
+_________________________________________________________
+FLUJOS ALTERNATIVOS
+
+        3.a.- El sistema identifica que se capturo pago de Agua.
+                3.a.1.- El sistema identifica que no esta activo el pago de recibos de JAPAC con referencia COPPEL.
+                        3.a.1.a.- El sistema identifica que esta activo el pago de recibos de JAPAC con referencia COPPEL.
+                                3.a.1.a.1.- El sistema obtiene la clave de la empresa, el recibo, la cuenta y el digito verificador de la referencia del recibo.
+                                3.a.1.a.2.- El flujo continua en el paso 4 del flujo básico.
+                3.a.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.b.- El sistema identifica que se capturo pago de Telefono.
+                3.b.1.- El sistema obtiene el/los pagos de Telefono.
+                3.b.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.c.- El sistema identifica que se capturo pago de Cable.
+                3.c.1.- El sistema obtiene el/los pagos de Cable.
+                3.c.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.d.- El sistema identifica que se capturo pago de Predial.
+                3.d.1.- El sistema obtiene el/los pagos de Predial.
+                3.d.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.e.- El sistema identifica que se capturo pago de Sofol.
+                3.e.1.- El sistema obtiene el/los pagos de Sofol.
+                3.e.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.f.- El sistema identifica que se capturo pago de Gas.
+                3.f.1.- El sistema obtiene el/los pagos de Gas.
+                3.f.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.g.- El sistema identifica que se capturo pago de Megacable.
+                3.g.1.- El sistema obtiene el/los pagos de Megacable.
+                3.g.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.h.- El sistema identifica que se capturo pago de Nextel.
+                3.h.1.- El sistema obtiene el/los pagos de Nextel.
+                3.h.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.i.- El sistema identifica que se capturo pago de Alestra.
+                3.i.1.- El sistema obtiene el/los pagos de Alestra.
+                3.i.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.j.- El sistema identifica que se capturo pago de CFE.
+                3.j.1.- El sistema obtiene el/los pagos de CFE.
+                3.j.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.k.- El sistema identifica que se capturo pago de Axtel.
+                3.k.1.- El sistema obtiene el/los pagos de Axtel.
+                3.k.2.- El flujo continua en el paso 4 del flujo básico.
+
+        3.l.- El sistema identifica que se capturo pago de Cablemas.
+                3.l.1.- El sistema obtiene el/los pagos de Telefono.
+                3.l.2.- El flujo continua en el paso 4 del flujo básico.
+
+        6.a.- El sistema identifica hay mas pagos de servicios
+                6.a.1.- El flujo continua en el paso 3 del flujo básico.
+_________________________________________________________
+ANEXOS
+        Diagrama: No aplica no se genero ningun Diagrama para este CU.
+        Observaciones:

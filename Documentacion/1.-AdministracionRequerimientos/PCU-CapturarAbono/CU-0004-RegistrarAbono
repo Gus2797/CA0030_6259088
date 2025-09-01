@@ -1,0 +1,257 @@
+
+   Nombre del Caso de Uso: CU-0004-RegistrarAbono.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                              Complejidad: Complejo.
+   Tipo de Caso de Uso: Abstracto.
+   Versión: 20101108.1157.
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Acepta los mensajes enviados por el sistema.
+               Secundario: Sistema/ Envía los mensajes correspondiente y guarda el abono.
+
+   Objetivo:   Registrar los abonos a cuentas de clientes capturados.
+
+   __________________________________________________________________________________________
+   Precondiciones:
+                       1.- La cajera debe haber capturado abono al menos a una cuenta del cliente.
+
+   Post-Condiciones:
+                       1.- Se registra el abono, se actualiza el saldo del cliente y su situación.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando el sistema detecta que ya se efectuó el pago por el importe total de los abonos capturados.
+
+                2.- El sistema verifica que el cliente no tiene crédito reestructurado.
+
+                        2.a.- El sistema determina que el cliente tiene crédito reestructurado.
+
+                3.- El sistema verifica el tipo de abono.
+
+                        3.a.- El sistema verifica que el tipo de abono es a ropa.
+
+                        3.b.- El sistema verifica que el tipo de abono es a muebles.
+
+                        3.c.- El sistema verifica que el tipo de abono es a prestamo.
+
+                        3.d.- El sistema verifica que el tipo de abono es a deuda bancoppel.
+
+                        3.e.- El sistema verifica que el tipo de abono es a credito y casa.
+
+                        3.f.- El sistema verifica que el tipo de abono es a Tiempo Aire.
+
+                        3.g.- El sistema verifica que el tipo de abono es a cuentas perdidas.
+
+                        3.h.- El sistema verifica que el tipo de abono es a cuenta revolvente.
+
+                4.- El sistema graba el importe total del  mínimo a pagar, del vencido y del saldo como se
+                    encontraba antes y después del abono.
+
+                5.- Fin del caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+		 2.a.- El sistema determina que el cliente tiene crédito reestructurado.
+
+                        2.a.1.- El sistema identifica que la cantidad abonada fué menor al 60% de su cuenta reestructurada.
+
+                                2.1.a.- El sistema identifica que la cantidad abonada fué mayor al 60% de su cuenta reestructurada.
+
+                                        2.1.a.1.- El sistema borra la situacion especial de crédito del cliente.
+
+                                        2.1.a.2.- El flujo continua en el paso 3 del flujo básico.
+
+                        2.a.2.- El sistema clasifica al cliente con situación especial de crédito.
+
+                        2.a.3.- El flujo continua en el paso 3 del flujo básico.
+
+                3.a.- El sistema verifica que el tipo de abono sea ropa.
+
+                        3.a.1.- El sistema identifica que el cliente tenia abono vencido de ropa.
+
+                        	3.a.1.a.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                	3.a.1.a.1.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                       		3.a.1.a.1.a.- El sistema identifica que el cliente no tiene 2 abonos vencidos de ropa.
+
+                                                	3.a.1.a.1.a.1.- El sistema identifica que el cliente tiene 2 abonos vencidos de ropa.
+
+                                                        	3.a.1.a.1.a.1.a.- El sistema suma el interes adicional y el interes adicional primer mes y
+                                                                         actualiza el interes adicional de la cuenta de ropa con el resultado de esta suma.
+
+                                                        	3.a.1.a.1.a.1.b.- El flujo continua en el paso 3.a.1.b del flujo alternativo.
+
+                                         	3.a.1.a.1.b.- El flujo continua en el paso 3.a.1.b del flujo alternativo.
+
+                         	3.a.1.b.- El sistema graba pago de abono a interes adicional generado por vencido de ropa.
+
+                         	3.a.1.c.- El flujo continua en el paso 4 del flujo básico.
+
+                3.b.- El sistema verifica que el tipo de abono es a muebles.
+
+                        3.b.1.- El sistema identifica que el cliente no tenia abono vencido de muebles.
+
+                                3.b.1.a.- El sistema identifica que el cliente tenia abono vencido de muebles.
+
+                                        3.b.1.a.1.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                                3.b.1.a.1.a.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                                        3.b.1.a.1.a.1.- El sistema identifica que el cliente no tiene 2 abonos vencidos de muebles.
+
+                                                                3.b.1.a.1.a.1.a.- El sistema identifica que el cliente tiene 2 abonos vencidos de muebles.
+
+                                                                        3.b.1.a.1.a.1.a.1.- El sistema suma el interes adicional y el interes adicional primer mes y
+                                                                                            actualiza el interes adicional de la cuenta de muebles con el resultado de esta suma.
+
+                                                                        3.b.1.a.1.a.1.a.2.- El flujo continua en el paso 3.b.1.a.2 del flujo alternativo.
+
+                                                        3.b.1.a.1.a.2.- El flujo continua en el paso 3.b.1.a.2 del flujo alternativo.
+
+                                        3.b.1.a.2.- El sistema graba pago de abono a interes adicional generado por vencido de muebles.
+
+                                        3.b.1.a.3.- El flujo continua en el paso 4 del flujo alternativo.
+
+                        3.b.2.- El sistema graba abono de muebles.
+
+                        3.b.3.- El flujo continua en el paso 4 del flujo basico.
+
+                3.c.- El sistema verifica que el tipo de abono es a prestamo.
+
+                        3.c.1.- El sistema identifica que si el prestamo es solicitado para un negocio.
+
+                                3.c.1.a.- El sistema identifica que el prestamo no es solicitado para un negocio.
+
+                                        3.c.1.a.1.- El sistema graba la comisión del prestamo con un 0.
+
+                                        3.c.1.a.2.- El sistema graba abono de prestamos.
+
+                                        3.c.1.a.3.- El flujo continua en el paso 4 del flujo básico.
+
+                        3.c.2.- El sistema graba la comisión del prestamo con un 1.
+
+                        3.c.3.- El sistema graba abono de prestamos.
+
+                        3.c.4.- El flujo continua en el paso 4 del flujo basico.
+
+                3.d.- El sistema verifica que el tipo de abono es a deuda bancoppel.
+
+                        3.d.1.- El sistema graba abono a deuda bancoppel.
+
+                        3.d.2.- El flujo continua en el paso 4 del flujo basico.
+
+                3.e.- El sistema verifica que el tipo de abono es a credito y casa.
+
+                        3.e.1.- El sistema verifica que si hay conexion a Credito y Casa.
+
+                                3.e.1.a.- El sistema determina que no hay conexion a Credito y Casa.
+
+                                        3.e.1.a.1.- El sistema presenta mensaje "LA TRANSACCIÓN NO SE FINIQUITO CORRECTAMENTE, FAVOR DE VOLVER A REALIZAR LA CAPTURA".
+
+                                        3.e.1.a.2.- La cajera acepta el mensaje.
+
+                                        3.e.1.a.3.- El flujo continua en el paso 5 del flujo basico.
+
+                        3.e.2.- El sistema graba el abono a credito y casa en el servidor de la tienda.
+
+                                3.e.2.a.- El sistema no pudo grabar el abono a credito y casa en el servidor de la tienda.
+
+                                        3.e.2.a.1.- El sistema obtiene y almacena el error: (Clase implicada, Funcion donde ocurrió el error, Consulta, fecha, Especificación del error).
+
+                                        3.e.2.a.2.- El sistema muestra el mensaje de error correspondiente.
+
+                                        3.e.2.a.3.- El Cajero acepta el mensaje.
+
+                                        3.e.2.a.4.- El flujo continua en el paso 5 del flujo basico.
+
+                        3.e.3.- El sistema graba el abono a credito y casa en el servidor de credito y casa.
+
+                                3.e.3.a.- El sistema no pudo grabar el abono a credito y casa en el servidor de credito y casa.
+
+                                        3.e.3.a.1.- El sistema obtiene y almacena el error: (Clase implicada, Funcion donde ocurrió el error, Consulta, fecha, Especificación del error).
+
+                                        3.e.3.a.2.- El sistema muestra el mensaje de error correspondiente.
+
+                                        3.e.3.a.3.- El Cajero acepta el mensaje.
+
+                                        3.e.3.a.4.- El flujo continua en el paso 5 del flujo basico.
+
+                        3.e.4.- El flujo continua en el paso 4 del flujo basico.
+
+                3.f.- El sistema verifica que el tipo de abono es a Tiempo Aire.
+
+                      3.f.1.- El sistema identifica que el cliente tenia abono vencido de ropa.
+
+                        	3.f.1.a.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                	3.f.1.a.1.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                       		3.f.1.a.1.a.- El sistema identifica que el cliente no tiene 2 abonos vencidos de ropa.
+
+                                                	3.f.1.a.1.a.1.- El sistema identifica que el cliente tiene 2 abonos vencidos de ropa.
+
+                                                        	3.f.1.a.1.a.1.a.- El sistema suma el interes adicional y el interes adicional primer mes y
+                                                                         actualiza el interes adicional de la cuenta de ropa con el resultado de esta suma.
+
+                                                        	3.f.1.a.1.a.1.b.- El flujo continua en el paso 3.f.1.b del flujo alternativo.
+
+                                         	3.f.1.a.1.b.- El flujo continua en el paso 3.f.1.b del flujo alternativo.
+
+                         	3.f.1.b.- El sistema graba pago de abono a interes adicional generado por vencido de ropa.
+
+                         	3.f.1.c.- El flujo continua en el paso 4 del flujo básico.
+
+                3.g.- El sistema verifica que el tipo de abono es a cuentas perdidas.
+
+                        3.g.1.- El sistema graba abono de Cuenta Perdida.
+
+                        3.g.2.- El flujo continua en el paso 4 del flujo basico.
+
+                3.h.- El sistema verifica que el tipo de abono es a cuenta revolvente.
+
+                       3.h.1.- El sistema identifica que el cliente no tenia abono vencido de cuenta revolvente.
+
+                                3.h.1.a.- El sistema identifica que el cliente tenia abono vencido de cuenta revolvente.
+
+                                        3.h.1.a.1.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                                3.h.1.a.1.a.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                                        3.h.1.a.1.a.1.- El sistema identifica que el cliente no tiene 2 abonos vencidos de cuenta revolvente.
+
+                                                                3.h.1.a.1.a.1.a.- El sistema identifica que el cliente tiene 2 abonos vencidos de cuenta revolvente.
+
+                                                                        3.h.1.a.1.a.1.a.1.- El sistema suma el interes adicional y el interes adicional primer mes y
+                                                                                actualiza el interes adicional de la cuenta revolvente con el resultado de esta suma.
+
+                                                                        3.h.1.a.1.a.1.a.2.- El flujo continua en el paso 3.h.1.a.2 del flujo alternativo.
+
+                                                        3.h.1.a.1.a.2.- El flujo continua en el paso 3.h.1.a.2 del flujo alternativo.
+
+                                        3.h.1.a.2.- El sistema graba pago de abono a interes adicional generado por vencido de cuenta revolvente.
+
+                                        3.h.1.a.3.- El flujo continua en el paso 3.h.2 del flujo alternativo.
+
+                        3.h.2.- El sistema graba abono de cuenta revolvente.
+
+                        3.h.3.- El flujo continua en el paso 4 del flujo basico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: 0001-CapturarAbono.
+   Asociaciones:
+                   Asociaciones de Extensión: No aplica.
+                   Asociaciones de Inclusión: No aplica.
+                   Caso de Uso donde se Incluye: CU-0001-RealizarAbono.
+                   Caso de Uso al que Extiende: No aplica.
+
+   Observaciones: No aplica.
+   Autor:Ana Beatríz Bastidas Félix.
+   Fecha de Creación: 2007-10-15.
+
+
+

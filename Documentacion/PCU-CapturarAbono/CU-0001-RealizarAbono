@@ -1,0 +1,120 @@
+ENCABEZADO
+        Nombre: CU-0001-RealizarAbono
+        Paquete: PCU-CapturarAbono
+        Alcance del Diseño: Sistema Cajas.
+        Nivel: Meta de Usuario
+        Versión: 20110309.1740
+_________________________________________________________
+ACTORES
+        Primarios: El operador Cajas, realiza el abono del cliente.
+        Secundarios: Sensor de huella dactilar / Este pide la huella del gerente en caso de alguna autorización.
+_________________________________________________________
+CONDICIONES
+        Pre-Condiciones: El operador cajas se identifica y Autentica.
+        Garantías de Éxito: Se registra el abono, se actualiza el saldo del cliente y su situación especial.
+        Garantías Mínimas: El sistema mostrará mensaje de error en caso que no se realice el abono.
+_________________________________________________________
+FLUJO PRINCIPAL
+
+        1.- El caso de uso inicia cuando se requiere hacer un abono.
+        2.- El sistema solicita la captura del número de Cliente o Tarjeta.
+        3.- El operador caja captura el número de Cliente o Tarjeta.
+        4.- El sistema manda llamar el caso de uso CU-0002-DesplegarCuentas y despliega los datos y las cuentas del cliente.
+        5.- El sistema solicita la captura de abono a las cuentas del cliente.
+        6.- El operador caja captura abono a las cuenta(s).
+        7.- El operador caja selecciona una de las siguientes opciones.
+                 Imprimir Recibo
+                 Realizar Convenios
+                 Pago de Servicios
+                 Captura de Seguro
+                 Cancelar Abono
+                 Captura de Abono a Plan Telefónico
+                 Seguros Club Protección
+        8.- Fin del caso de uso.
+_________________________________________________________
+FLUJOS ALTERNATIVOS
+
+        3.a.- El operador cajas selecciona la opción de Deslizar Tarjeta.
+                3.a.1.- El sistema manda llamar al caso de uso CU-0001-LeerTarjetaCliente.
+                3.a.2.- El sistema identifica que se lee la tarjeta.
+                        3.a.2.a.-El sistema identifica que no se lee la tarjeta.
+                                3.a.2.a.1.- El flujo continua en el paso 2 del flujo básico.
+                3.a.3.- El sistema manda llamar al caso de uso CU-0021-ConsultarClienteTarjeta.
+                3.a.4.- El flujo continúa en el paso 4 del flujo básico.
+        7.a.- El operador caja selecciona la opcion de Imprimir Recibo.
+                7.a.1.- El sistema verifica que se capturó un abono.
+                        7.a.1.a.- El sistema verifica que no se capturó un abono.
+                                7.a.1.a.1.- El sistema muestra mensaje correspondiente que el operador caja acepta.
+                                7.a.1.a.2.- El flujo continua en el paso 5 del flujo básico.
+                7.a.2.- El sistema manda llamar el caso de uso CU-0001-CapturarPago.
+                7.a.3.- El sistema verifica que se capturó el pago.
+                        7.a.3.a.- El sistema verifica que no se capturó el pago.
+                                7.a.3.a.1.- El flujo continua en el paso 5 del flujo básico.
+                7.a.4.- El sistema manda llamar el caso de uso CU-0004-RegistrarAbono.
+                7.a.5.- El sistema verifica que se registró el abono correctamente.
+                        7.a.5.a.- El sistema verifica que no se registró el abono correctamente.
+                                7.a.5.a.1.- El sistema muestra mensaje correspondiente que el operador caja acepta.
+                                7.a.5.a.2.- Fin del caso de uso.
+                7.a.6.- El sistema verifica que no hay mensajes por mostrar.
+                        7.a.6.a.- El sistema verifica que hay mensajes por mostrar.
+                                7.a.6.a.1.- El sistema manda llamar al caso de uso CU-0008-MostrarMensajesAfore.
+                                7.a.6.a.2.- El sistema manda llamar al caso de uso CU-0007-RealizarEncuesta.
+                                7.a.6.a.3.- El sistema manda llamar al CU-0001-CapturarDirectorioCliente.
+                                7.a.6.a.4.- El sistema verifica que el cliente cumple con las condiciones para obtener un prestamo en efectivo.
+                                        7.a.6.a.4.a.- El sistema determina que el cliente no cumple con las condiciones para obtener un prestamo en efectivo.
+                                                7.a.6.a.4.a.1.- El flujo continua en el paso 7.a.6.a.6 del flujo alternativo.
+                                7.a.6.a.5.- El sistema muestra mensaje de invitacion para prestamos en efectivo.
+                                7.a.6.a.6.- El sistema verifica que va mostrar la Invitacion de Bancoppel.
+                                        7.a.6.a.6.a.- El sistema verifica que no va mostrar la Invitacion de Bancoppel.
+                                                7.a.6.a.6.a.1.- El flujo continua en el paso 7.a.6.a.8 del flujo alternativo.
+                                7.a.6.a.7.- El sistema manda llamar al caso de uso CU-0001-InvitacionTarjetaBancoppel.
+                                7.a.6.a.8.- El sisteam manda llamar al caso de uso CU-0010-MostrarMensajeCrezcaSuHogar.
+                                7.a.6.a.9.- El flujo continua en el paso 7.a.7 del flujo alternativo.
+                7.a.7.- El sistema verifica que esta activa la opción de captura de teléfonos en los abonos.
+                        7.a.7.a.- El sistema verifica que no esta activa la opción de captura de teléfonos en los abonos.
+                                7.a.7.a.1.- El flujo continua en el paso 7.a.9 del flujo alternativo.
+                7.a.8.- El sistema manda llamar al caso de uso CU-0001-CapturarTelefonosCliente.
+                7.a.9.- El sistema manda llamar al caso de uso CU-0005-ImprimirReciboAbono.
+                7.a.10.- Fin del caso de uso.
+        7.b.- El operador caja selecciona la opción de realizar convenios.
+                7.b.1.- El sistema verifica que a la cuenta que se le quiere realizar convenio no es de seguro.
+                                7.b.1.a.- El sistema verifica que se le quiere realizar convenio a una cuenta de seguro.
+                                        7.b.1.a.1.- El sistema manda mensaje de error correspondiente que el operador caja acepta.
+                                        7.b.1.a.2.- El flujo continúa en el paso 7 del flujo básico.
+                        7.b.2.- El sistema muestra la opción de los tipos de convenios.
+                        7.b.3.- La cajera selecciona una opcion.
+                        7.b.4.- La cajera captura el numero de empleado, el plazo e importe del convenio.
+                        7.b.5.- El sistema verifica que los datos son validos.
+                                7.b.5.a.- El sistema verifica que los datos son invalidos.
+                                        7.b.5.a.1.- El sistema muestra mensaje de error correspondiente que el operador caja acepta.
+                                        7.b.5.a.2.- El flujo continúa en el paso 7.b.4 del flujo alternativo
+                        7.b.6.- El sistema muestra los datos del convenio en la columna de la cuenta a la que se le realizó el convenio.
+                        7.b.7.- El flujo continúa en el paso 7 del flujo básico.
+        7.c.- El operador caja selecciona la opcion de pago de servicios.
+                7.c.1.- El sistema manda llamar al CU-0001-MenuPagoServicios.
+                7.c.2.- El flujo continúa en el paso 7 del flujo básico.
+        7.d.- El operador caja selecciona la opción de captura de seguro.
+                7.d.1.- El sistema verifica que si se encuentra en la columna de la cuenta de seguro.
+                        7.d.1.a.- El sistema verificó que no se encuentra en la columna de la cuenta de seguro.
+                                7.d.1.a.1.- El sistema manda mensaje correspondiente que el operador caja acepta.
+                                7.d.1.a.2.- El flujo continúa en el paso 7 del flujo básico.
+                7.d.2.- El sistema mada llamar al CU-0009-CapturarSeguroCliente.
+                7.d.3.- El flujo continúa en el paso 7 del flujo básico.
+        7.e.- El operador caja selecciona la opcion de cancelar abono.
+                7.e.1.- El sistema realiza la cancelacion del abono.
+                7.e.2.- Fin del caso de uso.
+        7.f.- El operador caja seleccionó la opción captura de abono a plan telefónico.
+                7.f.1.- El sistema verifica que si se encuentra en la columna de la cuenta de plan telefónico.
+                        7.f.1.a.- El sistema verifica que no se encuentra en la columna de la cuenta de plan telefónico.
+                                7.f.1.a.1.- El sistema manda el mensaje correspondiente que el operador caja acepta.
+                                7.f.1.a.2.- El flujo continúa en el paso 7 del flujo básico.
+                7.f.2.- El sistema manda llamar al CU-0001-RealizarAbonoPlan.
+                7.f.3.- El flujo continúa en el paso 7 del flujo básico.
+        7.g.- El operador caja seleccionó la opción de Seguros Club Protección.
+                7.g.1.- El sistema manda llamar al CU-0012-MostrarMenuSeguroClub.
+                7.g.2.- El flujo continúa en el paso 7 del flujo básico.
+
+_________________________________________________________
+ANEXOS
+        Diagrama: No aplica no se genero ningun Diagrama para este CU.
+	Observaciones:

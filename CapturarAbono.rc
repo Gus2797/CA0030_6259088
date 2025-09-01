@@ -1,0 +1,429 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Spain, Traditional Sort) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESP)
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)\r\n"
+    "LANGUAGE 10, 3\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\CapturarAbono.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Acerca de CapturarAbono"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            128,IDC_STATIC,11,17,20,20
+    LTEXT           "CapturarAbono Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "Aceptar",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DLGCAPTURARABONO DIALOGEX 0, 0, 513, 381
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_CLIENTE,51,18,145,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_GRID,29,55,396,206,SS_SUNKEN
+    LTEXT           "Cliente",IDC_STATIC_CLIENTE,27,20,22,8
+    LTEXT           "",IDC_APELLIDOPATERNO,228,18,46,8
+    LTEXT           "",IDC_APELLIDOMATERNO,282,18,46,8
+    LTEXT           "",IDC_NOMBRE,336,18,71,8
+    GROUPBOX        "",IDC_STATIC,13,6,475,338
+    LTEXT           "",IDC_PUNTUALIZAD2,210,18,8,8
+    LTEXT           "Static",IDC_GRID2,425,55,49,206,SS_SUNKEN
+    LTEXT           "",IDC_MENSAJE,29,287,369,8
+    LTEXT           "+ Cuentas -->",IDC_FLECHA,386,264,50,8,NOT WS_VISIBLE
+    RTEXT           "",IDC_EDAD,414,18,58,8
+    LTEXT           "",IDC_MSGMINIMO,29,275,369,8
+    RTEXT           "",IDC_MSGMINIMO2,419,277,61,8
+    RTEXT           "",IDC_MSGMINIMO3,419,289,61,8
+    LTEXT           "",IDC_ASTERISCOCOPPEL,29,264,77,8
+    LTEXT           "",IDC_INTMESUNO,229,264,78,8
+    LTEXT           "",IDC_MSGCANDIDATOREESTRUCTURA,168,328,175,8
+    LTEXT           "",IDC_MENSAJE2,29,300,369,8
+    LTEXT           "",IDC_MENSAJE3,29,312,313,8
+    EDITTEXT        IDC_CORREO,51,33,145,14,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER | NOT WS_VISIBLE
+    EDITTEXT        IDC_CELULARCLIENTE,241,33,83,14,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER | NOT WS_VISIBLE
+    LTEXT           "Correo",IDC_LBLCORREO,27,35,22,8,NOT WS_VISIBLE
+    LTEXT           "Celular",IDC_LBLCELULAR,216,35,23,8,NOT WS_VISIBLE
+    RTEXT           "DINERO ELECTR�NICO:",IDC_MSGDINEROELECTRONICO,351,313,85,8,NOT WS_VISIBLE
+    LTEXT           "",IDC_DINEROELECTRONICO,440,313,46,8,NOT WS_VISIBLE
+    RTEXT           "ABONOS PUNTUALES:",IDC_MSGABONOSPUNTUALES,352,327,84,8,NOT WS_VISIBLE
+    CONTROL         "",IDC_ABONOSPUNTUALES,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,439,329,5,5
+    RTEXT           "",IDC_LEYENDA_ACLARACIONSDO,328,33,145,15
+END
+
+IDD_DLGCAPTURARCLIENTEETP DIALOGEX 0, 0, 186, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURAR CLIENTE ETP"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_CLIENTEETP,87,40,45,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "",IDC_STATIC,6,3,173,86
+    LTEXT           "Cliente Etp",IDC_STATIC_CLIENTE2,46,40,36,8
+END
+
+IDD_DLGCAPTURAREMPLEADOSUPERVISOR DIALOGEX 0, 0, 212, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURA NUMERO DE EMPLEADO DEL SUPERVISOR"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    GROUPBOX        "",IDC_STATIC,7,3,198,86
+    LTEXT           "Empleado",IDC_STATIC_EMPLEADO6,60,40,32,8
+    EDITTEXT        IDC_EMPLEADOSUPERVISOR,111,40,45,14,ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_DLGCAPTURARCONVENIO DIALOGEX 0, 0, 225, 125
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURAR CONVENIO"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_EMPLEADO,110,26,40,14,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_PLAZO,110,39,40,14,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_IMPORTE,110,52,40,14,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    PUSHBUTTON      "Esc Cancelar",IDC_CANCELAR,41,89,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "F10 Aceptar",IDC_ACEPTAR,134,89,50,14,NOT WS_VISIBLE
+    LTEXT           "Empleado",IDC_STATIC_EMPLEADO3,74,26,32,8
+    LTEXT           "Plazo",IDC_STATIC_PLAZO3,74,39,18,8
+    LTEXT           "Importe",IDC_STATIC_IMPORTE3,74,52,26,8
+    GROUPBOX        "",IDC_STATIC,40,13,143,67
+    GROUPBOX        "",IDC_STATIC,6,3,213,115
+END
+
+IDD_DLGCAPTURARDATOSSEGURO DIALOGEX 0, 0, 225, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURAR DATOS SEGURO"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_SEGUROS,108,30,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_MESES,109,56,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "Esc Cancelar",IDC_CANCELAR,53,86,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "F10 Aceptar",IDC_ACEPTAR,119,86,50,14,NOT WS_VISIBLE
+    LTEXT           "Seguros",IDC_STATIC_SEGUROS5,74,30,27,8
+    LTEXT           "Meses",IDC_STATIC_MESES5,74,56,25,8
+    GROUPBOX        "",IDC_STATIC,6,3,213,115
+    GROUPBOX        "",IDC_STATIC,45,18,134,62
+END
+
+IDD_DLGCAPTURARDATOSSEGUROMOTOS DIALOGEX 0, 0, 225, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURAR DATOS SEGURO MOTOS"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_SEGUROS,108,30,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_MESES,109,56,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "Esc Cancelar",IDC_CANCELAR,53,86,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "F10 Aceptar",IDC_ACEPTAR,119,86,50,14,NOT WS_VISIBLE
+    LTEXT           "Seguros",IDC_STATIC_SEGUROS5,74,30,27,8,NOT WS_VISIBLE
+    LTEXT           "Meses",IDC_STATIC_MESES5,74,56,25,8
+    GROUPBOX        "",IDC_STATIC,6,3,213,115
+    GROUPBOX        "",IDC_STATIC,45,18,134,62
+END
+
+IDD_DLGENCUESTA DIALOGEX 0, 0, 307, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "ENCUESTAS"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_NOMBRE2,119,17,57,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_APELLIDOPATERNO2,119,30,57,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_APELLIDOMATERNO2,119,43,57,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_ZONA,119,56,57,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_COLONIA,119,70,57,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_TELEFONO2,119,84,57,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "F10 Aceptar",IDC_ACEPTAR,119,124,50,14,NOT WS_VISIBLE
+    LTEXT           "Nombre",IDC_NOMBRE,55,20,26,8
+    LTEXT           "Apellido Paterno",IDC_APELLIDOPATERNO,55,34,53,8
+    LTEXT           "Apellido Materno",IDC_APELLIDOMATERNO,55,48,61,8
+    LTEXT           "Ciudad",IDC_NUMEROZONA,55,62,23,8
+    LTEXT           "Tel�fono",IDC_TELEFONO,55,89,29,8
+    GROUPBOX        "",IDC_STATIC,6,3,295,143
+    CTEXT           "",IDC_MENSAJE,75,112,156,8
+    LTEXT           "Colonia",IDC_STATIC_COLONIA,55,75,34,8
+    LTEXT           "",IDC_NOMBRECOLONIA,178,70,95,14,SS_CENTERIMAGE | SS_SUNKEN
+END
+
+IDD_DLGCAPTURARCAMBIOSEGURO DIALOGEX 0, 0, 225, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURA CAMBIO SEGURO"
+FONT 12, "Lucida Console Bold", 700, 0, 0x0
+BEGIN
+    LTEXT           "Seguros",IDC_STATIC_SEGUROS5,34,57,27,8
+    LTEXT           "Asegurados",IDC_STATIC_ASEGURADOS,23,30,39,8
+    COMBOBOX        IDC_ASEGURADOS,71,29,131,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_SEGUROS,70,55,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_SEGUROS2,113,55,48,30,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_STATIC,6,3,213,115
+    GROUPBOX        "",IDC_STATIC,14,18,197,62
+    COMBOBOX        IDC_FECHANACIMIENTOADIC,161,55,48,30,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURARABONO, DIALOG
+    BEGIN
+        RIGHTMARGIN, 500
+        BOTTOMMARGIN, 351
+    END
+
+    IDD_DLGCAPTURARCLIENTEETP, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURAREMPLEADOSUPERVISOR, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURARCONVENIO, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURARDATOSSEGURO, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURARDATOSSEGUROMOTOS, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGENCUESTA, DIALOG
+    BEGIN
+    END
+
+    IDD_DLGCAPTURARCAMBIOSEGURO, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DLGCAPTURARABONO AFX_DIALOG_LAYOUT 
+BEGIN
+    0x0000
+END
+
+#endif    // Spanish (Spain, Traditional Sort) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Mexico) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESM)
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MEXICAN
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_CAPTURAABONOCELULARES DIALOGEX 0, 0, 167, 136
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "CAPTURAR DATOS SEGURO CELULARES"
+FONT 12, "Lucida Console", 700, 0, 0x0
+BEGIN
+    LTEXT           "MESES:",IDC_STATIC,43,53,25,8
+    EDITTEXT        IDC_TXT_MESES,82,51,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Cancelar",IDC_LBL_BARRA,32,111,33,8
+    LTEXT           "Aceptar",IDC_LBL_TEXTO,83,110,29,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DLG_CAPTURAABONOCELULARES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 160
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 129
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Spanish (Mexico) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Spain, International Sort) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLGREESTRUCTURA DIALOGEX 0, 0, 348, 93
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Plan paga m�s f�cil"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "F10 &Plan paga m�s f�cil",ID_REESTRUCTURA,90,55,85,14
+    DEFPUSHBUTTON   "ESC &Abonar",ID_CANCELAR,177,55,65,14
+    LTEXT           "�Reestructuracion?",IDC_MSGREESTRUCTURA,15,26,312,21
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DLGREESTRUCTURA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 341
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 86
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "0c0a04e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "CapturarAbono.dll"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "CapturarAbono.dll"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0xc0a, 1252
+    END
+END
+
+#endif    // Spanish (Spain, International Sort) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+LANGUAGE 10, 3
+#pragma code_page(1252)
+#include "res\CapturarAbono.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

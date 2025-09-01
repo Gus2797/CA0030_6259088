@@ -1,0 +1,116 @@
+#ifndef CCRHUELLAS
+#define CCRHUELLAS
+#include <RecordSet.HPP>
+class CCrHuellas : public CRecordSet 
+{
+public:
+    CCrHuellas(C_ODBC *odbc_ext, const char *select=NULL);
+    ~CCrHuellas();
+    void activarCols();
+    BOOL prepararInsert();
+    BOOL prepararInsert(const char *tabla);
+    
+
+    C_ODBC *odbc;
+    int odbcRet;
+    int nCols;
+    int flagInsertar;
+    int nSqlTipo[91];
+    int nCTipo[91];
+    long nLongitud[91];
+    long nLongResp[91];
+    void *pVar[91];
+    
+    long                cliente;
+    char                flagadicional[3];
+	_int64              templatededoderecho[88];
+    /*_int64              templatededoderecho001;
+    _int64              templatededoderecho002;
+    _int64              templatededoderecho003;
+    _int64              templatededoderecho004;
+    _int64              templatededoderecho005;
+    _int64              templatededoderecho006;
+    _int64              templatededoderecho007;
+    _int64              templatededoderecho008;
+    _int64              templatededoderecho009;
+    _int64              templatededoderecho010;
+    _int64              templatededoderecho011;
+    _int64              templatededoderecho012;
+    _int64              templatededoderecho013;
+    _int64              templatededoderecho014;
+    _int64              templatededoderecho015;
+    _int64              templatededoderecho016;
+    _int64              templatededoderecho017;
+    _int64              templatededoderecho018;
+    _int64              templatededoderecho019;
+    _int64              templatededoderecho020;
+    _int64              templatededoderecho021;
+    _int64              templatededoderecho022;
+    _int64              templatededoderecho023;
+    _int64              templatededoderecho024;
+    _int64              templatededoderecho025;
+    _int64              templatededoderecho026;
+    _int64              templatededoderecho027;
+    _int64              templatededoderecho028;
+    _int64              templatededoderecho029;
+    _int64              templatededoderecho030;
+    _int64              templatededoderecho031;
+    _int64              templatededoderecho032;
+    _int64              templatededoderecho033;
+    _int64              templatededoderecho034;
+    _int64              templatededoderecho035;
+    _int64              templatededoderecho036;
+    _int64              templatededoderecho037;
+    _int64              templatededoderecho038;
+    _int64              templatededoderecho039;
+    _int64              templatededoderecho040;
+    _int64              templatededoderecho041;
+    _int64              templatededoderecho042;
+    _int64              templatededoderecho043;
+    _int64              templatededoderecho044;
+    _int64              templatededoderecho045;
+    _int64              templatededoderecho046;
+    _int64              templatededoderecho047;
+    _int64              templatededoderecho048;
+    _int64              templatededoderecho049;
+    _int64              templatededoderecho050;
+    _int64              templatededoderecho051;
+    _int64              templatededoderecho052;
+    _int64              templatededoderecho053;
+    _int64              templatededoderecho054;
+    _int64              templatededoderecho055;
+    _int64              templatededoderecho056;
+    _int64              templatededoderecho057;
+    _int64              templatededoderecho058;
+    _int64              templatededoderecho059;
+    _int64              templatededoderecho060;
+    _int64              templatededoderecho061;
+    _int64              templatededoderecho062;
+    _int64              templatededoderecho063;
+    _int64              templatededoderecho064;
+    _int64              templatededoderecho065;
+    _int64              templatededoderecho066;
+    _int64              templatededoderecho067;
+    _int64              templatededoderecho068;
+    _int64              templatededoderecho069;
+    _int64              templatededoderecho070;
+    _int64              templatededoderecho071;
+    _int64              templatededoderecho072;
+    _int64              templatededoderecho073;
+    _int64              templatededoderecho074;
+    _int64              templatededoderecho075;
+    _int64              templatededoderecho076;
+    _int64              templatededoderecho077;
+    _int64              templatededoderecho078;
+    _int64              templatededoderecho079;
+    _int64              templatededoderecho080;
+    _int64              templatededoderecho081;
+    _int64              templatededoderecho082;
+    _int64              templatededoderecho083;
+    _int64              templatededoderecho084;
+    _int64              templatededoderecho085;
+    _int64              templatededoderecho086;
+    _int64              templatededoderecho087;
+    _int64              templatededoderecho088;*/
+};
+#endif CCRHUELLAS

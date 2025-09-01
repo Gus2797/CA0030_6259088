@@ -1,0 +1,162 @@
+
+   Nombre del Caso de Uso: CU-0013-ImprimirPolizaSeguroClub.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                                 Complejidad: Simple.
+   Tipo de Caso de Uso: Concreto.
+   Versión: 20100621.1646
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Captura el pago del abono y captura los datos del Seguro.
+               Secundario: Impresora / Se encarga de imprimir la póliza del seguro y el recibo del abono.
+
+   Objetivo:
+        Realizar la impresión de las polizas de los seguros capturados.
+
+   ___________________________________________________________________________________________
+   Precondiciones:
+                        1.- Que se haya realizado la venta de un seguro club.
+
+   Post-Condiciones:
+                        1.- Se obtiene la póliza impresa.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se realizó la venta del seguro club y se desea imprimir la poliza.
+
+                2.- El sistema imprime las clausulas de la póliza del seguro club de protección en el recibo.
+
+                3.- El sistema obtiene los beneficiarios del cliente.
+
+                4.- El sistema imprime la leyenda "Nombre del contratante: COPPEL S.A. DE C.V." en el recibo.
+
+                5.- El sistema imprime la leyenda "CL09770500 01 de Junio del 2009" en el recibo.
+
+                6.- El sistema imprime la vigencia del seguro club de protección en el recibo.
+
+                7.- El sistema imprime la leyenda "Otorgado por: AXA SEGUROS, S.A. DE C.V." en el recibo.
+
+                8.- El sistema imprime la leyenda "Datos del asegurado:" en el recibo.
+
+                9.- El sistema imprime el nombre del asegurado en el recibo.
+
+                10.- El sistema imprime el número de cliente y el folio del seguro en el recibo.
+
+                11.- El sistema imprime la leyenda "Domicilio:(calle, n£mero, col, dlg ¢ mpio, estado, cp.)" en el recibo.
+
+                12.- El sistema imprime el domicilio del cliente en el recibo.
+
+                13.- El sistema imprime la fecha de nacimiento, el sexo y la nacionalidad del asegurado en el recibo.
+
+                14.- El sistema imprime la ocupación del asegurado.
+
+                15.- El sistema imprime la CURP del asegurado.
+
+                16.- El sistema imprime la leyenda "Cobertura contratada: Fallecimiento. Suma Asegurada:" en el recibo.
+
+                17.- El sistema imprime la suma asegurada del cliente.
+
+                18.- El sistema imprime la leyenda "Designaci¢n de Beneficiarios:" en el recibo.
+
+                19.- El sistema imprime la leyenda "Ap.Pat.        Ap.Mat.        Nombre(s)         PARENT:   PORC." en el recibo.
+
+                20.- El sistema imprime los nombres, el parentezco y el porcentaje del monto asegurado de los beneficiarios en el recibo.
+
+                21.- El sistema imprime la pregunta ¿Padece o ha padecido enfermedades del Corazón, Diabetes, SIDA, Cáncer, Insuficiencia
+                     renal, Hipertensión arterial, Cirrosis hepática, Hepatitis, Leucemia, Pancreatitis, Meningitis, Linfoma o
+                     Enfermedades Pulmonares?
+
+                22.- El sistema imprime la fecha del dia actual en el recibo.
+
+                23.- El sistema imprime la leyenda "Firma del Asegurado" en el recibo.
+
+                24.- El sistema imprime la nota de aviso para el club de protección en el recibo.
+
+                25.- El sistema manda a imprimir la imagen de la póliza del seguro a la impresora.
+
+                26.- El sistema valida que no se capturaron seguros adicionales.
+
+                        26.a.- El sistema valida que se capturaron seguros adicionales.
+
+                27.- Fin del caso de uso.
+
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                26.a.- El sistema valida que se capturaron seguros adicionales.
+
+                        26.a.1.- El sistema imprime las clausulas de la póliza del seguro club de protección en el recibo.
+
+                        26.a.2.- El sistema obtiene los beneficiarios del adicional.
+
+                        26.a.3.- El sistema imprime la leyenda "Nombre del contratante: COPPEL S.A. DE C.V." en el recibo.
+
+                        26.a.4.- El sistema imprime la leyenda "CL09770500 01 de Junio del 2009" en el recibo.
+
+                        26.a.5.- El sistema imprime la vigencia del seguro club de protección en el recibo.
+
+                        26.a.6.- El sistema imprime la leyenda "Otorgado por: AXA SEGUROS, S.A. DE C.V." en el recibo.
+
+                        26.a.7.- El sistema imprime la leyenda "Datos del asegurado:" en el recibo.
+
+                        26.a.8.- El sistema imprime el nombre del asegurado en el recibo.
+
+                        26.a.9.- El sistema imprime la leyenda "PARENT:".
+
+                        26.a.10.- El sistema imprime el parentesco del adicional.
+
+                        26.a.11.- El sistema imprime el número de cliente y el folio del seguro adicional en el recibo.
+
+                        26.a.12.- El sistema imprime la leyenda "Domicilio:(calle, n£mero, col, dlg ¢ mpio, estado, cp.)" en el recibo.
+
+                        26.a.13.- El sistema imprime el domicilio del cliente en el recibo.
+
+                        26.a.14.- El sistema imprime la fecha de nacimiento, el sexo y la nacionalidad del asegurado en el recibo.
+
+                        26.a.15.- El sistema imprime la ocupación del asegurado.
+
+                        26.a.16.- El sistema imprime la CURP del asegurado.
+
+                        26.a.17.- El sistema imprime la leyenda "Cobertura contratada: Fallecimiento. Suma Asegurada:" en el recibo.
+
+                        26.a.18.- El sistema imprime la suma asegurada del adicional.
+
+                        26.a.19.- El sistema imprime la leyenda "Designaci¢n de Beneficiarios:" en el recibo.
+
+                        26.a.20.- El sistema imprime la leyenda "Ap.Pat.        Ap.Mat.        Nombre(s)         PARENT:   PORC." en el recibo.
+
+                        26.a.21.- El sistema imprime los nombres, el parentezco y el porcentaje del monto asegurado de los beneficiarios en el recibo.
+
+                        26.a.22.- El sistema imprime la pregunta ¿Padece o ha padecido enfermedades del Corazón, Diabetes, SIDA, Cáncer, Insuficiencia
+                                  renal, Hipertensión arterial, Cirrosis hepática, Hepatitis, Leucemia, Pancreatitis, Meningitis, Linfoma o
+                                  Enfermedades Pulmonares?
+
+                        26.a.23.- El sistema imprime la fecha del dia actual en el recibo.
+
+                        26.a.24.- El sistema imprime la leyenda "Firma del Asegurado" en el recibo.
+
+                        26.a.25.- El sistema imprime la nota de aviso para el club de protección adicional en el recibo.
+
+                        26.a.26.- El sistema manda a imprimir la imagen de la póliza del seguro adicional a la impresora.
+
+                        26.a.27.- El sistema verifica que ya no hay seguros adicionales.
+
+                                26.a.27.a.- El sistema verifica que hay mas seguros adicionales.
+
+                                        26.a.27.a.1- El flujo continua en el paso 26.a.1 del flujo alternativo.
+
+                        26.a.28.- El flujo continua en el paso 27 del flujo basico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: No Aplica.
+   Asociaciones:
+          Asociaciones de Extensión: No aplica.
+          Asociaciones de Inclusión: No aplica.
+          Caso de Uso donde se Incluye: No aplica.
+          Caso de Uso al que Extiende: CU-0005-ImprimirReciboAbono
+
+   Observaciones: No aplica.
+   Autor: Luis Orlando Ramírez García.
+   Fecha de Creación: 2009/11/03

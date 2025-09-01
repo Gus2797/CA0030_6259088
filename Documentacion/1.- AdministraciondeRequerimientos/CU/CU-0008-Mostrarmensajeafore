@@ -1,0 +1,164 @@
+
+   Nombre del Caso de Uso: CU-0008-MostrarMensajeAfore
+   Paquete: CapturarAbono
+   Ciclo de Vida: Cascada                            Iteración: 1
+   Prioridad: Deseable                               Complejidad: Simple
+   Tipo de Caso de Uso: Concreto
+   Versión: 20080115.1127
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Señala mensaje al cliente.
+               Secundario: Sistema / Muestra mensaje.
+
+   Objetivo:   Mostrar mensajes de invitacion a los módulos de afore Coppel.
+
+   ___________________________________________________________________________________________
+   Precondiciones: El cajero graba el abono del cliente.
+
+   Post-Condiciones: No aplica.
+    _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando el cajero concluye un abono.
+
+                2.- El sistema consulta el registro de la hora de la ultima invitación hecha
+
+                        2.a.- El sistema no encontró registro de la hora de la última invitación hecha.
+
+                        2.b.- El sistema no pudo obtener registro de la hora de la última invitación hecha
+
+                        2.c.- El sistema obtiene la hora de la última invitacion hecha.
+
+                3.- El sistema verifica si esta habilitado para mostrar mensaje de afore.
+
+                        3.a.- El sistema verificó que esta deshabilitado para mostrar mensaje de afore.
+
+                4.- El sistema consulta servidores de afore.
+
+                        4.a.- El sistema no pudo consultar servidores de afore.
+
+                5.- El sistema se enlaza con servidor de afore.
+
+                        5.a.- El sistema no puede enlazarse con servidor de afore.
+
+                6.- El sistema consulta el tipo de mensaje que mostrará.
+
+                        6.a.- El sistema no pudo consultar el tipo de mensaje que mostrará.
+
+                        6.b.- El sistema no encontró tipo mensaje a mostrar.
+
+                7.- El sistema muestra el mensaje correspondiente.
+
+                8.- El cajero acepta el mensaje.
+
+                9.- El sistema termina el enlace con servidor de afore.
+
+                10.- Fin del caso de uso.
+
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                2.a.- El sistema no encontró registro de la hora de la última invitación hecha.
+
+                        2.a.1.- El sistema graba los datos ( caja, hora, minuto ).
+
+                                2.a.1.a.- El sistema no pudo grabar los datos ( caja, hora, minuto ).
+
+                                        2.a.1.a.1.- El sistema muestra mensaje correspondiente.
+
+                                        2.a.1.a.2.- El cajero acepta el mensaje.
+
+                                        2.a.1.a.3.- El sistema dehabilita la muestra de mensajes.
+
+                                        2.a.1.a.4.- El flujo continúa en el paso 3 del flujo básico.
+
+                        2.a.2.- El sistema habilita la muestra de mensaje.
+
+                        2.a.3.- El flujo continúa en el paso 3 del flujo básico.
+
+                2.b.- El sistema no pudo obtener registro de la hora de la última invitación hecha.
+
+                        2.b.1.- El sistema graba los datos ( caja, hora, minuto ).
+
+                                2.b.1.a.- El sistema no pudo grabar los datos ( caja, hora, minuto ).
+
+                                        2.b.1.a.1.- El sistema muestra mensaje correspondiente.
+
+                                        2.b.1.a.2.- El cajero acepta el mensaje.
+
+                                        2.b.1.a.3.- El sistema dehabilita la muestra de mensajes.
+
+                                        2.b.1.a.4.- El flujo continúa en el paso 3 del flujo básico.
+
+                        2.b.2.- El sistema habilita la muestra de mensaje.
+
+                        2.b.3.- El flujo continúa en el paso 3 del flujo básico.
+
+
+                2.c.- El sistema obtiene la hora de la ultima invitación hecha.
+
+                        2.c.1.- El sistema verifica si ya paso al menos media hora desde la última invitación.
+
+                                2.c.1.a.- El sistema verificó que todavia no ha pasado al menos media hora desde la última invitación.
+
+                                        2.c.1.a.1.- El sistema deshabilita la muestra del mensaje.
+
+                                        2.c.1.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                        2.c.2.- El sistema actualiza registro de la última invitación para poner la hora actual.
+
+                                2.c.2.a.- El sistema no pudo actualizar el registro de la última invitación para poner la fecha actual.
+
+                                        2.c.2.a.1.- El sistema muestra mensaje correspondiente.
+
+                                        2.c.2.a.2.- El cajero acepta el mensaje.
+
+                                        2.c.2.a.3.- El sistema deshabilita la muestra del mensaje.
+
+                                        2.c.2.a.4.- El flujo continúa en el paso 3 del flujo básico.
+
+                        2.c.1.- El sistema habilita la muestra de mensaje.
+
+                        2.c.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                3.a.- El sistema verificó que esta deshabilitado para mostrar mensaje de afore.
+
+                        3.a.1.- El flujo continúa en el paso 10 del flujo básico.
+
+                4.a.- El sistema no pudo consultar servidores de afore.
+
+                        4.a.1.- El flujo continúa en el paso 10 del flujo básico.
+
+                5.a.- El sistema no puede enlazarse con servidor de afore.
+
+                        5.a.1.- El sistema muestra mensaje correspondiente.
+
+                        5.a.2.- El cajero acepta el mensaje.
+
+                        5.a.3.- El flujo continúa en el paso 10 del flujo básico.
+
+                6.a.- El sistema no pudo consultar el tipo de mensaje que mostrará.
+
+                        6.a.1.- El flujo continúa en el paso 9 del caso de uso.
+
+                6.b.- El sistema no encontró tipo mensaje a mostrar.
+
+                        6.b.1.- El flujo continúa en el paso 9 del caso de uso.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+                No aplica.
+
+   Interfaz de Usuario: 0001-CapturarAbono
+   Asociaciones:
+          Asociaciones de Extensión: No aplica.
+          Asociaciones de Inclusión: No aplica.
+          Caso de Uso donde se Incluye: No aplica.
+          Caso de Uso al que Extiende:  CU-0001-RealizarAbono.
+          Caso de Uso de Generalización: No aplica.
+
+
+   Observaciones: No aplica.
+   Autor:  Jesús Alvaro Lazcano Guzmán
+   Fecha de Creación: 2008-01-15

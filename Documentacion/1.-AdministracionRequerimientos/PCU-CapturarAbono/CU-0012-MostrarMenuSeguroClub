@@ -1,0 +1,524 @@
+
+   Nombre del Caso de Uso: CU-0012-MostrarMenuSeguroClub
+   Paquete: PCU-CapturarAbono
+   Liberación: 1.
+   Prioridad: Esencial               Complejidad: Complejo
+   Tipo de Caso de Uso: Concreto
+   Versión: 20100909.1045
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Elije las opciones del menú de Club Proteccion Coppel.
+               Secundario: Sensor de huella dactilar / Este pide la huella del cliente o la huella del gerente en caso de alguna autorización.
+
+   Objetivo:   Mostrar las opciones de Club de Proteccion Coppel.
+
+   ___________________________________________________________________________________________
+   Precondiciones:
+
+                       1.- Haber seleccionado la ópcion que muestra el menú de Club Proteccion Coppel
+                           en la captura de Abonos.
+
+   Post-Condiciones:
+                       1.- Cargar el modulo correspondiente a la opción seleccionada.
+
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando la cajera selecciona el menú de Club Proteccion Coppel.
+
+                2.- El sistema muestra las opciones del menú de Club Proteccion Coppel.
+                            -Activar Club de Protección.
+                            -Beneficiarios.
+                            -Documentación.
+                            -Cancelación de Seguro.
+                            -No Ofrecer Club de Protección.
+                            -Activar Club Adicional.
+                            -Salir.
+
+                3.- La cajera selecciono la opción de Salir.
+
+                        3.a.- La cajera selecciona la opción de Activar Club de Protección.
+
+                        3.b.- La cajera selecciona la opción de Beneficiarios.
+
+                        3.c.- La cajera selecciona la opción de Documentación.
+
+                        3.d.- La cajera selecciona la opción de Cancelación de Seguro.
+
+                        3.e.- La cajera selecciona la opción de No Ofrecer Club de Protección.
+
+                        3.f.- La cajera selecciona la opción de Activar Club Adicional.
+
+                4.- Fin del caso de uso.
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                3.a.- La cajera selecciona la opción de Activar Club de Protección.
+
+                        3.a.1.- El sistema muestra las opciones del submenú Club Protección Coppel.
+                                        -Club Individual.
+                                        -Salir.
+
+                        3.a.2.- La cajera selecciona una de las opciones.
+
+                                3.a.2.a.- La cajera selecciona la opcion de Club Individual.
+
+                                        3.a.2.a.1.- El sistema valida que el cliente es mayor a 18 o menor a 60 años de edad.
+
+                                                3.a.2.a.1.a.- El sistema valida que el cliente es menor a 18 o mayor a 60 años de edad.
+
+                                                        3.a.2.a.1.a.1.- El sistema muestra mensaje correspondiente.
+
+                                                        3.a.2.a.1.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                        3.a.2.a.2.- El sistema verifica el seguro club del cliente.
+
+                                                3.a.2.a.2.a.- El sistema verifica que el cliente no tiene seguro club.
+
+                                                        3.a.2.a.2.a.1.- El sistema verifica al cliente para poder ofrecerle el seguro.
+
+                                                                3.a.2.a.2.a.1.a.- El sistema verifica que el cliente tiene clave de no ofrecer Seguro Club.
+
+                                                                        3.a.2.a.2.a.1.a.1.- El sistema muestra mensaje informativo para activar Seguro Club.
+
+                                                                        3.a.2.a.2.a.1.a.2.- La cajera selecciona una opcion del mensaje.
+
+                                                                                3.a.2.a.2.a.1.a.2.a.- La cajera acepta mensaje correspondiente.
+
+                                                                                        3.a.2.a.2.a.1.a.2.a.1.- El sistema despliega cuenta para afiliar al Seguro Club y el flujo continua en el paso 4 del flujo básico.
+
+                                                                                3.a.2.a.2.a.1.a.2.b.- La cajera cancela mensaje correspondiente.
+
+                                                                                         3.a.2.a.2.a.1.a.2.b.1.- El flujo continua en el paso 2 del flujo básico.
+
+                                                                3.a.2.a.2.a.1.b.- El sistema verifica que el cliente no esta afiliado al Club Proteccion.
+
+                                                                         3.a.2.a.2.a.1.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                                         3.a.2.a.2.a.1.b.2.- La cajera acepta mensaje y el flujo continua en el paso 2 del flujo básico.
+
+                                                                3.a.2.a.2.a.1.c.- El sistema verifica que el cliente tiene clave de cancelado.
+
+                                                                         3.a.2.a.2.a.1.c.1.- El sistema muestra mensaje informativo para activar seguro.
+
+                                                                         3.a.2.a.2.a.1.c.2.- La cajera selecciona una opcion del mensaje.
+
+                                                                                3.a.2.a.2.a.1.c.2.a.- La cajera acepta mensaje correspondiente.
+
+                                                                                        3.a.2.a.2.a.1.c.2.a.1.- El sistema despliega cuenta para afiliar al Seguro Club y el flujo continua en el paso 4 del flujo básico.
+
+                                                                                3.a.2.a.2.a.1.c.2.b.- La cajera cancela mensaje correspondiente.
+
+                                                                                        3.a.2.a.2.a.1.c.2.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                                                3.a.2.a.2.a.1.d.- El sistema verifica que el cliente tiene clave de no ofrecer reactivar seguro club.
+
+                                                                        3.a.2.a.2.a.1.d.1.- El sistema muestra mensaje correspondiente.
+
+                                                                        3.a.2.a.2.a.1.d.2.- La cajera acepta mensaje y el flujo continua en el paso 2 del flujo básico.
+
+                                                                3.a.2.a.2.a.1.e.- El sistema valida que el cliente tiene seguro club activo.
+
+                                                                        3.a.2.a.2.a.1.e.1.- El sistema muestra mensaje correspondiente.
+
+                                                                        3.a.2.a.2.a.1.e.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo básico.
+
+                                                                3.a.2.a.2.a.1.f.- El sistema manda llamar el CU-0001-CapturarVentaSeguroClub.
+
+                                                                        3.a.2.a.2.a.1.f.1.- El flujo continua en el paso 2 del flujo básico.
+
+                                                3.a.2.a.2.b.- El sistema verifica que el cliente tiene seguro club Individual.
+
+                                                        3.a.2.a.2.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                        3.a.2.a.2.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                3.a.2.b.- La cajera selecciona la opcion Salir.
+
+                                        3.a.2.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                3.b.- La cajera selecciona la opción de Beneficiarios.
+
+                        3.b.1.- El sistema muestra las opciones del submenú Club Protección Coppel.
+                                        -Club Individual.
+                                        -Club Adicional.
+                                        -Salir.
+
+                        3.b.2.- La cajera selecciona una de las opciones.
+
+                                3.b.2.a.- La cajera selecciona la opcion de Club Individual.
+
+                                        3.b.2.a.1.- El sistema verifica el seguro club del cliente.
+
+                                                3.b.2.a.1.a.- El sistema verifica que el cliente cuenta con Club de Proteccion Coppel.
+
+                                                        3.b.2.a.1.a.1.- El sistema solicita la huella del cliente.
+
+                                                        3.b.2.a.1.a.2.- El cliente ingresa la huella.
+
+                                                        3.b.2.a.1.a.3.- El sistema verifica la huella del cliente.
+
+                                                                3.b.2.a.1.a.3.a.-El sistema verifica que la huella del cliente fue reconocida.
+
+                                                                        3.b.2.a.1.a.3.a.1.- El sistema manda llamar al CU-0001-CapturarBeneficiario.
+
+                                                                        3.b.2.a.1.a.3.a.2.- El sistema continua en el paso 2 del flujo básico.
+
+                                                                3.b.2.a.1.a.3.b.- El sistema verifica que la huella no fue reconocida.
+
+                                                                        3.b.2.a.1.a.3.b.1.- El sistema muestra mensaje para pedir autorizacion por gerente.
+
+                                                                                3.b.2.a.1.a.3.b.1.a.- La cajera acepta el mensaje.
+
+                                                                                        3.b.2.a.1.a.3.b.1.a.1- El sistema pide huella de gerente.
+
+                                                                                        3.b.2.a.1.a.3.b.1.a.2- El gerente ingresa la huella.
+
+                                                                                        3.b.2.a.1.a.3.b.1.a.3.- El sistema valida que la huella es correcta.
+
+                                                                                                3.b.2.a.1.a.3.b.1.a.3.a.- El sistema valida que la huella es incorrecta.
+
+                                                                                                        3.b.2.a.1.a.3.b.1.a.3.a.1.- El sistema muestra mensaje de aviso.
+
+                                                                                                        3.b.2.a.1.a.3.b.1.a.3.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo basico.
+
+                                                                                        3.b.2.a.1.a.1.b.1.a.4.- El sistema manda llamar al CU-0001-CapturarBeneficiario.
+
+                                                                                        3.b.2.a.1.a.1.b.1.a.5.- El sistema continua en el paso 2 del flujo básico.
+
+                                                                                3.b.2.a.1.a.1.b.1.b.- La cajera cancela el mensaje.
+
+                                                                                        3.b.2.a.1.a.1.b.1.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                               3.b.2.a.1.b.- El sistema verifica que el cliente no cuenta con Club de Proteccion Coppel.
+
+                                                        3.b.2.a.1.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                        3.b.2.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                3.b.2.b.- La cajera selecciona la opcion de Club Adicional.
+
+                                        3.b.2.b.1.- El sistema verifica que el cliente tiene club adicional.
+
+                                                3.b.2.b.1.a.- El sistema verifica que el cliente no tiene club adicional.
+
+                                                        3.b.2.b.1.a.1.- El sistema muestra mensaje de aviso.
+
+                                                        3.b.2.b.1.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                        3.b.2.b.2.- El sistema solicita la huella del cliente.
+
+                                        3.b.2.b.3.- El cliente ingresa la huella.
+
+                                        3.b.2.b.4.- El sistema verifica que la huella del cliente fue reconocida.
+
+                                                3.b.2.b.4.a.-  El sistema verifica que la huella del cliente no fue reconocida.
+
+                                                        3.b.2.b.4.a.1.- El sistema muestra mensaje para pedir autorizacion por gerente.
+
+                                                        3.b.2.b.4.a.2.- La cajera selecciona que si desea autorizacion de gerente.
+
+                                                                3.b.2.b.4.a.2.a.- La cajera selecciona que no desea autorizacion de gerente.
+
+                                                                        3.b.2.b.4.a.2.a.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                                        3.b.2.b.4.a.3.- El sistema pide huella de gerente.
+
+                                                        3.b.2.b.4.a.4.- El gerente ingresa la huella.
+
+                                                        3.b.2.b.4.a.5.- El sistema valida que la huella es correcta.
+
+                                                                3.b.2.b.4.a.5.a.- El sistema valida que la huella es incorrecta.
+
+                                                                        3.b.2.b.4.a.5.a.1.- El sistema muestra mensaje de aviso.
+
+                                                                        3.b.2.b.4.a.5.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo basico.
+
+                                                        3.b.2.b.4.a.6.- El sistema continua en el paso 3.b.2.b.5 del flujo alternativo.
+
+                                        3.b.2.b.5.- El sistema manda llamar al CU-0003-SeleccionarAdicional.
+
+                                        3.b.2.b.6.- El flujo continua en el paso 2 del flujo basico.
+
+                                3.b.2.c.- La cajera selecciona la opcion de Salir.
+
+                                        3.b.2.c.1.- El sistema continua en el paso 2 del flujo básico.
+
+                3.c.- La cajera selecciona la opción de Documentación.
+
+                        3.c.1.- El sistema muestra las opciones del submenú Club Protección Coppel.
+                                        -Club Individual.
+                                        -Salir.
+
+                        3.c.2.- La cajera selecciona una de las opciones.
+
+                                   3.c.2.a.- La cajera selecciona la opcion de Club Individual.
+
+                                           3.c.2.a.1.- El sistema verifica el seguro club del cliente.
+
+                                                   3.c.2.a.1.a.- El sistema verifica que el cliente esta afiliado al club de proteccion.
+
+                                                           3.c.2.a.1.a.1.- El sistema muestra mensaje para imprimir documentacion de club de proteccion.
+
+                                                                   3.c.2.a.1.a.1.a.- La cajera acepta el mensaje.
+
+                                                                           3.c.2.a.1.a.1.a.1.- Se imprime el reporte CADOCPRO.TXT.
+
+                                                                           3.c.2.a.1.a.1.a.2.- El sistema muestra mensaje correspondiente.
+
+                                                                           3.c.2.a.1.a.1.a.3.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                                                   3.c.2.a.1.a.1.b.- La cajera cancela el mensaje.
+
+                                                                           3.c.2.a.1.a.1.b.1- El sistema continua en el paso 2 del flujo básico.
+
+                                                  3.c.2.a.1.b.- El sistema verifica que el cliente no esta afiliado al club de proteccion.
+
+                                                           3.c.2.a.1.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                           3.c.2.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                3.d.- La cajera selecciona la opción de Cancelación de Seguro.
+
+                        3.d.1.- El sistema muestra las opciones del submenú Club Protección Coppel.
+                                        -Club Individual.
+                                        -Salir.
+
+                        3.d.2.- La cajera selecciona una de las opciones.
+
+                                3.d.2.a.- La cajera selecciona la opcion de Club Individual.
+
+                                                3.d.2.a.1.- El sistema verifica el seguro club del cliente.
+
+                                                3.d.2.a.1.a.- El sistema verifica que el cliente esta afiliado al club de proteccion.
+
+                                                        3.d.2.a.1.a.1.- El sistema verifica el estado del seguro club del cliente.
+
+                                                                3.d.2.a.1.a.1.a.- El sistema verifica que el seguro club esta vencido.
+
+                                                                        3.d.2.a.1.a.1.a.1.- El sistema solicita la huella del cliente.
+
+                                                                        3.d.2.a.1.a.1.a.2.- El cliente ingresa la huella.
+
+                                                                        3.d.2.a.1.a.1.a.3.-El sistema verifica la huella del cliente.
+
+                                                                                3.d.2.a.1.a.1.a.3.a.-El sistema verifica que la huella del cliente fue reconocida.
+
+                                                                                        3.d.2.a.1.a.1.a.3.a.1.- El sistema manda llamar al CU-0001-CancelarSeguroClub.
+
+                                                                                        3.d.2.a.1.a.1.a.3.a.2.- El sistema continua en el paso 2 del flujo básico
+
+                                                                                3.d.2.a.1.a.1.a.3.b.- El sistema verifica que la huella no fue reconocida.
+
+                                                                                        3.d.2.a.1.a.1.a.3.b.1.- El sistema muestra mensaje para pedir autorizacion por gerente.
+
+                                                                                                3.d.2.a.1.a.1.a.3.b.1.a.- La cajera acepta el mensaje.
+
+                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.1.- El sistema pide huella de gerente.
+
+                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.2.- El gerente ingresa la huella.
+
+                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.3.- El sistema valida que la huella es correcta.
+
+                                                                                                                3.d.2.a.1.a.1.a.3.b.1.a.3.a.- El sistema valida que la huella es incorrecta.
+
+                                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.3.a.1.- El sistema muestra mensaje de aviso.
+
+                                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.3.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo basico.
+
+                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.4.- El sistema manda llamar al CU-0001-CancelarSeguroClub.
+
+                                                                                                        3.d.2.a.1.a.1.a.3.b.1.a.5.- El sistema continua en el paso 2 del flujo básico.
+
+                                                                                                3.d.2.a.1.a.3.b.1.b.- La cajera cancela el mensaje.
+
+                                                                                                        3.d.2.a.1.a.3.b.1.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                                                3.d.2.a.1.a.1.b.- El sistema verifica que el seguro club esta Activo.
+
+                                                                        3.d.2.a.1.a.1.b.1.- El sistema muestra mensaje de que no puede cancelar el seguro club.
+
+                                                                        3.d.2.a.1.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                                3.d.2.a.1.b.- El sistema verifica que el cliente no esta afiliado al club de proteccion.
+
+                                                        3.d.2.a.1.b.1.- El sistema muestra mensaje correspondiente.
+
+                                                        3.d.2.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                        3.d.2.b.- La cajera selecciona la opcion de Salir.
+
+                                        3.d.2.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                3.e.- La cajera selecciona la opción de No Ofrecer Club de Protección.
+
+                        3.e.1.- El sistema muestra las opciones del submenú Club Protección Coppel.
+                                        -Club Individual.
+                                        -Salir.
+
+                        3.e.2.- La cajera selecciona una de las opciones.
+
+                                3.e.2.a.- La cajera selecciona la opcion de Club Individual.
+
+                                                3.e.2.a.1.- El sistema verifica el seguro club del cliente.
+
+                                                3.e.2.a.1.a.- El sistema verifica que el cliente no tenga Seguro Activo o Seguro Nuevo.
+
+                                                        3.e.2.a.1.a.1.- El sistema solicita la huella del cliente.
+
+                                                        3.e.2.a.1.a.2.- El cliente ingresa la huella.
+
+                                                        3.e.2.a.1.a.3.- El sistema verifica la huella del cliente.
+
+                                                                3.e.2.a.1.a.3.a.- El sistema verifica que la huella del cliente fue reconocida.
+
+                                                                        3.e.2.a.1.a.3.a.1.- El sistema verifica los datos del seguro del cliente.
+
+                                                                                3.e.2.a.1.a.3.a.1.a.- El sistema verifica que el cliente no tenga Seguro Activo o Seguro Nuevo.
+
+                                                                                        3.e.2.a.1.a.3.a.1.a.1.- El sistema verifica si el estado del seguro.
+
+                                                                                                3.e.2.a.1.a.3.a.1.a.1.a.- El sistema verifica si el seguro tiene estado de cancelado.
+
+                                                                                                        3.e.2.a.1.a.3.a.1.a.1.a.1.- El sistema le pone estado de no ofrecer seguro al cliente.
+
+                                                                                                        3.e.2.a.1.a.3.a.1.a.1.a.2.- El sistema muestra mensaje informativo.
+
+                                                                                                        3.e.2.a.1.a.3.a.1.a.1.a.3.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                                                                                3.e.2.a.1.a.3.a.1.a.1.b.- El sistema verifica si el seguro no tiene estado de cancelado.
+
+                                                                                                        3.e.2.a.1.a.3.a.1.a.1.b.1.- El sistema verifica si se le ofrece o no el seguro.
+
+                                                                                                                3.e.2.a.1.a.3.a.1.a.1.b.1.a.- El sistema verifica si el cliente esta marcado como no ofrecer seguro.
+
+                                                                                                                        3.e.2.a.1.a.3.a.1.a.1.b.1.a.1.- El sistema muestra mensaje correspondite.
+
+                                                                                                                        3.e.2.a.1.a.3.a.1.a.1.b.1.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                                                                                                3.e.2.a.1.a.3.a.1.a.1.b.1.b.- El sistema verifica si el cliente no esta marcado como no ofrecer seguro.
+
+                                                                                                                        3.e.2.a.1.a.3.a.1.a.1.b.1.b.1.- El sistema muestra mensaje correspondite.
+
+                                                                                                                        3.e.2.a.1.a.3.a.1.a.1.b.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo basico.
+
+                                                                                3.e.2.a.1.a.3.a.1.b.- El sistema verifica que el cliente tiene Seguro Activo o Seguro Nuevo.
+
+                                                                                        3.e.2.a.1.a.3.a.1.b.1.- El sistema muestra mensaje correspondite.
+
+                                                                                        3.e.2.a.1.a.3.a.1.b.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                                                3.e.2.a.1.a.3.b.- El sistema verifica que la huella no fue reconocida.
+
+                                                                        3.e.2.a.1.a.3.b.1.- El sistema muestra mensaje para pedir autorizacion por gerente.
+
+                                                                                3.e.2.a.1.a.3.b.1.a.- La cajera acepta el mensaje.
+
+                                                                                        3.e.2.a.1.a.3.b.1.a.1.- El sistema pide huella de gerente.
+
+                                                                                        3.e.2.a.1.a.3.b.1.a.2.- El gerente ingresa la huella.
+
+                                                                                        3.e.2.a.1.a.3.b.1.a.3.- El sistema valida que la huella es correcta.
+
+                                                                                                3.e.2.a.1.a.3.b.1.a.3.a.- El sistema valida que la huella es incorrecta.
+
+                                                                                                        3.e.2.a.1.a.3.b.1.a.3.a.1.- El sistema muestra mensaje de aviso.
+
+                                                                                                        3.e.2.a.1.a.3.b.1.a.3.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo basico.
+
+                                                                                        3.e.2.a.1.a.3.b.1.a.4.- El sistema continua en el paso 3.e.2.a.1.a.3.a.1 del flujo alternativo.
+
+                                                                                3.e.2.a.1.a.3.b.1.b.- La cajera cancela el mensaje.
+
+                                                                                        3.e.2.a.1.a.3.b.1.b.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                                3.e.2.a.1.b.- El sistema verifica que el cliente tiene seguro Activo o seguro nuevo.
+
+                                                        3.e.2.a.1.b.1.- El sistema muestra mensaje informativo que debe cancelar el club proteccion.
+
+                                                        3.e.2.a.1.b.2.- El sistema continua en el paso 2 del flujo básico.
+
+                3.f.- La cajera selecciona la opción de Activar Club Adicional.
+
+                        3.f.1.- El sistema identifica que esta activo el flag para capturar club adicional.
+
+                                3.f.1.a.- El sistema identifica que no esta activo el flag para capturar club adicional.
+
+                                        3.f.1.a.1.- El sistema muestra mensaje de aviso.
+
+                                        3.f.1.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                        3.f.2.- El sistema identifica que el cliente cuenta con club de proteccion activo.
+
+                                3.f.2.a.- El sistema identifica que el cliente no cuenta con club de proteccion activo.
+
+                                        3.f.2.a.1.- El sistema muestra mensaje de aviso.
+
+                                        3.f.2.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                        3.f.3.-  El sistema identifica que el folio del titular tiene mas de dos meses de vigencia.
+
+                                3.f.3.a.- El sistema identifica que el folio del titular tiene menos de dos meses de vigencia.
+
+                                        3.f.3.a.1.- El sistema pide que se abone minimo un mes al folio del titular.
+
+                                        3.f.3.a.2.- El sistema valida que se capturo mes/meses al folio del titular.
+
+                                                3.f.3.a.2.a.- El sistema valida que no se capturo mes/meses al folio del titular.
+
+                                                        3.f.3.a.2.a.1.- El flujo continua en el paso 2 del flujo básico.
+
+                                        3.f.3.a.3.- El sistema continua en el paso 3.f.4 del flujo alternativo.
+
+                        3.f.4.- El sistema solicita la huella del cliente.
+
+                        3.f.5.- El cliente ingresa la huella.
+
+                        3.f.6.- El sistema verifica la huella del cliente.
+
+                                3.f.6.a.- El sistema identifica que la huella del cliente no fue reconocida.
+
+                                        3.f.6.a.1.- El sistema muestra mensaje para pedir autorizacion por gerente.
+
+                                        3.f.6.a.2.- La cajera selecciona que si desea autorizacion de gerente.
+
+                                                3.f.6.a.2.a.- La cajera selecciona que no desea autorizacion de gerente.
+
+                                                        3.f.6.a.2.a.1.- El sistema continua en el paso 2 del flujo básico.
+
+                                        3.f.6.a.3.- El sistema pide huella de gerente.
+
+                                        3.f.6.a.4.- El sistema identifica que la huella es valida.
+
+                                                3.f.6.a.4.a.- El identifica valida que la huella es invalida.
+
+                                                        3.f.6.a.4.a.1.- El sistema muestra mensaje de aviso.
+
+                                                        3.f.6.a.4.a.2.- La cajera acepta el mensaje y el sistema continua en el paso 2 del flujo básico.
+
+                                        3.f.6.a.5.- El sistema continua en el paso 3.f.6.b.1 del flujo alternativo.
+
+                                3.f.6.b.- El sistema identifica que la huella del cliente fue reconocida.
+
+                                        3.f.6.b.1.- El sistema manda llamar al CU-0001-CapturarBeneficiarioAdicional.
+
+                                        3.f.6.b.2.- El flujo continua en el paso 2 del flujo basico.
+
+
+     (*) se utiliza para cuando son consideraciones generales.(Ejemplo: El Usuario puede cancelar el proceso en cualquier momento)
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario: CA0030-0001-CapturarAbono
+   Asociaciones:
+                   Asociaciones de Extensión: CU-0001-CapturarBeneficiario.
+                                              CU-0001-CancelarSeguroClub.
+                                              CU-0001-CapturarBeneficiarioAdicional.
+                                              CU-0003-SeleccionarAdicional.
+                   Asociaciones de Inclusión: No Aplica.
+                   Caso de Uso donde se Incluye: No Aplica.
+                   Caso de Uso al que Extiende: CU-0001-RealizarAbono.
+
+   Observaciones: CU-0001-CapturarVentaSeguroClub (pendiente)
+   Autor: Cintia Guadalupe García Gastélum.
+   Fecha de Creación: 01/10/2009.

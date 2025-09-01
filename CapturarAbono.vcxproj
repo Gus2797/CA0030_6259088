@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D0F5F394-4691-404C-B658-6F7D889E82F7}</ProjectGuid>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\JsonAbonos;.\Clases;.\UltimateToolBox;.\json;C:\progs_lnx2\TdasW2012\CCuenta5;C:\progs_lnx2\tdasw2012\hpp;C:\progs_lnx2\disco_c\cpp\lmaxw2012dll;C:\progs_lnx2\tdasw2012\clases;.\CCuentaWeb;.\Contactabilidad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
+      <Optimization>MinSpace</Optimization>
+      <CompileAsManaged>false</CompileAsManaged>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>CargarDllCSharp.lib;lmaxwt2012.lib;lmaxw2012.lib;ugmfc2012.lib;gTermica20122.lib;ggn2012.lib;gca2012.lib;gcn2012.lib;giniciodiacajas2012.lib;general2012.lib;dlgml2012.lib;CCuentaWeb2012local.lib;gnPlanDeLealtad2012.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)CA0030.DLL</OutputFile>
+      <AdditionalLibraryDirectories>.\;C:\progs_lnx2\TdasW2012\LIB;C:\progs_lnx2\disco_c\cpp\Lmaxw2012DLL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>.\CapturarAbono.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(OutDir)CA0030.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>MultiplyDefinedSymbolOnly</ForceFileOutput>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy /b /v /y $(IntDir)CA0030.DLL c:\sys\progx\ca</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include=".\Dlg_CapturaAbonoCelulares.cpp" />
+    <ClCompile Include="CalculoMoras.cpp" />
+    <ClCompile Include="CapturarAbono.cpp" />
+    <ClCompile Include="CConsumirServicioRest.cpp" />
+    <ClCompile Include="CCuentasSeguros.cpp" />
+    <ClCompile Include="CImpresiones.cpp" />
+    <ClCompile Include="CImpresionReciboAbonos.cpp" />
+    <ClCompile Include="Clases\ApiSanaTuDeudaClient.cpp" />
+    <ClCompile Include="Clases\CActualizarEmpleadoMovSMS.cpp" />
+    <ClCompile Include="Clases\CAdiionalc.cpp" />
+    <ClCompile Include="Clases\CCEliminarMensajeSMS.cpp" />
+    <ClCompile Include="Clases\CConsultaFacturaSesionTemp.cpp" />
+    <ClCompile Include="Clases\CConsultarMensajesCoppelMax.cpp" />
+    <ClCompile Include="Clases\CConsultarPolizaXML.cpp" />
+    <ClCompile Include="Clases\CConsultarRegion.cpp" />
+    <ClCompile Include="Clases\CConsultatdchequesesion.cpp" />
+    <ClCompile Include="Clases\CConsumoAPICuentasSeguros.cpp" />
+    <ClCompile Include="Clases\CGrabarCertificacionAbono.cpp" />
+    <ClCompile Include="Clases\CInsertarCteNoOfrecer.cpp" />
+    <ClCompile Include="Clases\CObtenerFechaPrimerAbono.cpp" />
+    <ClCompile Include="Clases\CobtenFechaAfiliacion.cpp" />
+    <ClCompile Include="CConsultarTokenSSO.cpp" />
+    <ClCompile Include="Contactabilidad\CContactabilidad.cpp" />
+    <ClCompile Include="Contactabilidad\CRespuestaPuenteEntrada.cpp" />
+    <ClCompile Include="Contactabilidad\CRespuestaPuenteSalida.cpp" />
+    <ClCompile Include="Contactabilidad\CUrlWebService.cpp" />
+    <ClCompile Include="Contactabilidad\CUtil.cpp" />
+    <ClCompile Include="CReestructuracion.cpp" />
+    <ClCompile Include="CReestructuraDAL.cpp" />
+    <ClCompile Include="CSesion.cpp" />
+    <ClCompile Include="DlgCapturarAbono.cpp" />
+    <ClCompile Include="DlgCapturarCambioSeguro.cpp" />
+    <ClCompile Include="DlgCapturarClienteEtp.cpp" />
+    <ClCompile Include="DlgCapturarConvenio.cpp" />
+    <ClCompile Include="DlgCapturarDatosSeguro.cpp" />
+    <ClCompile Include="DlgCapturarDatosSeguroMotos.cpp" />
+    <ClCompile Include="DlgCapturarNumEmpleSupervisor.cpp" />
+    <ClCompile Include="DlgEncuesta.cpp" />
+    <ClCompile Include="dlgreestructuracion.CPP" />
+    <ClCompile Include="GridCapturarAbono.CPP" />
+    <ClCompile Include="GridDesplegarTotal.CPP" />
+    <ClCompile Include="JsonAbonos\JsonAbonoCelularesC.cpp" />
+    <ClCompile Include="JsonAbonos\JsonAbonoCelularesCL.cpp" />
+    <ClCompile Include="JsonAbonos\JsonAbonoMotosC.cpp" />
+    <ClCompile Include="JsonAbonos\JsonAbonoMotosCL.cpp" />
+    <ClCompile Include="json\src\jsoncpp.cpp" />
+    <ClCompile Include="ModuloPpal.cpp" />
+    <ClCompile Include="json\src\jsoncpp.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="sysSeguros.cpp" />
+    <ClCompile Include="sysSegurosAutoProteccion.cpp" />
+    <ClCompile Include="UltimateToolBox\Base64.cpp" />
+    <ClCompile Include="UltimateToolBox\HTTP_c.cpp" />
+    <ClCompile Include="UltimateToolBox\uh_ctrl.cpp" />
+    <ClCompile Include="UltimateToolBox\ut_clnt.cpp" />
+    <ClCompile Include="UltimateToolBox\UT_StrOp.cpp" />
+    <ClCompile Include="UltimateToolBox\UTDataSource.cpp" />
+    <ClCompile Include="UltimateToolBox\utfile.cpp" />
+    <ClCompile Include="UltimateToolBox\utstrlst.cpp" />
+    <ClCompile Include="UltimateToolBox\uttaglst.cpp" />
+    <ClCompile Include="json\src\Internals\IndentedPrint.cpp" />
+    <ClCompile Include="json\src\JsonArray.cpp" />
+    <ClCompile Include="json\src\JsonBuffer.cpp" />
+    <ClCompile Include="json\src\JsonObject.cpp" />
+    <ClCompile Include="json\src\Internals\JsonParser.cpp" />
+    <ClCompile Include="json\src\JsonVariant.cpp" />
+    <ClCompile Include="json\src\Internals\List.cpp" />
+    <ClCompile Include="json\src\Internals\Prettyfier.cpp" />
+    <ClCompile Include="json\src\Arduino\Print.cpp" />
+    <ClCompile Include="json\src\Internals\QuotedString.cpp" />
+    <ClCompile Include="json\src\Internals\StringBuilder.cpp" />
+    <ClCompile Include="Clases\C_WFormas.cpp" />
+    <ClCompile Include="Clases\CBuscarClienteEncuestado.cpp" />
+    <ClCompile Include="Clases\CChecarCorteCaja.cpp" />
+    <ClCompile Include="Clases\CChecarEncuesta2.cpp" />
+    <ClCompile Include="Clases\CChecarVigenciaSeguro.cpp" />
+    <ClCompile Include="Clases\CCiudadColoniaCrCliente.cpp" />
+    <ClCompile Include="Clases\CConsultarAbonoSeguro2.cpp" />
+    <ClCompile Include="Clases\CConsultarBeneficiario.cpp" />
+    <ClCompile Include="Clases\CConsultarBeneficiariosSeguroTemp.cpp" />
+    <ClCompile Include="Clases\CConsultarCaEncuestaEdoCta.cpp" />
+    <ClCompile Include="Clases\CConsultarCalle.cpp" />
+    <ClCompile Include="Clases\CConsultarCandidatoPrestamoCN.cpp" />
+    <ClCompile Include="Clases\CConsultarCaTotalEncuesta.cpp" />
+    <ClCompile Include="Clases\CConsultarCdFechaCoppel.cpp" />
+    <ClCompile Include="Clases\CConsultarClaveConyugalCrSeguros.cpp" />
+    <ClCompile Include="Clases\CConsultarCliente.cpp" />
+    <ClCompile Include="Clases\CConsultarCrSegurosClub.cpp" />
+    <ClCompile Include="Clases\CConsultarCrSegurosClubAdicional.cpp" />
+    <ClCompile Include="Clases\CConsultarCrSegurosFechaMesDiaVence.cpp" />
+    <ClCompile Include="Clases\CConsultarCuentaDomiciliada.cpp" />
+    <ClCompile Include="Clases\CConsultarDatosCliente.cpp" />
+    <ClCompile Include="Clases\CConsultarDatosGnDominio3.cpp" />
+    <ClCompile Include="Clases\CConsultarDatosSeguroAdicional.cpp" />
+    <ClCompile Include="Clases\CConsultarDescripcionClub.cpp" />
+    <ClCompile Include="Clases\CConsultarEdadesClub.cpp" />
+    <ClCompile Include="Clases\CConsultarFoliosSeguro.cpp" />
+    <ClCompile Include="Clases\CConsultarGnVigenciaPromocion.cpp" />
+    <ClCompile Include="Clases\CConsultarMensajeSeguro.cpp" />
+    <ClCompile Include="Clases\CConsultarNomPuntFechaCrCliente.cpp" />
+    <ClCompile Include="Clases\CConsultarOrigen.cpp" />
+    <ClCompile Include="Clases\CConsultarPlanSeguroAuto.cpp" />
+    <ClCompile Include="Clases\CConsultarPolizasNvas01.cpp" />
+    <ClCompile Include="Clases\CConsultarPrecioPlanSalud.cpp" />
+    <ClCompile Include="Clases\CConsultarPrecioSeguroClub.cpp" />
+    <ClCompile Include="Clases\CConsultarSituacionCrCliente.cpp" />
+    <ClCompile Include="Clases\CConsultarTipoSeguroCrSeguros.cpp" />
+    <ClCompile Include="Clases\CConsultarWS.cpp" />
+    <ClCompile Include="Clases\CConsultarZonaCliente.cpp" />
+    <ClCompile Include="Clases\CConsultaSituacionCausa.cpp" />
+    <ClCompile Include="Clases\CCrHuellas.cpp" />
+    <ClCompile Include="Clases\CDatosConvenio.cpp" />
+    <ClCompile Include="Clases\CDescripcion.cpp" />
+    <ClCompile Include="Clases\cEjecutarFuncionPgSQL.cpp" />
+    <ClCompile Include="Clases\CFechaCoppel.cpp" />
+    <ClCompile Include="Clases\CGrabarAbonoTmpCaCarmov04.cpp" />
+    <ClCompile Include="Clases\CGrabarCrCarmovX.cpp" />
+    <ClCompile Include="Clases\CGrabarPagoServicio.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCmueblesFija02.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCropaDetalle.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCropaFija02.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrPrestamosFija.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrRevolvente.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrSegurosFija01.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrTaireFija02.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpAbonoInteresCaCarmov05.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpBonificacionCaCarmov04.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCaCarmovEtp2.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCaCarmovSeguro.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCaEficienciaCajeras.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCaMovimientos.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpConvenioCaCarmov03.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCrCmuebles.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCrCropa.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCrPrestamos.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpCrSeguros.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpSeguroAutoCaCarmov01.cpp" />
+    <ClCompile Include="Clases\CGrabarTmpSeguroCaCarmov01.cpp" />
+    <ClCompile Include="Clases\CInsertarCaCarmov.cpp" />
+    <ClCompile Include="Clases\CInsertarGnTira.cpp" />
+    <ClCompile Include="Clases\CInsertarHoraMensaje.cpp" />
+    <ClCompile Include="Clases\CInsertarTmpBeneficiariosCaCarmov01.cpp" />
+    <ClCompile Include="Clases\CMaximo.cpp" />
+    <ClCompile Include="Clases\CMaximo2.cpp" />
+    <ClCompile Include="Clases\CNombreColoniaCrZonas.cpp" />
+    <ClCompile Include="Clases\CObtenerDatosCacarmovTemporal.cpp" />
+    <ClCompile Include="Clases\CObtenerDatosCliente.cpp" />
+    <ClCompile Include="Clases\CObtenerDatosSeguroAuto.cpp" />
+    <ClCompile Include="Clases\CObtenerDatosTdBeneficiariosClub.cpp" />
+    <ClCompile Include="Clases\CObtenerDatosTmpCaCarmovServicio.cpp" />
+    <ClCompile Include="Clases\CObtenerDetalleAbonoRopa.cpp" />
+    <ClCompile Include="Clases\CObtenerFechaSaldaConCrCropa.cpp" />
+    <ClCompile Include="Clases\cObtenerMensajeAbono.cpp" />
+    <ClCompile Include="Clases\CObtenerMensajePromocionDirecta.cpp" />
+    <ClCompile Include="Clases\CObtenerReciboJapac.cpp" />
+    <ClCompile Include="Clases\CObtenerSituacionReglaCliente.cpp" />
+    <ClCompile Include="Clases\ConsultarMesAnio.cpp" />
+    <ClCompile Include="Clases\COrigenSeguro.cpp" />
+    <ClCompile Include="Clases\CParametros.cpp" />
+    <ClCompile Include="Clases\CSysFolioGlobal.cpp" />
+    <ClCompile Include="Clases\CTmpAbonoCrCmueblesPlanFija.cpp" />
+    <ClCompile Include="Clases\CTmpCaGrabarAbono.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CapturarAbono.def" />
+    <None Include="res\CapturarAbono.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CalculoMoras.h" />
+    <ClInclude Include="CapturarAbono.h" />
+    <ClInclude Include="CConsumirServicioRest.h" />
+    <ClInclude Include="CCuentasSeguros.h" />
+    <ClInclude Include="Clases\ApiSanaTuDeudaClient.h" />
+    <ClInclude Include="Clases\CAdiionalc.hpp" />
+    <ClInclude Include="Clases\CCONSULTAFACTURASESIONTEMP.HPP" />
+    <ClInclude Include="Clases\CConsultarMensajesCoppelMax.h" />
+    <ClInclude Include="Clases\CConsultarPolizaXML.hpp" />
+    <ClInclude Include="Clases\CConsultarRegion.hpp" />
+    <ClInclude Include="Clases\CCONSULTATDCHEQUESESION.HPP" />
+    <ClInclude Include="Clases\CConsumoAPICuentasSeguros.h" />
+    <ClInclude Include="Clases\CGrabarCertificacionAbono.hpp" />
+    <ClInclude Include="Clases\CInsertarCteNoOfrecer.hpp" />
+    <ClInclude Include="Clases\CObtenerFechaPrimerAbono.hpp" />
+    <ClInclude Include="Clases\CobtenFechaAfiliacion.hpp" />
+    <ClInclude Include="CConsultarTokenSSO.h" />
+    <ClInclude Include="Clases\ParametrosApiSanaTuDeuda.h" />
+    <ClInclude Include="Contactabilidad\CContactabilidad.h" />
+    <ClInclude Include="Contactabilidad\CEntorno.h" />
+    <ClInclude Include="Contactabilidad\CExcepcion.h" />
+    <ClInclude Include="Contactabilidad\CRespuestaPuenteEntrada.h" />
+    <ClInclude Include="Contactabilidad\CRespuestaPuenteSalida.h" />
+    <ClInclude Include="Contactabilidad\CTitularidad.h" />
+    <ClInclude Include="Contactabilidad\CUrlsMetodos.h" />
+    <ClInclude Include="Contactabilidad\CUrlWebService.h" />
+    <ClInclude Include="Contactabilidad\CUtil.h" />
+    <ClInclude Include="CRetorno.h" />
+    <ClInclude Include="CSesion.h" />
+    <ClInclude Include="CTokenSSO.h" />
+    <ClInclude Include="DlgCapturarDatosSeguroMotos.h" />
+    <ClInclude Include="Dlg_CapturaAbonoCelulares.h" />
+    <ClInclude Include="json-forwards.h" />
+    <ClInclude Include="json.h" />
+    <ClInclude Include="JsonAbonos\JsonAbonoCelularesC.h" />
+    <ClInclude Include="JsonAbonos\JsonAbonoCelularesCL.h" />
+    <ClInclude Include="JsonAbonos\JsonAbonoMotosC.h" />
+    <ClInclude Include="JsonAbonos\JsonAbonoMotosCL.h" />
+    <ClInclude Include="json\src\json-forwards.h" />
+    <ClInclude Include="json\src\json.h" />
+    <ClInclude Include="C:\progs_lnx2\disco_c\hpp\CCuentaInet\CEstructurasCyC.hpp" />
+    <ClInclude Include="CReestructuracion.h" />
+    <ClInclude Include="CReestructuraDAL.hpp" />
+    <ClInclude Include="DlgCapturarAbono.h" />
+    <ClInclude Include="DlgCapturarCambioSeguro.h" />
+    <ClInclude Include="DlgCapturarClienteEtp.h" />
+    <ClInclude Include="DlgCapturarConvenio.h" />
+    <ClInclude Include="DlgCapturarDatosSeguro.h" />
+    <ClInclude Include="DlgCapturarNumEmpleSupervisor.h" />
+    <ClInclude Include="DlgEncuesta.h" />
+    <ClInclude Include="DlgReestructuracion.h" />
+    <ClInclude Include="GridCapturarAbono.HPP" />
+    <ClInclude Include="GridDesplegarTotal.HPP" />
+    <ClInclude Include="IniciarDiaCajas.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="sysCapturarAbono.h" />
+    <ClInclude Include="Clases\C_WFormas.hpp" />
+    <ClInclude Include="Clases\CConsultarOrigen.hpp" />
+    <ClInclude Include="Clases\CConsultarPlanSeguroAuto.hpp" />
+    <ClInclude Include="Clases\CGrabarAbonoTmpCaCarmov04.hpp" />
+    <ClInclude Include="Clases\CGrabarTmpAbonoInteresCaCarmov05.hpp" />
+    <ClInclude Include="Clases\CGrabarTmpBonificacionCaCarmov04.hpp" />
+    <ClInclude Include="UltimateToolBox\Base64.h" />
+    <ClInclude Include="UltimateToolBox\HTTP_c.h" />
+    <ClInclude Include="UltimateToolBox\uh_ctrl.h" />
+    <ClInclude Include="UltimateToolBox\ut_clnt.h" />
+    <ClInclude Include="UltimateToolBox\UT_Queue.h" />
+    <ClInclude Include="UltimateToolBox\ut_strop.h" />
+    <ClInclude Include="UltimateToolBox\UTDataSource.h" />
+    <ClInclude Include="UltimateToolBox\uterr.h" />
+    <ClInclude Include="UltimateToolBox\UTExtErr.h" />
+    <ClInclude Include="UltimateToolBox\utfile.h" />
+    <ClInclude Include="UltimateToolBox\utstrlst.h" />
+    <ClInclude Include="UltimateToolBox\uttaglst.h" />
+    <ClInclude Include="json\src\ArduinoJson.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CapturarAbono.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="CapturarAbono.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

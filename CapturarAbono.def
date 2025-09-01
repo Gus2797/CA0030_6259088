@@ -1,0 +1,7 @@
+; CapturarAbono.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CA0030"
+
+EXPORTS
+    ; Explicit exports can go here
+	CA0030;

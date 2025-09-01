@@ -1,0 +1,120 @@
+
+   Nombre de Caso de Uso: CU-0007-RealizarEncuesta
+   Paquete: CapturarAbono.
+   Ciclo de Vida: Cascada                            Iteración: No Aplica.
+   Prioridad:  Esencial                              Complejidad:  Simple
+   Tipo de Caso de Uso:  Abstracto.
+   Version: 20080123.1230
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Sistema de Cajas de Abono / Se encarga de identificar si se aplica la encuesta.
+               Principal:  Cajero / Se encarga de hacer y capturar la respuesta de la encuesta.
+
+
+   Objetivo:   Saber el proceso de como se aplica la encuesta al cliente.
+   __________________________________________________________________________________________
+
+   Precondiciones: El cajero se identifica y Autentica.
+   Post-Condiciones: Se actualiza la tabla de las encuestas.
+
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando un cliente termina de realizar un abono.
+
+                2.- El sistema verifica si hay encuestas a aplicar.
+
+                        2.a.- El sistema verifica que no hay encuestas a aplicar.
+
+                3.- El sistema obtiene dato del número máximo de clientes que se tienen que encuestar.
+
+                4.- El sistema valida que todavia no se haya llegado al número máximo de encuestados y que los días transcurridos desde el inicio de la encuesta esten
+                    dentro del rango para aplicar la encuesta.
+
+                        4.a- El sistema validó que ya se llego al máximo de encuestados o que los dias transcurridos ya estan fuera del rango para aplicar
+                             la encuesta.
+
+                5.- El sistema verifica el tipo de encuesta que se aplicará.
+
+                        5.a.- El sistema verifica que la encuesta que se aplicará es del Periódico Coppel
+
+                        5.b.- El sistema verifica que la encuesta que se aplicará es del Estado de Cuenta.
+
+                6.- El sistema verifica si el cliente ya fue encuestado.
+
+                        6.a.- El sistema verifica que el cliente no ha sido encuestado.
+
+                7.- Fin del caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                2.a.- El sistema verifica que no hay encuestas a aplicar.
+
+                        2.a.1.- El flujo continúa en el paso 7 del flujo básico.
+
+                4.a.- El sistema validó que ya se llego al máximo de encuestados o que los dias transcurridos ya estan fuera del rango para aplicar
+                      la encuesta.
+
+                        4.a.1.- El flujo continúa en el paso 7 del flujo básico.
+
+                5.a.- El sistema verifica que la encuesta que se aplicará es del Periódico Coppel
+
+                        5.a.1.- El sistema manda mensaje de encuesta.
+
+                        5.a.2.- El cajero selecciona la opción que respondió el cliente.
+
+                        5.a.3.- El sistema manda mensaje de encuesta.
+
+                        5.a.4.- El cajero selecciona la opción que respondió el cliente.
+
+                        5.a.5.- El flujo continúa en el paso 6 del flujo básico.
+
+                5.b.- El sistema verifica que la encuesta que se aplicará es del Estado de Cuenta.
+
+                        5.b.1.- El sistema manda mensaje de encuesta.
+
+                        5.b.2.- El cajero selecciona la opción que respondió el cliente.
+
+                        5.b.3.- El flujo continúa en el paso 6 del flujo básico.
+
+                6.a.- El sistema verifica que el cliente no ha sido encuestado.
+
+                        6.a.1.- El sistema graba los datos de la encuesta realizada (clave,casapropia,cliente,nombreCliente,apellidopaternoCliente,apellidomaternoCliente,
+                                Empleado,TeléfonoCliente,Ciudad,Zona,lNumeroGerente,NipTitular ).
+
+                        6.a.2.- El sistema graba los datos del cliente ( tipo, cliente, fecha ).
+
+                        6.a.3.- El sistema identifica el tipo de encuesta que se realizó.
+
+                                6.a.3.a.- El sistema verifica que la encuesta que se hizo es de Periódico Coppel.
+
+                                        6.a.3.a.1.- El sistema actualiza el registro de la encuesta del Periodico Coppel para sumarle uno al campo de encuestados.
+
+                                        6.a.3.a.2.- El flujo continúa en el paso 7 del flujo básico.
+
+                                6.a.3.b.- El sistema verifica que la encuesta que se hizo es de Estado de Cuenta.
+
+                                        6.a.3.b.1.- El sistema actualiza el registro de la encuesta del estado de cuenta para sumarle uno al campo de encuestados.
+
+                                        6.a.3.b.2.- El flujo continúa en el paso 7 del flujo básico.
+
+
+
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+                No aplica.
+   Interfaz de Usuario: 0001-CapturarAbono
+   Asociaciones:
+         Asociaciones de Extensión: No aplica.
+         Asociaciones de Inclusión: No aplica.
+         Caso de Uso donde se Incluye: CU-0001-RealizarAbono.
+         Caso de Uso al que Extiende: No aplica.
+         Caso de Uso de Generalización: No aplica.
+
+
+   Observaciones: No aplica.
+   Autor: Jesús Alvaro Lazcano Guzmán
+   Fecha de Creación: 2008-01-23

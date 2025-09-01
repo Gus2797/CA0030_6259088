@@ -1,0 +1,596 @@
+
+   Nombre del Caso de Uso: CU-0005-ImprimirReciboAbono.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                              Complejidad: Complejo.
+   Tipo de Caso de Uso: Concreto.
+   Versión: 20101108.1202.
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Acepta los mensajes enviados por el sistema.
+               Secundario: Impresora / Se encarga de imprimir el recibo de abono.
+
+   Objetivo:   Realizar la impresión del recibo de abonos.
+
+   __________________________________________________________________________________________
+   Precondiciones:
+                       1.- Se debe haber capturado abono a 1 o mas cuentas del cliente.
+
+   Post-Condiciones:
+                       1.- Se imprime comprobante de pago de los abonos capturados.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando el sistema requiere imprimir el recibo de abono.
+
+                2.- El sistema identifica si hay que imprimir la documentación del seguro de vida.
+
+                        2.a.- El sistema identificó que si hay que imprimir la documentacion del seguro de vida
+
+                        2.b.- El sistema identificó que no hay que imprimir la documentacion del seguro de vida
+
+                3.- El sistema verifica si la tienda esta trabajando como tienda local o si está accesando a una cartera regional o por ciudad.
+
+                        3.a.- El sistema verificó que la tienda si esta trabajando como local o que si está accesando a una cartera regional o por ciudad.
+
+                        3.b.- El sistema verificó que la tienda no esta trabajando como local y que no está accesando a una cartera regional o por ciudad.
+
+                4.- El sistema valida que el tipo de impresora es matricial.
+
+                        4.a.- El sistema valida que el tipo de impresora es termica.
+
+                5.- El sistema identifica el mensaje a imprimir para el cliente del recibo de abono segun sea su puntualidad y estado de las cuentas
+                    e imprime dicho mensaje.
+
+                        5.1.- El sistema verifica si se realizo abono a muebles.
+
+                                5.1.a.- El sistema identifica que se realizo un abono a muebles.
+
+                                5.1.b.- El sistema identifica que no se realizo abono a muebles.
+
+                        5.2.- El sistema verifica si se realizo abono a ropa.
+
+                                5.2.a.- El sistema identifica que se realizo un abono a ropa.
+
+                                5.2.b.- El sistema identifica que no se realizo abono a ropa.
+
+                        5.3.- El sistema verifica si se realizo abono a prestamo.
+
+                                5.3.a.- El sistema identifica que se realizo un abono a prestamo.
+
+                                5.3.b.- El sistema identifica que no se realizo abono a prestamo.
+
+                        5.4.- El sistema verifica si se realizo abono a deuda Bancoppel.
+
+                                5.4.a.- El sistema identifica que se realizo un abono a deuda Bancoppel.
+
+                                5.4.b.- El sistema identifica que no se realizo abono a deuda Bancoppel.
+
+                        5.5.- El sistema verifica si se realizo abono a Credito y Casa.
+
+                                5.5.a.- El sistema identifica que se realizo un abono a Credito y Casa.
+
+                                5.5.b.- El sistema identifica que no se realizo abono a Credito y Casa.
+
+                        5.6.- El sistema verifica si se realizo abono a Tiempo Aire.
+
+                                5.6.a.- El sistema identifica que se realizo un abono a Tiempo Aire.
+
+                                5.6.b.- El sistema identifica que no se realizo abono a Tiempo Aire.
+
+                        5.7.- El sistema verifica que no se realizo abono a cuenta revolvente.
+
+                                5.7.a.- El sistema verifica que se realizo abono a cuenta revolvente.
+
+                6.- El sistema imprime las leyendas( TOTALES, ENTREGO, SU CAMBIO ) en el recibo del abono.
+
+                7.- El sistema imprime la cantidad con la que pago el cliente, el total a pagar del abono del cliente y el cambio del cliente.
+
+                8.- El sistema imprime el numero y nombre del cliente en el recibo del abono.
+
+                9.- El sistema imprime la fecha actual, el numero de tienda, número de caja, número de recibo, el telefono de la tienda.
+
+                10.- El sistema verifica si el sorteo esta activo.
+
+                        10.a.- El sistema verificó que el sorteo si esta activo.
+
+                        10.b.- El sistema verificó que el sorteo no esta activo.
+
+                11.- El sistema identifica si se generó un cupón de dinero electrónico
+
+                        11.a.- El sistema identificó que si se generó un cupon de dinero electrónico
+
+                        11.b.- El sistema identificó que no se generó un cupon de dinero electrónico
+
+                12.- El sistema verifica si la tienda tiene estacionamiento.
+
+                        12.a.- El sistema verificó que la tienda si tiene estacionamiento.
+
+                        12.b.- El sistema verificó que la tienda no tiene estacionamiento.
+
+                13.- El sistema verifica si a la cuenta a imprimir se le capturó convenio.
+
+                        13.a.- El sistema verificó que la cuenta a imprimir sí se le capturó convenio.
+
+                        13.b.- El sistema verificó que la cuenta a imprimir no se le capturó convenio.
+
+                14.- El sistema verifica que el sorteo instantaneo no esta activo.
+
+                        14.a.- El sistema verifica que el sorteo instantaneo esta activo.
+
+                15.- El sistema verifica en que área de la tienda se imprime el recibo
+
+                        15.a.- El sistema verifica que se encuentra en el área de ropa.
+
+                        15.b.- El sistema verifica que se encuentra en el área de muebles.
+
+                        15.c.- El sistema verifica que se encuentra en el área de cajas.
+
+                16.- El sistema graba la imagen del recibo de abono.
+
+                17.- El sistema verifica que no se capturo el pago de servicios.
+
+                        17.a.- El sistema identifica que se capturo el pago de algun servicio.
+
+                18.- El sistema manda llamar el caso de uso CU-0011-InvitacionPrestamo.
+
+                19.- Fin del caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo.
+
+                2.a.- El sistema identificó que si hay que imprimir la documentacion del seguro de vida
+
+                        2.a.1.- El sistema manda llamar al CU-0013-ImprimirPolizaSeguroClub.
+
+                        2.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                2.b.- El sistema identificó que no hay que imprimir la documentacion del seguro de vida
+
+                        2.b.1.- El flujo continúa en el paso 3 del flujo básico.
+
+                3.a.- El sistema verificó que la tienda si esta trabajando como local o que si está accesando a una cartera regional o por ciudad.
+
+                        3.a.1.- El sistema imprime los datos( Articulo, Fecha de compra, factura numero, usted debia, Abono a cuenta, Abono a intereses,
+                                Usted debe hoy, Atrasado  ) de las cuentas del cliente.
+
+                        3.a.2.- El sistema imprime los datos de los totales( Usted debia total, Abono a cuenta total, Abono a intereses total, Usted debe hoy total,
+                                Atrasado total ) en el recibo del abono.
+
+                        3.a.3.- El sistema imprime la leyenda "SUS MOVIMIENTOS ESTAN ACTUALIZADOS AL:          "
+
+                        3.a.4.- El sistema imprime la fecha de corte de la cartera en el recibo de abono.
+
+                        3.a.5.- El flujo continúa en el paso 4 del flujo básico.
+
+                3.b.- El sistema verificó que la tienda no esta trabajando como local y que no está accesando a una cartera regional o por ciudad.
+
+                        3.b.1.- El sistema imprime los datos( Articulo, Fecha de compra, factura numero, usted debia, Abono a cuenta, Abono a intereses,
+                                Usted debe hoy, Atrasado, Salda con, Fecha Salda con ) de las cuentas del cliente.
+
+                        3.b.2.- El sistema imprime los datos de los totales( Usted debia total, Abono a cuenta total, Abono a intereses total, Usted debe hoy total,
+                                Atrasado total, Salda Con total, Fecha Salda Con Total) en el recibo del abono.
+
+                        3.b.3.- El flujo continúa en el paso 4 del flujo básico.
+
+                4.a.- El sistema valida que el tipo de impresora es termica.
+
+                        4.a.1.- El sistema imprime lo siguiente en la parte superior izquierda del recibo:
+
+                                Logo de la empresa
+                                Coppel S.A. de C.V. República 2855
+                                Culiacán, Sin. RFC: COP-920428-Q20
+
+                        4.a.2.- El sistema imprime lo siguiente en la parte superior derecha del recibo:
+
+                                Recibo de Abono No. #### ######
+                                Nombre: (Nombre del cliente)            Cliente: (No. Cliente)
+                                Fecha: dd-mmm-aaaa                         Tel: (telefono tienda)
+                                T-####: (nombre tienda)                        Caja: (area y caja)
+                                Gerente: (nombre gerente del area del sistema)
+
+                        4.a.3.- El sistema imprime los siguientes datos en el recibo:
+
+                                Detallado
+                                Fecha de Compra:
+                                No. Factura:
+                                Usted Debía:
+                                Abono a Cuenta:
+                                Abono a Intereses:
+                                Usted Debe Hoy:
+                                Atrasado:
+                                Salda Con:
+                                Hasta el dia
+
+                        4.a.4.- El sistema imprime los datos de cada una de las cuentas del cliente.
+
+                        4.a.5.- El sistema imprime los totales en la parte derecha del recibo.
+
+                        4.a.6.- El sistema imprime los siguientes datos en la parte inferior derecha del recibo:
+
+                                Total Abono:    #,###.##
+                                Pago:           #,###.##
+                                Cambio:         #,###.##
+
+                        4.a.7.- El sistema valida que el sorteo no esta activo.
+
+                                4.a.7.a.- El sistema valida que el sorteo esta activo.
+
+                                        4.a.7.a.1.- El sistema valida que el importe del abono no amerita boletos del sorteo
+
+                                                4.a.7.a.1.a.- El sistema valida que el importe del abono si amerita boletos del sorteo
+
+                                                        4.a.7.a.1.a.1.- El sistema manda llamar al CU-0001-Boletos.
+
+                                                        4.a.7.a.1.a.2.- El sistema obtiene la cantidad de boletos a entregar del caso de uso anterior.
+
+                                                        4.a.7.a.1.a.3.- El sistema identifica que se obtuvierón boletos.
+
+                                                                4.a.7.a.1.a.3.a.- El sistema identifica que no se obtuvieron boletos.
+
+                                                                                4.a.7.a.1.a.3.a.1.- El sistema imprime en el recibo de abono la leyenda "Usted tiene derecho a %03d Boletos, Pase mas tarde al área de Cajas a recogerlos."
+
+                                                                                4.a.7.a.1.a.3.a.2.- El sistema imprime en el recibo la leyenda "SEGOB " y el numero de permiso.
+
+                                                                                4.a.7.a.1.a.3.a.3. El flujo continúa en el paso 4.a.8 del flujo alternativo.
+
+                                                        4.a.7.a.1.a.4.- El sistema imprime en el recibo la leyenda  "Sus números para el Gran Sorteo. Consérvelos y Mucha Suerte".
+
+                                                        4.a.7.a.1.a.5.- El sistema imprime en el recibo la leyenda "SEGOB " y el numero de permiso.
+
+                                                        4.a.7.a.1.a.6.- El flujo continua en el paso 4.a.8 del flujo alternativo.
+
+                                        4.a.7.a.2.- El flujo continua en el paso 4.a.8 del flujo alternativo.
+
+                        4.a.8.- El sistema identifica el mensaje a imprimir para el cliente en recibo de abono segun sea su puntualidad y estado de las cuentas.
+
+                        4.a.9.- El sistema valida que esta activo el sorteo y se entregaron mas de 14 boletos
+
+                                4.a.9.a.- El sistema valida que no esta activo el sorteo o que se entregaron menos de 15 boletos.
+
+                                        4.a.9.a.1.- El sistema imprime el mensaje para el cliente en el recibo.
+
+                                        4.a.9.a.2.- El flujo continua en el paso 4.a.10 del flujo alternativo.
+
+                        4.a.10.- El sistema valida que la tienda esta trabajando como local o que está accesando a una cartera regional o por ciudad.
+
+                                4.a.10.a.- El sistema valida que la tienda no esta trabajando como local y que no está accesando a una cartera regional o por ciudad.
+
+                                        4.a.10.a.1.- El sistema valida que la tienda tiene estacionamiento.
+
+                                                4.a.10.a.1.a.- El sistema valida que la tienda no tiene estacionamiento.
+
+                                                        4.a.10.a.1.a.1.- El flujo continúa en el paso 4.a.12 del flujo alternativo
+
+                                        4.a.10.a.2.- El sistema imprime la leyenda "Estacionamiento exclusivo para Clientes"
+
+                                        4.a.10.a.3.- El flujo continúa en el paso 4.a.12 del flujo alternativo
+
+                        4.a.11.- El sistema imprime en el recibo la leyenda "Sus movimientos estan actualizados al: %s".
+
+                        4.a.12.- El sistema valida que hubo bonificacion y se entregaron mas de 20 boletos.
+
+                                4.a.12.a.- El sistema valida que no hubo bonificacion o no se entregaron mas de 20 boletos.
+
+                                        4.a.12.a.1.- El sistema imprime en el recibo la leyenda "¡Coppel, Mejora tu vida!¡Gracias por tu Abono!"
+
+                                        4.a.12.a.2.- El flujo continua en el paso 4.a.13 del flujo alternativo.
+
+                        4.a.13.- El sistema valida que el sorteo instantaneo no esta activo.
+
+                                4.a.13.a.- El sistema valida que el sorteo instantaneo esta activo.
+
+                                        4.a.13.a.1.- El sistema valida que el importe de la venta es valido.
+
+                                                14.a.1.a.- El sistema valida que el importe de la venta es invalido.
+
+                                                        14.a.1.a.1.- El flujo continua en el paso 16 del flujo basico.
+
+                                        4.a.13.a.2.- El sistema verifica que el cliente resulto ganador
+
+                                                4.a.13.a.2.a.- El sistema verifica que el cliente no resulto ganador
+
+                                                        4.a.13.a.2.a.1.- El flujo continua en el paso 16 del flujo basico.
+
+                                        4.a.13.a.3.- El sistema imprime recibo con los siguientes datos:
+
+                                                Logo de la empresa
+                                                Coppel S.A. de C.V. República 2855
+                                                Culiacán, Sin. RFC: COP-920428-Q20
+
+                                                Recibo de Abono No. #### ######
+                                                Cliente: (No. Cliente)
+                                                Nombre: (Nombre del cliente)
+                                                Fecha: dd-mmm-aaaa                        Tel: (telefono tienda)
+                                                T-####: (nombre tienda)                         Caja: (area y caja)
+                                                Gerente: (nombre gerente del area del sistema)
+
+                                        4.a.13.a.4.- El sistema imprime la leyenda "¡FELICIDADES, ERES GANADOR", ademas muestra la descripcion del premio en el recibo.
+
+                                        4.a.13.a.5.- El sistema valida que el premio no es dinero electronico.
+
+                                                4.a.13.a.5.a.- El sistema valida que el premio es dinero electronico.
+
+                                                        4.a.13.a.5.a.1.- El sistema graba o actualiza el monto de dinero electronico en la tabla crdineroelectronico
+
+                                                        4.a.13.a.5.a.2.- El flujo continua en el paso 4.a.13.a.6 del flujo alternativo
+
+                                        4.a.13.a.6.- El sistema muestra mensaje de aviso.
+
+                                        4.a.13.a.7.- El cajero acepta el mensaje y el flujo continua en el paso 16 del flujo basico.
+
+                        4.a.14.- El flujo continua en el paso 16 del flujo basico.
+
+                5.1.a.- El sistema identifica que se realizo un abono a muebles.
+
+                        5.1.a.1.- El sistema imprime el desglose del abono a muebles
+
+                        5.1.a.2.- El sistema identifica que el cliente no tenia abono vencido de muebles.
+
+                                5.1.a.2.a.- El sistema identifica que el cliente tenia abono vencido de muebles.
+
+                                        5.1.a.2.a.1.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                                5.1.a.2.a.1.a.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                                        5.1.a.2.a.1.a.1.- El sistema imprime interes adicional primer mes de la cuenta de muebles como informativo.
+
+                                                        5.1.a.2.a.1.a.2.- El flujo continua en el paso 5.2 del flujo basico.
+
+                                        5.1.a.2.a.2.- El sistema imprime interes adicional primer mes de la cuenta de muebles como bonificacion.
+
+                                        5.1.a.2.a.3.- El flujo continua en el paso 5.2 del flujo basico.
+
+                        5.1.a.3.- El flujo continua en el paso 5.2 del flujo basico.
+
+                5.1.b.- El sistema identifica que no se realizo un abono a muebles.
+
+                        5.1.b.1.- El flujo continua en el paso 5.2 del flujo basico.
+
+                5.2.a.- El sistema identifica que se realizo un abono a ropa
+
+                        5.2.a.1.- El sistema imprime el desglose del abono a ropa
+
+                        5.2.a.2.- El sistema identifica que el cliente no tenia abono vencido de ropa.
+
+                                5.2.a.2.a.- El sistema identifica que el cliente tenia abono vencido de ropa.
+
+                                        5.2.a.2.a.1.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                                5.2.a.2.a.1.a.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                                        5.2.a.2.a.1.a.1.- El sistema imprime interes adicional primer mes de la cuenta de ropa como informativo.
+
+                                                        5.2.a.2.a.1.a.2.- El flujo continua en el paso 5.3 del flujo basico.
+
+                                        5.2.a.2.a.2.- El sistema imprime interes adicional primer mes de la cuenta de ropa como bonificacion.
+
+                                        5.2.a.2.a.3.- El flujo continua en el paso 5.3 del flujo basico.
+
+                        5.2.a.3.- El flujo continua en el paso 5.3 del flujo basico.
+
+                5.2.b.- El sistema identifica que no se realizo abono a ropa
+
+                        5.2.b.1.- El flujo continua en el paso 5.3 del flujo basico.
+
+                5.3.a.- El sistema identifica que se realizo un abono a prestamo.
+
+                        5.3.a.1.- El sistema imprime el desglose del abono a prestamo.
+
+                        5.3.a.2.- El flujo continua en el paso 5.4 del flujo basico.
+
+                5.3.b.- El sistema identifica que no se realizo abono a prestamo.
+
+                        5.3.b.1.- El flujo continua en el paso 5.4 del flujo basico.
+
+                5.4.a.- El sistema identifica que se realizo un abono a deuda Bancoppel.
+
+                        5.4.a.1.- El sistema imprime el desglose del abono a deuda Bancoppel.
+
+                        5.4.a.2.- El flujo continua en el paso 5.5 del flujo basico.
+
+                5.4.b.- El sistema identifica que no se realizo abono a deuda Bancoppel.
+
+                        5.4.b.1.- El flujo continua en el paso 5.5 del flujo basico.
+
+                5.5.a.- El sistema identifica que se realizo un abono a Credito y Casa.
+
+                        5.5.a.1.- El sistema imprime el desglose del abono a Credito y Casa.
+
+                        5.5.a.2.- El flujo continua en el paso 5.6 del flujo basico.
+
+                5.5.b.- El sistema identifica que no se realizo abono a Credito y Casa.
+
+                        5.5.b.1.- El flujo continua en el paso 5.6 del flujo basico.
+
+                5.6.a.- El sistema identifica que se realizo un abono a Tiempo Aire.
+
+                        5.6.a.1.- El sistema imprime el desglose del abono a Credito y Casa.
+
+                        5.6.a.2.- El flujo continua en el paso 5.7.a del flujo basico.
+
+                5.6.b.- El sistema identifica que no se realizo abono a Tiempo Aire.
+
+                        5.6.b.1.- El flujo continua en el paso 5.7.a del flujo basico.
+
+                5.7.a.- El sistema verifica que se realizo abono a cuenta revolvente.
+
+                        5.7.a.1.- El sistema imprime el desglose del abono a cuenta revolvente
+
+                        5.7.a.2.- El sistema identifica que el cliente no tenia abono vencido de cuenta revolvente.
+
+                                5.7.a.2.a.- El sistema identifica que el cliente tenia abono vencido de cuenta revolvente.
+
+                                        5.7.a.2.a.1.- El sistema identifica que el cliente se puso al corriente con el vencido.
+
+                                                5.7.a.2.a.1.a.- El sistema identifica que el cliente no se puso al corriente con el vencido.
+
+                                                        5.2.a.2.a.1.a.1.- El sistema imprime interes adicional primer mes de la cuenta revolvente como informativo.
+
+                                                        5.2.a.2.a.1.a.2.- El flujo continua en el paso 6 del flujo basico.
+
+                                        5.7.a.2.a.2.- El sistema imprime interes adicional primer mes de la cuenta revolvente como bonificacion.
+
+                                        5.7.a.2.a.3.- El flujo continua en el paso 6 del flujo basico.
+
+                        5.7.a.3.- El flujo continua en el paso 6 del flujo basico.
+
+                10.a.- El sistema verificó que el sorteo si esta activo.
+
+                        10.a.1.- El sistema verifica si el importe del abono amerita boletos del sorteo
+
+                                10.a.1.a.- El sistema verificó que el importe del abono si amerita boletos del sorteo
+
+                                        10.a.1.a.1.- El sistema manda llamar al CU-0001-Boletos.
+
+                                        10.a.1.a.2.- El sistema obtiene la cantidad de boletos a entregar del caso de uso anterior.
+
+                                        10.a.1.a.3.- El sistema identifica que se obtuvierón boletos.
+
+                                                    10.a.1.a.3.a.- El sistema identifica que no se obtuvieron boletos.
+
+                                                                  10.a.1.a.3.a.1.- El sistema presenta en el recibo de abono la leyenda "USTED TIENE DERECHO A N
+                                                                                  BOLETOS,PASE MAS TARDE AL AREA DE CAJAS A RECOGERLOS ANTES DEL         ."
+
+                                                                  10.a.1.a.3.a.2.- El flujo continúa en el paso 11 del flujo básico.
+
+                                        10.a.1.a.4.- El sistema identifica que es un cliente registrado.
+
+                                                    10.a.1.a.4.a.- El sistema identifica que es un cliente de contado (90001).
+
+                                                                  10.a.1.a.4.a.1.- El sistema presenta en el recibo de abono la leyenda "USTED TIENE DERECHO A N
+                                                                                  BOLETOS,PASE MAS TARDE AL AREA DE CAJAS A RECOGERLOS ANTES DEL         ."
+
+                                                                  10.a.1.a.4.a.2.- El flujo continúa en el paso 11 del flujo básico.
+
+                                        10.a.1.a.5.- El sistema imprime la cantidad de boletos a entregar y la fecha limite para reclamarlos en el recibo de abonos.
+
+                                        10.a.1.a.6.- El flujo continúa en el paso 11 del flujo básico.
+
+                                10.a.1.b.- El sistema verificó que el importe del abono no amerita boletos del sorteo
+
+                                        10.a.1.b.1.- El flujo continúa en el paso 11 del flujo básico.
+
+                10.b.- El sistema verificó que el sorteo no esta activo.
+
+                        10.b.1.- El flujo continúa en el paso 11 del flujo básico.
+
+                11.a.- El sistema identificó que si se generó un cupon de dinero electrónico
+
+                        11.a.1.- El sistema imprime las leyendas:
+                                 "COPPEL LE REGALA $%ld EN DINERO ELECTRONICO"
+                                 "COPPEL PREMIA A SUS CLIENTES PUNTUALES, POR ELLO AL SALDAR SU CUENTA COPPEL LE REGALA DINERO ELECTRONICO."
+                                 "UTILICE HOY MISMO SU DINERO ELECTRONICO Y COMPRE ROPA, ZAPATOS Y MUEBLES"
+                                 "DE CREDITO O DE CONTADO EN CUALQUIER TIENDA COPPEL O ZAPATERIA COPPEL CANADA"
+                                 "FECHA LIMITE DE CANJE:       ­RECUERDE QUE ES ACUMULABLE!"
+                                 "NO ES VALIDO PARA ABONAR O PAGAR SERVICIOS. NO HAY DEVOLUCIONES DE EFECTIVO"
+
+                        11.a.2.- El flujo continúa en el paso 12 del flujo básico.
+
+                11.b.- El sistema identificó que no se generó un cupon de dinero electrónico
+
+                        11.b.1.- El flujo continúa en el paso 12 del flujo básico.
+
+                12.a.- El sistema verificó que la tienda si tiene estacionamiento.
+
+                        12.a.1.- El sistema imprime la leyenda "ESTACIONAMIENTO EXCLUSIVO PARA CLIENTES."
+
+                        12.a.2.- El flujo continúa en el paso 13 del flujo básico,
+
+                12.b.- El sistema verificó que la tienda no tiene estacionamiento.
+
+                        12.b.1.- El flujo continúa en el paso 13 del flujo básico,
+
+                13.a.- El sistema verificó que la cuenta a imprimir sí se le capturó convenio.
+
+                        13.a.1.- El sistema verifica el tipo de convenio que se le hizo a la cuenta.
+
+                                13.a.1.a.- El sistema verificó que el convenio es único
+
+                                        13.a.1.a.1.- El sistema imprime mensaje: "USTED PROMETE PAGAR $  DENTRO DE  DIAS" en el recibo de abonos.
+
+                                        13.a.1.a.2.- El flujo continúa en el paso 14 del flujo básico.
+
+                                13.a.1.b.- El sistema verificó que el convenio es de palabra.
+
+                                        13.a.1.b.1.- El sistema imprime mensaje: "LE RECORDAMOS PAGAR $  DENTRO DE  DIAS" en el recibo de abonos.
+
+                                        13.a.1.b.2.- El flujo continúa en el paso 14 del flujo básico.
+
+                13.b.- El sistema verificó que la cuenta a imprimir no se le capturó convenio.
+
+                        13.b.1.- El flujo continúa en el paso 14 del flujo básico.
+
+                14.a.- El sistema verifica que el sorteo instantaneo esta activo.
+
+                        14.a.1.- El sistema verifica que el importe de la venta es valido.
+
+                                14.a.1.a.- El sistema verifica que el importe de la venta es invalido.
+
+                                        14.a.1.a.1.- El flujo continua en el paso 15 del flujo basico.
+
+                        14.a.2.- El sistema verifica que el cliente no es empleado.
+
+                                14.a.2.a.- El sistema verifica que el cliente es empleado.
+
+                                        14.a.2.a.1.- El flujo continua en el paso 15 del flujo basico.
+
+                        14.a.3.- El sistema verifica que el cliente resulto ganador
+
+                                14.a.3.a.- El sistema verifica que el cliente no resulto ganador
+
+                                        14.a.3.a.1.- El flujo continua en el paso 15 del flujo basico.
+
+                        14.a.4.- El sistema imprime la leyenda "¡FELICIDADES, ERES GANADOR", ademas muestra la descripcion del premio en el recibo.
+
+                        14.a.5.- El sistema verifica que el premio no es dinero electronico.
+
+                                14.a.5.a.- El sistema verifica que el premio es dinero electronico.
+
+                                        14.a.5.a.1.- El sistema graba o actualiza el monto de dinero electronico en la tabla crdineroelectronico
+
+                                        14.a.5.a.2.- El flujo continua en el paso 14.a.6 del flujo alternativo
+
+                        14.a.6.- El sistema muestra mensaje de aviso.
+
+                        14.a.7.- El cajero acepta el mensaje y el flujo continua en el paso 15 del flujo basico.
+
+                15.a.- El sistema verifica que se encuentra en el área de ropa.
+
+                        15.a.1.- El sistema imprime solo un recibo para el cliente.
+
+                        15.a.2.- El flujo continúa en el paso 16 del flujo básico.
+
+                15.b.- El sistema verifica que se encuentra en el área de muebles.
+
+                        15.b.1.- El sistema imprime solo un recibo para el cliente.
+
+                        15.b.2.- El flujo continúa en el paso 16 del flujo básico.
+
+                15.c.- El sistema verifica que se encuentra en el área de cajas.
+
+                        15.c.1.- El sistema imprime dos recibos, uno para el cliente y otro para la tienda.
+
+                        15.c.2.- El flujo continúa en el paso 16 del flujo básico.
+
+                17.a.- El sistema identifica que se capturo el pago de algun servicio.
+
+                        17.a.1.- El sistema manda llamar al CU-0006-ImprimirReciboPagoServicio.
+
+                        17.a.2.- El sistema graba la imagen del recibo de pago de servicio.
+
+                        17.a.3.- El flujo continua en el paso 18 del flujo basico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: No aplica.
+   Asociaciones:
+         Asociaciones de Extensión: No aplica.
+         Asociaciones de Inclusión: No aplica.
+         Caso de Uso donde se Incluye: CU-0001-RealizarAbono.
+         Caso de Uso al que Extiende: CU-0001-Boletos, CU-0013-ImprimirPolizaSeguroClub,CU-0011-InvitacionPrestamo,CU-0006-ImprimirReciboPagoServicio.
+
+   Observaciones: No aplica.
+   Autor: Ana Beatríz Bastidas Félix.
+   Fecha de Creación: 2008-04-02.

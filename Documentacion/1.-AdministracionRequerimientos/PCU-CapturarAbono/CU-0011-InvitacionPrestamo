@@ -1,0 +1,179 @@
+
+   Nombre del Caso de Uso: CU-0011-InvitacionPrestamo
+   Paquete: PCU-CapturarAbono
+   Ciclo de Vida:Cascada                             Iteración: 1
+   Prioridad: Esencial                               Complejidad: Complejo
+   Tipo de Caso de Uso: Abstracto
+   Versión: 20080919.1100
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Sistema de venta / Se encarga de mostrar el mensaje de invitación
+                           de préstamos.
+
+   Objetivo:   Mostrar mensaje de invitación de prestamos para ofrecer préstamos en efectivo
+               como un privilegio a clientes que han demostrado ser puntuales.
+   ___________________________________________________________________________________________
+   Precondiciones:
+                       1.- Se requiere que imprima el recibo de abono.
+
+   Post-Condiciones:
+                       1.- Mostrar mensaje de invitación de prestamo.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se requiere mostrar la invitación de préstamos.
+
+                2.- El sistema valida que el cliente tiene puntualidad "A".
+
+                    2.a.- El sistema valida que el cliente no tiene puntualidad "A".
+
+                3.- El sistema valida que el cliente no tiene situacion especial.
+
+                    3.a.- El sistema valida que el cliente tiene situacion especial "G".
+
+                    3.b.- El sistema valida que el cliente tiene situacion especial
+                          diferente a "G".
+
+                4.- El sistema valida que el cliente no tiene préstamo activo.
+
+                    4.a.- El sistema valida que el cliente tiene préstamo activo.
+
+                5.- El sistema valida que el cliente sea menor a 75 años de edad cumplidos.
+
+                    5.a.- El sistema valida que el cliente sea mayor o igual a 75 años de
+                          edad cumplidos.
+
+                6.- El sistema valida que el cliente no tiene vencidos en las carteras de Ropa
+                    y Muebles.
+
+                    6.a.- El sistema valida que el cliente tiene vencidos en las carteras de Ropa
+                          o Muebles.
+
+                7.- El sistema valida que el cliente no tiene saldo en la cartera quebrantada
+                    Bancoppel.
+
+                    7.a.- El sistema valida que el cliente tiene saldo en la cartera quebrantada
+                    Bancoppel.
+
+                8.- El sistema valida que el cliente tiene margen de Crédito para préstamos >=
+                    1,000 pesos.
+
+                    8.a.- El sistema valida que el cliente no tiene margen de Crédito para
+                          préstamos >= 1,000 pesos.
+
+                9.-El sistema valida que el cliente tiene el parametrico con score >= -180
+                    puntos.
+
+                   9.a.-El sistema valida que el cliente tiene el parametrico con score < -180
+                        puntos.
+
+                10.-El sistema valida que el cliente tiene status diferente de 2.
+
+                    10.a.-El sistema valida que el cliente tiene status de 2.
+
+                11.-El sistema valida que el mensaje no se haya mostrado mas de 2 veces en un
+                   periodo de 30 dias.
+
+                    11.a.-El sistema valida que el mensaje se mostró mas de 2 veces en un periodo
+                          de 30 dias.
+
+                12.-El sistema muestra el mensaje de Invitacion Préstamos, con las opciones de
+                    Aceptar y No Invitar.
+
+                13.-El sistema valida que se eligió la opción de Aceptar.
+
+                    13.a.-El sistema valida que se eligió la opción No Invitar.
+
+                14.-El sistema graba este movimiento con status de 1.
+
+                15.-Fin del caso de uso.
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                2.a.- El sistema valida que el cliente no tiene puntualidad "A".
+
+                      2.a.1.-Fin del caso de uso.
+
+                3.a.- El sistema valida que el cliente tiene situacion especial "G".
+
+                      3.a.1.-El sistema continua en el punto 4 del flujo básico.
+
+                3.b.- El sistema valida que el cliente tiene situacion especial
+                      diferente a "G".
+
+                      3.b.1.-Fin del caso de uso.
+
+                4.a.- El sistema valida que el cliente tiene préstamo activo.
+
+                      4.a.1.-Fin del caso de uso.
+
+                5.a.- El sistema valida que el cliente sea mayor o igual a 75 años de
+                      edad cumplidos.
+
+                      5.a.1.-Fin del caso de uso.
+
+                6.a.- El sistema valida que el cliente tiene vencidos en las carteras de Ropa
+                      o Muebles.
+
+                      6.a.1.-Fin del caso de uso.
+
+                7.a.- El sistema valida que el cliente tiene saldo en la cartera quebrantada
+                      Bancoppel.
+
+                       7.a.1.-Fin del caso de uso.
+
+                8.a.- El sistema valida que el cliente no tiene margen de Crédito para
+                      préstamos >= 1,000 pesos.
+
+                      8.a.1.-Fin del caso de uso.
+
+                9.a.-El sistema valida que el cliente tiene el parametrico con score < -180
+                     puntos.
+
+                     9.a.1.-Fin del caso de uso.
+
+                10.a.-El sistema valida que el cliente tiene status de 2.
+
+                      10.a.1.-El sistema valida que hayan trancurrido un período de 6 meses.
+
+                              10.a.1.a.-El sistema continua en el punto 12 del flujo básico.
+
+                      10.a.2.-El sistema valida que no ha trancurrido un período de 6 meses.
+
+                              10.a.2.a.-Fin del caso de uso.
+
+                11.a.-El sistema valida que el mensaje se mostró 2 veces en un periodo de 30
+                      dias.
+
+                      11.a.1.-Fin del caso de uso.
+
+                13.a.-El sistema valida que se eligió la opción No Invitar.
+
+                      13.a.1.-El sistema graba este movimiento con status de 2.
+
+                      13.a.2.-Fin del caso de uso.
+
+ __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario: 0005-MensajeInvitacionPrestamos
+   Asociaciones: <Asociaciones>
+                   Asociaciones de Extensión: No aplica
+                   Asociaciones de Inclusión: No aplica
+                   Caso de Uso donde se Incluye:
+                      CU-0005-ImprimirReciboAbono
+                   Caso de Uso al que Extiende: No aplica
+                   Caso de Uso de Generalización: No aplica
+
+
+   Observaciones: Se crea caso de uso.
+   Autor: Cintia Gpe García Gastélum.
+   Fecha de Creación: 2008-09-19.
+
+   Historial de Cambios:
+   ____________________________________________________________________________________
+   Fecha del Cambio:
+   Descripción del Cambio:
+   Autor del Cambio :
+
+

@@ -1,0 +1,144 @@
+
+   Nombre del Caso de Uso: CU-0010-MostrarMensajeCrezcaSuHogar   Paquete: CapturarAbono
+   Ciclo de Vida:Cascada                               Iteración: No aplica
+   Prioridad: Deseable                                 Complejidad: Compleja.
+   Tipo de Caso de Uso: Abstracto
+   Versión: 20080718.1217.
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Elije una de las opción presentadas en el mensaje.
+               Secundario: Sistema  / identifica cliente candidato y presentar el mensaje.
+
+   Objetivo:   Identificar al cliente candidato para ofrecer el prestamo para mejorar su vivienda.
+   ___________________________________________________________________________________________
+   Precondiciones:
+                       1.- El Sistema se encuentra capturando abono.
+
+
+   Post-Condiciones:
+                       1.- El sistema presenta mensaje a cliente candidato.
+                       2.- El Cajero elije aceptar y pide a cliente pasar a clientes nuevos.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se ha realizado el abono.
+
+                2.- El sistema identifica que el area que realizo el abono puede presentar el mensaje para prestamo Crezca Su Hogar.
+
+                        2.a.- El sistema identifica que el area que realizo el abono NO puede presentar el mensaje para prestamo Crezca Su Hogar.
+
+                3.- EL sistema consulta la puntualidad, situacion especial, total vencido, limite de credito, saldo en muebles, saldo en ropa, saldo en prestamos, del cliente.
+
+                4.- El sistema identifica Cliente con puntualidad 'A'.
+
+                        4.a.- El sistema identifica Cliente con puntualidad diferente de 'A'
+
+                5.- El sistema identifica que el cliente no tiene situación especial o que la situacion especial es 'G'
+
+                        5.a.- El sistema identifica que cliente tiene situacion especial y esta es diferente de 'G'.
+
+                6.- El sistema identifica cliente sin saldo vencido.
+
+                        6.a.- El sistema identifica cliente con saldo vencido.
+
+                7.- El sistema identifica cliente con edad entre 18 y 70 años.
+
+                        7.a.- El sistema identifica cliente menor de 18 años o mayor de 70.
+
+                8.- El sistema calcula el margen de credito disponible.
+
+                9.- El sistema identifica a cliente con margen de credito disponible mayor o igual de $3,000 y menor o igual a 15,000.
+
+                        9.a.- El sistema identifica que cliente tiene margen de crédito menor de $3,000.
+
+			9.b.- El sistema identifica que cliente tiene margen de crédito mayor a $15,000.
+
+                10.- El sistema consulta e identifica que no se ha ofrecido el prestamo Crezca Su Hogar al cliente.
+
+                        10.a.- El sistema consulta e identifica que si se ha ofrecido el prestamo Crezca Su Hogar al cliente.
+
+                11.- El sistema consulta el subsidio,valor del proyecto,enganche y las mensualidades (a 24 meses).
+
+                12.- El sistema presenta el mensaje 0002-MostrarMensajeCrezcaSuHogar.
+
+                13.- El cajero elije la opcion de Aceptar el mensaje.
+
+                        13.a.- El cajero elije NO acepta el mensaje.
+
+                        13.b.- El sistema elije la opcion de No es titular.
+
+                14.- El sistema registra que cajero a aceptado mensaje.
+
+                15.- El sistema imprime el mensaje.
+
+                16.- Fin del caso de Uso.
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                2.a.- El sistema identifica que el area que realizo el abono NO puede presentar el mensaje para prestamo Crezca Su Hogar.
+
+                        2.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+                4.a.- El sistema identifica Cliente con puntualidad diferente de 'A'
+
+                        4.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+                5.a.- El sistema identifica que cliente tiene situacion especial y esta es diferente de 'G'.
+
+                        5.a.1.- El flujo continua en el paso 16 del flujo Básico.
+
+                6.a.- El sistema identifica cliente con saldo vencido.
+
+                        6.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+                7.a.- El sistema identifica cliente menor de 18 años o mayor de 70.
+
+                         7.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+                9.a.- El sistema identifica que cliente tiene margen de credito menor de $3,000.
+
+                        9.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+		9.b.- El sistema identifica que cliente tiene margen de crédito mayor a $15,000.
+
+ 		        9.b.1.- El sistema determina que el margen de crédito del cliente será de $15,000 para la realización del trámite.
+
+			9.b.2.- El flujo continúa en el punto 10 del flujo básico.
+
+                10.a.- El sistema consulta e identifica que si se ha ofrecido el prestamo Crezca Su Hogar al cliente.
+
+                        10.a.1.- El flujo continua en el paso 16 del flujo básico.
+
+                13.a.- El cajero elije NO acepta el mensaje.
+
+                        13.a.1.- El sistema registra que cajero eligio No Acepto.
+
+                        13.a.2.- El sistema continua en el paso 16 del flujo básico.
+
+                13.b.- El sistema elije la opcion de No es titular.
+
+                        13.b.1.- El flujo continua en el paso 16 del flujo básico.
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario:0002-MostrarMensajeCrezcaSuHogar
+   Asociaciones:
+                   Asociaciones de Extensión: No aplica
+                   Asociaciones de Inclusión: No aplica
+                   Caso de Uso donde se Incluye: CU-0001-RealizarAbono.
+                   Caso de Uso al que Extiende: No aplica.
+                   Caso de Uso de Generalización:No aplica.
+
+   Observaciones: El cajero elije opcion No es titular cuando el cliente que esta realizando el abono no es el titular del credito.
+   Autor: Elba Mariana Hernández Pérez.
+   Fecha de Creación: 2008/05/16
+
+   Historial de Cambios:
+   ____________________________________________________________________________________
+   Fecha del Cambio: 18/07/2008.
+   Descripción del Cambio:
+	Se modifica para que la invitación Crezca Su Hogar tambien aplique para los clientes con margen de crédito disponible mayores a $15,000.
+	El trámite de estos clientes se realizará con $15,000, independientemente de que tengan mayor margen de crédito disponible.
+   Autor del Cambio :  Claudia Gpe. Aispuro Gallegos.
+
+

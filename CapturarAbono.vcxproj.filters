@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\UltimateToolBox">
+      <UniqueIdentifier>{dcc9a91e-d9ff-48ec-9d53-95e8a27a51af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\json">
+      <UniqueIdentifier>{bae0c4f8-3b64-4083-be21-edcd757644a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\clases">
+      <UniqueIdentifier>{68300382-951b-4229-94f5-81132bae7810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UltimateToolBox">
+      <UniqueIdentifier>{2b6d67db-3bc5-4eaf-a4f1-0c6487bb1190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\json">
+      <UniqueIdentifier>{3da8ae42-d6d9-4389-89b7-8bfb7182d3b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\TokenSSO">
+      <UniqueIdentifier>{38d46e02-2ee2-4986-ac1f-eaccb0065dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TokenSSO">
+      <UniqueIdentifier>{d7cf0378-5c3c-4bd4-82a1-f5cd37a567f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\JsonAbonos">
+      <UniqueIdentifier>{3cb3bdb2-ecd6-4e56-93d0-856da8d05ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JsonAbonos">
+      <UniqueIdentifier>{229c7718-48b2-4b06-8f11-82a812a9cef0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CapturarAbono.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CImpresiones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CImpresionReciboAbonos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CReestructuracion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CReestructuraDAL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarAbono.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarCambioSeguro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarClienteEtp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarConvenio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarDatosSeguro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarNumEmpleSupervisor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgEncuesta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dlgreestructuracion.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridCapturarAbono.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridDesplegarTotal.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuloPpal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sysSeguros.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sysSegurosAutoProteccion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\Base64.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\HTTP_c.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\uh_ctrl.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\ut_clnt.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\UT_StrOp.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\UTDataSource.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\utfile.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\utstrlst.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="UltimateToolBox\uttaglst.cpp">
+      <Filter>Source Files\UltimateToolBox</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\IndentedPrint.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\JsonArray.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\JsonBuffer.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\JsonObject.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\JsonParser.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\JsonVariant.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\List.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\Prettyfier.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Arduino\Print.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\QuotedString.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\Internals\StringBuilder.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\C_WFormas.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CBuscarClienteEncuestado.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CChecarCorteCaja.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CChecarEncuesta2.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CChecarVigenciaSeguro.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CCiudadColoniaCrCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarAbonoSeguro2.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarBeneficiario.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarBeneficiariosSeguroTemp.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCaEncuestaEdoCta.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCalle.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCandidatoPrestamoCN.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCaTotalEncuesta.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCdFechaCoppel.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarClaveConyugalCrSeguros.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCrSegurosClub.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCrSegurosClubAdicional.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCrSegurosFechaMesDiaVence.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarCuentaDomiciliada.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarDatosCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarDatosGnDominio3.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarDatosSeguroAdicional.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarDescripcionClub.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarEdadesClub.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarFoliosSeguro.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarGnVigenciaPromocion.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarMensajeSeguro.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarNomPuntFechaCrCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarOrigen.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarPlanSeguroAuto.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarPolizasNvas01.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarPrecioPlanSalud.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarPrecioSeguroClub.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarSituacionCrCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarTipoSeguroCrSeguros.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarWS.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarZonaCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultaSituacionCausa.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CCrHuellas.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CDatosConvenio.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CDescripcion.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\cEjecutarFuncionPgSQL.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CFechaCoppel.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarAbonoTmpCaCarmov04.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarCrCarmovX.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarPagoServicio.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCmueblesFija02.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCropaDetalle.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrCropaFija02.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrPrestamosFija.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrRevolvente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrSegurosFija01.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoCrTaireFija02.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpAbonoInteresCaCarmov05.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpBonificacionCaCarmov04.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCaCarmovEtp2.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCaCarmovSeguro.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCaEficienciaCajeras.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCaMovimientos.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpConvenioCaCarmov03.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCrCmuebles.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCrCropa.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCrPrestamos.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpCrSeguros.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpSeguroAutoCaCarmov01.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarTmpSeguroCaCarmov01.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsertarCaCarmov.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsertarGnTira.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsertarHoraMensaje.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsertarTmpBeneficiariosCaCarmov01.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CMaximo.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CMaximo2.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CNombreColoniaCrZonas.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDatosCacarmovTemporal.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDatosCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDatosSeguroAuto.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDatosTdBeneficiariosClub.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDatosTmpCaCarmovServicio.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerDetalleAbonoRopa.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerFechaSaldaConCrCropa.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\cObtenerMensajeAbono.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerMensajePromocionDirecta.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerReciboJapac.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerSituacionReglaCliente.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\ConsultarMesAnio.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\COrigenSeguro.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CParametros.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CSysFolioGlobal.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CTmpAbonoCrCmueblesPlanFija.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CTmpCaGrabarAbono.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CAdiionalc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CobtenFechaAfiliacion.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CGrabarCertificacionAbono.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CObtenerFechaPrimerAbono.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CInsertarCteNoOfrecer.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarPolizaXML.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CActualizarEmpleadoMovSMS.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CCEliminarMensajeSMS.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Contactabilidad\CContactabilidad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Contactabilidad\CUrlWebService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Contactabilidad\CUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Contactabilidad\CRespuestaPuenteSalida.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Contactabilidad\CRespuestaPuenteEntrada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarRegion.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultarMensajesCoppelMax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CSesion.cpp">
+      <Filter>Source Files\TokenSSO</Filter>
+    </ClCompile>
+    <ClCompile Include="CConsumirServicioRest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files\TokenSSO</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Header Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CConsultarTokenSSO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCapturarDatosSeguroMotos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsumoAPICuentasSeguros.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="CCuentasSeguros.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonAbonos\JsonAbonoCelularesC.cpp">
+      <Filter>Source Files\JsonAbonos</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonAbonos\JsonAbonoCelularesCL.cpp">
+      <Filter>Source Files\JsonAbonos</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonAbonos\JsonAbonoMotosC.cpp">
+      <Filter>Source Files\JsonAbonos</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonAbonos\JsonAbonoMotosCL.cpp">
+      <Filter>Source Files\JsonAbonos</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Dlg_CapturaAbonoCelulares.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculoMoras.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultaFacturaSesionTemp.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\CConsultatdchequesesion.cpp">
+      <Filter>Header Files\clases</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Clases\ApiSanaTuDeudaClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CapturarAbono.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\CapturarAbono.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CapturarAbono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\progs_lnx2\disco_c\hpp\CCuentaInet\CEstructurasCyC.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CReestructuracion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CReestructuraDAL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarAbono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarCambioSeguro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarClienteEtp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarConvenio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarDatosSeguro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarNumEmpleSupervisor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgEncuesta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgReestructuracion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridCapturarAbono.HPP">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridDesplegarTotal.HPP">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IniciarDiaCajas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sysCapturarAbono.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\C_WFormas.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsultarOrigen.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsultarPlanSeguroAuto.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CGrabarAbonoTmpCaCarmov04.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CGrabarTmpAbonoInteresCaCarmov05.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CGrabarTmpBonificacionCaCarmov04.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\Base64.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\HTTP_c.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\uh_ctrl.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\ut_clnt.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\UT_Queue.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\ut_strop.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\UTDataSource.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\uterr.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\UTExtErr.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\utfile.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\utstrlst.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="UltimateToolBox\uttaglst.h">
+      <Filter>Header Files\UltimateToolBox</Filter>
+    </ClInclude>
+    <ClInclude Include="json\src\ArduinoJson.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CAdiionalc.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CobtenFechaAfiliacion.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CGrabarCertificacionAbono.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CObtenerFechaPrimerAbono.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CInsertarCteNoOfrecer.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsultarPolizaXML.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CContactabilidad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CEntorno.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CExcepcion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CUrlsMetodos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CUrlWebService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CTitularidad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CRespuestaPuenteSalida.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Contactabilidad\CRespuestaPuenteEntrada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsultarRegion.hpp">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="json\src\json-forwards.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\src\json.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsultarMensajesCoppelMax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CRetorno.h">
+      <Filter>Header Files\TokenSSO</Filter>
+    </ClInclude>
+    <ClInclude Include="CSesion.h">
+      <Filter>Header Files\TokenSSO</Filter>
+    </ClInclude>
+    <ClInclude Include="CTokenSSO.h">
+      <Filter>Header Files\TokenSSO</Filter>
+    </ClInclude>
+    <ClInclude Include="json-forwards.h">
+      <Filter>Header Files\TokenSSO</Filter>
+    </ClInclude>
+    <ClInclude Include="json.h">
+      <Filter>Header Files\TokenSSO</Filter>
+    </ClInclude>
+    <ClInclude Include="CConsumirServicioRest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CConsultarTokenSSO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCapturarDatosSeguroMotos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CConsumoAPICuentasSeguros.h">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="CCuentasSeguros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonAbonos\JsonAbonoMotosCL.h">
+      <Filter>Header Files\JsonAbonos</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonAbonos\JsonAbonoMotosC.h">
+      <Filter>Header Files\JsonAbonos</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonAbonos\JsonAbonoCelularesCL.h">
+      <Filter>Header Files\JsonAbonos</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonAbonos\JsonAbonoCelularesC.h">
+      <Filter>Header Files\JsonAbonos</Filter>
+    </ClInclude>
+    <ClInclude Include="Dlg_CapturaAbonoCelulares.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculoMoras.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CCONSULTAFACTURASESIONTEMP.HPP">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\CCONSULTATDCHEQUESESION.HPP">
+      <Filter>Header Files\clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\ApiSanaTuDeudaClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clases\ParametrosApiSanaTuDeuda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CapturarAbono.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

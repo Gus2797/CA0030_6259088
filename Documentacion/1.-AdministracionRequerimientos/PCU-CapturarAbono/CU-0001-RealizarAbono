@@ -1,0 +1,362 @@
+
+   Nombre del Caso de Uso: CU-0001-RealizarAbono.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                                   Complejidad: Complejo.
+   Tipo de Caso de Uso: Concreto.
+   Versión: 20091221.1123.
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Introduce el número del cliente que hará el abono.
+               Secundario: Sensor de huella dactilar / Este pide la huella del gerente en caso de alguna autorización.
+
+   Objetivo:   Realizar la captura de abonos a cuentas de clientes coppel, bancoppel y credito y casa.
+
+   ___________________________________________________________________________________________
+   Precondiciones:
+                       1.- La cajera se identifica y Autentica.
+
+   Post-Condiciones:
+		       1.- Se registra el abono, se actualiza el saldo del cliente y su situación.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se requiere hacer un abono.
+
+                2.- El sistema muestra en la parte superior derecha el número de caja con el que se ingresó al sistema y la fecha del sistema.
+
+		3.- El sistema recupera las tarjetas de crédito coppel que quedaron en proceso para la caja que inició sesión.
+
+		4.- El sistema presenta las opciones de Abono y Cargos.
+
+                5.- La cajera selecciona la opción deseada.
+
+                6.- El sistema verifica que no existe transacción pendiente de pago de moneygram disponible para iniciarse.
+
+                        6.a.- El sistema identifica que si existe transacción pendiente de pago de moneygram disponible para iniciarse.
+
+                7.- El sistema solicita el número de cliente.
+
+                8.- La cajera introduce el número de cliente.
+
+                        8.a.- La cajera selecciona la opción para obtener el número del cliente mediante el uso de la tarjeta de banda magnética.
+
+                9.- el sistema identifica que se lee la tarjeta.
+
+                        9.a.-El sistema identifica que no se lee la tarjeta.
+
+                10.- El sistema identifica que el número de cliente capturado es de 16 dígitos.
+
+                11.- El sistema manda llamar al caso de uso CU-0021-ConsultarClienteTarjeta.
+
+                12.- El sistema identifica que es un número de cliente registrado.
+
+                        12.a.- El sistema identifica que es un número de Cuenta ETP.
+
+                        12.b.- El sistema identifica que es un número de cliente inválido.
+
+                13.- El sistema muestra el nombre y la puntualidad del cliente.
+
+                14.- El sistema identifica si el cliente tiene alguna situación especial y la despliega en pantalla.
+
+                15.- El sistema manda llamar el caso de uso CU-0002-DesplegarCuentas, muetra las cuentas del cliente y espera a que la cajera ejecute alguna operacion.
+
+                16.- La cajera captura abono a cuenta(s).
+
+                        16.a.- La cajera selecciona la opción de realizar convenios.
+
+                        16.b.- La cajera selecciona la opcion de imprimir recibo.
+
+                        16.c.- La cajera selecciona la opcion de pago de servicios.
+
+                        16.d.- La cajera selecciona la opcion de captura de seguro.
+
+                        16.e.- La cajera selecciona la opcion de cancelar abono.
+
+                        16.f.- La cajera seleccionó la opción captura de abono a plan telefónico.
+
+                        16.g.- La cajera seleccionó la opción de Seguros Club Protección.
+
+                17.- La cajera no desea realizar mas abonos a cuenta(s) y selecciona la opcion para capturar el pago del cliente.
+
+                18.- El sistema muestra la cantidad correspondiente a abonar, el pago del cliente y el cambio.
+
+                19.- La cajera introduce el pago del cliente y el sistema automaticamente muestra su cambio.
+
+                20.- La cajera selecciona la opcion para grabar el abono a cuenta(s).
+
+                21.- El sistema manda registrar los abonos capturados, ver caso de uso CU-0004-RegistrarAbono.
+
+                22.- El sistema identifica que se registraron el/los abonos correctamente.
+
+                        22.a.- El sistema identifica que no se registró el/los abonos.
+
+                23.- El sistema graba el registro único de cajas de el recibo de abono.
+
+                24.- El sistema identifica que no hubo autorización de gerente.
+
+                        24.a.- El sistema identifica que si hubo autorización de gerente.
+
+                25.- El sistema manda llamar al caso de uso CU-0008-MostrarMensajesAfore
+
+                26.- El sistema manda llamar al caso de uso CU-0007-RealizarEncuesta.
+
+                27.- El sistema manda llamar al CU-0001-CapturarDirectorioCliente.
+
+                28.- El sistema checa Mensaje Celular.
+
+                29.- El sistema verifica que el cliente cumple con las condiciones para obtener un prestamo en efectivo.
+
+                        29.a.- El sistema determina que el cliente no cumple con las condiciones para obtener un prestamo en efectivo.
+
+                30.- El sistema muestra mensaje de invitacion para prestamos en efectivo.
+
+                31.- El sistema verificó que sí esta activa la opcion de Invitacion de Bancoppel.
+
+                        31.a.- El sistema verificó que no esta activa la opcion de Invitacion de Bancoppel.
+
+                32.- El sistema verificó que el cliente no es un cliente ETP.
+
+                        32.a.- El sistema verificó que el cliente es un cliente ETP.
+
+                33.- El sistema manda llamar al caso de uso CU-0001-ConsultarCantidadMaxPrestamo.
+
+                        33.a.- El sistema valida que la cantidad a prestar es mayor a cero.
+
+                        33.b.- El sistema valida que la cantidad a prestar no es mayor a cero.
+
+                34.- El sistema manda llamar al caso de uso CU-0001-InvitacionTarjetaBancoppel.
+
+                35.- El sisteam manda llamar al caso de uso CU-0010-MostrarMensajeCrezcaSuHogar.
+
+                36.- El sistema verifica que esta activa la opción de captura de teléfonos en los abonos.
+
+                        36.a.- El sistema verifica que no esta activa la opción de captura de teléfonos en los abonos.
+
+                37.- El sistema manda llamar al caso de uso CU-0001-CapturarTelefono.
+
+                38.- El sistema inicializa la captura de abonos.
+
+                39.- Fin del caso de uso.
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                6.a.- El sistema identifica que si existe transacción pendiente de pago de moneygram disponible para iniciarse.
+
+                        6.a.1.- El sistema envía mensaje de que el operador de crédito está listo para iniciar el diálogo de MoneyGram.
+
+                        6.a.2.- La cajera acepta el mensaje.
+
+                        6.a.3.- El sistema manda llamar al módulo de pagos de moneygram.
+
+                        6.a.4.- El flujo continúa en el paso 7 del flujo básico.
+
+                8.a.- La cajera selecciona la opción para obtener el número del cliente mediante el uso de la tarjeta de banda magnética.
+
+                        8.a.1.- El sistema manda llamar al caso de uso CU-0001-LeerTarjetaCliente.
+
+                        8.a.2.- El flujo continúa en el paso 12 del flujo básico.
+
+                9.a.-El sistema identifica que no se lee la tarjeta.
+
+                        9.a.1.- La cajera canceló la lectura de la tarjeta presionando la tecla ESC.
+
+                        9.a.2.- El flujo continúa en el paso 10 del flujo básico.
+
+                12.a.- El sistema identifica que es un número de Cuenta ETP.
+
+                        12.a.1.- El sistema despliega los datos( saldo, intereses adicionales, base, vencido, minimo, salda con, bonifica)
+                                en ceros en la columna de la cuenta de ropa.
+
+                        12.a.2.- El sistema solicita el número de cliente para el ETP.
+
+                        12.a.3.- La cajera captura el número de cliente para el ETP.
+
+                        12.a.4.- El sistema despliega menu de los tipos de ETP.
+
+                        12.a.5.- La cajera selecciona la opción del tipo de ETP.
+
+                        12.a.6.- El flujo continúa en el paso 14 del flujo básico.
+
+                12.b.- El sistema identifica que es un número de cliente inválido.
+
+                        12.b.1.- El sistema muestra mensaje correspondiente.
+
+                        12.b.2.- La cajera acepta el mensaje.
+
+                        12.b.3.- El flujo continúa en el paso 7 del flujo básico.
+
+                16.a.- La cajera selecciona la opción de realizar convenios.
+
+                        16.a.1.- El sistema verifica que a la cuenta que se le quiere realizar convenio no es de seguro.
+
+                                16.a.1.a.- El sistema verifica que se le quiere realizar convenio a una cuenta de seguro.
+
+                                        16.a.1.a.1.- El sistema manda mensaje de error correspondiente.
+
+                                        16.a.1.a.2.- La cajera acepta el mensaje.
+
+                                        16.a.1.a.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                        16.a.2.- El sistema muestra la opción de los tipos de convenios.
+
+                        16.a.3.- La cajera selecciona una opcion.
+
+                        16.a.4.- El sistema muestra dialogo de captura de convenios.
+
+                        16.a.5.- El sistema solicita el número de empleado poniendo por default el número del que abrio la caja.
+
+                        16.a.6.- La cajera captura el numero de empleado.
+
+                        16.a.7.- El sistema solicita el plazo del convenio.
+
+                        16.a.8.- La cajera captura el plazo del convenio.
+
+                        16.a.9.- El sistema valida correctamente el plazo del convenio.
+
+                                16.a.9.a.- El sistema valida incorrectamente el plazo del convenio.
+
+                                        16.a.9.a.1.- El sistema muestra mensaje de error correspondiente
+
+                                        16.a.9.a.2.- El cajero acepta el mensaje.
+
+                                        16.a.9.a.3.- El flujo continúa en el paso 16.a.7 del flujo alternativo
+
+                        16.a.10.- El sistema solicita el importe del convenio.
+
+                        16.a.11.- La cajera captura el importe del convenio.
+
+                        16.a.12.- El sistema muestra los datos del convenio en la columna de la cuenta a la que se le realizó el convenio.
+
+                        16.a.13.- El flujo continúa en el paso 15 del flujo básico.
+
+                16.b.- La cajera selecciona la opción de imprimir recibo.
+
+                        16.b.1.- El sistema verifica que se capturó algun abono a alguna cuenta del cliente o se realizó un convenio o pago de servicios.
+
+                                16.b.1.a.- El sistema verifica que no se capturó ningún abono a alguna cuenta del cliente o
+                                          no se realizó ningun convenio o pago de servicios.
+
+                                        16.b.1.a.1.- El sistema muestra mensaje de error correspondiente.
+
+                                        16.b.1.a.2.- La cajera acepta el mensaje.
+
+                                        16.b.1.a.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                        16.b.2.- El sistema manda llamar al caso de uso CU-0005-ImprimirReciboAbono.
+
+                        16.b.3.- El flujo continua en el paso 38 del flujo básico.
+
+                16.c.- La cajera selecciona la opcion de pago de servicios.
+
+                        16.c.1.- El sistema manda llamar al CU-0001-MenuPagoServicios.
+
+                        16.c.2.- El flujo continúa en el paso 15 del flujo básico.
+
+                16.d.- La cajera selecciona la opción de captura de seguro.
+
+                        16.d.1.- El sistema verifica que si se encuentra en la columna de la cuenta de seguro.
+
+                                16.d.1.a.- El sistema verificó que no se encuentra en la columna de la cuenta de seguro.
+
+                                        16.d.1.a.1.- El sistema manda mensaje correspondiente.
+
+                                        16.d.1.a.2.- La cajera acepta el mensaje.
+
+                                        16.d.1.a.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                        16.d.2.- El sistema mada llamar al CU-0009-CapturarSeguroCliente.
+
+                        16.d.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                16.e.- La cajera selecciona la opcion de cancelar abono.
+
+                        16.e.1.- El sistema realiza la cancelacion del abono.
+
+                        16.e.2.- El flujo continua en el paso 39 del flujo básico.
+
+                16.f.- La cajera seleccionó la opción captura de abono a plan telefónico.
+
+                        16.f.1.- El sistema verifica que si se encuentra en la columna de la cuenta de plan telefónico.
+
+                                16.f.1.a.- El sistema verifica que no se encuentra en la columna de la cuenta de plan telefónico.
+
+                                        16.f.1.a.1.- El sistema manda el mensaje correspondiente.
+
+                                        16.f.1.a.2.- La cajera acepta el mensaje.
+
+                                        16.f.1.a.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                        16.f.2.- El sistema manda llamar al CU-0001-RealizarAbonoPlan.
+
+                        16.f.3.- El flujo continúa en el paso 15 del flujo básico.
+
+                16.g.- La cajera seleccionó la opción de Seguros Club Protección.
+
+                        16.g.1.- El sistema manda llamar al CU-0012-MostrarMenuSeguroClub.
+
+                        16.g.2.- El flujo continúa en el paso 15 del flujo básico.
+
+                22.a.- El sistema identifica que no se registró el/los abonos.
+
+                        22.a.1.- El flujo continua en el paso 39 del flujo básico.
+
+                24.a.- El sistema identifica que si hubo autorización de gerente.
+
+                        24.a.1.- El sistema graba en la tabla de autorizaciones de gerentes.
+
+                        24.a.2.- El flujo continua en el paso 25 del flujo básico.
+
+                29.a.- El sistema determina que el cliente no cumple con las condiciones para obtener un prestamo en efectivo.
+
+                        29.a.1.- El flujo continua en el paso 31 del flujo básico.
+
+                31.a.- El sistema verificó que no esta activa la opcion de Invitacion de Bancoppel.
+
+                        31.a.1.- El flujo continua en el paso 35 del flujo basico.
+
+                32.a.- El sistema verificó que el cliente es un cliente ETP.
+
+                        32.a.1.- El flujo continúa en el paso 35 del flujo básico.
+
+                33.a.- El sistema valida que la cantidad a prestar es mayor a cero.
+
+                        33.a.1.- El sistema muestra mensaje de invitacion para disponer de un prestamo.
+
+                        33.a.2.- El flujo continúa en el paso 34 del flujo básico.
+
+                33.b.- El sistema valida que la cantidad a prestar no es mayor a cero.
+
+                        33.b.1.- El sistema muestra mensaje correspondiente.
+
+                        33.b.2.- El flujo continua en el paso 33 del flujo básico.
+
+                36.a.- El sistema verifica que no esta activa la opción de captura de teléfonos en los abonos.
+
+                        36.a.1.- El flujo continúa en el paso 39 del flujo básico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: Se deberá identificar como ETP cuando se teclee en el número de cliente 1708.
+   Interfaz de Usuario: CA0030-0001-CapturarAbono.
+   Asociaciones:
+		Asociaciones de Extensión:
+                    CU-0008-MostrarMensajesAfore            CU-0001-InvitacionTarjetaBancoppel          CU-0021-ConsultarClienteTarjeta
+                    CU-0009-CapturarSeguroCliente           CU-0001-MenuPagoServicios
+                    CU-0001-RealizarAbonoPlan               CU-0001-CapturarTelefono
+                    CU-0012-MostrarMenuSeguroClub           CU-0001-LeerTarjetaCliente.
+                Asociaciones de Inclusión:
+                    CU-0002-DesplegarCuentas                CU-0004-RegistrarAbono
+                    CU-0001-CapturarDirectorioCliente       CU-0007-RealizarEncuesta
+                    CU-0005-ImprimirReciboAbono             CU-0010-MostrarMensajeCrezcaSuHogar.
+                    CU-0001-ConsultarCantidadMaxPrestamo
+
+           	Caso de Uso donde se Incluye: No aplica.
+           	Caso de Uso al que Extiende: No aplica.
+
+   Observaciones:
+        ETP.- Son los clientes que abonan a cuentas perdidas o futuras cuentas que vayan a tener.
+
+   Autor: Jesús Alvaro Lazcano Guzmán
+   Fecha de Creación: 2008-04-03
+

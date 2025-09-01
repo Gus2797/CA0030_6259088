@@ -1,0 +1,374 @@
+#include "CGRABARCRCARMOVX.HPP"
+CGrabarCrCarmovX::CGrabarCrCarmovX(C_ODBC *odbc_ext, bool bFlagCommit, const char *select) : CRecordSet(odbc_ext),bFlagCommit(bFlagCommit)
+{
+	CGrabarCrCarmovX::bFlagCommit = bFlagCommit;
+    odbc = odbc_ext;
+    nCols=79;
+    odbcRet=TRUE;
+    flagInsertar = 0;
+    nSqlTipo[0] = SQL_CHAR;
+    nSqlTipo[1] = SQL_CHAR;
+    nSqlTipo[2] = SQL_SMALLINT;
+    nSqlTipo[3] = SQL_SMALLINT;
+    nSqlTipo[4] = SQL_INTEGER;
+    nSqlTipo[5] = SQL_INTEGER;
+    nSqlTipo[6] = SQL_SMALLINT;
+    nSqlTipo[7] = SQL_INTEGER;
+    nSqlTipo[8] = SQL_INTEGER;
+    nSqlTipo[9] = SQL_INTEGER;
+    nSqlTipo[10] = SQL_INTEGER;
+    nSqlTipo[11] = SQL_INTEGER;
+    nSqlTipo[12] = SQL_INTEGER;
+    nSqlTipo[13] = SQL_INTEGER;
+    nSqlTipo[14] = SQL_INTEGER;
+    nSqlTipo[15] = SQL_INTEGER;
+    nSqlTipo[16] = SQL_VARCHAR;
+    nSqlTipo[17] = SQL_INTEGER;
+    nSqlTipo[18] = SQL_CHAR;
+    nSqlTipo[19] = SQL_CHAR;
+    nSqlTipo[20] = SQL_SMALLINT;
+    nSqlTipo[21] = SQL_CHAR;
+    nSqlTipo[22] = SQL_CHAR;
+    nSqlTipo[23] = SQL_CHAR;
+    nSqlTipo[24] = SQL_CHAR;
+    nSqlTipo[25] = SQL_CHAR;
+    nSqlTipo[26] = SQL_CHAR;
+    nSqlTipo[27] = SQL_CHAR;
+    nSqlTipo[28] = SQL_CHAR;
+    nSqlTipo[29] = SQL_CHAR;
+    nSqlTipo[30] = SQL_CHAR;
+    nSqlTipo[31] = SQL_CHAR;
+    nSqlTipo[32] = SQL_SMALLINT;
+    nSqlTipo[33] = SQL_SMALLINT;
+    nSqlTipo[34] = SQL_SMALLINT;
+    nSqlTipo[35] = SQL_SMALLINT;
+    nSqlTipo[36] = SQL_INTEGER;
+    nSqlTipo[37] = SQL_SMALLINT;
+    nSqlTipo[38] = SQL_VARCHAR;
+    nSqlTipo[39] = SQL_SMALLINT;
+    nSqlTipo[40] = SQL_CHAR;
+    nSqlTipo[41] = SQL_CHAR;
+    nSqlTipo[42] = SQL_VARCHAR;
+    nSqlTipo[43] = SQL_CHAR;
+    nSqlTipo[44] = SQL_CHAR;
+    nSqlTipo[45] = SQL_SMALLINT;
+    nSqlTipo[46] = SQL_INTEGER;
+    nSqlTipo[47] = SQL_INTEGER;
+    nSqlTipo[48] = SQL_INTEGER;
+    nSqlTipo[49] = SQL_CHAR;
+    nSqlTipo[50] = SQL_INTEGER;
+    nSqlTipo[51] = SQL_CHAR;
+    nSqlTipo[52] = SQL_INTEGER;
+    nSqlTipo[53] = SQL_INTEGER;
+    nSqlTipo[54] = SQL_CHAR;
+    nSqlTipo[55] = SQL_INTEGER;
+    nSqlTipo[56] = SQL_BIGINT;
+    nSqlTipo[57] = SQL_CHAR;
+    nSqlTipo[58] = SQL_CHAR;
+    nSqlTipo[59] = SQL_CHAR;
+    nSqlTipo[60] = SQL_VARCHAR;
+    nSqlTipo[61] = SQL_VARCHAR;
+    nSqlTipo[62] = SQL_VARCHAR;
+    nSqlTipo[63] = SQL_INTEGER;
+    nSqlTipo[64] = SQL_SMALLINT;
+    nSqlTipo[65] = SQL_BIGINT;
+    nSqlTipo[66] = SQL_CHAR;
+    nSqlTipo[67] = SQL_CHAR;
+    nSqlTipo[68] = SQL_INTEGER;
+    nSqlTipo[69] = SQL_INTEGER;
+    nSqlTipo[70] = SQL_INTEGER;
+    nSqlTipo[71] = SQL_SMALLINT;
+    nSqlTipo[72] = SQL_CHAR;
+    nSqlTipo[73] = SQL_CHAR;
+	nSqlTipo[74] = SQL_BIGINT;
+	nSqlTipo[75] = SQL_BIGINT;
+	nSqlTipo[76] = SQL_SMALLINT;
+	nSqlTipo[77] = SQL_SMALLINT;
+	nSqlTipo[78] = SQL_VARCHAR;
+   
+    nCTipo[0] = SQL_C_CHAR;
+    nCTipo[1] = SQL_C_CHAR;
+    nCTipo[2] = SQL_C_SSHORT;
+    nCTipo[3] = SQL_C_SSHORT;
+    nCTipo[4] = SQL_C_SLONG;
+    nCTipo[5] = SQL_C_SLONG;
+    nCTipo[6] = SQL_C_SSHORT;
+    nCTipo[7] = SQL_C_SLONG;
+    nCTipo[8] = SQL_C_SLONG;
+    nCTipo[9] = SQL_C_SLONG;
+    nCTipo[10] = SQL_C_SLONG;
+    nCTipo[11] = SQL_C_SLONG;
+    nCTipo[12] = SQL_C_SLONG;
+    nCTipo[13] = SQL_C_SLONG;
+    nCTipo[14] = SQL_C_SLONG;
+    nCTipo[15] = SQL_C_SLONG;
+    nCTipo[16] = SQL_C_CHAR;
+    nCTipo[17] = SQL_C_SLONG;
+    nCTipo[18] = SQL_C_CHAR;
+    nCTipo[19] = SQL_C_CHAR;
+    nCTipo[20] = SQL_C_SSHORT;
+    nCTipo[21] = SQL_C_CHAR;
+    nCTipo[22] = SQL_C_CHAR;
+    nCTipo[23] = SQL_C_CHAR;
+    nCTipo[24] = SQL_C_CHAR;
+    nCTipo[25] = SQL_C_CHAR;
+    nCTipo[26] = SQL_C_CHAR;
+    nCTipo[27] = SQL_C_CHAR;
+    nCTipo[28] = SQL_C_CHAR;
+    nCTipo[29] = SQL_C_CHAR;
+    nCTipo[30] = SQL_C_CHAR;
+    nCTipo[31] = SQL_C_CHAR;
+    nCTipo[32] = SQL_C_SSHORT;
+    nCTipo[33] = SQL_C_SSHORT;
+    nCTipo[34] = SQL_C_SSHORT;
+    nCTipo[35] = SQL_C_SSHORT;
+    nCTipo[36] = SQL_C_SLONG;
+    nCTipo[37] = SQL_C_SSHORT;
+    nCTipo[38] = SQL_C_CHAR;
+    nCTipo[39] = SQL_C_SSHORT;
+    nCTipo[40] = SQL_C_CHAR;
+    nCTipo[41] = SQL_C_CHAR;
+    nCTipo[42] = SQL_C_CHAR;
+    nCTipo[43] = SQL_C_CHAR;
+    nCTipo[44] = SQL_C_CHAR;
+    nCTipo[45] = SQL_C_SSHORT;
+    nCTipo[46] = SQL_C_SLONG;
+    nCTipo[47] = SQL_C_SLONG;
+    nCTipo[48] = SQL_C_SLONG;
+    nCTipo[49] = SQL_C_CHAR;
+    nCTipo[50] = SQL_C_SLONG;
+    nCTipo[51] = SQL_C_CHAR;
+    nCTipo[52] = SQL_C_SLONG;
+    nCTipo[53] = SQL_C_SLONG;
+    nCTipo[54] = SQL_C_CHAR;
+    nCTipo[55] = SQL_C_SLONG;
+    nCTipo[56] = SQL_C_SBIGINT;
+    nCTipo[57] = SQL_C_CHAR;
+    nCTipo[58] = SQL_C_CHAR;
+    nCTipo[59] = SQL_C_CHAR;
+    nCTipo[60] = SQL_C_CHAR;
+    nCTipo[61] = SQL_C_CHAR;
+    nCTipo[62] = SQL_C_CHAR;
+    nCTipo[63] = SQL_C_SLONG;
+    nCTipo[64] = SQL_C_SSHORT;
+    nCTipo[65] = SQL_C_SBIGINT;
+    nCTipo[66] = SQL_C_CHAR;
+    nCTipo[67] = SQL_C_CHAR;
+    nCTipo[68] = SQL_C_SLONG;
+    nCTipo[69] = SQL_C_SLONG;
+    nCTipo[70] = SQL_C_SLONG;
+    nCTipo[71] = SQL_C_SSHORT;
+    nCTipo[72] = SQL_C_CHAR;
+    nCTipo[73] = SQL_C_CHAR;
+	nCTipo[74] = SQL_C_SBIGINT;
+	nCTipo[75] = SQL_C_SBIGINT;
+	nCTipo[76] = SQL_C_SSHORT;
+	nCTipo[77] = SQL_C_SSHORT;
+	nCTipo[78] = SQL_C_CHAR;
+ 
+    nLongitud[0] = 3;
+    nLongitud[1] = 3;
+    nLongitud[2] = 3;
+    nLongitud[3] = 3;
+    nLongitud[4] = 5;
+    nLongitud[5] = 5;
+    nLongitud[6] = 3;
+    nLongitud[7] = 5;
+    nLongitud[8] = 5;
+    nLongitud[9] = 5;
+    nLongitud[10] = 5;
+    nLongitud[11] = 5;
+    nLongitud[12] = 5;
+    nLongitud[13] = 5;
+    nLongitud[14] = 5;
+    nLongitud[15] = 5;
+    nLongitud[16] = 107;
+    nLongitud[17] = 5;
+    nLongitud[18] = 3;
+    nLongitud[19] = 3;
+    nLongitud[20] = 3;
+    nLongitud[21] = 3;
+    nLongitud[22] = 3;
+    nLongitud[23] = 3;
+    nLongitud[24] = 3;
+    nLongitud[25] = 3;
+    nLongitud[26] = 3;
+    nLongitud[27] = 3;
+    nLongitud[28] = 3;
+    nLongitud[29] = 3;
+    nLongitud[30] = 3;
+    nLongitud[31] = 3;
+    nLongitud[32] = 3;
+    nLongitud[33] = 3;
+    nLongitud[34] = 3;
+    nLongitud[35] = 3;
+    nLongitud[36] = 5;
+    nLongitud[37] = 3;
+    nLongitud[38] = 107;
+    nLongitud[39] = 3;
+    nLongitud[40] = 3;
+    nLongitud[41] = 3;
+    nLongitud[42] = 107;
+    nLongitud[43] = 4;
+    nLongitud[44] = 4;
+    nLongitud[45] = 3;
+    nLongitud[46] = 5;
+    nLongitud[47] = 5;
+    nLongitud[48] = 5;
+    nLongitud[49] = 3;
+    nLongitud[50] = 5;
+    nLongitud[51] = 3;
+    nLongitud[52] = 5;
+    nLongitud[53] = 5;
+    nLongitud[54] = 22;
+    nLongitud[55] = 5;
+    nLongitud[56] = 9;
+    nLongitud[57] = 3;
+    nLongitud[58] = 24;
+    nLongitud[59] = 17;
+    nLongitud[60] = 107;
+    nLongitud[61] = 107;
+    nLongitud[62] = 107;
+    nLongitud[63] = 5;
+    nLongitud[64] = 3;
+    nLongitud[65] = 9;
+    nLongitud[66] = 14;
+    nLongitud[67] = 3;
+    nLongitud[68] = 5;
+    nLongitud[69] = 5;
+    nLongitud[70] = 5;
+    nLongitud[71] = 3;
+    nLongitud[72] = 11;
+    nLongitud[73] = 17;
+	nLongitud[74] = 9;
+	nLongitud[75] = 9;
+	nLongitud[76] = 3;
+	nLongitud[77] = 3;
+	nLongitud[78] = 107;
+    pVar[0] =  clave;
+    pVar[1] =  tipomovimiento;
+    pVar[2] = &tienda;
+    pVar[3] = &ciudad;
+    pVar[4] = &cliente;
+    pVar[5] = &clienteetp;
+    pVar[6] = &caja;
+    pVar[7] = &recibo;
+    pVar[8] = &factura;
+    pVar[9] = &importe;
+    pVar[10] = &saldoinicial;
+    pVar[11] = &saldofinal;
+    pVar[12] = &saldocuenta;
+    pVar[13] = &vencidoinicial;
+    pVar[14] = &minimoinicial;
+    pVar[15] = &base;
+    pVar[16] = &fechasaldacon;
+    pVar[17] = &importesaldacon;
+    pVar[18] =  tipoconvenio;
+    pVar[19] =  subtipoconvenio;
+    pVar[20] = &plazoconvenio;
+    pVar[21] =  ejercicio;
+    pVar[22] =  clavetdaocob;
+    pVar[23] =  grabacartera;
+    pVar[24] =  anexo;
+    pVar[25] =  clavelocal;
+    pVar[26] =  clientelocalizar;
+    pVar[27] =  tiposeguro;
+    pVar[28] =  flagseguroconyugal;
+    pVar[29] =  movtoseguro;
+    pVar[30] =  flagmontoseguro;
+    pVar[31] =  statusseguro;
+    pVar[32] = &causabaja;
+    pVar[33] = &cantidadseguros;
+    pVar[34] = &cantidadsegurosanterior;
+    pVar[35] = &cantidadmeses;
+    pVar[36] = &bonificacion;
+    pVar[37] = &mesesvencidos;
+    pVar[38] = &fechanacimiento;
+    pVar[39] = &edad;
+    pVar[40] =  sexo;
+    pVar[41] =  areaajuste;
+    pVar[42] = &fechaabonoajuste;
+    pVar[43] =  claveajuste;
+    pVar[44] =  ajuste;
+    pVar[45] = &tiendaorigen;
+    pVar[46] = &numerocontrol;
+    pVar[47] = &comision;
+    pVar[48] = &clienteremitente;
+    pVar[49] =  tipogastoviaje;
+    pVar[50] = &centro;
+    pVar[51] =  flagincluyerecibo;
+    pVar[52] = &ruta;
+    pVar[53] = &folio;
+    pVar[54] =  cuenta;
+    pVar[55] = &iva;
+    pVar[56] = &telefono;
+    pVar[57] =  compania;
+    pVar[58] =  contrato;
+    pVar[59] =  credito;
+    pVar[60] = &fechavencimiento;
+    pVar[61] = &fechavencimientoanterior;
+    pVar[62] = &fecha;
+    pVar[63] = &efectuo;
+    pVar[64] = &cajaoriginal;
+    pVar[65] = &foliotienda;
+    pVar[66] =  rpu;
+    pVar[67] =  flagmovtosupervisor;
+    pVar[68] = &interes;
+    pVar[69] = &importeventa;
+    pVar[70] = &folioanterior;
+    pVar[71] = &digito;
+    pVar[72] =  sac;
+    pVar[73] =  ipcarteracliente;
+	pVar[74] = &fol_sucursal;
+	pVar[75] = &num_cliente;
+	pVar[76] = &num_movimiento;
+	pVar[77] = &clv_statusmovimiento;
+	pVar[78] = &fechadocumento;
+                                                                  
+    if (select != NULL)
+    {
+        odbcRet = Exec(select);
+        activarCols();
+    }                                                              
+}
+    
+    
+CGrabarCrCarmovX::~CGrabarCrCarmovX()
+{
+    if( bFlagCommit == true )
+	{
+		Commit();
+	}
+}
+    
+void CGrabarCrCarmovX::activarCols()
+{
+    int i;
+    for (i=0; i<nCols; i++)                                                              
+    {                                                              
+        Activar(i, nCTipo[i], pVar[i], nLongitud[i], &nLongResp[i]);
+    }                                                              
+    flagInsertar=1;
+}
+ 
+BOOL CGrabarCrCarmovX::prepararInsert()
+{
+BOOL retorno = FALSE;
+    retorno=prepararInsert("cacarmov");
+    return (retorno);
+}
+BOOL CGrabarCrCarmovX::prepararInsert(const char *nombreTabla)
+{
+BOOL retorno = FALSE;
+int i;
+CString sqlTxtInsert;
+                                                                  
+    if (flagInsertar==0) activarCols();
+   sqlTxtInsert.Format("INSERT INTO %s (clave, tipomovimiento, tienda, ciudad, cliente, clienteetp, caja, recibo, factura, importe, saldoinicial, saldofinal, saldocuenta, vencidoinicial, minimoinicial, base, fechasaldacon, importesaldacon, tipoconvenio, subtipoconvenio, plazoconvenio, ejercicio, clavetdaocob, grabacartera, anexo, clavelocal, clientelocalizar, tiposeguro, flagseguroconyugal, movtoseguro, flagmontoseguro, statusseguro, causabaja, cantidadseguros, cantidadsegurosanterior, cantidadmeses, bonificacion, mesesvencidos, fechanacimiento, edad, sexo, areaajuste, fechaabonoajuste, claveajuste, ajuste, tiendaorigen, numerocontrol, comision, clienteremitente, tipogastoviaje, centro, flagincluyerecibo, ruta, folio, cuenta, iva, telefono, compania, contrato, credito, fechavencimiento, fechavencimientoanterior, fecha, efectuo, cajaoriginal, foliotienda, rpu, flagmovtosupervisor, interes, importeventa, folioanterior, digito, sac, ipcarteracliente, fol_sucursal, num_cliente, num_movimiento, clv_statusmovimiento, fechadocumento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",nombreTabla);
+    retorno = CRecordSet::PrepararInsert(sqlTxtInsert);
+    for (i=0; i<nCols; i++)                                                              
+    {                                                              
+        ActivarInsert(i, nCTipo[i], nSqlTipo[i], pVar[i], nLongitud[i], &nLongResp[i]);
+    }                                                              
+    return (retorno);                                                              
+}

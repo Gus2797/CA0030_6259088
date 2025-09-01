@@ -1,0 +1,51 @@
+
+   Nombre de Caso de Uso: CU-0003-IdentificarTipoPago
+   Paquete: CapturarAbono.                           Iteración: 1
+   Prioridad:  Esencial                              Complejidad:  Complejo
+   Tipo de Caso de Uso:  Abstracto.
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Sistema de Cajas de Abono / Se encarga de buscar el cliente en la cartera.
+
+
+   Objetivo:   Saber el proceso de como se despliegan las cuentas del cliente.
+   __________________________________________________________________________________________
+   Precondiciones: El cajero se identifica y Autentica.
+   Post-Condiciones: Se registra el abono, se actualiza el saldo del cliente y su situación.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando el sistema identifica la opción de imprimir recibo de abono.
+
+                2.- El sistema despliega la cantidad total a pagar.
+
+                3.- El cajero pide la forma de pago.
+
+                4.- El cajero captura el pago del cliente.
+
+                5.- Fin de caso de uso.
+
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario: 0001-CapturarAbono
+   Asociaciones: <Asociaciones>
+                   Asociaciones de Extensión:
+                   Asociaciones de Inclusión:
+                   Caso de Uso donde se Incluye:
+                   Caso de Uso al que Extiende:
+                   Caso de Uso de Generalización:
+
+
+
+   Observaciones:
+   Autor:Ana Beatríz Bastidas Félix.
+
+   Fecha de Creación: 2007-10-15
+

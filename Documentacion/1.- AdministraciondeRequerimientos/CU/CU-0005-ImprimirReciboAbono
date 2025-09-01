@@ -1,0 +1,199 @@
+
+   Nombre del Caso de Uso: CU-0005-ImprimirReciboAbono.
+   Paquete: CapturarAbono.
+   Ciclo de Vida: Cascada                            Iteración: 1
+   Prioridad: Esencial                               Complejidad: Complejo
+   Tipo de Caso de Uso: Concreto
+   Versión: 20080402.1028
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Sistema de cajas de Abono / Se encarga de formar la impresión del recibo de abono.
+               Secundario: Impresora / Se encarga de imprimir el recibo de abono.
+
+
+   Objetivo:   Realizar la impresion del recibo de abonos.
+   __________________________________________________________________________________________
+
+   Precondiciones: El cajero se identifica y Autentica.
+   Post-Condiciones: Se registra el abono, se actualiza el saldo del cliente y su situación.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando el sistema requiere imprimir el recibo de abono.
+
+                2.- El sistema identifica si hay que imprimir la documentación del seguro de vida.
+
+                        2.a.- El sistema identificó que si hay que imprimir la documentacion del seguro de vida
+
+                        2.b.- El sistema identificó que no hay que imprimir la documentacion del seguro de vida
+
+                3.- El sistema verifica si la tienda esta trabajando como tienda local.
+
+                        3.a.- El sistema verificó que la tienda si esta trabajando como local.
+
+                        3.b.- El sistema verificó que la tienda no esta trabajando como local.
+
+                4.- El sistema identifica el mensaje a imprimir para el cliente del recibo de abono segun sea su puntualidad y estado de las cuentas
+                    e imprime dicho mensaje.
+
+                5.- El sistema imprime las leyendas( TOTALES, ENTREGO, SU CAMBIO ) en el recibo del abono.
+
+                6.- El sistema imprime la cantidad con la que pago el cliente, el total a pagar del abono del cliente y el cambio del cliente.
+
+                7.- El sistema imprime el numero y nombre del cliente en el recibo del abono.
+
+                8.- El sistema imprime la fecha actual, el numero de tienda, número de caja, número de recibo, el telefono de la tienda.
+
+                9.- El sistema verifica si el sorteo esta activo.
+
+                        9.a.- El sistema verificó que el sorteo si esta activo.
+
+                        9.b.- El sistema verificó que el sorteo no esta activo.
+
+                10.- El sistema identifica si se generó un cupón de dinero electrónico
+
+                        10.a.- El sistema identificó que si se generó un cupon de dinero electrónico
+
+                        10.b.- El sistema identificó que no se generó un cupon de dinero electrónico
+
+                11.- El sistema verifica si la tienda tiene estacionamiento.
+
+                        11.a.- El sistema verificó que la tienda si tiene estacionamiento.
+
+                        11.b.- El sistema verificó que la tienda no tiene estacionamiento.
+
+                12.- El sistema verifica si a la cuenta a imprimir se le capturó convenio.
+
+                        12.a.- El sistema verificó que la cuenta a imprimir sí se le capturó convenio.
+
+                        12.b.- El sistema verificó que la cuenta a imprimir no se le capturó convenio.
+
+                13.- El sistema graba la imagen del recibo de abono.
+
+                14.- Fin del caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo.
+
+                2.a.- El sistema identificó que si hay que imprimir la documentacion del seguro de vida
+
+                        2.a.1.- El sistema manda llamar al CU-0010-ImprimirPolizaSeguroClub.
+
+                        2.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                2.b.- El sistema identificó que no hay que imprimir la documentacion del seguro de vida
+
+                        2.b.1.- El flujo continúa en el paso 3 del flujo básico.
+
+                3.a.- El sistema verificó que la tienda si esta trabajando como local.
+
+                        3.a.1.- El sistema imprime los datos( Articulo, Fecha de compra, factura numero, usted debia, Abono a cuenta, Abono a intereses,
+                                Usted debe hoy, Atrasado  ) de las cuentas del cliente.
+
+                        3.a.2.- El sistema imprime los datos de los totales( Usted debia total, Abono a cuenta total, Abono a intereses total, Usted debe hoy total,
+                                Atrasado total ) en el recibo del abono.
+
+                        3.a.3.- El sistema imprime la leyenda "LA CARTERA ESTA ACTUALIZADA A LA FECHA          "
+
+                        3.a.4.- El sistema imprime la fecha de corte de la cartera en el recibo de abono.
+
+                        3.a.5.- El flujo continúa en el paso 4 del flujo básico.
+
+                3.b.- El sistema verificó que la tienda no esta trabajando como local.
+
+                        3.b.1.- El sistema imprime los datos( Articulo, Fecha de compra, factura numero, usted debia, Abono a cuenta, Abono a intereses,
+                                Usted debe hoy, Atrasado, Salda con, Fecha Salda con ) de las cuentas del cliente.
+
+                        3.b.2.- El sistema imprime los datos de los totales( Usted debia total, Abono a cuenta total, Abono a intereses total, Usted debe hoy total,
+                                Atrasado total, Salda Con total) en el recibo del abono.
+
+                        3.b.3.- El flujo continúa en el paso 4 del flujo básico.
+
+                9.a.- El sistema verificó que el sorteo si esta activo.
+
+                        9.a.1.- El sistema verifica si el importe del abono amerita boletos del sorteo
+
+                                9.a.1.a.- El sistema verificó que el importe del abono si amerita boletos del sorteo
+
+                                        9.a.1.a.1.- El sistema manda llamar al CU-0001-Boletos.
+
+                                        9.a.1.a.2.- El sistema obtiene la cantidad de boletos a entregar del caso de uso anterior.
+
+                                        9.a.1.a.3.- El sistema presenta en el recibo de abono la leyenda "USTED TIENE DERECHO A
+                                                     BOLETOS,PASE MAS TARDE AL AREA DE CAJAS A RECOGERLOS ANTES DEL         ."
+
+                                        9.a.1.a.4.- El sistema imprime la cantidad de boletos a entregar y la fecha limite para reclamarlos en el recibo de abonos.
+
+                                        9.a.1.a.5.- El flujo continúa en el paso 10 del flujo básico.
+
+                                9.a.1.b.- El sistema verificó que el importe del abono no amerita boletos del sorteo
+
+                                        9.a.1.b.1.- El flujo continúa en el paso 10 del flujo básico.
+
+                9.b.- El sistema verificó que el sorteo no esta activo.
+
+                        9.b.1.- El flujo continúa en el paso 10 del flujo básico.
+
+                10.a.- El sistema identificó que si se generó un cupon de dinero electrónico
+
+                        10.a.1.- El sistema imprime las leyendas:
+                                 "COPPEL LE REGALA $%ld EN DINERO ELECTRONICO"
+                                 "COPPEL PREMIA A SUS CLIENTES PUNTUALES, POR ELLO AL SALDAR SU CUENTA COPPEL LE REGALA DINERO ELECTRONICO."
+                                 "UTILICE HOY MISMO SU DINERO ELECTRONICO Y COMPRE ROPA, ZAPATOS Y MUEBLES"
+                                 "DE CREDITO O DE CONTADO EN CUALQUIER TIENDA COPPEL O ZAPATERIA COPPEL CANADA"
+                                 "FECHA LIMITE DE CANJE:       ­RECUERDE QUE ES ACUMULABLE!"
+                                 "NO ES VALIDO PARA ABONAR O PAGAR SERVICIOS. NO HAY DEVOLUCIONES DE EFECTIVO"
+
+                        10.a.2.- El flujo continúa en el paso 11 del flujo básico.
+
+                10.b.- El sistema identificó que no se generó un cupon de dinero electrónico
+
+                        10.b.1.- El flujo continúa en el paso 11 del flujo básico.
+
+                11.a.- El sistema verificó que la tienda si tiene estacionamiento.
+
+                        11.a.1.- El sistema imprime la leyenda "ESTACIONAMIENTO EXCLUSIVO PARA CLIENTES."
+
+                        11.a.2.- El flujo continúa en el paso 12 del flujo básico,
+
+                11.b.- El sistema verificó que la tienda no tiene estacionamiento.
+
+                        11.b.1.- El flujo continúa en el paso 12 del flujo básico,
+
+                12.a.- El sistema verificó que la cuenta a imprimir sí se le capturó convenio.
+
+                        12.a.1.- El sistema verifica el tipo de convenio que se le hizo a la cuenta.
+
+                                12.a.1.a.- El sistema verificó que el convenio es único
+
+                                        12.a.1.a.1.- El sistema imprime mensaje: "USTED PROMETE PAGAR $  DENTRO DE  DIAS" en el recibo de abonos.
+
+                                        12.a.1.a.2.- El flujo continúa en el paso 13 del flujo básico.
+
+                                12.a.1.b.- El sistema verificó que el convenio es de palabra.
+
+                                        12.a.1.b.1.- El sistema imprime mensaje: "LE RECORDAMOS PAGAR $  DENTRO DE  DIAS" en el recibo de abonos.
+
+                                        12.a.1.b.2.- El flujo continúa en el paso 13 del flujo básico.
+
+                12.b.- El sistema verificó que la cuenta a imprimir no se le capturó convenio.
+
+                        12.b.1.- El flujo continúa en el paso 13 del flujo básico.
+
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: No aplica.
+   Asociaciones:
+         Asociaciones de Extensión: CU-0001-Boletos, CU-0010-ImprimirPolizaSeguroClub
+         Asociaciones de Inclusión: No aplica.
+         Caso de Uso donde se Incluye: CU-0001-RealizarAbono
+         Caso de Uso al que Extiende: No aplica.
+         Caso de Uso de Generalización: No aplica.
+
+   Observaciones: No aplica.
+   Autor: Jesús Alvaro Lazcano Guzmán
+
+   Fecha de Creación: 2008-04-02
+

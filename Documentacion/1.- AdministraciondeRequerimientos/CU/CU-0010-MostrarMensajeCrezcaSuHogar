@@ -1,0 +1,112 @@
+
+   Nombre del Caso de Uso: CU-0010-MostrarMensajeCrezcaSuHogar   Paquete: CapturarAbono
+   Ciclo de Vida:Cascada                               Iteración: No aplica
+   Prioridad: Deseable                                 Complejidad: Compleja.
+   Tipo de Caso de Uso: Abstracto
+   Versión: 20080516.10.25
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Elije una de las opción presentadas en el mensaje.
+               Secundario: Sistema  / identifica cliente candidato y presentar el mensaje.
+
+   Objetivo:   Identificar al cliente candidato para ofrecer el prestamo para mejorar su vivienda.
+   ___________________________________________________________________________________________
+   Precondiciones:
+                       1.- El Sistema se encuentra capturando abono.
+
+   Post-Condiciones:
+                       1.- El sistema presenta mensaje a cliente candidato.
+                       2.- El Cajero elije aceptar y pide a cliente pasar a clientes nuevos.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se estan realizando abonos.
+
+                2.- El sistema identifica Cliente con puntualidad 'A'.
+
+                        2.a.- El sistema identifica Cliente con puntualidad diferente de 'A'
+
+                3.- El sistema identifica que el cliente no tiene situación especial o que la situacion especial es 'G'
+
+                        3.a.- El sistema identifica que cliente tiene situacion especial y esta es diferente de 'G'.
+
+                4.- El sistema identifica cliente sin saldo vencido.
+
+                        4.a.- El sistema identifica cliente con saldo vencido.
+
+                5.- El sistema identifica cliente con edad entre 18 y 70 años.
+
+                        5.a.- El sistema identifica cliente menor de 18 años o mayor de 70.
+
+                6.- El sistema identifica a cliente con margen de credito disponible mayor o igual de $3,000
+
+                        6.a.- El sistema identifica que cliente tiene margen de credito menor de $3,000.
+
+                7.- El sistema optiene el margen de credito.
+
+                8.- El sistema calcula el subsidio.
+
+                9.- El sistema calcula el valor del proyecto (apoyo del gobierno federal).
+
+                10.- El sistema calcula el enganche.
+
+                11.- El sistema calcula las mensualidades (a 24 meses).
+
+                12.- El sistema presenta el mensaje.
+
+                13.- El cajero elije la opcion de Aceptar el mensaje.
+
+                        13.a.- El cajero elije NO acepta el mensaje.
+
+                        13.b.- El sistema elije la opcion de No es titular.
+
+                14.- El sistema registra que cajero a aceptado mensaje.
+
+                15.- Fin del caso de Uso.
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+                2.a.- El sistema identifica Cliente con puntualidad diferente de 'A'
+
+                        2.a.1.- El flujo continua en el paso 15 (Fin de caso de uso) del flujo básico.
+
+                3.a.- El sistema identifica que cliente tiene situacion especial y esta es diferente de 'G'.
+
+                        3.a.1.- El flujo continua en el paso 15 (fin del caso de uso) del flujo Básico.
+
+                4.a.- El sistema identifica cliente con saldo vencido.
+
+                        4.a.1.- El flujo continua en el paso 15 (fin del caso de uso) del flujo básico.
+
+                5.a.- El sistema identifica cliente menor de 18 años o mayor de 70.
+
+                        5.a.1.- El flujo continua en el paso 15 (fin del caso de uso) del flujo básico.
+
+                6.a.- El sistema identifica que cliente tiene margen de credito menor de $3,000.
+
+                        6.a.1.- El flujo continua en el paso 15 (fin del caso de uso) del flujo básico.
+
+                13.a.- El cajero elije NO acepta el mensaje.
+
+                        13.a.1.- El sistema desactiva el mensaje para el cliente por 6 meses.
+
+                        13.a.2.- El sistema continua en el paso 15 (fin del caso de uso) del flujo básico.
+
+                13.b.- El sistema elije la opcion de No es titular.
+
+                        13.b.1.- El flujo continua en el paso 15 (fin del caso de uso) del flujo básico.
+
+     (*)
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:
+   Interfaz de Usuario:
+   Asociaciones: <Asociaciones>
+                   Asociaciones de Extensión:
+                   Asociaciones de Inclusión:
+                   Caso de Uso donde se Incluye:
+                   Caso de Uso al que Extiende:
+                   Caso de Uso de Generalización:
+
+   Observaciones: El cajero elije opcion No es titular cuando el cliente que esta realizando el abono no es el titular del credito.
+   Autor: Elba Mariana Hernández Pérez.
+   Fecha de Creación: 2008/05/16

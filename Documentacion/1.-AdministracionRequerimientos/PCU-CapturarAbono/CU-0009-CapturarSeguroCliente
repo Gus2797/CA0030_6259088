@@ -1,0 +1,130 @@
+   Nombre del Caso de Uso: CU-0009-CapturarSeguroCliente.
+   Paquete: PCU-CapturarAbono
+   Liberación: 1
+   Prioridad: Esencial                               Complejidad: Simple
+   Tipo de Caso de Uso: Concreto
+   Versión: 20100623.1052
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajero / Captura los datos del seguro para el cliente.
+               Secundario: Sistema Cajas / Obtiene, si la hay, la activacion del seguro.
+
+   Objetivo:   Registrar la cantidad de seguros y de meses que el cliente desea
+
+   ___________________________________________________________________________________________
+   Precondiciones:
+                   1.- Que se haya seleccionado la opcion de seguros.
+   Post-Condiciones:
+                   2.- Cliente con cuenta de seguros actualizada e impresión de la póliza
+                       si es el caso.
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se quiere realizar la venta o abono de seguros.
+
+                2.- El sistema solicita la captura de seguros.
+
+                3.- El cajero captura la cantidad de seguros que el cliente desea.
+
+                4.- El sistema valida la cantidad capturada de seguros
+
+                        4.a.- El sistema valido que la cantidad de seguros capturada es correcta.
+
+                        4.b.- El sistema valido que la cantidad de seguros capturada es incorrecta.
+
+                5.- El sistema solicita la captura de los meses que el cliente va a pagar
+
+                6.- El cajero captura la cantidad de meses que el cliente va a pagar
+
+                7.- El sistema valida la cantidad capturada de meses.
+
+                        7.a.- El sistema valido que la cantidad capturada de meses es correcta
+
+                        7.b.- El sistema valido que la cantidad capturada de meses es incorrecta
+
+                8.- El sistema verifica que es cliente nuevo en cuenta de seguro.
+
+                        8.a.- El sistema verificó que el cliente es cliente nuevo en cuenta de seguro
+
+                        8.b.- El sistema verificó que el cliente no es nuevo en cuenta de seguro
+
+                9.- Fin del caso de uso.
+
+
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                4.a.- El sistema valido que la cantidad de seguros capturada es correcta.
+
+                        4.a.1.- El flujo continúa en el paso 5 del flujo básico.
+
+                4.b.- El sistema valido que la cantidad de seguros capturada es incorrecta.
+
+                        4.b.1.- El sistema muestra mensaje correspondiente.
+
+                        4.b.2.- El cajero acepta el mensaje
+
+                        4.b.3.- El flujo continúa en el paso 2 del flujo básico.
+
+                7.a.- El sistema valido que la cantidad capturada de meses es correcta
+
+                        7.a.1.- El flujo continúa en el paso 8 del flujo básico.
+
+                7.b.- El sistema valido que la cantidad capturada de meses es incorrecta
+
+                        7.b.1.- El sistema manda mensaje correspondiente
+
+                        7.b.2.- El cajero acepta el mensaje.
+
+                        7.b.3.- El flujo continúa en el paso 5 del flujo básico.
+
+                8.a.- El sistema verificó que el cliente es cliente nuevo en cuenta de seguro
+
+                        8.a.1.- El sistema manda llamar al CU-0001-CapturarBeneficiarios.
+
+                        8.a.2.- El sistema obtiene del caso de uso anterior que si se capturaron los beneficiarios
+
+                        8.a.3.- El flujo continúa en el paso 9 del flujo básico.
+
+                8.b.- El sistema verificó que el cliente no es nuevo en cuenta de seguro
+
+                        8.b.1.- El sistema verifica que el cliente no tiene seguro adicional.
+
+                                8.b.1.a.- El sistema verifica que el cliente tiene seguro adicional.
+
+                                        8.b.1.a.1.- El sistema muestra las opciones:
+                                                        -Cancelar
+                                                        -Aceptar
+                                                        -Cambio Seguro
+
+                                        8.b.1.a.2.- El cajero selecciona la opcion Cancelar.
+
+                                                8.b.1.a.2.a.- El cajero selecciona la opcion Aceptar.
+
+                                                        8.b.1.a.2.a.1.- El flujo continua en el paso 9 del flujo basico.
+
+                                                8.b.1.a.2.b.- El cajero selecciona la opcion Cambio Seguro.
+
+                                                        8.b.1.a.2.b.1.- El sistema manda llamar al CU-0014-CambiarSeguroAdicional.
+
+                                                        9.b.1.a.2.b.2.- El flujo continua en el paso 9.b.1.a.1 del flujo alternativo.
+
+                                        8.b.1.a.3.- El flujo continua en el paso 9 del flujo basico.
+
+                        8.b.2.- El flujo continúa en el paso 9 del flujo básico.
+
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:  No aplica.
+   Interfaz de Usuario: CA0030-0001-CapturarAbono
+   Asociaciones:
+          Asociaciones de Extensión: CU-0001-CapturarBeneficiarios.
+                                     CU-0014-CambiarSeguroAdicional.
+          Asociaciones de Inclusión: No aplica.
+          Caso de Uso donde se Incluye: No aplica.
+          Caso de Uso al que Extiende: CU-0001-RealizarAbono.
+
+   Observaciones: No aplica.
+   Autor: Jesús Alvaro Lazcano Guzmán
+   Fecha de Creación: 2008-04-02

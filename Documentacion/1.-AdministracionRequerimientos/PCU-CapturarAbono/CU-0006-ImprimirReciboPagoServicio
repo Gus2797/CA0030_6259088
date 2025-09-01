@@ -1,0 +1,118 @@
+
+   Nombre de Caso de Uso: CU-0006-ImprimirReciboPagoServicio.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                                   Complejidad: Complejo.
+   Tipo de Caso de Uso: Concreto.
+   Versión: 20090806.1300.
+
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Acepta los mensajes enviados por el sistema.
+               Secundario: Impresora / Se encarga de imprimir el recibo de pago de servicio.
+
+
+   Objetivo:   Saber el proceso de la impresión del recibo de pago de servicio.
+   __________________________________________________________________________________________
+   Precondiciones:
+                        1.- Se debe haber capturado el pago de algun servicio junto con el abono.
+   Post-Condiciones:
+                        2.- Regresa al caso de uso base CU-0005-ImprimirReciboAbono para continuar con su proceso.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso inicia cuando el sistema identifica si se hicieron pagos de servicio.
+
+                2.- El sistema obtiene importe total a pagar, el total a pagar de servicios, y el acumulado de servicio.
+
+                3.- El sistema identifica que se capturo pago de Agua.
+                        3.a.- El sistema identifica que se capturo pago de Telefono.
+                        3.b.- El sistema identifica que se capturo pago de Cable.
+                        3.c.- El sistema identifica que se capturo pago de Predial.
+                        3.d.- El sistema identifica que se capturo pago de Sofol.
+                        3.e.- El sistema identifica que se capturo pago de Gas.
+                        3.f.- El sistema identifica que se capturo pago de Megacable.
+                        3.g.- El sistema identifica que se capturo pago de Nextel.
+                        3.h.- El sistema identifica que se capturo pago de Alestra.
+                        3.i.- El sistema identifica que se capturo pago de CFE.
+                        3.j.- El sistema identifica que se capturo pago de Axtel.
+
+                4.- El sistema identifica que no esta activo el pago de recibos de JAPAC con referencia COPPEL.
+                        4.a.- El sistema identifica que esta activo el pago de recibos de JAPAC con referencia COPPEL.
+
+                5.- El sistema obtiene el folio para el recibo de pago de servicios.
+
+                6.- El sistema calcula los totales de pagos de servicios.
+
+                7.- El sistema identifica que no hay mas pagos de servicios.
+                        7.a.- El sistema identifica hay mas pagos de servicios.
+
+                8.- El sistema manda imprimir el recibo con los pagos de servicios obtenidos.
+
+                9.- El sistema graba la imagen del recibo de pago de servicios.
+
+                10.- Fin del caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo.
+
+                3.a.- El sistema identifica que se capturo pago de Telefono.
+                        3.a.1.- El sistema obtiene el/los pagos de Telefono.
+                        3.a.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.b.- El sistema identifica que se capturo pago de Cable.
+                        3.b.1.- El sistema obtiene el/los pagos de Cable.
+                        3.b.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.c.- El sistema identifica que se capturo pago de Predial.
+                        3.c.1.- El sistema obtiene el/los pagos de Predial.
+                        3.c.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.d.- El sistema identifica que se capturo pago de Sofol.
+                        3.d.1.- El sistema obtiene el/los pagos de Sofol.
+                        3.d.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.e.- El sistema identifica que se capturo pago de Gas.
+                        3.e.1.- El sistema obtiene el/los pagos de Gas.
+                        3.e.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.f.- El sistema identifica que se capturo pago de Megacable.
+                        3.f.1.- El sistema obtiene el/los pagos de Megacable.
+                        3.f.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.g.- El sistema identifica que se capturo pago de Nextel.
+                        3.g.1.- El sistema obtiene el/los pagos de Nextel.
+                        3.g.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.h.- El sistema identifica que se capturo pago de Alestra.
+                        3.h.1.- El sistema obtiene el/los pagos de Alestra.
+                        3.h.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.i.- El sistema identifica que se capturo pago de CFE.
+                        3.i.1.- El sistema obtiene el/los pagos de CFE.
+                        3.i.2.- El flujo continua en el paso 5 del flujo basico.
+
+                3.j.- El sistema identifica que se capturo pago de Axtel.
+                        3.j.1.- El sistema obtiene el/los pagos de Axtel.
+                        3.j.2.- El flujo continua en el paso 5 del flujo basico.
+
+                4.a.- El sistema identifica que esta activo el pago de recibos de JAPAC con referencia COPPEL.
+                        4.a.1.- El sistema obtiene la clave de la empresa, el recibo, la cuenta y el digito verificador de la referencia del recibo.
+                        4.a.2.- El flujo continua en el paso 5 del flujo basico.
+
+                7.a.- El sistema identifica hay mas pagos de servicios.
+                        7.a.1.- El flujo regresa al paso 3 del flujo basico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: No aplica.
+   Asociaciones:
+                   Asociaciones de Extensión: CU-0005-ImprimirReciboAbono.
+                   Asociaciones de Inclusión: No aplica.
+                   Caso de Uso donde se Incluye: No aplica.
+                   Caso de Uso al que Extiende: No aplica.
+
+   Observaciones: No aplica.
+   Autor: Rafael Mendoza Lizarraga.
+   Fecha de Creación: 2009-08-06.

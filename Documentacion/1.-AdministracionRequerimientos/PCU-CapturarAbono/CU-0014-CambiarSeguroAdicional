@@ -1,0 +1,100 @@
+   Nombre del Caso de Uso: CU-0014-CambiarSeguroAdicional.
+   Paquete: PCU-CapturarAbono
+   Liberación: 1
+   Prioridad: Esencial                               Complejidad: Simple
+   Tipo de Caso de Uso: Concreto
+   Versión: 20100610.0923
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Cajera / Captura los datos del seguro para el adicional.
+
+   Objetivo:   Registrar la cantidad de seguros meses que el cliente desea para el adicional.
+
+   ___________________________________________________________________________________________
+   Precondiciones:
+                   1.- Que se haya seleccionado la opcion Cambio Seguro de la pantalla capturarsegurocliente del sistema de cajas.
+   Post-Condiciones:
+                   2.- Cliente con cuenta de seguros adicional actualizada.
+
+   _________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se quiere modificar el numero de seguros del adicional.
+
+                2.- El sistema solicita que se seleccione el nombre del asegurado adicional que se va modificar.
+
+                3.- La cajera selecciona el nombre del asegurado adicional.
+
+                4.- El sistema identifica que se selecciono el nombre del asegurado adicional.
+
+                        4.a.- El sistema identifica que no se selecciono el nombre del asegurado adicional.
+
+                5.- El sistema solicita que se capture el numero de seguros.
+
+                6.- La cajera selecciona el numero de seguros.
+
+                7.- El sistema identifica que se capturo el numero de seguros.
+
+                        7.a.- El sistema identifica que no se capturo el numero de seguros.
+
+                8.- El sistema muestra las opciones:
+                        - Cancelar
+                        - Aceptar
+
+                9.- La cajera selecciona la opcion Cancelar.
+
+                        9.a.- La cajera selecciona la opcion Aceptar.
+
+                10.- Fin del caso de uso.
+
+   _________________________________________________________________________________________
+   _________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                4.a.- El sistema identifica que no se selecciono el nombre del asegurado adicional.
+
+                        4.a.1.- El sistema presenta mensaje de aviso.
+
+                        4.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 2 del flujo basico.
+
+                7.a.- El sistema identifica que no se capturo el numero de seguros.
+
+                        7.a.1.- El sistema presenta mensaje de aviso.
+
+                        7.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 5 del flujo basico.
+
+                9.a.- La cajera selecciona la opcion Aceptar.
+
+                        9.a.1.- El sistema identifica que el asegurado adicional puede adquirir el numero de seguros capturado.
+
+                                9.a.1.a.- El sistema identifica que el asegurado adicional no puede adquirir el numero de seguros capturado.
+
+                                        9.a.1.a.1.- El sistema presenta mensaje de aviso.
+
+                                        9.a.1.a.2.- La cajera acepta el mensaje y el flujo continua en el paso 5 del flujo basico.
+
+                        9.a.2.- El sistema actualiza el numero de seguros del asegurado adicional.
+
+                        9.a.3.- El sistema presenta el mensaje: ¿DESEA REALIZAR OTRO CAMBIO? SI/NO.
+
+                        9.a.4.- La cajera selecciona que no desea realizar otro cambio.
+
+                                9.a.4.a.- La cajera selecciona que si desea realizar otro cambio.
+
+                                        9.a.4.a.1.- El flujo continua en el paso 2 del flujo basico.
+
+                        9.a.5.- El flujo continua en el paso 10 del flujo basico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales:  No aplica.
+   Interfaz de Usuario: CA0030-0007-CambiarSeguroAdicional
+   Asociaciones:
+          Asociaciones de Extensión: No Aplica.
+          Asociaciones de Inclusión: No aplica.
+          Caso de Uso donde se Incluye: No aplica.
+          Caso de Uso al que Extiende: CU-0009-CapturarSeguroCliente.
+
+   Observaciones: No aplica.
+   Autor: Luis Fernando Sierra Lizarraga
+   Fecha de Creación: 2010-06-10
+

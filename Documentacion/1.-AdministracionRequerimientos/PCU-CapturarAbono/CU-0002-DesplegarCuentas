@@ -1,0 +1,272 @@
+
+   Nombre del Caso de Uso: CU-0002-DesplegarCuentas.
+   Paquete: PCU-CapturarAbono.
+   Liberación: 1.
+   Prioridad: Esencial.                              Complejidad: Complejo.
+   Tipo de Caso de Uso: Concreto.
+   Versión: 20101108.1130
+   __________________________________________________________________________________________
+   Actores:
+               Principal:  Sistema de Cajas de Abono / Se encarga de buscar el cliente en la cartera.
+               Secundario: No aplica.
+
+   Objetivo:   Desplegar las cuentas activas que tiene el cliente.
+
+   __________________________________________________________________________________________
+   Precondiciones:
+                       1.- El cajero debe haber capturado un numero de cliente valido.
+
+   Post-Condiciones:
+                       1.- Se despliegan las cuentas del cliente y se regresa al caso de uso base.
+   __________________________________________________________________________________________
+   Escenario Principal de Éxito o Flujo Básico
+
+                1.- El caso de uso inicia cuando se necesita desplegar las cuentas activas del cliente.
+
+                2.- El sistema manda llamar el Servicio donde obtiene las cuentas del cliente.
+
+                        2.1.-El sistema obtiene y muestra los datos( FUM, FSC, Fecha convenio, efectuó convenio, plazo, importe convenio
+                             saldo, intereses adicionales, abono base, vencido, mínimo a pagar, salda con, bonificacion e interes adicional
+                             primer mes ) de la cuenta de Ropa.
+
+                        2.2.- El sistema verifica si el cliente tiene cuenta de seguros.
+
+                                2.2.a.- El sistema verificó que el cliente si tiene cuenta de seguro.
+
+                                2.2.b.- El sistema verificó que el cliente no tiene cuenta de seguro.
+
+                        2.3.- El sistema verifica si el cliente tiene cuentas de muebles
+
+                                2.3.a.- El sistema verifico que el cliente si tiene cuentas de muebles.
+
+                                2.3.b.- El sistema verifico que el cliente no tiene cuentas de muebles.
+
+                        2.4.- El sistema verifica si el cliente tiene cuenta de préstamos.
+
+                                2.4.a.- El sistema verificó que el cliente si tiene cuenta de préstamo.
+
+                                2.4.b.- El sistema verificó que el cliente no tiene cuenta de préstamo.
+
+                        2.5.- El sistema verifica que este activo la consulta a la cartera de tiempo aire.
+
+                                2.5.a.- El sistema verifico que si esta activa la consulta de la cartera de tiempo aire.
+
+                                2.5.b.- El sistema verifico que no esta activa la consulta de la cartera de tiempo aire.
+
+                        2.6.- El sistema verifica si el cliente esta registrado en credito y casa.
+
+                                2.6.a.- El sistema verifico que el cliente si esta registrado en credito y casa.
+
+                                2.6.b.- El sistema verifico que el cliente no esta registrado en credito y casa.
+
+			2.7.- El sistema verifica si el cliente tiene cuenta de plan telefónico.
+
+				2.7.a.- El sistema verificó que el cliente si tiene cuenta de plan telefónico.
+
+				2.7.b.- El sistema verificó que el cliente no tiene cuenta de plan telefónico.
+
+                        2.8.- El sistema valida que el cliente no tiene cuenta revolvente.
+
+                        2.8.a.- El sistema valida quel el cliente tiene cuenta revolvente.
+
+                3.- El sistema verifica si el cliente tiene puntualidad Z.
+
+                        3.a.- El sistema verificó que el cliente si tiene  puntualidad Z.
+
+                        3.b.- El sistema verificó que el cliente no tiene  puntualidad Z.
+
+                4.- El sistema despliega la suma de los totales( importe de las compras, importe convenios, saldo total, int adicionales totales, abono base total,
+                    vencido total, minimo a pagar total, salda con total, y bonificacion total ) de todas las cuentas(sin tomar en cuenta la cuenta de plan telefónico) del cliente en la columna de totales.
+
+                5.- Fin de caso de uso.
+
+   __________________________________________________________________________________________
+   __________________________________________________________________________________________
+   Consideraciones Especiales o Flujo Alternativo
+
+                2.2.a.- El sistema verificó que el cliente si tiene cuenta de seguro.
+
+                        2.2.a.1.- El sistema muestra los datos( folio, fecha afiliacion, Seguros, cuota ) de la cuenta de Seguros.
+
+                        2.2.a.2.- El sistema verificó que el cliente no tiene cuenta de seguro adicional.
+
+                                2.2.a.2.a.- El sistema verificó que el cliente si tiene cuenta de seguro adicional.
+
+                                        2.2.a.2.a.1.- El sistema muestra la leyenda ADIC y el numero de seguros adicionales del cliente.
+
+                                        2.2.a.2.a.2.- El sistema muestra la suma de la cuota del seguro y de los seguros adicionales.
+
+                                        2.2.a.2.a.3.- El flujo continúa en el paso 2.3 del flujo básico.
+
+                        2.2.a.3.- El flujo continúa en el paso 2.3 del flujo básico.
+
+                2.2.b.- El sistema verificó que el cliente no tiene cuenta de seguro.
+
+                        2.2.b.1.- El sistema muestra mensaje de ofrecer seguro al cliente en columna de seguros.
+
+                        2.2.b.2.- El flujo continúa en el paso 2.3 del flujo básico.
+
+                2.3.a.- El sistema verifico que el cliente si tiene cuentas de muebles.
+
+                        2.3.a.1.- El sistema obtiene y muestra los datos( Tienda de compra, factura, fecha compra, importe compra, FUM, Fecha convenio, efectuó convenio.
+                                  plazo, importe convenio, saldo, intereses adicionales, abono base, vencido, mínimo a pagar, salda con, bonificacion e interes adicional
+                                   primer mes ) de las cuentas de muebles.
+
+                        2.3.a.2.- El flujo continúa en el paso 2.4 del flujo básico.
+
+                2.3.b.- El sistema verifico que el cliente no tiene cuentas de muebles.
+
+                        2.3.b.1.- El flujo continúa en el paso 2.4 del flujo básico.
+
+                2.4.a.- El sistema verificó que el cliente si tiene cuenta de préstamo.
+
+                        2.4.a.1.- El sistema obtiene y muestra los datos( Tienda de compra, factura, fecha compra, importe compra, FUM, Fecha convenio, efectuó convenio.
+                                  plazo, importe convenio, saldo, intereses adicionales, abono base, vencido, mínimo a pagar, salda con y bonificacion )
+                                  de la cuenta de préstamo.
+
+                        2.4.a.2.- El flujo continúa en el paso 2.5 del flujo básico.
+
+                2.4.b.- El sistema verificó que el cliente no tiene cuenta de préstamo.
+
+                        2.4.b.1.- El flujo continúa en el paso 2.5 del flujo básico.
+
+                2.5.a.- El sistema verifico que si esta activa la consulta de la cartera de tiempo aire.
+
+                        2.5.a.1.- El sistema verifica si el cliente tiene cuenta de tiempo aire.
+
+                                2.5.a.1.a.- El sistema verificó que el cliente si tiene cuenta de tiempo aire.
+
+                                        2.5.a.1.a.1.- El sistema obtiene los datos( FUM, FSC, Fecha convenio, efectuó convenio, plazo, importe convenio,
+                                                      saldo, intereses adicionales, abono base, vencido, mínimo a pagar, salda con y bonificacion ) de la cuenta de Tiempo Aire.
+
+                                        2.5.a.2.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                                2.5.a.1.b.- El sistema verificó que el cliente no tiene cuenta de tiempo aire.
+
+                                        2.5.a.2.b.1.- El flujo continúa en el paso 3 del flujo básico.
+
+                2.5.b.- El sistema verifico que no esta activa la consulta de la cartera de tiempo aire.
+
+                        2.5.b.1.- El flujo continúa en el paso 3 del flujo básico.
+
+                2.6.a.- El sistema verifico que el cliente si esta registrado en credito y casa.
+
+                        2.6.a.1.- El sistema solicita las cuentas activas de credito y casa.
+
+                                2.6.a.1.a.- El sistema identifica que no hay conexion al servidor de credito y casa.
+
+                                        2.6.a.1.a.1.- El sistema muestra en pantalla leyenda "SI EL CLIENTE DESEA ABONAR A CREDITO Y CASA, EFECTUAR EL ABONO EN PAGOS SIN LINEA".
+
+                                        2.6.a.1.a.2.- El flujo continúa en paso 3 del flujo basico.
+
+                        2.6.a.2.- El sistema identifica que el cliente no tiene cuentas activas de credito y casa.
+
+                                2.6.a.2.a.- El sistema identifica que el cliente si tiene cuentas activas de credito y casa.
+
+                                        2.6.a.2.a.1.- El sistema muestra los datos (abono base, vencido y mínimo a pagar).
+
+                                        2.6.a.2.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                        2.6.a.3.- El flujo continúa en el paso 3 del flujo basico.
+
+                2.6.b.- El sistema verifico que el cliente no esta registrado en credito y casa.
+
+                        2.6.b.1.- El flujo continúa en el paso 3 del flujo básico.
+
+		2.7.a.- El sistema verificó que el cliente si tiene cuenta de plan telefónico.
+
+			2.7.a.1.- El sistema obtiene y muestra los datos(tienda, factura, fecha compra, importe y plazo) de la cuenta de plan telefónico.
+
+                        2.7.a.2.- El flujo continúa en el paso 2.8 del flujo básico.
+
+		2.7.b.-  El sistema verificó que el cliente no tiene cuenta de plan telefónico.
+
+                        2.7.b.1.- El Flujo continúa en el paso 2.8 del flujo básico.
+
+                2.8.a.- El sistema valida quel el cliente tiene cuenta revolvente.
+
+                        2.8.a.1.- El sistema obtiene los datos( FUM, FSC, Fecha convenio, efectuó convenio, plazo, importe convenio, saldo, intereses adicionales,
+                                abono base, vencido, mínimo a pagar, salda con y bonificacion ) de la cuenta revolvente.
+
+                        2.8.a.2.- El flujo continúa en el paso 3 del flujo básico.
+
+                3.a.- El sistema verificó que el cliente si tiene  puntualidad Z.
+
+                        3.a.1.- El sistema empieza a consultar si el cliente tiene cuenta perdida de Ropa
+
+                                3.a.1.a.- El sistema encuentra que el cliente tiene una cuenra perdida de Ropa.
+
+                                       3.a.1.a.1.- El sistema obtiene y muestra los datos(tienda, nota, fecha compra, saldo) de la cuenta perdida de Ropa.
+
+                                       3.a.1.a.2.- El Flujo continúa en el paso 3.a.2. del flujo básico.
+
+                                3.a.1.b.- El sistema encuentra que el cliente no tiene una cuenra perdida de Ropa.
+
+                                       3.a.1.b.1.- El Flujo continúa en el paso 3.a.2. del flujo básico.
+
+                        3.a.2.- El sistema empieza a consultar si el cliente tiene cuenta perdida de Muebles.
+
+                                3.a.2.a.- El sistema encuentra que el cliente tiene cuentas perdidas de Muebles.
+
+                                        3.a.2.a.1.- El sistema obtiene y muestra los datos(tienda, factura, fecha compra, saldo) de las cuentas perdida de Muebles.
+
+                                        3.a.2.a.2.- El Flujo continúa en el paso 3.a.3. del flujo básico.
+
+                                3.a.2.b.- El sistema encuentra que el cliente no tiene una cuenra perdida de Muebles.
+
+                                        3.a.2.b.1.- El Flujo continúa en el paso 3.a.3. del flujo básico.
+
+                        3.a.3.- El sistema empieza a consultar si el cliente tiene cuenta perdida de Prestamos.
+
+                                3.a.3.a.- El sistema encuentra que el cliente tiene una cuenra perdida de Prestamo.
+
+                                        3.a.3.a.1.- El sistema obtiene y muestra los datos(tienda, factura, fecha compra, saldo) de la cuenta perdida de Prestamo.
+
+                                        3.a.3.a.2.- El Flujo continúa en el paso 3.a.4. del flujo básico.
+
+                                3.a.3.b.- El sistema encuentra que el cliente no tiene una cuenra perdida de Prestamos.
+
+                                        3.a.3.b.1.- El Flujo continúa en el paso 3.a.4. del flujo básico.
+
+                        3.a.4.- El sistema empieza a consultar si el cliente tiene cuenta perdida de Deuda Bancoppel.
+
+                                3.a.4.a.- El sistema encuentra que el cliente tiene una cuenra perdida de Deuda Bancoppel.
+
+                                        3.a.4.a.1.- El sistema obtiene y muestra los datos(tienda, factura, fecha compra, saldo) de la cuenta perdida de Deuda Bancoppel.
+
+                                        3.a.4.a.2.- El Flujo continúa en el paso 3.a.5. del flujo básico.
+
+                                3.a.4.b.- El sistema encuentra que el cliente no tiene una cuenra perdida de Deuda Bancoppel.
+
+                                        3.a.4.b.1.- El Flujo continúa en el paso 3.a.5. del flujo básico.
+
+			 3.a.5.- El sistema empieza a consultar si el cliente tiene cuenta perdida de Tiempo Aire.
+
+                                3.a.5.a.- El sistema encuentra que el cliente tiene una cuenta perdida de Tiempo Aire.
+
+                                       3.a.5.a.1.- El sistema obtiene y muestra los datos(tienda, nota, fecha compra, saldo) de la cuenta perdida de Tiempo Aire.
+
+                                       3.a.5.a.2.- El Flujo continúa en el paso 3.a.6. del flujo básico.
+
+                                3.a.5.b.- El sistema encuentra que el cliente no tiene una cuenta perdida de Tiempo Aire.
+
+                                       3.a.5.b.1.- El Flujo continúa en el paso 3.a.6. del flujo básico.
+
+                        3.a.6.- El Flujo continúa en el paso 4 del flujo básico.
+
+                3.b.- El sistema verificó que el cliente no tiene  puntualidad Z.
+
+                        3.b.1.- El Flujo continúa en el paso 4 del flujo básico.
+
+   __________________________________________________________________________________________
+   Requerimientos no Funcionales Especiales: No aplica.
+   Interfaz de Usuario: CA0030-0001-CapturarAbono.
+   Asociaciones:
+         Asociaciones de Extensión: No aplica.
+         Asociaciones de Inclusión: No aplica.
+         Caso de Uso donde se Incluye: CU-0001-RealizarAbono.
+         Caso de Uso al que Extiende: No aplica.
+
+   Observaciones: No aplica.
+   Autor: Jesús Alvaro Lazcano Guzmán.
+   Fecha de Creación: 2008-04-03.
