@@ -1,5 +1,5 @@
 #pragma once
-
+//Jafet Vazquez Olvera - 01/09/2025
 #include "stdafx.h"
 #include "DlgCapturarAbono.h"
 #include "CGRABARCERTIFICACIONABONO.HPP" 
