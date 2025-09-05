@@ -33,7 +33,7 @@ BEGIN
 	SELECT fecha INTO dfechaactual FROM gndominio LIMIT 1;
 	
     -- Insertar data
-    INSERT INTO logBonificacionDiaria (
+    INSERT INTO logbonificaciondiaria (
         cliente,
         factura,
         mensaje,
