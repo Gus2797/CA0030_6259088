@@ -1,7 +1,7 @@
 /****************************************************************************************************************
 * FECHA: 04-09-2025												*
 * PROGRAMADOR: MIGUEL RODRIGUEZ LUNA									*
-* DESCRIPCION: Se eliminan comentarios innecesarios			*
+* DESCRIPCION: Se eliminan comentarios innecesarios; Se modifica el nombre: logbonificaciondiaria (ya que contenia dos letras mayusculas)		*
 ****************************************************************************************************************/ 
 /****************************************************************************************************************
 * FECHA: 21-08-2025												*
