@@ -1,7 +1,7 @@
 /****************************************************************************************************************
 * PROGRAMADOR: MIGUEL RODRIGUEZ LUNA
 * FECHA: 05-09-2025
-* DESCRIPCION: Se agrega el comentario: Base de datos: tienda.####
+* DESCRIPCION: Se agrega el comentario: Base de datos: tienda.#### se comenta con --
 * FECHA: 04-09-2025												*									*
 * DESCRIPCION: Se eliminan comentarios innecesarios; Se modifica el nombre: logbonificaciondiaria (ya que contenia dos letras mayusculas)		*
 ****************************************************************************************************************/ 
@@ -10,7 +10,7 @@
 * PROGRAMADOR: JAFET VAZQUEZ OLVERA									*
 * DESCRIPCION: Graba logs sobre certificacion de bonificacion en la tabla logbonificaciondiari				*
 ****************************************************************************************************************/
-//Base de datos: tienda.####
+-- Base de datos: tienda.####
 CREATE OR REPLACE FUNCTION public.fun_guardarlogbonificaciondiaria(
 	icliente integer,
 	ifactura integer,
