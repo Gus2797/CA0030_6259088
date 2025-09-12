@@ -1,24 +1,24 @@
 /* --------------------------------------------------------------------
 Fecha    :25/10/04 6:21  ( dd-mm-aa )
-Elaboró  :Joel Armando Arana Garcia
-Solicitó :Lic. Jos‚ G. Mendoza
+Elaborï¿½  :Joel Armando Arana Garcia
+Solicitï¿½ :Lic. Josï¿½ G. Mendoza
 Actividad:Captura de Abonos
 --------------------------------------------------------------------
-// DlgCapturarAbono.cpp: archivo de implementación
+// DlgCapturarAbono.cpp: archivo de implementaciï¿½n
 //
 --------------------------------------------------------------------
 Fecha    : Lunes 16/05/2016 5:15 p.m.
-Elaboró  : César Felipe Zazueta Quintero.
+Elaborï¿½  : Cï¿½sar Felipe Zazueta Quintero.
 Peticion : 10918. Se puso encima de la revision 81670.
 Actividad: Modificar el metodo checarVigenciaSeguro
 --------------------------------------------------------------------
 Fecha    : martes, 22 de Mayo 2018
-Elaboró  : Arturo Gonzalez Espinoza
+Elaborï¿½  : Arturo Gonzalez Espinoza
 Peticion : 19180-Actualizacion del sistema para recibir nuevos productos quebrantados por BanCoppel
 Actividad: Utilizar metodo VerificarCuentaBcpl para descripcion de cuenta BCPL.
 --------------------------------------------------------------------
 Fecha    : martes, 07 de Agosto 2018
-Elaboró  : Santos Jonatham Celis Lopez
+Elaborï¿½  : Santos Jonatham Celis Lopez
 Peticion : 8590  Actualizacion de bonificaciones diarias para muebles.
 Actividad: Se crearon metodos nuevos guardarCertificacionAbonos(int i),
 obtenerFechaPrimerAbono(int i);
@@ -181,6 +181,7 @@ obtenerFechaPrimerAbono(int i);
 #include "CalculoMoras.h"
 #include "CConsultaFacturaSesionTemp.hpp"
 #include "CConsultatdchequesesion.hpp"
+#include "CLogBonificacionDiaria.hpp" //TODO: 11/09/2025, AGREGADO POR GAHL, CONECTANDO CON ODBC
 
 
 #ifdef _DEBUG
@@ -239,20 +240,20 @@ CCuentaWeb *pCuentaClienteAbonosPuntuales;
 CCuentasSeguros cuentasSeguros;
 //
 
-// Cuadro de diálogo CAboutDlg utilizado para el comando Acerca de
+// Cuadro de diï¿½logo CAboutDlg utilizado para el comando Acerca de
 
 class CAboutDlg : public CDialog2012
 {
 public:
 	CAboutDlg();
 
-	// Datos del cuadro de diálogo
+	// Datos del cuadro de diï¿½logo
 	enum { IDD = IDD_ABOUTBOX };
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // Compatibilidad con DDX/DDV
 
-	// Implementación
+	// Implementaciï¿½n
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -298,7 +299,7 @@ void CDlgCapturarAbono::validaGanador()
 
 		if (!Dineroelectronico.Exec(cSql))
 		{
-			AfxMessageBox("Error al ejecutar la función fun_obtenerDineroElectronicoGenerado");
+			AfxMessageBox("Error al ejecutar la funciï¿½n fun_obtenerDineroElectronicoGenerado");
 			Dineroelectronico.Error();
 		}
 		else
@@ -347,7 +348,7 @@ void CDlgCapturarAbono::validaGanador()
 							replaceString(message2,"XX", maxAbonosPuntuales, message2);
 						}
 
-						replaceString(message,"Â", "¡", message);
+						replaceString(message,"ï¿½", "ï¿½", message);
 						replaceString(message2,"#", sDineroRecompensa, message2);
 
 						memset(message3, 0, sizeof(message3));
@@ -393,7 +394,7 @@ void CDlgCapturarAbono::getDineroElectMin()
 		{
 			iDineroElecMin = dineroElectronico.Total;
 		}
-		sprintf_s(cResultado ,"Dinero minimo para impresión coppel max - %d",iDineroElecMin);	
+		sprintf_s(cResultado ,"Dinero minimo para impresiï¿½n coppel max - %d",iDineroElecMin);	
 		grabarLog(cResultado);
 	}
 	else
@@ -492,7 +493,7 @@ void CDlgCapturarAbono::OcultarAbonosPuntualesCoppelMax()
 }
 
 
-// Cuadro de diálogo de CDlgCapturarAbono
+// Cuadro de diï¿½logo de CDlgCapturarAbono
 
 CDlgCapturarAbono::CDlgCapturarAbono(CWnd* pParent /*=NULL*/)
 	: CDialog2012(CDlgCapturarAbono::IDD, pParent)
@@ -734,9 +735,16 @@ CDlgCapturarAbono::CDlgCapturarAbono(CWnd* pParent /*=NULL*/)
 	bCargaDatosSorteo = false;
 
 	stCambioPlanes = nullptr;
-	sprintf_s(cLog, "FC0200805021520985 - finalizá - CDlgCapturarAbono - constructor");
+	sprintf_s(cLog, "FC0200805021520985 - finalizï¿½ - CDlgCapturarAbono - constructor");
 	grabarLog(cLog);
 }
+
+// TODO: FUNCION AGREGADO POR GAHL - INICIO
+/*void CDlgCapturarAbono::Test() 
+{
+	AfxMessageBox(_T("Hola desde la funcion Test"));
+}*/
+// TODO: FUNCION AGREGADO POR GAHL - FIN
 
 CDlgCapturarAbono::~CDlgCapturarAbono()
 {
@@ -815,7 +823,7 @@ BOOL CDlgCapturarAbono::OnInitDialog()
 	ShowWindow(SW_SHOWMAXIMIZED);
 	inoTienda.Format("%d", m_grid.iTienda);
 	grabarLog("CDlgCapturarAbono::OnInitDialog --> Inicia pantalla de abonos");
-	// Agregar el elemento de menú "Acerca de..." al menú del sistema.
+	// Agregar el elemento de menï¿½ "Acerca de..." al menï¿½ del sistema.
 
 	// IDM_ABOUTBOX debe estar en el intervalo de comandos del sistema.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
@@ -1101,7 +1109,7 @@ BOOL CDlgCapturarAbono::OnInitDialog()
 		}
 	}
 	ponerMensajeNR(this, m_barra, m_mensaje1, cBarraOpciones);
-	grabarLog("CDlgCapturarAbono::OnInitDialog --> Finalizá pantalla de abonos");
+	grabarLog("CDlgCapturarAbono::OnInitDialog --> Finalizï¿½ pantalla de abonos");
 	return TRUE;  // Devuelve TRUE  a menos que establezca el foco en un control
 }
 
@@ -1118,9 +1126,9 @@ void CDlgCapturarAbono::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Si agrega un botón Minimizar al cuadro de diálogo, necesitará el siguiente código
+// Si agrega un botï¿½n Minimizar al cuadro de diï¿½logo, necesitarï¿½ el siguiente cï¿½digo
 //  para dibujar el icono. Para aplicaciones MFC que utilicen el modelo de documentos y vistas,
-//  esta operación la realiza automáticamente el marco de trabajo.
+//  esta operaciï¿½n la realiza automï¿½ticamente el marco de trabajo.
 
 void CDlgCapturarAbono::OnPaint()
 {
@@ -1129,7 +1137,7 @@ void CDlgCapturarAbono::OnPaint()
 	}
 }
 
-BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
+BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL, FLUJO DE guardarCertificacionAbonos PASO 1
 {
 	//tituloMostrar();
 	// TODO: Add your specialized code here and/or call the base class
@@ -1141,8 +1149,8 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 
 	lGteHuella = 0;
 	iOpcionTecleada = (int)pMsg->wParam;
-
-	if (pMsg->message == WM_LBUTTONDOWN || pMsg->message == WM_LBUTTONDBLCLK ||
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*if (pMsg->message == WM_LBUTTONDOWN || pMsg->message == WM_LBUTTONDBLCLK ||
 		pMsg->message == WM_RBUTTONDOWN || pMsg->message == WM_RBUTTONDBLCLK)
 	{
 		pMsg->wParam = VK_SHIFT;
@@ -1181,11 +1189,13 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 			}
 		}
 		return TRUE;
-	}
-
-	if (m_grid.lCliente > 0L)
+	}*/
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+	//if (m_grid.lCliente > 0L) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+	if (true) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	{
-		iFlagServicio = 1;
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+		/*iFlagServicio = 1;
 
 		if (pMsg->message == WM_KEYDOWN)
 		{
@@ -1322,21 +1332,25 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 					}
 				}
 			}
-		}
-
-
+		}*/
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+		iContador = 1; // TODO: AGREGADO POR GAHL
 		if (iContador == 1)
 		{
 			{
-				if (!bMostrarReestructura && desplegarDatosCliente() == 0)
+				//desplegarDatosCliente(); //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+				/*if (!bMostrarReestructura && desplegarDatosCliente() == 0)
 				{
 					inicializar();
 					inicializarCaptura();
 				}
 				else
-				{
-					if (iSistema == SISTEMA_CAJAS /*&& iFlagTiendaLocal == 0*/ && iFlagMovimiento == 1)
-					{
+				{*/
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+					//if (iSistema == SISTEMA_CAJAS /*&& iFlagTiendaLocal == 0*/ && iFlagMovimiento == 1) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+					//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+					/*{
 						obtenerFlag('C', FLAGC_REESTRUCTURA, iFlagReestructuraDisponible);
 					}
 
@@ -1364,7 +1378,8 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 					{
 						fun_obtenerdescripcionestatus();
 					}
-				}
+				}*/
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 			}
 		}
 		else
@@ -1547,7 +1562,8 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 			}
 		}
 	}
-	if (m_grid.lCliente > 0L)
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*if (m_grid.lCliente > 0L)
 	{
 		iColumna = m_grid.GetCurrentCol();
 		if (iColumna + 1 == iTotalCuentas)
@@ -1592,7 +1608,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 			{
 				if (iCandidatoAprobado == 1)
 				{
-					sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS [F9] ABONO PLAN TARIFARIO [F12] PLAN PONTE AL DÍA");
+					sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS [F9] ABONO PLAN TARIFARIO [F12] PLAN PONTE AL Dï¿½A");
 				}
 				else {
 					sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS [F9] ABONO PLAN TARIFARIO");
@@ -1613,11 +1629,11 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 
 						if (iCandidatoAprobado == 1)
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F4] MOSTRAR INFORMATIVAS [CTRL+F8] PLAN PAGA MÁS FÁCIL [F12] PLAN PONTE AL DÍA");
+							sprintf_s(cBarraOpciones, "[CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F4] MOSTRAR INFORMATIVAS [CTRL+F8] PLAN PAGA Mï¿½ï¿½S Fï¿½ï¿½CIL [F12] PLAN PONTE AL Dï¿½A");
 						}
 						else
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F3]  PANTALLA DE MOVIMIENTOS    [CTRL+F4]  MOSTRAR INFORMATIVAS    [CTRL+F8] PLAN PAGA MÁS FÁCIL ");
+							sprintf_s(cBarraOpciones, "[CTRL+F3]  PANTALLA DE MOVIMIENTOS    [CTRL+F4]  MOSTRAR INFORMATIVAS    [CTRL+F8] PLAN PAGA Mï¿½ï¿½S Fï¿½ï¿½CIL ");
 						}
 
 						if (GetKeyState(VK_CONTROL) & 0x8000 && pMsg->wParam == VK_F8)
@@ -1643,11 +1659,11 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						{
 							if (iCandidatoAprobado == 1)
 							{
-								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS [CTRL+F9] %.50s  [F12] PLAN PONTE AL DÍA", cOpcionPL);
+								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS [CTRL+F9] %.50s  [F12] PLAN PONTE AL Dï¿½A", cOpcionPL);
 							}
 							else
 							{
-								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS [CTRL+F9] %.50s  [F12] PLAN PONTE AL DÍA", cOpcionPL);
+								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS [CTRL+F9] %.50s  [F12] PLAN PONTE AL Dï¿½A", cOpcionPL);
 							}
 
 
@@ -1656,7 +1672,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						{
 							if (iCandidatoAprobado == 1)
 							{
-								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS  [F12] PLAN PONTE AL DÍA");
+								sprintf_s(cBarraOpciones, " [CTRL+F3]  PANTALLA DE MOVIMIENTOS      [CTRL+F4]  MOSTRAR INFORMATIVAS  [F12] PLAN PONTE AL Dï¿½A");
 							}
 							else
 							{
@@ -1673,11 +1689,11 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 
 						if (iCandidatoAprobado == 1)
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV [CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F8] PLAN PAGA MÁS FÁCIL [F12] PLAN PONTE AL DÍA");
+							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV [CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F8] PLAN PAGA Mï¿½S Fï¿½CIL [F12] PLAN PONTE AL Dï¿½A");
 						}
 						else
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.  [CTRL+F3]  PANTALLA DE MOVIMIENTOS.  [CTRL+F8] PLAN PAGA MÁS FÁCIL ");
+							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.  [CTRL+F3]  PANTALLA DE MOVIMIENTOS.  [CTRL+F8] PLAN PAGA Mï¿½S Fï¿½CIL ");
 						}
 						if (GetKeyState(VK_CONTROL) & 0x8000 && pMsg->wParam == VK_F8)
 						{
@@ -1712,11 +1728,11 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 
 						if (iCandidatoAprobado == 1)
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV [CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F8] PLAN PAGA MÁS FÁCIL [F12] PLAN PONTE AL DÍA ");
+							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV [CTRL+F3] PANTALLA DE MOVIMIENTOS [CTRL+F8] PLAN PAGA Mï¿½S Fï¿½CIL [F12] PLAN PONTE AL Dï¿½A ");
 						}
 						else
 						{
-							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.  [CTRL+F3]  PANTALLA DE MOVIMIENTOS.  [CTRL+F8] PLAN PAGA MÁS FÁCIL ");
+							sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.  [CTRL+F3]  PANTALLA DE MOVIMIENTOS.  [CTRL+F8] PLAN PAGA Mï¿½S Fï¿½CIL ");
 						}
 
 						if (GetKeyState(VK_CONTROL) & 0x8000 && pMsg->wParam == VK_F8)
@@ -1742,7 +1758,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						{
 							if (iCandidatoAprobado == 1)
 							{
-								sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.   [CTRL+F3]  PANTALLA DE MOVIMIENTOS   [CTRL+F9] %.50s  [F12] PLAN PONTE AL DÍA", cOpcionPL);
+								sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.   [CTRL+F3]  PANTALLA DE MOVIMIENTOS   [CTRL+F9] %.50s  [F12] PLAN PONTE AL Dï¿½A", cOpcionPL);
 								//ponerMensajeNR( this, m_barra, m_mensaje1,cBarraOpciones);
 							}
 							else
@@ -1755,7 +1771,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						{
 							if (iCandidatoAprobado == 1)
 							{
-								sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.   [CTRL+F3]  PANTALLA DE MOVIMIENTOS  [F12] PLAN PONTE AL DÍA");
+								sprintf_s(cBarraOpciones, "[CTRL+F6] CONSULTAR HISTORIAL DE CONV.   [CTRL+F3]  PANTALLA DE MOVIMIENTOS  [F12] PLAN PONTE AL Dï¿½A");
 							}
 							else
 							{
@@ -1795,13 +1811,16 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 	{
 		if (GetKeyState(VK_MENU) & 0x8000 || pMsg->wParam == VK_F10) //ELIMINO  ALT
 			pMsg->wParam = VK_SHIFT;
-	}
-
-	if (m_grid.bFocoGrid == false)
+	}*/
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+	//if (m_grid.bFocoGrid == false) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+	if (true) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	{
-		if (pMsg->message == WM_KEYDOWN)
+		//if (pMsg->message == WM_KEYDOWN) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+		if (true) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 		{
-			if (pMsg->wParam == VK_LEFT || pMsg->wParam == VK_UP)
+			//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+			/*if (pMsg->wParam == VK_LEFT || pMsg->wParam == VK_UP)
 			{
 				iFoco--;
 				if (iFoco < 0)
@@ -1813,15 +1832,18 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 					iFoco = 1;
 				}
 				asignarFoco();
-			}
+			}*/
+			//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 
-			if (iFlagCampoInteligentePL == 1 && pMsg->wParam == VK_RIGHT)
+			//if (iFlagCampoInteligentePL == 1 && pMsg->wParam == VK_RIGHT) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+			if (false) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos POR GAHL
 			{
 				m_grid.MoveCurrentCol(0);
 			}
 			else
 			{
-				if (pMsg->wParam == VK_RETURN || pMsg->wParam == VK_TAB || pMsg->wParam == VK_DOWN || pMsg->wParam == VK_RIGHT)
+				//if (pMsg->wParam == VK_RETURN || pMsg->wParam == VK_TAB || pMsg->wParam == VK_DOWN || pMsg->wParam == VK_RIGHT) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+				if (false) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 				{
 					{
 						if (pMsg->wParam == VK_RETURN)
@@ -1880,7 +1902,8 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 				}
 				else
 				{
-					if (pMsg->wParam == VK_TAB && GetKeyState(VK_SHIFT) & 0x8000)
+					//if (pMsg->wParam == VK_TAB && GetKeyState(VK_SHIFT) & 0x8000) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+					if (false) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 					{
 						ShiftTab = true;
 					}
@@ -1976,7 +1999,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 									{
 										if (iTotalConvenio > 0)
 										{
-											AfxMessageBox(" EL DIA DE HOY USTED YA REALIZÓ UN CONVENIO A ESTE CLIENTE ");
+											AfxMessageBox(" EL DIA DE HOY USTED YA REALIZï¿½ UN CONVENIO A ESTE CLIENTE ");
 										}
 										else
 										{
@@ -2062,14 +2085,17 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 							m_grid.RedrawAll();
 							break;
 						case VK_F2:
-							if (m_grid.bEdicion == true)
+							//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+							/*if (m_grid.bEdicion == true)
 							{
 								PostMessage(WM_KEYDOWN, VK_RETURN);
 								PostMessage(WM_KEYDOWN, VK_F2);
 								return TRUE;
 							}
-
-							m_grid.obtenerTotalAbono();
+						
+							m_grid.obtenerTotalAbono();*/
+							//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+							desplegarDatosCliente(); //TODO: 02/09/2025, AGREGADO POR RMS, FLUJO DE guardarCertificacionAbonos
 							pedirPago();
 
 							pMsg->wParam = NULL;
@@ -2133,7 +2159,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 									{
 										if (iTotalConvenio > 0)
 										{
-											AfxMessageBox(" EL DIA DE HOY USTED YA REALIZÓ UN CONVENIO A ESTE CLIENTE ");
+											AfxMessageBox(" EL DIA DE HOY USTED YA REALIZï¿½ UN CONVENIO A ESTE CLIENTE ");
 										}
 										else
 										{
@@ -2378,7 +2404,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						{
 							if (iTotalConvenio > 0)
 							{
-								AfxMessageBox(" EL DIA DE HOY USTED YA REALIZÓ UN CONVENIO A ESTE CLIENTE ");
+								AfxMessageBox(" EL DIA DE HOY USTED YA REALIZï¿½ UN CONVENIO A ESTE CLIENTE ");
 							}
 							else
 							{
@@ -2442,7 +2468,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						// Ruta del archivo DLL a ejecutar
 						nombreArchivo("CA0056.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "CA0056");
 
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
@@ -2853,7 +2879,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						}
 						else
 						{
-							AfxMessageBox(" SOLO SE PUEDE ABONAR AL SEGURO  DE AUTO PROTECCIÓN  EN EL AREA DE CAJAS ");
+							AfxMessageBox(" SOLO SE PUEDE ABONAR AL SEGURO  DE AUTO PROTECCIï¿½N  EN EL AREA DE CAJAS ");
 						}
 					}
 					else if (memcmp(cTxt, "SEG. MOTOS", 10) == 0) {
@@ -2869,9 +2895,9 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 								capturarDatosSeguroMotos(iColX);                                
 							} 
 						} else {
-							AfxMessageBox(" SOLO SE PUEDE ABONAR AL SEGURO DE MOTO PROTECCIÓN EN EL AREA DE CAJAS ");
+							AfxMessageBox(" SOLO SE PUEDE ABONAR AL SEGURO DE MOTO PROTECCIï¿½N EN EL AREA DE CAJAS ");
 						}
-						grabarLog("SEG. Motos Finalizá");
+						grabarLog("SEG. Motos Finalizï¿½");
 					}
 					else if (memcmp(cTxt, "P. CELULAR", 10) == 0) {
 						pMsg->wParam = NULL;
@@ -2889,7 +2915,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						} else {
 							AfxMessageBox(" SOLO SE PUEDE ABONAR AL SEGURO DE CELULARES EN EL AREA DE CAJAS ");
 						}
-						grabarLog("SEG. CELULARES Fnalizá");
+						grabarLog("SEG. CELULARES Fnalizï¿½");
 					}
 					else if (memcmp(cTxt, "P.SALUD", 7) == 0)
 					{
@@ -2915,7 +2941,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 									if (bTieneDatosEnTemporales)
 									{
 										memset(cMensaje, 0, sizeof(cMensaje));
-										consultarMensaje(859, cMensaje); // "EXISTEN CAMBIOS PENDIENTES DE APLICAR, SI DESEA CONTINUAR CON LA ACTUALIZACIÓN SE DEBERÁ ELIMINAR EL RECIBO ANTERIOR"
+										consultarMensaje(859, cMensaje); // "EXISTEN CAMBIOS PENDIENTES DE APLICAR, SI DESEA CONTINUAR CON LA ACTUALIZACIï¿½N SE DEBERï¿½ ELIMINAR EL RECIBO ANTERIOR"
 										AfxMessageBox(cMensaje, MB_ICONINFORMATION);
 										memset(cMensaje, 0, sizeof(cMensaje));
 									}
@@ -2926,7 +2952,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 											if (bSobrePasaEdadMaxima) // Edad de Cliente > Edad Maxima Plan
 											{
 												memset(cMensaje, 0, sizeof(cMensaje));
-												consultarMensaje(860, cMensaje); // "EL CLIENTE YA NO PUEDE ABONAR A SU SEGURO, DEBIDO A QUE SOBREPASARÁ LA EDAD MÁXIMA"
+												consultarMensaje(860, cMensaje); // "EL CLIENTE YA NO PUEDE ABONAR A SU SEGURO, DEBIDO A QUE SOBREPASARï¿½ LA EDAD Mï¿½XIMA"
 												AfxMessageBox(cMensaje, MB_ICONINFORMATION);
 												memset(cMensaje, 0, sizeof(cMensaje));
 											}
@@ -2945,11 +2971,11 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 
 															if (iPlanAdicionales == 0)
 															{
-																iOpcion = AfxMessageBox("¿DESEA ADQUIRIR EL CLUB ADICIONAL?", MB_YESNO | MB_ICONQUESTION);
+																iOpcion = AfxMessageBox("ï¿½DESEA ADQUIRIR EL CLUB ADICIONAL?", MB_YESNO | MB_ICONQUESTION);
 															}
 															else
 															{
-																iOpcion = AfxMessageBox("¿DESEA ADQUIRIR OTRO CLUB ADICIONAL?", MB_YESNO | MB_ICONQUESTION);
+																iOpcion = AfxMessageBox("ï¿½DESEA ADQUIRIR OTRO CLUB ADICIONAL?", MB_YESNO | MB_ICONQUESTION);
 															}
 														}
 
@@ -2989,7 +3015,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg)
 						}
 						else
 						{
-							AfxMessageBox("Ocurrio un error el proceso de Club de Protección Salud.\n Favor de comunicarse con Mesa de Ayuda.", MB_ICONERROR);
+							AfxMessageBox("Ocurrio un error el proceso de Club de Protecciï¿½n Salud.\n Favor de comunicarse con Mesa de Ayuda.", MB_ICONERROR);
 						}
 					}
 					if (pMsg->wParam == VK_ESCAPE || pMsg->wParam == VK_F10)
@@ -3071,7 +3097,7 @@ bool CDlgCapturarAbono::validarClick(int nTmpFocus)
 	{
 		iFoco = nTmpFocus;
 	}
-	sprintf_s(cLog, "FC0200805021521007 - Finalizá - validarClick");
+	sprintf_s(cLog, "FC0200805021521007 - Finalizï¿½ - validarClick");
 	grabarLog(cLog);
 	return regresa;
 }
@@ -3102,7 +3128,7 @@ void CDlgCapturarAbono::asignarFoco()
 	default:
 		break;
 	}
-	sprintf_s(cLog, "FC0200805021521010 - Finalizá - asignarFoco");
+	sprintf_s(cLog, "FC0200805021521010 - Finalizï¿½ - asignarFoco");
 	grabarLog(cLog);
 }
 
@@ -3162,7 +3188,7 @@ bool CDlgCapturarAbono::buscarClientePlanLealtad(char * cCadena)
 	}
 	else
 	{
-		sprintf(cCadena, "El número de cliente no puede ser nulo...");
+		sprintf(cCadena, "El nï¿½mero de cliente no puede ser nulo...");
 		bRespuesta = false;
 	}
 
@@ -3216,7 +3242,7 @@ bool CDlgCapturarAbono::buscarClientePlanLealtad(char * cCadena)
 		inicializarCaptura();
 
 	}
-	sprintf_s(cLog, "FC0200805021521014 - Finalizá - buscarClientePlanLealtad");
+	sprintf_s(cLog, "FC0200805021521014 - Finalizï¿½ - buscarClientePlanLealtad");
 	grabarLog(cLog);
 	return bRespuesta;
 }
@@ -3291,7 +3317,7 @@ bool CDlgCapturarAbono::validarControl(char * cCadena)
 	default:
 		break;
 	}
-	sprintf_s(cLog, "FC0200805021521018 - Finalizá - validarControl");
+	sprintf_s(cLog, "FC0200805021521018 - Finalizï¿½ - validarControl");
 	grabarLog(cLog);
 	return bValorRegresa;
 }
@@ -3329,12 +3355,12 @@ bool CDlgCapturarAbono::validarControles()
 	iFoco = iFocoAnt;
 	asignarFoco();
 
-	sprintf_s(cLog, "FC0200805021521022 - Finalizá - validarControles");
+	sprintf_s(cLog, "FC0200805021521022 - Finalizï¿½ - validarControles");
 	grabarLog(cLog);
 	return bValorRegresa;
 }
 
-int CDlgCapturarAbono::desplegarDatosCliente()
+int CDlgCapturarAbono::desplegarDatosCliente() //TODO: 01/09/2025, GAHL, FLUJO DE guardarCertificacionAbonos (ORIGEN DE LOS DATOS)
 {
 	CString sDato, sFechaTienda, snomcuenta;
 	int i = 0, iColumna = 0, k = 0, iFlagConsulta = 0, fontID = 0,
@@ -3416,7 +3442,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 
 	//if ( obtenerDatosGnDominio())
 	{
-		if (obtenerFlag('C', FLAGC_SEGUROBANORTE, iFlagBanorte) == true &&
+		//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+		/*if (obtenerFlag('C', FLAGC_SEGUROBANORTE, iFlagBanorte) == true &&
 			obtenerFlag('C', FLAGC_VOLANTE, iFlagVolante) == true &&
 			obtenerFlag('C', FLAGC_SEGUROS, iFlagSegAfirme) == true &&
 			obtenerFlag('0', FLAG_TDAESTACIONAMIENTO, iFlagTdaConEstacionamiento) == true &&
@@ -3440,36 +3467,46 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 			obtenerFlag( 'C',FLAGC_CONSULTA_CUENTAS_SEGUROS, flagCuentasSeguros) &&
 			obtenerFlag('C', FLAGC_MENSAJE_MORAS,iFlagMoras) && //CAMBIOS PARA NUEVO LOGICA DE MORAS -- EDUALF (4)
 			obtenerFlag('C', FLAGC_SANATUDEUDA, iFlagSanaTuDeuda) // TEMPAPSESTRATCOB005
-			) 
-
+			)*/
+		//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+		if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 		{
-			//if (iFlagTiendaLocal == 0)
+			//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+			/*//if (iFlagTiendaLocal == 0)
 			//{
 			obtenerFlag('C', FLAGC_DESCUENTO_INTERESMORATORIO, iFlagMoratorioCaja);
 			obtenerFlag('R', FLAGR_DESCUENTOMORATORIO_ROPA, iFlagMoratorioRopa);
 			obtenerFlag('M', FLAGM_DESCUENTOMORATORIO_MUEBLES, iFlagMoratorioMuebles);
 			obtenerFlag('C', FLAGC_DESCUENTO_INTERESMORATORIO, iFlagMoratorioGeneral);
-			//}
+			//}*/
+			//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 
 			//Se obtiene el flag capturo beneficiario.
-			if (consultarIpServidor(&odbc, cIpServidorCFE, SERV_PSCFE, cSqlTxt) == true)
+			//if (consultarIpServidor(&odbc, cIpServidorCFE, SERV_PSCFE, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+			if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 			{
-				if (consultarIpServidor(&odbc, cIpServidorTelmex, SERV_PSTELMEX, cSqlTxt) == true)
+				//if (consultarIpServidor(&odbc, cIpServidorTelmex, SERV_PSTELMEX, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+				if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 				{
-					if (consultarIpServidor(&odbc, cIpServidorCentral, SERV_CENTRALEMPS, cSqlTxt) == true)
+					//if (consultarIpServidor(&odbc, cIpServidorCentral, SERV_CENTRALEMPS, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+					if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 					{
-						if (consultarIpServidor(&odbc, cIpServidorCartera, SERV_CARTERA, cSqlTxt) == true)
+						//if (consultarIpServidor(&odbc, cIpServidorCartera, SERV_CARTERA, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+						if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 						{
-							if (consultarIpServidor(&odbc, cIpServidorCredito, SERV_CREDITO, cSqlTxt) == true)
+							//if (consultarIpServidor(&odbc, cIpServidorCredito, SERV_CREDITO, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+							if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 							{
-								if (consultarIpServidor(&odbc, cIpServidorPlanes, SERV_PLANES_TA, cSqlTxt) == true)
+								//if (consultarIpServidor(&odbc, cIpServidorPlanes, SERV_PLANES_TA, cSqlTxt) == true) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+								if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 								{
-									if (!consultarIpServidor(&odbc, cIpServidorCCuentaWeb, SERV_CCUENTAWEB, cSqlTxt))
+									//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+									/*if (!consultarIpServidor(&odbc, cIpServidorCCuentaWeb, SERV_CCUENTAWEB, cSqlTxt))
 									{
 										return 0;
 									}
 
-									ObtenerMesAnio();//Obtener Mes Y Año Actual para consultar Datos
+									ObtenerMesAnio();//Obtener Mes Y Aï¿½o Actual para consultar Datos
 
 									if (!consultarEdadesSeguroClub(1) || !consultarEdadesSeguroClub(2) || !consultarEdadesPlanSalud(4))
 									{
@@ -3489,13 +3526,15 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 									odbc_1.Close();
 									if (!abrirConexionBD(&odbc_1, cIpServidorCartera, cIpServidorCartera, CONECTA_CARTERA, m_grid.iTienda))
 									{
-										AfxMessageBox(" Error al abrir conexión BD CARTERA");
+										AfxMessageBox(" Error al abrir conexiï¿½n BD CARTERA");
 										iFlagOk = 0;
 									}
 
 									m_cliente.GetWindowText(sDato);
-									m_grid.lCliente = atol(sDato);
-									if (m_grid.lCliente == 1708)
+									m_grid.lCliente = atol(sDato);*/
+									//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+									//if (m_grid.lCliente == 1708) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+									if (false) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 									{
 										desplegarDatosClienteEtp();
 										iFoco = 1;
@@ -3507,7 +3546,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 									}
 									else
 									{
-										sprintf_s(cIPServidorTiendaNumero, "%s", (LPCTSTR)m_grid.sServer);
+										//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+										/*sprintf_s(cIPServidorTiendaNumero, "%s", (LPCTSTR)m_grid.sServer);
 										cIPServidorTiendaNumero[15] = 0;
 
 										if (iFlagTimeOutCCuenta < 0)
@@ -3518,18 +3558,29 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 										sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> Inicia CCuentaWeb");
 										grabarLog(cMensajeSeguimiento);
 
-										CCuentaWeb *pCuentaCliente = new CCuentaWeb();
+										CCuentaWeb *pCuentaCliente = new CCuentaWeb(); //TODO: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 6
 										pCuentaCliente->iniciarCCuenta(m_grid.lCliente, cFechaTienda, (short)m_grid.iTienda, (short)iCiudadGnDominio, cIpServidorCartera, cIpServidorCCuentaWeb, (short)iFlagTimeOutCCuenta);
 										pCuentaCliente->leerCliente();
 
+										//TODO: MRL  08/09/2025        
+										//enviarLogParams(hDbc, 10203, 240340, "este es el log....", "2025-08-20", 803, "este log viene de.....");
+										// se encontro al cliente en la cartera
+
 										sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> bClienteValido = %d", pCuentaCliente->bClienteValido);
-										grabarLog(cMensajeSeguimiento);
+										grabarLog(cMensajeSeguimiento);*/
+										//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 										{
 											// se encontro al cliente en la cartera
-											if (pCuentaCliente->bClienteValido || m_grid.lCliente == 1708)
+											//if (pCuentaCliente->bClienteValido || m_grid.lCliente == 1708) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+											if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 											{
-												memset(&candidatoReestructura, 0, sizeof(SCandidatoReestructura));
-												pCuentaCliente->leerTienda01();
+												//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+												/*memset(&candidatoReestructura, 0, sizeof(SCandidatoReestructura));
+												pCuentaCliente->leerTienda01(); //TODO: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 7
+	
+												//TODO: MRL  08/09/2025        
+												//enviarLogParams(hDbc, 10203, 240340, "este es el log....", "2025-08-20", 803, "este log viene de.....");
+												// se encontro al cliente en la cartera
 
 												pCuentaCliente->leerConvenios01();
 												pCuentaCliente->leerLineaCredito();
@@ -3687,14 +3738,16 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 												else
 												{
 													iFlagDespliegaDatosZ = 0;
-												}
+												}*/
+												//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 												//else
 												{
-													iFlagDescuentoEspecial = pCuentaCliente->iFlagDescuentoEspecial;
+													//iFlagDescuentoEspecial = pCuentaCliente->iFlagDescuentoEspecial; //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 
 													if (iFlagOk == 1)
 													{
-														if (iFlagBanorte == 4)
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+														/*if (iFlagBanorte == 4)
 														{
 															validarComplementoCliente(1, iFlagMesRegalado);//Validar si se regala un mes al cliente cuando compra seguro
 														}
@@ -3729,9 +3782,11 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																iCandidatoAprobado = 0;
 															}
 															else
-															{
-																if ((m_grid.cArea == 'C' && iFlagMoratorioCaja == 1) || (m_grid.cArea == 'R' && iFlagMoratorioRopa == 1) || (m_grid.cArea == 'M' && iFlagMoratorioMuebles == 1) /*&& iFlagTiendaLocal == 0*/)
-																{
+															{*/
+															//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+																//if ((m_grid.cArea == 'C' && iFlagMoratorioCaja == 1) || (m_grid.cArea == 'R' && iFlagMoratorioRopa == 1) || (m_grid.cArea == 'M' && iFlagMoratorioMuebles == 1) /*&& iFlagTiendaLocal == 0*/) // TODO: COMENTADO POR GAHL
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																/*{
 																	iCandidatoAprobado = pCuentaCliente->totalesCuenta.lCienteCandidato;
 																	if (iCandidatoAprobado == 1)
 																	{
@@ -3748,7 +3803,7 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																		}
 																		//37569 error al obtener token agregar mensaje
 																		else{
-																			AfxMessageBox("Advertencia:\nError al generar token de autenticación. Favor\nde comunicarse a mesa de servicio.");
+																			AfxMessageBox("Advertencia:\nError al generar token de autenticaciï¿½n. Favor\nde comunicarse a mesa de servicio.");
 																			sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> Error al consultar un token de autenticacion");
 																			grabarLog(cMensajeSeguimiento);
 																			iCandidatoAprobado = 0;
@@ -4006,15 +4061,16 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																	ObtenerEstatusDomiciliacionCuenta(pCuentaCliente);
 																//}
 															}
-														}
-
+														}*/
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 														//ciclo para saber si tiene seguro club el cliente
 														sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> leyendo cuentas del cliente");
 														grabarLog(cMensajeSeguimiento);
-
+														iTotalCuentas = 1; //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 														for (i = 0; i < iTotalCuentas; i++)
 														{
-															if (i == 0)
+															//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+															/*if (i == 0)
 															{
 																for (int j = 22; j < 34; j++) //ciclo para blanquear las columnas ocultas de la 22 a la 32
 																{
@@ -4295,7 +4351,7 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																						m_grid.QuickSetText(k, 2, " AFILIAR  ");
 																						m_grid.QuickSetAlignment(k, 2, UG_ALIGNCENTER);
 
-																						//9923 --> cambiar tamaño de letra
+																						//9923 --> cambiar tamaï¿½o de letra
 																						fontID = m_grid.AddFont("Lucida Console Bold", 14, 600);
 																						m_grid.QuickSetFont(k, 3, fontID);
 																						m_grid.QuickSetText(k, 3, " P. FAMILIAR ");
@@ -4329,7 +4385,7 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																						m_grid.QuickSetText(k, 2, " AFILIADO  ");
 																						m_grid.QuickSetAlignment(k, 2, UG_ALIGNCENTER);
 
-																						//9923 --> CAMBIAR TAMAÑO LETRA
+																						//9923 --> CAMBIAR TAMAï¿½O LETRA
 																						fontID = m_grid.AddFont("Lucida Console Bold", 14, 600);
 																						m_grid.QuickSetFont(k, 3, fontID);
 																						m_grid.QuickSetText(k, 3, " P. FAMILIAR ");
@@ -4441,7 +4497,7 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																			}
 																			else
 																			{
-																				//para cuando cartera procese a¤o >= 2000 con nulos
+																				//para cuando cartera procese aï¿½o >= 2000 con nulos
 																				if (iAnioV < 50) iAnioV += 100;
 
 																				lFecha1 = (long)iAnioActual * 372L +
@@ -4608,7 +4664,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																		{
 																			continue;
 																		}
-																	}
+																	}*/
+																	//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 																	//23632: Se elimina la columna CPV (candidato) dentro de la columna de CPF:
 																	//Mensaje de Seguro de auto
 																	/*if ( iFlagSeguroAuto == 1 && iFlagSupervisor != 1)
@@ -4623,11 +4680,12 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 
 																	fontID = m_grid.AddFont("Lucida Console Bold", 14, 600);
 																	m_grid.QuickSetFont(k,8, fontID);
-																	m_grid.QuickSetText(k,8,"PROTECCIÓN" );
+																	m_grid.QuickSetText(k,8,"PROTECCIï¿½N" );
 																	m_grid.QuickSetAlignment(k,8, UG_ALIGNCENTER );
 																	}
 																	}*/
-																}
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																/*}
 																if (iCandidatoAprobado == 1)
 																{
 																	sprintf_s(cJsonPostDescuentos, "\"tipoCuenta\":%d,\"saldoSinInteres\":%ld,\"interes\":%ld,\"vencidoSinInteres\":%ld"
@@ -4805,10 +4863,12 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																else
 																{
 																	iDiasVencidosPS = 0;
-																}
+																}*/
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 
-																if ((pCuentaCliente->pCuenta[i].tFechaFinVigencia.ano() == 1900 && (bCandidatoPSVenta || bCandidatoPSAbono)) /*|| (bBanderaTienePlan && iDiasVencidosPS > 90)*/)
-																{
+																//if ((pCuentaCliente->pCuenta[i].tFechaFinVigencia.ano() == 1900 && (bCandidatoPSVenta || bCandidatoPSAbono)) /*|| (bBanderaTienePlan && iDiasVencidosPS > 90)*/) // TODO: COMENTADO POR GAHL
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																/*{
 																	// leyenda AFILIAR para cliente candidato o con mas de 90 dias de vencido
 																	m_grid.QuickSetText(k, 2, " AFILIAR  "); // renglon FECHA COMPRA
 																	m_grid.QuickSetAlignment(k, 2, UG_ALIGNCENTER);
@@ -4886,9 +4946,11 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																	icuenta = 1;
 																}
 															}
-															else
+															else*/
+															//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 															{
-																sDato.Format("%s", pCuentaCliente->pCuenta[i].cDescripcion);
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																/*sDato.Format("%s", pCuentaCliente->pCuenta[i].cDescripcion);
 																m_grid.QuickSetText(k, -1, sDato);
 
 																if (pCuentaCliente->pCuenta[i].lSaldo > 0)
@@ -4992,10 +5054,13 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																			}
 																		}
 																	}
-																}
-																else if (pCuentaCliente->pCuenta[i].iTipoDeCuenta == CUENTA_MUEBLES) //Tipo de Cuenta 1=Muebles,
+																}*/
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+																//else if (pCuentaCliente->pCuenta[i].iTipoDeCuenta == CUENTA_MUEBLES) //Tipo de Cuenta 1=Muebles, //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+																if (1 == CUENTA_MUEBLES) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 																{
-																	sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> leyendo cuenta de muebles[%06ld]", pCuentaCliente->pCuenta[i].lFactura);
+																	//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																	/*sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> leyendo cuenta de muebles[%06ld]", pCuentaCliente->pCuenta[i].lFactura);
 																	grabarLog(cMensajeSeguimiento);
 																	sDato.Format("%d", pCuentaCliente->pCuenta[i].iTipoDeCuenta);
 																	stDatosCertificacion[iCantidadCuentaMuebles].iTipoCuenta = atoi(sDato);
@@ -5064,7 +5129,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																	lImporteTotal += pCuentaCliente->pCuenta[i].lImporteVenta;
 
 																	sprintf_s(cTexto, "%04d%02d%02d", iAnioActual, iMesActual, iDiaActual);
-																	sprintf_s(stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, "%04d%02d%02d", pCuentaCliente->pCuenta[i].tFechaVenta.ano(), pCuentaCliente->pCuenta[i].tFechaVenta.mes(), pCuentaCliente->pCuenta[i].tFechaVenta.dia());
+																	sprintf_s(stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, "%04d%02d%02d", pCuentaCliente->pCuenta[i].tFechaVenta.ano(), pCuentaCliente->pCuenta[i].tFechaVenta.mes(), pCuentaCliente->pCuenta[i].tFechaVenta.dia()); //TODO: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 8
+																	//TODO: 04/09/2025, GAHL, IMPLEMENTAR LOG CON pCuentaCliente->pCuenta[i].tFechaVenta
 
 																	sDato.Format("%hd", pCuentaCliente->pCuenta[i].iDiasTranscurridos);
 																	stDatosCertificacion[iCantidadCuentaMuebles].iDiasTranscurridos = atoi(sDato);
@@ -5129,10 +5195,83 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																		sJsonPostDescuentoMoratorio.append(cJsonPostDescuentos);
 																		icuenta = 1;
 
+																	}*/
+																	//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+																	//TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos (DESPLIEGUE DE stDatosCertificacion) - INICIO
+																	CCuentaWeb *pCuentaCliente = new CCuentaWeb();
+																	pCuentaCliente->leerTienda01();
+																	
+																	sDato.Format("%d", pCuentaCliente->pCuenta[i].iTipoDeCuenta);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iTipoCuenta = atoi(sDato);	
+																	stDatosCertificacion[iCantidadCuentaMuebles].iCliente = 1902225;
+																	stDatosCertificacion[iCantidadCuentaMuebles].iCaja = 8;
+																	stDatosCertificacion[iCantidadCuentaMuebles].iTienda = 211;
+																	sDato.Format("%06ld", pCuentaCliente->pCuenta[i].lFactura);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iFactura = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lSaldaCon);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iSaldaCon = atoi(sDato);
+																	sprintf_s(stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, "%04d%02d%02d", pCuentaCliente->pCuenta[i].tFechaVenta.ano(), pCuentaCliente->pCuenta[i].tFechaVenta.mes(), pCuentaCliente->pCuenta[i].tFechaVenta.dia());
+																	sDato.Format("%hd", pCuentaCliente->pCuenta[i].iDiasTranscurridos);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iDiasTranscurridos = atoi(sDato);
+																	sDato.Format("%hd", pCuentaCliente->pCuenta[i].iPlazo);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iPlazo = atoi(sDato);
+																	sDato.Format("%ld", (pCuentaCliente->pCuenta[i].lImporteVenta - pCuentaCliente->pCuenta[i].lInteresSobreCompra));
+																	stDatosCertificacion[iCantidadCuentaMuebles].iContado = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lSaldo);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iSaldoAnterior = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lInteresAdicional);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iInteresAdicional = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lBase);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iAbonoBase = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lVencido);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iSaldoVencido = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lBonificacion);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iBonificacion = atoi(sDato);
+																	sDato.Format("%ld", (pCuentaCliente->pCuenta[i].lImporteVenta));
+																	stDatosCertificacion[iCantidadCuentaMuebles].iCredito = atoi(sDato);
+																	sDato.Format("%hd", pCuentaCliente->pCuenta[i].iPorcentajeBonificacion);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iPorcBonificacion = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lInteresSobreCompra);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iIsc = atoi(sDato);
+																	sDato.Format("%ld", pCuentaCliente->pCuenta[i].lInteresAdicionalPrimerMes);
+																	stDatosCertificacion[iCantidadCuentaMuebles].iInteresadicionalPrimerMesc = atoi(sDato);
+																	sprintf_s(stDatosCertificacion[iCantidadCuentaMuebles].cFechaMovto, "%08d", 20250724);
+																	
+																	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - INICIO
+																	char mensaje[1000] = {0};
+																	char fuente[500] = {0};
+																	char cSql[10000] = {0};
+
+																	sprintf_s(mensaje, "CCuentaWeb(TipoCuenta: %d, Factura: %d, Tienda: %d, FechaCompra: %04d%02d%02d, Plazo: %d, ImporteVenta: %d, InteresSobreCompra: %d, AbonoBase: %d, SaldaCon: %d, DiasTranscurridos: %d, Bonificacion: %d, PorcentajeBonificacion: %d, SaldoVencido: %d, InteresAdicional: %d, SaldoAnterior: %d, InteresAdicionalPrimerMes: %d)", pCuentaCliente->pCuenta[i].iTipoDeCuenta, (int)pCuentaCliente->pCuenta[i].lFactura, (int)pCuentaCliente->pCuenta[i].iTienda, pCuentaCliente->pCuenta[i].tFechaVenta.ano(), pCuentaCliente->pCuenta[i].tFechaVenta.mes(), pCuentaCliente->pCuenta[i].tFechaVenta.dia(), (int)pCuentaCliente->pCuenta[i].iPlazo, (int)pCuentaCliente->pCuenta[i].lImporteVenta, (int)pCuentaCliente->pCuenta[i].lInteresSobreCompra, (int)pCuentaCliente->pCuenta[i].lBase, (int)pCuentaCliente->pCuenta[i].lSaldaCon, (int)pCuentaCliente->pCuenta[i].iDiasTranscurridos, (int)pCuentaCliente->pCuenta[i].lBonificacion, (int)pCuentaCliente->pCuenta[i].iPorcentajeBonificacion, (int)pCuentaCliente->pCuenta[i].lVencido, (int)pCuentaCliente->pCuenta[i].lInteresAdicional, (int)pCuentaCliente->pCuenta[i].lSaldo, (int)pCuentaCliente->pCuenta[i].lInteresAdicionalPrimerMes);		
+																	sprintf_s(fuente, "DlgCapturarAbono.cpp; desplegarDatosCliente(); Linea: %d", __LINE__);
+																	sprintf_s(cSql, "SELECT estado, mensaje FROM fun_guardarlogbonificaciondiaria(%d, %d, '%s', '%s', %d, '%s');", stDatosCertificacion[iCantidadCuentaMuebles].iCliente, (int)pCuentaCliente->pCuenta[i].lFactura, mensaje, stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, (int)pCuentaCliente->pCuenta[i].iTienda, fuente);
+																	
+																	grabarLog(cSql);
+																	CLogBonificacionDiaria cLogBonificacionDiaria(&odbc, false);
+																	
+																	if (cLogBonificacionDiaria.Exec(cSql))
+																	{
+																		cLogBonificacionDiaria.activarCols();
+																		if (cLogBonificacionDiaria.Leer())
+																		{
+																			if (cLogBonificacionDiaria.estado != 0)
+																			{
+																				AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
+																				grabarLog("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
+																			}else
+																			{
+																				AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
+																				grabarLog("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
+																			}
+																		}
+																	} else {
+																		AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
 																	}
+																	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - FIN
 																	iCantidadCuentaMuebles++;
 																}
-																else if (pCuentaCliente->pCuenta[i].iTipoDeCuenta == CUENTA_PRESTAMOS) //Tipo de Cuenta 3=Prestamo,
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+																/*else if (pCuentaCliente->pCuenta[i].iTipoDeCuenta == CUENTA_PRESTAMOS) //Tipo de Cuenta 3=Prestamo,
 																{
 																	sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> leyendo cuenta de Prestamo");
 																	grabarLog(cMensajeSeguimiento);
@@ -5718,11 +5857,12 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 																cRespuesta[9] = 0;
 																sDato.Format("%s", cRespuesta);
 																m_grid.QuickSetText(k, 19, sDato);
-																m_grid.QuickSetAlignment(k, 19, UG_ALIGNRIGHT);
+																m_grid.QuickSetAlignment(k, 19, UG_ALIGNRIGHT);*/
+																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 
 															}
-
-															sDato.Format("%ld", pCuentaCliente->pCuenta[i].iTipoDeCuenta);
+															//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+															/*sDato.Format("%ld", pCuentaCliente->pCuenta[i].iTipoDeCuenta);
 															m_grid.QuickSetText(k, 37, sDato);
 															m_grid.QuickSetAlignment(k, 37, UG_ALIGNRIGHT);
 
@@ -5763,15 +5903,17 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 															{
 																k++;
 
-															}
+															}*/
+															//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 														}
-														//Seccion para mostrar las cuentas de seguros motos y celulares.
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+														/*//Seccion para mostrar las cuentas de seguros motos y celulares.
 														if( flagCuentasSeguros == 1 && pCuentasSeguros->iCuentasActivas > 0 ) {
-															grabarLog("DlgCapturarAbono -> Entró a leer cuentas de seguros");
+															grabarLog("DlgCapturarAbono -> Entrï¿½ a leer cuentas de seguros");
 															cuentasSeguros.m_grid = &m_grid;															
 															cuentasSeguros.pCuentasSeguros = pCuentasSeguros;	
 															k = cuentasSeguros.cargarCuentasSeguros(k, &pCuentasSeguros->pCuentas);
-															grabarLog("DlgCapturarAbono -> Finalizó lcetura de cuentas de seguros");
+															grabarLog("DlgCapturarAbono -> Finalizï¿½ lcetura de cuentas de seguros");
 														}
 
 														for (i = 0; i < iTotalCuentas; i++)
@@ -5942,10 +6084,11 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 														{
 
 															lCuota = checarVigenciaSeguro(iCantidadSegurosClub, pCuentaCliente->totalesCuenta.lMinimoTotal, lCuotaTemporal, lCuotaPS, pCuentasSeguros->lMinimoTotal);
-														}
-
-														if(iSistema == SISTEMA_CAJAS /*&& iFlagTiendaLocal == 0*/)
-														{
+														}*/
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+														//if(iSistema == SISTEMA_CAJAS /*&& iFlagTiendaLocal == 0*/) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+														/*{
 															//Mostrar indicador de abonos puntuales
 															if(iflagCoppelRecompensaTuPuntualidad == 1)
 															{
@@ -5965,12 +6108,13 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 														}
 														m_grid2.RedrawAll();
 
-														m_grid.RedrawAll();
+														m_grid.RedrawAll();*/
+														//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 													}
 												}
 
-
-												if (iFlagTiendaLocal >= 1) // Fecha mas cercana a la fecha del gndominio, sin pasarse, de las FUM de las ctas del cte...
+												//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+												/*if (iFlagTiendaLocal >= 1) // Fecha mas cercana a la fecha del gndominio, sin pasarse, de las FUM de las ctas del cte...
 												{
 													sFechaTienda.Format("%04d%02d%02d", iAnioActual, iMesActual, iDiaActual);
 													sFechaTienda.Trim();
@@ -5996,7 +6140,7 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 
 												if (_access("c:\\sys\\mem\\tarjeto.ta", 0) == 0)
 												{
-													AfxMessageBox("Cliente cuenta con un Plan Tarifario, para abonar a la cuenta debe hacerlo en el menú de tiempo aire 1.");
+													AfxMessageBox("Cliente cuenta con un Plan Tarifario, para abonar a la cuenta debe hacerlo en el menï¿½ de tiempo aire 1.");
 												}
 
 												if (iFlagTiendaLocal == 0 && iFlagAsteriscoCoppel == 1) // Fecha mas cercana a la fecha del gndominio, sin pasarse, de las FUM de las ctas del cte...
@@ -6048,7 +6192,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 												sprintf_s(candidatoReestructura.cSituacionEspecial, "%c", pCuentaCliente->cSituacionEspecial);
 												sprintf_s(candidatoReestructura.cSexo, "%c", pCuentaCliente->cSexo);
 												candidatoReestructura.iCiudadCliente = pCuentaCliente->iCiudad;
-												candidatoReestructura.iCiudad = iCiudadGnDominio;
+												candidatoReestructura.iCiudad = iCiudadGnDominio;*/
+												//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 											}
 											else
 											{
@@ -6058,8 +6203,10 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 												iFlagOk = 0;
 											}
 										}
-										delete pCuentasSeguros;
-										delete pCuentaCliente;
+										//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+										/*delete pCuentasSeguros;
+										delete pCuentaCliente;*/
+										//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 									}
 								}
 							}
@@ -6069,8 +6216,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 			}
 		}
 	}
-
-	if (iCandidatoAprobado == 1)
+	//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*if (iCandidatoAprobado == 1)
 	{
 		memset(cApellidoMaterno, 0, sizeof(cApellidoMaterno));
 
@@ -6089,8 +6236,8 @@ int CDlgCapturarAbono::desplegarDatosCliente()
 	if ((bExisteCuentaSolex && iFlagDespliegaDatosZ != 1) || iFlagDespliegaDatosZ == 1)
 	{
 		ValidarClienteSanaTuDeuda();
-	}
-
+	}*/
+	//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 	sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> Fin busqueda del cliente[%ld]", m_grid.lCliente);
 	grabarLog(cMensajeSeguimiento);
 
@@ -6223,13 +6370,13 @@ void CDlgCapturarAbono::inicializarCaptura()
 		m_grid.RedrawCell(i, 20);
 	}
 	m_grid.QuickSetText(0, -1, "ROPA");
-	m_grid.QuickSetText(1, -1, "ARTÍCULO 1");
-	m_grid.QuickSetText(2, -1, "ARTÍCULO 2");
-	m_grid.QuickSetText(3, -1, "ARTÍCULO 3");
-	m_grid.QuickSetText(4, -1, "ARTÍCULO 4");
-	m_grid.QuickSetText(5, -1, "ARTÍCULO 5");
-	m_grid.QuickSetText(6, -1, "ARTÍCULO 6");
-	m_grid.QuickSetText(7, -1, "ARTÍCULO 7");
+	m_grid.QuickSetText(1, -1, "ARTï¿½CULO 1");
+	m_grid.QuickSetText(2, -1, "ARTï¿½CULO 2");
+	m_grid.QuickSetText(3, -1, "ARTï¿½CULO 3");
+	m_grid.QuickSetText(4, -1, "ARTï¿½CULO 4");
+	m_grid.QuickSetText(5, -1, "ARTï¿½CULO 5");
+	m_grid.QuickSetText(6, -1, "ARTï¿½CULO 6");
+	m_grid.QuickSetText(7, -1, "ARTï¿½CULO 7");
 
 	m_grid.SetColWidth(-1, 120);
 	m_grid.SetColWidth(0, 83);
@@ -6440,7 +6587,7 @@ void CDlgCapturarAbono::inicializarCaptura()
 
 	sFechaHoraInicioOperacion.Empty();
 
-	//Se añade borrarPagoServicio.
+	//Se aï¿½ade borrarPagoServicio.
 	bPagodeServicios = false;
 	if (iSistema == SISTEMA_CAJAS)
 	{
@@ -6592,11 +6739,11 @@ int CDlgCapturarAbono::tiposDeEtp()
 			"       F3      B   Futuras Cuentas Ropa                      ",
 			"       F4      C   Cuentas No Localizadas Ropa               ",
 			"       F5      D   Pagos Iniciales No Devueltos Ropa         ",
-			"       F6      E   Efectivo Por Recuperación de Robo Ropa    ",
+			"       F6      E   Efectivo Por Recuperaciï¿½n de Robo Ropa    ",
 			"       F8      G   Futuras Compras Muebles                   ",
 			"       F9      H   Cuentas No Localizadas Muebles            ",
 			"       F10     I   Pagos Iniciales No Devueltos Muebles      ",
-			"       CTRL_F1 J   Efectivo Por Recuperación de Robo muebles ",
+			"       CTRL_F1 J   Efectivo Por Recuperaciï¿½n de Robo muebles ",
 			"       CTRL_F2 K   Estacionamiento                           ",
 			"       Esc  Salir                                            ",
 			"" };
@@ -6633,7 +6780,7 @@ int CDlgCapturarAbono::tiposDeEtp()
 			break;
 		case F6:
 			{
-				m_mensaje.SetWindowText("E   Efectivo Por Recuperación de Robo Ropa                     ");
+				m_mensaje.SetWindowText("E   Efectivo Por Recuperaciï¿½n de Robo Ropa                     ");
 				iTipoEtp = 4;
 				cTipoEtp[0] = 'E';
 				bSalir = false;
@@ -6665,7 +6812,7 @@ int CDlgCapturarAbono::tiposDeEtp()
 			break;
 		case CTRL_F1:
 			{
-				m_mensaje.SetWindowText("J   Efectivo Por Recuperación de Robo Muebles                     ");
+				m_mensaje.SetWindowText("J   Efectivo Por Recuperaciï¿½n de Robo Muebles                     ");
 				iTipoEtp = 8;
 				cTipoEtp[0] = 'J';
 				bSalir = false;
@@ -6751,8 +6898,8 @@ int CDlgCapturarAbono::calcularMorasCliente()
 				m_grid.QuickGetText(i, 1, &sTexto);
 				sprintf_s(cFactura, "%s", (LPCTSTR)sTexto);
 
-				intAdicX = lPagoX > intAdicX ? 0 : intAdicX - lPagoX; // Si PAGO > INTERÉS ADICIONAL INICIAL entonces INTERÉS ADICIONAL FINAL = 0 Si no INTERÉS ADICIONAL FINAL = INTERÉS ADICIONAL INICIAL - PAGO
-				lVencidoSI = lVencidoX - lPagoX - intAdicX < 0 ? 0 : lVencidoX - lPagoX - intAdicX; //Si VENCIDO INICIAL - PAGO - INTERÉS ADICIONAL FINAL < 0 entonces VENCIDO SIN INTERÉS = 0 ----- Si no VENCIDO SIN INTERÉS = VENCIDO INICIAL - PAGO -INTERÉS ADICIONAL FINAL
+				intAdicX = lPagoX > intAdicX ? 0 : intAdicX - lPagoX; // Si PAGO > INTERï¿½S ADICIONAL INICIAL entonces INTERï¿½S ADICIONAL FINAL = 0 Si no INTERï¿½S ADICIONAL FINAL = INTERï¿½S ADICIONAL INICIAL - PAGO
+				lVencidoSI = lVencidoX - lPagoX - intAdicX < 0 ? 0 : lVencidoX - lPagoX - intAdicX; //Si VENCIDO INICIAL - PAGO - INTERï¿½S ADICIONAL FINAL < 0 entonces VENCIDO SIN INTERï¿½S = 0 ----- Si no VENCIDO SIN INTERï¿½S = VENCIDO INICIAL - PAGO -INTERï¿½S ADICIONAL FINAL
 
 				//sprintf_s(cLog, "subirDatosTablaTemporal - Descuento Interes cliente:%d, interes:%d, saldo:%d, vencido:%d,concepto:%s", m_grid.lCliente,lInteresAdicionalX,lSaldoX,lVencidoX,tmpCaGrabarAbono.conceptocuenta);
 				//grabarLog(cLog);
@@ -7573,7 +7720,7 @@ void CDlgCapturarAbono::capturarDatosSeguro()
 				}
 
 				//sTexto.Format("%d", iFoliosSegurosActual[0] );
-				if (dlgCapturarDatosSeguro.iNumSeguros > 0 && dlgCapturarDatosSeguro.iNumeroSegurosAnterior > 0 && dlgCapturarDatosSeguro.iNumSeguros != dlgCapturarDatosSeguro.iNumeroSegurosAnterior)//Realizó un cambio de plan
+				if (dlgCapturarDatosSeguro.iNumSeguros > 0 && dlgCapturarDatosSeguro.iNumeroSegurosAnterior > 0 && dlgCapturarDatosSeguro.iNumSeguros != dlgCapturarDatosSeguro.iNumeroSegurosAnterior)//Realizï¿½ un cambio de plan
 				{
 					if (dlgCapturarDatosSeguro.lFolioSeguroNuevo != 0)
 					{
@@ -7740,7 +7887,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 		memset(cTexto, 0, 80);
 		hoja.poner("Nombre del contratante: COPPEL S.A. DE C.V.", iRen, iCol);
 		iRen++;
-		sprintf_s(cTexto, "Núm.de póliza: %s %s", cPoliza, cFechaVigencia);
+		sprintf_s(cTexto, "Nï¿½m.de pï¿½liza: %s %s", cPoliza, cFechaVigencia);
 		hoja.poner(cTexto, iRen, iCol);
 		iRen++;
 
@@ -7770,7 +7917,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 				memset(cTextoOut, 0, sizeof(cTextoOut));
 				sDato.Format("%s", ConsultaDescImpresion.desc_mensaje);
 				sDato.Trim();
-				sDato.Replace('¿', '¨');
+				sDato.Replace('ï¿½', 'ï¿½');
 				sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 				ponerAcento(cTextoOut);
 				hoja.poner(cTextoOut, iRen, iCol);
@@ -7833,7 +7980,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 				hoja.poner(cTexto, iRen, 55 + iCol);
 				iRen++;
 
-				hoja.poner("(Cónyuge)", iRen, iCol);
+				hoja.poner("(Cï¿½nyuge)", iRen, iCol);
 				iRen++;
 				hoja.poner("Ap.Pat.        Ap.Mat.        Nombre(s)", 10, iCol + 10);
 
@@ -7852,7 +7999,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 				iRen++;
 			}
 
-			hoja.poner("Domicilio:(calle, número, col, dlg ó mpio, estado, cp.)", iRen, iCol);
+			hoja.poner("Domicilio:(calle, nï¿½mero, col, dlg ï¿½ mpio, estado, cp.)", iRen, iCol);
 			iRen++;
 			datosDeCliente(iCasa, iColonia, iCalle, iCiudad, lCodigoPostal, cNombreCalle, cNombreZona, cNombreCiudad);
 			memset(cTexto, 0, 80);
@@ -7892,7 +8039,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 
 			memset(cTexto, 0, 80);
 			cOcupacion[20] = 0;
-			sprintf_s(cTexto, "Ocupación: %s  Curp:  ", cOcupacion);
+			sprintf_s(cTexto, "Ocupaciï¿½n: %s  Curp:  ", cOcupacion);
 			hoja.poner(cTexto, 3, iCol);
 
 			//se pinta e imprime monto asegurado.
@@ -7943,7 +8090,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClub(int iCont, int iConyugal)
 			sprintf_s(cTexto, "Cobertura contratada: Fallecimiento. Suma Asegurada:  $%s", cMonto);
 			hoja.poner(cTexto, 4, iCol);
 
-			hoja.poner("Designación de Beneficiarios:", 5, iCol);
+			hoja.poner("Designaciï¿½n de Beneficiarios:", 5, iCol);
 			hoja.poner("Ap.Pat.        Ap.Mat.        Nombre(s)         PARENT:   PORC.", 6, iCol);
 
 			hoja.poner(cApPatBeneficiario1, 15, 7, iCol);
@@ -8550,14 +8697,14 @@ bool CDlgCapturarAbono::grabarConvenioCacarmov()//Se agrego para actualizar la p
 		{
 			iTarjetaConv = 1;
 		}
-		/* 2-• Si Importe mínimo a conveniar del saldo vencido total < 1 abono base total
+		/* 2-ï¿½ Si Importe mï¿½nimo a conveniar del saldo vencido total < 1 abono base total
 		La suma total de los convenios debe ser >= a 1 abono base total*/
 		else if (iImporteMinimoConv <= iAbonoBaseTotalConv && iImporteTotalConv >= iAbonoBaseTotalConv)
 		{
 			iTarjetaConv = 1;
 		}
-		/* 1- Si Importe mínimo a conveniar del saldo vencido total >= 1 abono base total, la suma total
-		de los convenios debe ser >= al importe mínimo a conveniar del saldo vencido total.*/
+		/* 1- Si Importe mï¿½nimo a conveniar del saldo vencido total >= 1 abono base total, la suma total
+		de los convenios debe ser >= al importe mï¿½nimo a conveniar del saldo vencido total.*/
 		else if (iImporteMinimoConv >= iAbonoBaseTotalConv && iImporteTotalConv >= iImporteMinimoConv)
 		{
 			iTarjetaConv = 1;
@@ -8756,7 +8903,7 @@ int CDlgCapturarAbono::menuSiNoNose()
 			while (bSalir)
 			{
 				char * opciones[] = {
-					"¿RECIBIÓ SU ESTADO DE CUENTA A FINALES DEL MES PASADO O INICIOS DE ESTE MES?",
+					"ï¿½RECIBIï¿½ SU ESTADO DE CUENTA A FINALES DEL MES PASADO O INICIOS DE ESTE MES?",
 					"       F1   SI                                ",
 					"       F2   NO                                ",
 					"       F3   NO SE                             ",
@@ -9279,7 +9426,7 @@ bool CDlgCapturarAbono::checarPagos(int iCuentas)
 	return bRegresa;
 }
 
-void CDlgCapturarAbono::pedirPago()
+void CDlgCapturarAbono::pedirPago() //TODO: 29/08/2025, GAHL, FLUJO DE guardarCertificacionAbonos PASO 2
 {
 	char cLog[500] = { 0 };
 	long lPagoCte = 0;
@@ -9296,7 +9443,8 @@ void CDlgCapturarAbono::pedirPago()
 	grabarLog(cLog);
 
 	iRecibePago = 0;
-	asignarFoco();
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*asignarFoco();
 	iColumna = m_grid.GetCurrentCol(); //obtener la columna donde esta posicionado
 
 	if (m_grid.lCliente == 1708L)
@@ -9311,11 +9459,13 @@ void CDlgCapturarAbono::pedirPago()
 
 	if (lPagoCte == 0L && m_grid.lCliente == 1708L) iRecibePago = 1;
 	if (iFlagMovimiento == 0 && !checarPagos(iTotalCuentas))
-		iRecibePago = 1;
-
+		iRecibePago = 1;*/
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 	if (iRecibePago == 0)
 	{
-		if (recibirPagoCa())
+		recibirPagoCa(); //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+		/*if (recibirPagoCa())
 		{
 			sprintf_s(cLog, "pedirPago::Inicializando captura");
 			grabarLog(cLog);
@@ -9342,11 +9492,12 @@ void CDlgCapturarAbono::pedirPago()
 
 		if (!abrirConexionBD(&odbc, (LPTSTR)(LPCTSTR)m_grid.sServer, (LPTSTR)(LPCTSTR)m_grid.sServer, CONECTA_TIENDANUMERO, m_grid.iTienda))
 		{
-			AfxMessageBox(" NO SE PUDO ESTABLECER CONEXIÓN BD TIENDA.#### ");
+			AfxMessageBox(" NO SE PUDO ESTABLECER CONEXIï¿½N BD TIENDA.#### ");
 			OnCancel();
 			inicializar();
 			inicializarCaptura();
-		}
+		}*/
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 	}
 	sprintf_s(cLog, "FC0200805021521206 - fin - pedirPago - Termina grabado del abono cliente = %ld", lClienteAux);
 	grabarLog(cLog);
@@ -9554,7 +9705,7 @@ void CDlgCapturarAbono::desplegarPaginaSeguros(int iFlagReactivo, int iFlagIncre
 				m_grid.QuickSetText(iColumna, 2, "AFILIAR");
 				m_grid.QuickSetAlignment(iColumna, 2, UG_ALIGNCENTER);
 
-				//9923 --> CAMBIAR TAMAÑO DE LETRA
+				//9923 --> CAMBIAR TAMAï¿½O DE LETRA
 				int fontID = m_grid.AddFont("Lucida Console Bold", 14, 600);
 				m_grid.QuickSetFont(iColumna, 3, fontID);
 				m_grid.QuickSetText(iColumna, 3, " P.FAMILIAR ");
@@ -9665,7 +9816,7 @@ void CDlgCapturarAbono::desplegarPaginaSeguros(int iFlagReactivo, int iFlagIncre
 	}
 	else
 	{
-		//para cuando cartera procese a¤o >= 2000 con nulos
+		//para cuando cartera procese aï¿½o >= 2000 con nulos
 		if (iAnio < 50) iAnio += 100;
 		lFecha1 = (long)iAnioActual * 372L +
 			(long)iMesActual * 31L +
@@ -9825,7 +9976,7 @@ bool CDlgCapturarAbono::consultarFolioCajas()
 	return  bResultado;
 }
 
-bool CDlgCapturarAbono::recibirPagoCa(void)
+bool CDlgCapturarAbono::recibirPagoCa(void) //TODO: 29/08/2025, GAHL, FLUJO DE guardarCertificacionAbonos PASO 3
 {
 	char cLog[500] = { 0 };
 	bool valorRegresa = false, bContinuar = false, bRespuestaGral = false;
@@ -9835,19 +9986,21 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 
 	sprintf_s(cLog, "FC0200805021521233 - entra - recibirPagoCa");
 	grabarLog(cLog);
-
-	consultarFolioCajas();
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*consultarFolioCajas();
 
 	sprintf_s(cMensaje, "recibirPagoCa::Recibo = %ld", lNumeroConsulta);
 	grabarLog(cMensaje);
 
 	obtenerTotalAbonoCuentasPagoServicio(m_grid2.lTotalAbonos);
-	lTotalAPagar = m_grid2.lTotalAbonos;
-
+	lTotalAPagar = m_grid2.lTotalAbonos;*/
+	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+	lTotalAPagar = 1; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	if ((m_grid.lCliente == 1708L) || (lTotalAPagar != 0L) || (iFlagConvenioTerminado == 1))
 	{
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 		//poner flag si es uno o dos entra a esta logica
-		if (iFlagVolante == 1 || iFlagVolante == 2)
+		/*if (iFlagVolante == 1 || iFlagVolante == 2)
 		{
 			darVolanteRopa();
 			darVolanteMuebles();
@@ -9882,7 +10035,7 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 		// Ruta del archivo DLL a ejecutar
 		nombreArchivo("CA0029.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-		// Nombre de la función principal en el DLL
+		// Nombre de la funciï¿½n principal en el DLL
 		sprintf_s(cNombreFuncionDLL, "CA0029");
 
 		sprintf_s(cMensaje, "recibirPagoCa::Cargando modulo CA0029");
@@ -9896,17 +10049,20 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 		if (lPagoCliente > 0) iFlagPago = 1;
 
 		sprintf_s(cMensaje, "recibirPagoCa::Pago Cliente = %ld", lPagoCliente);
-		grabarLog(cMensaje);
-
+		grabarLog(cMensaje);*/
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+		iRegresaDll = 1; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 		if (iRegresaDll <= 0)
 		{
 			AfxMessageBox("Ocurrio un error al llamado del modulo CA0029.DLL", MB_ICONERROR);
 		}
 		else
 		{
+			lTotalAPagar = 0L; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 			if (lPagoCliente != 0L || lTotalAPagar == 0L)
 			{
-				sprintf_s(cFechaMovimiento, "%02d-%02d-%04d %02d:%02d:%02d", iMesActual, iDiaActual, iAnioActual, iHora, iMinutos, iSegundos);
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+				/*sprintf_s(cFechaMovimiento, "%02d-%02d-%04d %02d:%02d:%02d", iMesActual, iDiaActual, iAnioActual, iHora, iMinutos, iSegundos);
 				cFechaMovimiento[19] = 0;
 
 				if (m_grid.lCliente != 1708)
@@ -9915,16 +10071,21 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 					cFechaNacimiento[19] = 0;
 				}
 
-				bContinuar = crearTablaTemporal();
+				bContinuar = crearTablaTemporal();*/
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+				bContinuar = true; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 				if (bContinuar == true)
 				{
-					bContinuar = subirDatosTablaTemporal();
+					// bContinuar = subirDatosTablaTemporal(); //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 					if (bContinuar == true)
 					{
-						buscarSeguroClub();
-						consultarEncuesta();
-
-						if (grabarAbono())
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+						/*buscarSeguroClub();
+						consultarEncuesta();*/
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+						grabarAbono(); //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+						/*if (grabarAbono())
 						{
 							iFlagGraboAbono = 1;
 						}
@@ -9932,17 +10093,18 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 						sprintf_s(cArchivo, "c:\\sys\\mem\\Ctas.txt");
 
 						if (_access(cArchivo, 0) == 0)
-							_unlink(cArchivo);
+							_unlink(cArchivo);*/
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 					}
 				}
-
-				if (iSistema != SISTEMA_CAJERA_CAPTURISTA)
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+				/*if (iSistema != SISTEMA_CAJERA_CAPTURISTA)
 				{
 					if (iFlagGraboAbono == 1)
 					{
 						valorRegresa = true;
 						iFlag = 1;
-						//Se a¤ade para las encuestas de Coppel
+						//Se aï¿½ade para las encuestas de Coppel
 						if (m_grid.lCliente > 0 && m_grid.lCliente != 1708)
 						{
 							if (esEmpleado(m_grid.lCliente) != 1)
@@ -9986,11 +10148,12 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 						obtenerFlag('C', FLAGC_POP_UP, iFlagPopUp);
 
 						sprintf_s(cLog, "CDlgCapturarAbono::recibirPagoCa. Flag Pop Up: %d", iFlagPopUp);
-						grabarLog(cLog);
-
+						grabarLog(cLog);*/
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 						//JECE 28Jun24
-						if (/*iFlagTiendaLocal == 0 &&*/ iFlagPopUp == 1)
-						{
+						//if (/*iFlagTiendaLocal == 0 &&*/ iFlagPopUp == 1) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+						/*{
 							validarPopUpPrestamoPersonal();
 						}
 					}
@@ -10028,7 +10191,7 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
 						if (cargarDll.getResultado() != 1)
 						{
-							AfxMessageBox("OCURRIÓ UN ERROR AL CARGAR EL GN0118.DLL", MB_ICONERROR);
+							AfxMessageBox("OCURRIï¿½ UN ERROR AL CARGAR EL GN0118.DLL", MB_ICONERROR);
 						}
 					}
 
@@ -10087,14 +10250,18 @@ bool CDlgCapturarAbono::recibirPagoCa(void)
 				else if (iFlagGraboAbono == 1)
 				{
 					valorRegresa = true;
-				}
+				}*/
+				//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 			}
 		}
 
 		//6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
-		limpiarFolioRezagado(true);
-		eliminarRegistroTemporalSesionTarjetaIniciarProcesoFacturacion();
-		//6267707 Cajas/Legado no hay registro en tdcheques ni en SOA	
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+		/*limpiarFolioRezagado(true);
+		eliminarRegistroTemporalSesionTarjetaIniciarProcesoFacturacion();*/
+		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+		//6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
+		valorRegresa = true; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 
 	}
 	else
@@ -10661,7 +10828,7 @@ bool CDlgCapturarAbono::imprimirReciboCajas(char *cImagen, long &lImporteServici
 				}
 				memset(cRespuesta2, 0, sizeof(cRespuesta2));
 				miniFecha(cRespuesta2, (int)iDiaVencimientoX, (int)iMesVencimientoX, (int)iAnioVencimientoX);
-				//IMPRIME SOLO PARA A¥O >= 2000
+				//IMPRIME SOLO PARA Aï¿½O >= 2000
 				if ((int)iAnioVencimientoX > 99)
 				{
 					memcpy(cTxt, &cRespuesta2[0], 5);
@@ -11702,6 +11869,7 @@ void CDlgCapturarAbono::imprimirImportesRecibo(C_FormasPCL &hoja, int iLinea, lo
 		CCuentaWeb *pCuentaRopa = new CCuentaWeb(m_grid.lCliente, cTexto, (short)m_grid.iTienda, (short)iCiudadGnDominio, cIpServidorCartera, cIpServidorCCuentaWeb, (short)iFlagTimeOutCCuenta);
 		pCuentaRopa->leerCliente();
 
+
 		if (pCuentaRopa->bClienteValido)
 		{
 			pCuentaRopa->leerCliente();
@@ -12644,7 +12812,7 @@ void CDlgCapturarAbono::imprimirSeguroVencido(int iCuenta1, int iCuenta2, int iC
 
 	miniFecha(cRespuesta2, (int)iDiaVenc, (int)iMesVenc, (int)iAnioVenc);
 
-	//IMPRIME SOLO PARA A¥O >= 2000
+	//IMPRIME SOLO PARA Aï¿½O >= 2000
 	if ((int)iAnioVenc > 99)
 	{
 		memcpy(cRespuestaAux, &cRespuesta[0], 5);
@@ -12667,7 +12835,7 @@ void CDlgCapturarAbono::imprimirSeguroVencido(int iCuenta1, int iCuenta2, int iC
 		bIndividual = tieneSeguroClub(cStatusSeguro, cTipoCan, cClaveNoOfrecer, lFactura, bCteSeguro);
 		if (cStatusSeguro != 'P')
 		{
-			sprintf_s(cMensaje, "%06ld NO TIENE CLUB DE PROTECCIÓN FAMILIAR VENCIÓ EL %s", lFactura, cRespuesta);
+			sprintf_s(cMensaje, "%06ld NO TIENE CLUB DE PROTECCIï¿½N FAMILIAR VENCIï¿½ EL %s", lFactura, cRespuesta);
 			hoja.poner(cMensaje, iRen, 0);
 			memset(cMensaje, 0, 140);
 		}
@@ -12808,7 +12976,7 @@ void CDlgCapturarAbono::imprimirSeguroVigente(int iCuenta1, int iCuenta2, int iC
 	usingx("###,###", cRespuesta, lMontoRedondeo);
 	miniFecha(cRespuesta2, (int)iDiaVenc, (int)iMesVenc, (int)iAnioVenc);
 
-	//IMPRIME SOLO PARA A¥O >= 2000
+	//IMPRIME SOLO PARA Aï¿½O >= 2000
 	if ((int)iAnioVenc > 99)
 	{
 		memcpy(cRespuestaAux, &cRespuesta2[0], 5);
@@ -14246,7 +14414,7 @@ bool CDlgCapturarAbono::subirDatosTablaTemporal()
 	return  bContinuar;
 }
 
-bool CDlgCapturarAbono::grabarAbono()
+bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardarCertificacionAbonos PASO 4
 {
 	char cLog[500] = { 0 };
 	bool bConsultaOK = true, bGrabo = false, bEsSorteoExistente = false, bLevantarSC3 = true;
@@ -14274,8 +14442,8 @@ bool CDlgCapturarAbono::grabarAbono()
 	iFlagConsultaSC3 = 0;
 
 	grabarLog("LLega a consultar  FLAGC_SERVICIOCORREO_CAPTURA_ABONOS");
-
-	consultarFlag(&odbc, cSql, 'C', FLAGC_SERVICIOCORREO_CAPTURA_ABONOS, iFlagConsultaSC3);
+	//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*consultarFlag(&odbc, cSql, 'C', FLAGC_SERVICIOCORREO_CAPTURA_ABONOS, iFlagConsultaSC3);
 	bEsSorteoExistente = EsCampaniaSorteoEncontrada();
 
 	bLevantarSC3 = validarLevantarSC3();
@@ -14307,13 +14475,16 @@ bool CDlgCapturarAbono::grabarAbono()
 	if (iFlagDespliegaDatosZ == 1)
 	{
 		bConsultaOK = abrirConexionCuentaPerdida();
-	}
-
-	if (borrarDatosTemporalesFijas() && bConsultaOK)
+	}*/
+	//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+	//if (borrarDatosTemporalesFijas() && bConsultaOK) //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+	if(true) //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	{
-		if (crearTablasTemporalesTienda())
+		//if (crearTablasTemporalesTienda()) //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+		if(true) //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 		{
-			if (grabarAbonoTablasTemporales(iError) == true) //esta funcion en watcom es ca_abono.cppdf
+			//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+			/*if (grabarAbonoTablasTemporales(iError) == true) //esta funcion en watcom es ca_abono.cppdf 
 			{
 				if (procesarTransaccion(&odbc, "begin") == true)
 				{
@@ -14349,10 +14520,12 @@ bool CDlgCapturarAbono::grabarAbono()
 												if (grabarTmpConvenioCaCarmov(cFolioTiendaTxt))   //grabar convenio de la cuenta
 												{
 													if (grabarTmpBonificacionCaCarmov(cFolioTiendaTxt))   //grabar la bonificacion
-													{
+													{*/
 														/*Se modifico para que esta funcion guarde los beneficiarios en la tabla tdbeneficiarios
 														y grabe los movimientos G6, G5 y G1 en la tabla cacarmov*/
-														if (grabarTmpSeguroCaCarmov(cFolioTiendaTxt))   //grabar el seguro
+														//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+														//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+														/*if (grabarTmpSeguroCaCarmov(cFolioTiendaTxt))   //grabar el seguro
 														{
 															if (grabarTmpTdbeneficiariosaTdBeneficiarios()) //grabar los beneficiarios capturados en la venta del seguro club en el menu de los segs club
 															{
@@ -14749,9 +14922,10 @@ bool CDlgCapturarAbono::grabarAbono()
 				{
 					iError = 1;
 				}
-			}
-
-			switch (iError)
+			}*/
+			//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+			//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+			/*switch (iError)
 			{
 			case 1:
 				grabarMensajeError("C", m_grid.iCaja, (LPTSTR)(LPCTSTR)m_grid.sServer, "CapturarAbono", "CDlgCapturarAbono", "grabarAbono", "Error al procesar la transaccion", m_grid.lEmpleado, "ERROR EN LA transaccion bd tienda", &odbc, m_grid.iMuestraMsg);
@@ -14800,11 +14974,13 @@ bool CDlgCapturarAbono::grabarAbono()
 			}
 
 			sprintf_s(cMensaje, "grabarAbono::Termino grabado Cliente = %ld, Recibo = %ld, bGrabo = %d", m_grid.lCliente, lNumeroRecibo, bGrabo);
-			grabarLog(cMensaje);
-
+			grabarLog(cMensaje);*/
+			//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+			bGrabo = true; //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 			if (bGrabo) //si todo se hizo bien al grabar el abono
 			{
-				if (iAplicoDescuento == 1)
+				//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+				/*if (iAplicoDescuento == 1)
 				{
 					char cFechaMvto[15] = { 0 };
 
@@ -14859,22 +15035,24 @@ bool CDlgCapturarAbono::grabarAbono()
 							bPromocion = mensajePromocionDirecta(iFlagImpresoraTermica);
 						}
 					}
-				}
-
-
+				}*/
+				//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+				iSistema = 1; //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 				if ((iFlagImpresoraTermica == 1 && iSistema == SISTEMA_CAJAS) || iSistema == SISTEMA_ROPA || iSistema == SISTEMA_MUEBLES)
 				{
-					if (iFlagTiendaLocal >= 1)
+					//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+					/*if (iFlagTiendaLocal >= 1)
 					{
 						obtenerFechaCartera();
 					}
 
-					termica = new CGenerarImpresion(cArchivoImpresion, true);
+					termica = new CGenerarImpresion(cArchivoImpresion, true);*/
+					//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 					imprimirRecibo();
 				}
 
-				EjecutarProcesoSituacionesEspeciales();
-
+				//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+				/*EjecutarProcesoSituacionesEspeciales();
 				IniciarContactabilidad(); //21749
 
 				bool bContinuar = true;
@@ -15017,7 +15195,8 @@ bool CDlgCapturarAbono::grabarAbono()
 				if (bCargaDatosSorteo)
 				{
 					cargarDatosSorteoNuevo(lFlagHuella);
-				}
+				}*/
+				//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 			}
 			else
 			{
@@ -15029,8 +15208,8 @@ bool CDlgCapturarAbono::grabarAbono()
 	{
 		AfxMessageBox("Error al Borrar Tablas Temporales Fijas Cartera");
 	}
-
-	cerrarConexionBD(&odbcCuentasPerdidas);
+	//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+	/*cerrarConexionBD(&odbcCuentasPerdidas);
 	flagLlamaCRTP=0;
 	if (bGrabo)
 	{
@@ -15064,8 +15243,8 @@ bool CDlgCapturarAbono::grabarAbono()
 
 	sprintf_s(cLog, "FC0200805021521360 - fin - grabarAbono - Cliente: %ld, bGrabo=%s", m_grid.lCliente,
 		bGrabo ? "VERDADERO" : "FALSO");
-	grabarLog(cLog);
-
+	grabarLog(cLog);*/
+	//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 	return bGrabo;
 }
 
@@ -15152,7 +15331,7 @@ bool CDlgCapturarAbono::grabarTdAutorizacionHuellas()
 	{
 		char cSql[42] = { 0 };
 		sprintf_s(cSql, "SELECT cnGrabarTdAutorizacionHuellas()");
-		CMaximo grabarAutorizacion(&odbc, false); //conexión a tienda.nnnn
+		CMaximo grabarAutorizacion(&odbc, false); //conexiï¿½n a tienda.nnnn
 		if (!grabarAutorizacion.Exec(cSql))
 		{
 			grabarAutorizacion.odbc->GetLastError(grabarAutorizacion.GetHstmt());
@@ -15632,7 +15811,7 @@ bool CDlgCapturarAbono::grabarAbonoTablasTemporales(short &iError)
 							{
 								if (tmpCaGrabarAbono.supago > 0)
 								{
-									//Si su saldo es menos al 60% del importe de la cuenta se cambiara su situación para que pueda comprar
+									//Si su saldo es menos al 60% del importe de la cuenta se cambiara su situaciï¿½n para que pueda comprar
 									if (tmpCaGrabarAbono.saldo >= (tmpCaGrabarAbono.importe * 40 / 100))
 									{
 										if (lSaldoNuevo <= (tmpCaGrabarAbono.importe * 40 / 100))
@@ -16075,7 +16254,7 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 				"       F7   Calculadora                    ", //F10
 				"       F8   Convenio                       ",
 				"       CTRL_F3 Pantalla de movimientos     ",
-				"       CTRL_F7 Menu Pagos Automáticos      ",
+				"       CTRL_F7 Menu Pagos Automï¿½ticos      ",
 				"       Esc  Salir                          ", //
 				"" };
 
@@ -16105,13 +16284,13 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 		{
 			/*if ( iFlagSeguroAuto == 1 )
 			{
-			sprintf_s( cMensaje, "       CTRL_F1 Menú Seguros Coppel          " );
+			sprintf_s( cMensaje, "       CTRL_F1 Menï¿½ Seguros Coppel          " );
 			}
 			else
 			{
-			sprintf_s( cMensaje, "       CTRL_F1 Seguros Club de Protección   " );
+			sprintf_s( cMensaje, "       CTRL_F1 Seguros Club de Protecciï¿½n   " );
 			}*/
-			sprintf_s(cMensaje, "       CTRL_F1 Seguros Club de Protección   ");
+			sprintf_s(cMensaje, "       CTRL_F1 Seguros Club de Protecciï¿½n   ");
 			if (iSistema == SISTEMA_CAJAS && iFlagDomiciliacionCuentas == 1)
 			{
 				char * opciones[] = {
@@ -16374,7 +16553,7 @@ bool CDlgCapturarAbono::grabarClienteEtpTemporal(long lSuPago)
 
 	grabarLog("grabarClienteEtpTemporal::grabando cliente Etp en tabla temporal");
 
-	CGrabarTmpCaCarmovEtp2 tmpCaCarmovEtp(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpCaCarmovEtp2 tmpCaCarmovEtp(&odbc);     // conexiï¿½n al tienda.nnnn
 	{
 
 		tmpCaCarmovEtp.clave[0] = 'P';
@@ -16435,7 +16614,7 @@ bool CDlgCapturarAbono::grabarEficienciaCajeraTemporal(long lEmpleado, long lSal
 
 	grabarLog("grabarEficienciaCajeraTemporal::grabando eficiencia cajera en tabla temporal");
 
-	CGrabarTmpCaEficienciaCajeras tmpCaEficienciaCajeras(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpCaEficienciaCajeras tmpCaEficienciaCajeras(&odbc);     // conexiï¿½n al tienda.nnnn
 	{
 		tmpCaEficienciaCajeras.cuentasconsaldo = 0;
 		tmpCaEficienciaCajeras.cuentasconvencido = 0;
@@ -16487,7 +16666,7 @@ bool CDlgCapturarAbono::grabarEficienciaCajeraTemporal(long lEmpleado, long lSal
 
 			if (iRespuestaConvenio == 2)
 			{
-				//Convenio efectuado el d¡a de hoy
+				//Convenio efectuado el dï¿½a de hoy
 				lConv = lSuPago;
 				if (lConv == 0L)
 				{
@@ -16590,7 +16769,7 @@ bool CDlgCapturarAbono::grabarAbonoCaCarmovTemporal(char cClave, char *cEjercici
 	sprintf_s(cLog, "FC0200805021521433 - entra - grabarAbonoCaCarmovTemporal");
 	grabarLog(cLog);
 
-	CGrabarAbonoTmpCaCarmov04 tmpCaCarmov(&odbc);     // conexión al tienda.nnnn
+	CGrabarAbonoTmpCaCarmov04 tmpCaCarmov(&odbc);     // conexiï¿½n al tienda.nnnn
 
 	{
 		while (iCuentasDetalle <= iTotalCuentasDetalle && bContinuar == true)
@@ -16734,7 +16913,7 @@ bool CDlgCapturarAbono::grabarAbonoCaCarmovTemporal(char cClave, char *cEjercici
 				tmpCaCarmov.efectuo = lEmpleadoSupervisor;
 			}
 
-			tmpCaCarmov.importeventa = lImporteVenta; // Será 1 si la cuenta es de BANCOPPEL...
+			tmpCaCarmov.importeventa = lImporteVenta; // Serï¿½ 1 si la cuenta es de BANCOPPEL...
 			tmpCaCarmov.comision = lComision;
 
 			tmpCaCarmov.tarjeta = _atoi64(cTarjeta);
@@ -16833,7 +17012,7 @@ long CDlgCapturarAbono::calcularSaldoNuevo(long lSaldo, long lInteresAdicional, 
 
 	if (lSuPago < 0L)
 	{
-		//Se trata de un cargo, se hace la resta para sumar de manera algebr ica
+		//Se trata de un cargo, se hace la resta para sumar de manera algebrï¿½ica
 		lSaldoNuevo = (lSaldo - lInteresAdicional) - lSuPago;
 	}
 	else
@@ -16910,7 +17089,7 @@ bool CDlgCapturarAbono::grabarCaMovimientosTemporal(int iPlazoConvenio, long lVe
 
 	grabarLog("grabarCaMovimientosTemporal::Grabando datos convenio en tabla temporal");
 
-	CGrabarTmpCaMovimientos tmpCaMovimientos(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpCaMovimientos tmpCaMovimientos(&odbc);     // conexiï¿½n al tienda.nnnn
 	{
 		tmpCaMovimientos.cliente = m_grid.lCliente;
 		tmpCaMovimientos.fechaconvenio.ponerFecha(iDiaConvenio, iMesConvenio, iAnioConvenio);
@@ -17231,7 +17410,7 @@ bool CDlgCapturarAbono::grabarConvenioCaCarmovTemporal(long lFactura, char *cCla
 
 	grabarLog("grabarConvenioCaCarmovTemporal::Grabando convenio en tabla temporal");
 
-	CGrabarTmpConvenioCaCarmov03 tmpConvenioCaCarmov(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpConvenioCaCarmov03 tmpConvenioCaCarmov(&odbc);     // conexiï¿½n al tienda.nnnn
 	{
 		if (lFactura <= 0L || lFactura > 999999L)
 		{
@@ -17442,7 +17621,7 @@ bool CDlgCapturarAbono::grabarBonificacionCaCarmovTemporal(long lFactura, char *
 
 	grabarLog("grabarBonificacionCaCarmovTemporal::Grabando bonificacion en tabla temporal");
 
-	CGrabarTmpBonificacionCaCarmov04    tmpBonificacionCaCarmov(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpBonificacionCaCarmov04    tmpBonificacionCaCarmov(&odbc);     // conexiï¿½n al tienda.nnnn
 	{
 		while (iCuentasDetalle <= iTotalCuentasDetalle && bContinuar == true)
 		{
@@ -17616,7 +17795,7 @@ bool CDlgCapturarAbono::grabarBeneficiariosCaCarmovTemporal(long lNumeroBenefici
 
 	grabarLog("grabarBeneficiariosCaCarmovTemporal::grabando beneficiarios seguro club en tabla temporal");
 
-	CInsertarTmpBeneficiariosCaCarmov01 tmpBeneficiariosCaCarmov(&odbc);     // conexión al tienda.nnnn    
+	CInsertarTmpBeneficiariosCaCarmov01 tmpBeneficiariosCaCarmov(&odbc);     // conexiï¿½n al tienda.nnnn    
 	{
 		tmpBeneficiariosCaCarmov.clave[0] = 'G';
 		tmpBeneficiariosCaCarmov.clave[1] = 0;
@@ -17722,13 +17901,13 @@ void CDlgCapturarAbono::menuSegurosClub()
 	while (bSalir)
 	{
 		char * opciones[] = {
-			"    F1   Activar Club de Protección Familiar   ",
+			"    F1   Activar Club de Protecciï¿½n Familiar   ",
 			"    F2   Beneficiarios                         ",
-			"    F3   Documentación                         ",
-			"    F4   Cancelación de Seguro Adicional       ",
+			"    F3   Documentaciï¿½n                         ",
+			"    F4   Cancelaciï¿½n de Seguro Adicional       ",
 			"    F5   Activar Club Adicional                ",
 			"    F6   Pago Apoyo Adicional                  ",
-			"    F7   Migración de Seguros                  ",
+			"    F7   Migraciï¿½n de Seguros                  ",
 			"    F8   Sistema de Seguros de Vida            ",
 			"    Esc  Salir                                 ",
 			"" };
@@ -17856,7 +18035,7 @@ void CDlgCapturarAbono::menuSegurosClub()
 				if (numeroDeExes("PUENTETOCSHARP.EXE") == 1)
 				{
 					// Monstrar mensaje de que ya esta levantado una instancia del sistema    
-					AfxMessageBox("LA OPCIÓN PAGO DE APOYO ADICIONAL YA ESTA ABIERTA");
+					AfxMessageBox("LA OPCIï¿½N PAGO DE APOYO ADICIONAL YA ESTA ABIERTA");
 				}
 				else
 				{
@@ -17911,7 +18090,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 	sprintf_s(cLog, "FC0200805021521482 - entra - ventaClubProteccion");
 	grabarLog(cLog);
 
-	grabarLog("ventaClubProteccion: F1 Activar Club de Protección Familiar");
+	grabarLog("ventaClubProteccion: F1 Activar Club de Protecciï¿½n Familiar");
 
 	if (iFlagNuevo != 1)
 	{
@@ -17945,14 +18124,14 @@ void CDlgCapturarAbono::ventaClubProteccion()
 				case 'A':case 'V':
 					if (lFolioSeguro > 0L)
 					{
-						sprintf_s(cMensaje, "CLIENTE YA CUENTA CON CLUB DE PROTECCIÓN FAMILIAR NUM.FOLIO %06ld <ESC> SALIR", lFolioSeguro);
+						sprintf_s(cMensaje, "CLIENTE YA CUENTA CON CLUB DE PROTECCIï¿½N FAMILIAR NUM.FOLIO %06ld <ESC> SALIR", lFolioSeguro);
 						AfxMessageBox(cMensaje);
 					}
 					break;
 				default: //no tiene seguro club                                
 					if (cClaveNoOfrecer == 'S')
 					{
-						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER, ACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR,<Aceptar>", MB_YESNO | MB_ICONQUESTION) == IDYES)
+						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER, ACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR,<Aceptar>", MB_YESNO | MB_ICONQUESTION) == IDYES)
 						{
 							iConyugal = 1;
 							borrarSeguroClub(0);
@@ -18004,7 +18183,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 					//cliente tiene seguro cancelado
 					if (cStatusSeguro == 'C')
 					{
-						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE CANCELADO, ACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR < Aceptar >", MB_YESNO | MB_ICONQUESTION) == IDYES)
+						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE CANCELADO, ACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR < Aceptar >", MB_YESNO | MB_ICONQUESTION) == IDYES)
 						{
 							iConyugal = 1;
 							borrarSeguroClubCancelado(0);
@@ -18057,7 +18236,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 					{
 						if (cClaveNoOfrecer == 'S')
 						{
-							AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER  REACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR ");
+							AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER  REACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR ");
 							break;
 						}
 						else
@@ -18077,13 +18256,13 @@ void CDlgCapturarAbono::ventaClubProteccion()
 							parametros.iCajaActual = m_grid.iCaja;
 							parametros.iMuestraMsg = m_grid.iMuestraMsg;
 
-							parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ó SISTEMA_CLIENTESNUEVOS
-							parametros.lCliente = m_grid.lCliente; //Número de cliente al que se le va a vender seguro club
+							parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ï¿½ SISTEMA_CLIENTESNUEVOS
+							parametros.lCliente = m_grid.lCliente; //Nï¿½mero de cliente al que se le va a vender seguro club
 							parametros.iFlagGeneral = 1;
 							memcpy(cInputParam1, &parametros, sizeof(SParametros));
 							// Ruta del archivo DLL a ejecutar
 							nombreArchivo("CN0024.DLL", cNombreProyecto, DIRECTORIO_CN);
-							// Nombre de la función principal en el DLL
+							// Nombre de la funciï¿½n principal en el DLL
 							sprintf_s(cNombreFuncionDLL, "CN0024");
 							CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
 							iRegresaDll = cargarDll.getResultado();
@@ -18118,7 +18297,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 				default: //no tiene seguro club                                                                
 					if (cClaveNoOfrecer == 'S')
 					{
-						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER,ACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR, <Aceptar>", MB_YESNO | MB_ICONQUESTION) == IDYES)
+						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER,ACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR, <Aceptar>", MB_YESNO | MB_ICONQUESTION) == IDYES)
 						{
 							borrarSeguroClub(1);
 							m_grid.iTotalCuentas++;
@@ -18138,7 +18317,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 					}
 					if (cStatusSeguro == 'C')
 					{
-						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE CANCELADO, ACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR < Aceptar >", MB_YESNO | MB_ICONQUESTION) == IDYES)
+						if (AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE CANCELADO, ACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR < Aceptar >", MB_YESNO | MB_ICONQUESTION) == IDYES)
 						{
 							borrarSeguroClubCancelado(1);
 							m_grid.iTotalCuentas++;
@@ -18156,7 +18335,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 					{
 						if (cClaveNoOfrecer == 'S')
 						{
-							AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER REACTIVAR SEGURO CLUB DE PROTECCIÓN FAMILIAR");
+							AfxMessageBox("ESTE CLIENTE TIENE CLAVE DE NO OFRECER REACTIVAR SEGURO CLUB DE PROTECCIï¿½N FAMILIAR");
 							break;
 						}
 						else
@@ -18180,13 +18359,13 @@ void CDlgCapturarAbono::ventaClubProteccion()
 							parametros.iCajaActual = m_grid.iCaja;
 							parametros.iMuestraMsg = m_grid.iMuestraMsg;
 
-							parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ó SISTEMA_CLIENTESNUEVOS
-							parametros.lCliente = m_grid.lCliente; //Número de cliente al que se le va a vender seguro club
+							parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ï¿½ SISTEMA_CLIENTESNUEVOS
+							parametros.lCliente = m_grid.lCliente; //Nï¿½mero de cliente al que se le va a vender seguro club
 							parametros.iFlagGeneral = 1;
 							memcpy(cInputParam1, &parametros, sizeof(SParametros));
 							// Ruta del archivo DLL a ejecutar
 							nombreArchivo("CN0024.DLL", cNombreProyecto, DIRECTORIO_CN);
-							// Nombre de la función principal en el DLL
+							// Nombre de la funciï¿½n principal en el DLL
 							sprintf_s(cNombreFuncionDLL, "CN0024");
 							CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
 							iRegresaDll = cargarDll.getResultado();
@@ -18210,7 +18389,7 @@ void CDlgCapturarAbono::ventaClubProteccion()
 		}
 		else
 		{
-			sprintf_s(cMensaje, "CLIENTE CON EDAD MENOR A %d AÑOS 0 MAYOR A %d AÑOS", iEdadMinimaClub, iEdadMaximaClub);
+			sprintf_s(cMensaje, "CLIENTE CON EDAD MENOR A %d Aï¿½OS 0 MAYOR A %d Aï¿½OS", iEdadMinimaClub, iEdadMaximaClub);
 			AfxMessageBox(cMensaje);
 		}
 	}
@@ -18399,7 +18578,7 @@ void CDlgCapturarAbono::clubBeneficiarios()
 		}
 		else
 		{
-			AfxMessageBox("CLIENTE MENOR A 18 AÑOS O MAYOR A 65 AÑOS");
+			AfxMessageBox("CLIENTE MENOR A 18 Aï¿½OS O MAYOR A 65 Aï¿½OS");
 		}
 		break;
 	case 3:
@@ -18423,21 +18602,21 @@ void CDlgCapturarAbono::clubBeneficiarios()
 		switch (cStatusSeguro)
 		{
 		case 'V':
-			AfxMessageBox("CLIENTE TIENE SU CLUB DE PROTECCIÓN FAMILIAR VENCIDO");
+			AfxMessageBox("CLIENTE TIENE SU CLUB DE PROTECCIï¿½N FAMILIAR VENCIDO");
 			break;
 		case 'C':
-			AfxMessageBox("CLIENTE TIENE SU CLUB DE PROTECCIÓN FAMILIAR CANCELADO. ACTIVAR EN OPCIÓN F1 DEL MENU CLUB DE PROTECCIÓN FAMILIAR");
+			AfxMessageBox("CLIENTE TIENE SU CLUB DE PROTECCIï¿½N FAMILIAR CANCELADO. ACTIVAR EN OPCIï¿½N F1 DEL MENU CLUB DE PROTECCIï¿½N FAMILIAR");
 			break;
 		case 'P'://Pendiente
 			AfxMessageBox(cMensajeSeguro);
 			break;
 		case ' ':
-			AfxMessageBox("CLIENTE NO TIENE SEGURO CLUB DE PROTECCIÓN FAMILIAR");
+			AfxMessageBox("CLIENTE NO TIENE SEGURO CLUB DE PROTECCIï¿½N FAMILIAR");
 			break;
 		default:
 			if (cClaveNoOfrecer == 'S')
 			{
-				AfxMessageBox("CLIENTE MARCADO COMO NO OFRECER. ACTIVAR EN OPCIÓN F1 DEL MENU DE CLUB DE PROTECCIÓN FAMILIAR");
+				AfxMessageBox("CLIENTE MARCADO COMO NO OFRECER. ACTIVAR EN OPCIï¿½N F1 DEL MENU DE CLUB DE PROTECCIï¿½N FAMILIAR");
 			}
 			else
 			{
@@ -18511,7 +18690,7 @@ void CDlgCapturarAbono::clubBeneficiarios()
 						memcpy(cInputParam1, &parametros, sizeof(SParametros));
 						// Ruta del archivo DLL a ejecutar
 						nombreArchivo("CA0071.DLL", cNombreProyecto, DIRECTORIO_CA);
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "CA0071");
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
 						iRegresaDll = cargarDll.getResultado();
@@ -18603,7 +18782,7 @@ void CDlgCapturarAbono::clubBeneficiarios()
 						memcpy(cInputParam1, &parametros, sizeof(SParametros));
 						// Ruta del archivo DLL a ejecutar
 						nombreArchivo("CA0108.DLL", cNombreProyecto, DIRECTORIO_CA);
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "CA0108");
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
 						iRegresaDll = cargarDll.getResultado();
@@ -18691,7 +18870,7 @@ void CDlgCapturarAbono::clubBeneficiarios()
 						sprintf_s(cMensaje, "clubBeneficiarios: Se envian datos al modulo CA0149.DLL Folio %ld, iFlagGeneral = %d, iFlagCapturaAbonos = %d", parametrosAdicional.lFolio, parametros.iFlagGeneral, parametrosAdicional.iFlagCapturaAbonos);
 						grabarLog(cMensaje);
 						nombreArchivo("CA0149.DLL", cNombreProyecto, DIRECTORIO_CA);
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "CA0149");
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
 						iRegresaDll = cargarDll.getResultado();
@@ -18739,7 +18918,7 @@ void CDlgCapturarAbono::clubDocumentacion()
 	{
 		if (iClub == 1)
 		{
-			AfxMessageBox("EL CLIENTE NO ESTA AFILIADO A CLUB DE PROTECCIÓN FAMILIAR");
+			AfxMessageBox("EL CLIENTE NO ESTA AFILIADO A CLUB DE PROTECCIï¿½N FAMILIAR");
 		}
 		if (iClub == 2)
 		{
@@ -18754,7 +18933,7 @@ void CDlgCapturarAbono::clubDocumentacion()
 	{
 		if (iClub == 1)
 		{
-			if (AfxMessageBox("¿ IMPRIMIR DOCUMENTACION DEL CLUB DE PROTECCION FAMILIAR (SI/NO) ?", MB_YESNO | MB_ICONQUESTION) == IDYES)
+			if (AfxMessageBox("ï¿½ IMPRIMIR DOCUMENTACION DEL CLUB DE PROTECCION FAMILIAR (SI/NO) ?", MB_YESNO | MB_ICONQUESTION) == IDYES)
 			{
 				nombreArchivo("CADOCPRO.TXT", cDirectorio, DIRECTORIO_MEM);
 				if (_access(cDirectorio, 0) == 0)
@@ -18777,7 +18956,7 @@ void CDlgCapturarAbono::clubDocumentacion()
 		}
 		else
 		{
-			if (AfxMessageBox("¿ IMPRIMIR DOCUMENTACION DEL CLUB DE PROTECC.CONYUGAL COPPEL (SI/NO) ?", MB_YESNO | MB_ICONQUESTION) == IDYES)
+			if (AfxMessageBox("ï¿½ IMPRIMIR DOCUMENTACION DEL CLUB DE PROTECC.CONYUGAL COPPEL (SI/NO) ?", MB_YESNO | MB_ICONQUESTION) == IDYES)
 			{
 				nombreArchivo("CADOCPRO.TXT", cDirectorio, DIRECTORIO_MEM);
 				if (_access(cDirectorio, 0) == 0)
@@ -18905,7 +19084,7 @@ bool CDlgCapturarAbono::clubCancelacion()
 					// Ruta del archivo DLL a ejecutar
 					nombreArchivo("CN0027.DLL", cNombreProyecto, DIRECTORIO_CN);
 
-					// Nombre de la función principal en el DLL
+					// Nombre de la funciï¿½n principal en el DLL
 					sprintf_s(cNombreFuncionDLL, "CN0027");
 
 					CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -19069,7 +19248,7 @@ bool CDlgCapturarAbono::grabarSeguroCaCarmovTemporal(int iDiaVencimiento, int iM
 
 	iFlagNuevoX = iFlagNuevo;
 
-	CGrabarTmpSeguroCaCarmov01 tmpSeguroCaCarmov(&odbc);     // conexión al tienda.nnnn
+	CGrabarTmpSeguroCaCarmov01 tmpSeguroCaCarmov(&odbc);     // conexiï¿½n al tienda.nnnn
 
 	{
 		if (iCantidadSeguros != 0L)
@@ -20029,7 +20208,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraSeguro(long lFactura, int iDiaVenci
 	sprintf_s(cLog, "FC0200805021521578 - entra - grabarTemporalCarteraSeguro");
 	grabarLog(cLog);
 
-	CGrabarTmpAbonoCrSegurosFija01 tmpCrSeguros(&odbc_1);     // conexión a la B.D cartera
+	CGrabarTmpAbonoCrSegurosFija01 tmpCrSeguros(&odbc_1);     // conexiï¿½n a la B.D cartera
 
 	{
 		tmpCrSeguros.cliente = m_grid.lCliente;
@@ -20178,7 +20357,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraPrestamos(long lSaldoNuevo, long lA
 
 	grabarLog("grabarTemporalCarteraPrestamos::Grabando prestamo en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrPrestamosFija tmpCrPrestamos(&odbc_1);     // conexión a la B.D cartera
+	CGrabarTmpAbonoCrPrestamosFija tmpCrPrestamos(&odbc_1);     // conexiï¿½n a la B.D cartera
 	{
 		if (lSuPago > 0L)
 		{
@@ -20231,7 +20410,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraRopa(long lSuPago, char *cStatus, l
 
 	grabarLog("grabarTemporalCarteraRopa::Grabando ropa en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrCropaFija02 tmpCrCropa(&odbc_1);     // conexión a la B.D cartera
+	CGrabarTmpAbonoCrCropaFija02 tmpCrCropa(&odbc_1);     // conexiï¿½n a la B.D cartera
 	{
 		tmpCrCropa.cliente = m_grid.lCliente;
 
@@ -20310,7 +20489,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraMuebles(long lSuPago, long lFactura
 
 	grabarLog("grabarTemporalCarteraMuebles::Grabando muebles en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrCmueblesFija02 tmpCrCmuebles(&odbc_1);     // conexión a la B.D cartera
+	CGrabarTmpAbonoCrCmueblesFija02 tmpCrCmuebles(&odbc_1);     // conexiï¿½n a la B.D cartera
 	{
 		tmpCrCmuebles.cliente = m_grid.lCliente;
 		tmpCrCmuebles.factura = lFactura;
@@ -20405,7 +20584,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraPlanes(long lSuPago, long lFactura)
 
 	grabarLog("grabarTemporalCarteraPlanes::Grabando planes en tabla temporal cartera");
 
-	CTmpAbonoCrCmueblesPlanFija tmpCrCmueblesPlanes(&odbc_1);     // conexión a la B.D cartera
+	CTmpAbonoCrCmueblesPlanFija tmpCrCmueblesPlanes(&odbc_1);     // conexiï¿½n a la B.D cartera
 	{
 		tmpCrCmueblesPlanes.cliente = m_grid.lCliente;
 		tmpCrCmueblesPlanes.factura = lFactura;
@@ -20871,7 +21050,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 					// Ruta del archivo DLL a ejecutar
 					nombreArchivo("CA0068.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-					// Nombre de la función principal en el DLL
+					// Nombre de la funciï¿½n principal en el DLL
 					sprintf_s(cNombreFuncionDLL, "CA0068");
 
 					CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
@@ -20916,7 +21095,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 							// Ruta del archivo DLL a ejecutar
 							nombreArchivo("CA0076.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-							// Nombre de la función principal en el DLL
+							// Nombre de la funciï¿½n principal en el DLL
 							sprintf_s(cNombreFuncionDLL, "CA0076");
 
 							CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -20959,7 +21138,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 							// Ruta del archivo DLL a ejecutar
 							nombreArchivo("CA0076.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-							// Nombre de la función principal en el DLL
+							// Nombre de la funciï¿½n principal en el DLL
 							sprintf_s(cNombreFuncionDLL, "CA0076");
 
 							CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -21003,7 +21182,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 						// Ruta del archivo DLL a ejecutar
 						nombreArchivo("GN0055.DLL", cNombreProyecto, DIRECTORIO_GN);
 
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "GN0055");
 
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -21017,7 +21196,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 						else
 						{
 							lGteHuella = lRespuesta;
-							if (lGteHuella == 2) // No hay conexión
+							if (lGteHuella == 2) // No hay conexiï¿½n
 								iFlagErrorExe = 1;
 						}
 					}
@@ -21042,7 +21221,7 @@ void CDlgCapturarAbono::menuSegurosDeVida()
 						// Ruta del archivo DLL a ejecutar
 						nombreArchivo("CA0070.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-						// Nombre de la función principal en el DLL
+						// Nombre de la funciï¿½n principal en el DLL
 						sprintf_s(cNombreFuncionDLL, "CA0070");
 
 						CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -22274,7 +22453,7 @@ bool CDlgCapturarAbono::validarNumeroCliente(char *cTextoMsj)
 	grabarLog("CDlgCapturarAbono::validarNumeroCliente: Inicio");
 	if (sTexto.IsEmpty())
 	{
-		sprintf(cTextoMsj, "%s", "El número de cliente no puede ser nulo...");
+		sprintf(cTextoMsj, "%s", "El nï¿½mero de cliente no puede ser nulo...");
 		m_grid.lCliente = 0L;
 		m_cliente.SetSel(0, 9);
 		bValorRegresa = false;
@@ -22342,7 +22521,7 @@ bool CDlgCapturarAbono::validarNumeroCliente(char *cTextoMsj)
 						checarEImprimirMemos(3, &odbc, m_grid.iCaja, 0);
 						if (iFlagMovimiento == 0) // es un cargo
 						{
-							validarHuellaEmpleadoGte01(&odbc, lGteHuella, 1, 4, m_grid.lCliente, m_grid.iTienda, 3, m_grid.iCaja, "CA0030");//gnwSuplirHuellaGerente.cpp 
+							validarHuellaEmpleadoGte01(&odbc, lGteHuella, 1, 4, m_grid.lCliente, m_grid.iTienda, 3, m_grid.iCaja, "CA0030");//gnwSuplirHuellaGerente.cppï¿½
 							if (lGteHuella <= 90000000)
 							{
 								if (lGteHuella == -1)
@@ -22374,7 +22553,7 @@ bool CDlgCapturarAbono::validarNumeroCliente(char *cTextoMsj)
 									else
 									{
 										lGteHuella = lResp;
-										if (lGteHuella == 2) // No hay conexión
+										if (lGteHuella == 2) // No hay conexiï¿½n
 											iFlagErrorExe = 1;
 									}
 								}
@@ -22911,7 +23090,7 @@ void CDlgCapturarAbono::borrarCuentaSeguroClubGrid()
 
 					m_grid.SetColWidth(k, 83);
 
-					sDato.Format("ARTÍCULO %d", iCont);
+					sDato.Format("ARTï¿½CULO %d", iCont);
 					m_grid.QuickSetText(k, -1, sDato);
 
 
@@ -22997,7 +23176,7 @@ void CDlgCapturarAbono::ponerCuentaSeguroClubGrid()
 			{
 				m_grid.QuickSetFont(k, -1, fontID);
 
-				sDato.Format("ARTÍCULO %d", iCont);
+				sDato.Format("ARTï¿½CULO %d", iCont);
 				m_grid.QuickSetText(k, -1, sDato);
 
 				m_grid.RedrawCol(k);
@@ -23133,7 +23312,7 @@ long CDlgCapturarAbono::checarVigenciaSeguro(int iCantidadSeguros, long lTotalMi
 									}
 								}
 								sprintf_s(cTexto, "SU MINIMO A PAGAR ES DE $%s.", cCantidad1);
-								sprintf_s(cTexto2, "SU CLUB DE PROTECCIÓN FAMILIAR VENCIÓ EL %s, LO REACTIVA POR $%s", cFechaMSJ, cCantidad2);
+								sprintf_s(cTexto2, "SU CLUB DE PROTECCIï¿½N FAMILIAR VENCIï¿½ EL %s, LO REACTIVA POR $%s", cFechaMSJ, cCantidad2);
 							}
 							else if (atol(cFechaActual) <= atol(cFechaVence))
 							{
@@ -23404,7 +23583,7 @@ void CDlgCapturarAbono::procesoCierreCajas()
 
 		// Ruta del archivo DLL a ejecutar
 		nombreArchivo("CA0084.DLL", cNombreProyecto, DIRECTORIO_CA);
-		// Nombre de la función principal en el DLL
+		// Nombre de la funciï¿½n principal en el DLL
 		sprintf_s(cNombreFuncionDLL, "CA0084");
 
 
@@ -23446,7 +23625,7 @@ void CDlgCapturarAbono::menuOperacionesVarias()
 		// Ruta del archivo DLL a ejecutar
 		nombreArchivo("CA0016.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-		// Nombre de la función principal en el DLL
+		// Nombre de la funciï¿½n principal en el DLL
 		sprintf_s(cNombreFuncionDLL, "CA0016");
 
 		CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2);
@@ -23735,7 +23914,7 @@ static int PantallaMenuConyugal(void)
 	while (iFlag == 3)
 	{
 		char * opciones[] = {
-			" F1  CLUB DE PROTECCIÓN FAMILIAR ",
+			" F1  CLUB DE PROTECCIï¿½N FAMILIAR ",
 			" Esc SALIR                       ",
 			"" };
 		int respuesta[] = { F1,ESC,0 };
@@ -24703,7 +24882,7 @@ bool CDlgCapturarAbono::abrirConexionCuentaPerdida()
 			}
 			else
 			{
-				AfxMessageBox("Error al abrir conexión BD CUENTAS PERDIDAS");
+				AfxMessageBox("Error al abrir conexiï¿½n BD CUENTAS PERDIDAS");
 				bRegresa = false;
 			}
 		}
@@ -24784,7 +24963,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraTiempoAire(long lSuPago, char *cSta
 
 	grabarLog("grabarTemporalCarteraTiempoAire::Grabando tiempo aire en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrTaireFija02 tmpCrCrTaire(&odbc_1); //conexión a la B.D cartera
+	CGrabarTmpAbonoCrTaireFija02 tmpCrCrTaire(&odbc_1); //conexiï¿½n a la B.D cartera
 	{
 		tmpCrCrTaire.cliente = m_grid.lCliente;
 
@@ -24858,7 +25037,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraRevolvente(long lSuPago, char *cSta
 
 	grabarLog("grabarTemporalCarteraRevolvente::Grabando cuenta revolvente en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrRevolvente tmpCrCRevolvente(&odbc_1); //conexión a la B.D cartera
+	CGrabarTmpAbonoCrRevolvente tmpCrCRevolvente(&odbc_1); //conexiï¿½n a la B.D cartera
 	{
 		tmpCrCRevolvente.cliente = m_grid.lCliente;
 
@@ -24955,7 +25134,7 @@ void CDlgCapturarAbono::mostrarMensajeTarjetaBanco()
 
 	if (dll.getResultado() != 1)
 	{
-		AfxMessageBox("OCURRIÓ UN ERROR AL CARGAR EL GN0084.DLL");
+		AfxMessageBox("OCURRIï¿½ UN ERROR AL CARGAR EL GN0084.DLL");
 	}
 	else
 	{
@@ -24979,10 +25158,10 @@ void CDlgCapturarAbono::mostrarMensajeTarjetaBanco()
 					sprintf_s(cDato, "su Tarjeta de Credito BanCoppel VISA.");
 					hoja.poner(cDato, 9, 23);
 
-					sprintf_s(cDato, "Lo invitamos a que pase a BanCoppel para que realice el trámite.");
+					sprintf_s(cDato, "Lo invitamos a que pase a BanCoppel para que realice el trï¿½mite.");
 					hoja.poner(cDato, 10, 10);
 
-					sprintf_s(cDato, "Es muy fácil.");
+					sprintf_s(cDato, "Es muy fï¿½cil.");
 					hoja.poner(cDato, 11, 36);
 
 					hoja.imprimir();
@@ -25003,7 +25182,7 @@ void CDlgCapturarAbono::mostrarMensajeTarjetaBanco()
 
 					sprintf_s(cDato, "Lo invitamos a que pase a BanCoppel para que");
 					hoja.poner(cDato, 12, 0);
-					sprintf_s(cDato, "realice el trámite. Es muy fácil.");
+					sprintf_s(cDato, "realice el trï¿½mite. Es muy fï¿½cil.");
 					hoja.poner(cDato, 13, 5);
 
 					hoja.imprimir();
@@ -25065,7 +25244,7 @@ void CDlgCapturarAbono::mostrarMovtosCliente()
 
 	if (dll.getResultado() != 1)
 	{
-		AfxMessageBox("OCURRIÓ UN ERROR AL CARGAR EL CA0043.DLL");
+		AfxMessageBox("OCURRIï¿½ UN ERROR AL CARGAR EL CA0043.DLL");
 	}
 	sprintf_s(cLog, "FC0200805021521870 - entra - mostrarMovtosCliente");
 	grabarLog(cLog);
@@ -25107,7 +25286,7 @@ int CDlgCapturarAbono::checarHoraInvitacion()
 	}
 	else
 	{
-		if (iCajaArchivo == 0) // No leyó registro de la tabla...
+		if (iCajaArchivo == 0) // No leyï¿½ registro de la tabla...
 		{
 			if (iStatusAfore == 0 || iStatusAfore == 1 || iStatusAfore == 3 || iStatusAfore == 4 || iStatusAfore == 5 || iStatusAfore == 6 || iStatusAfore == 8)
 			{
@@ -25145,7 +25324,7 @@ int CDlgCapturarAbono::checarHoraInvitacion()
 					else
 					{
 						iFlagMsjAfore = 0;//No se actualiza Tabla 
-						iMensaje = 0;//No mostrará mensaje
+						iMensaje = 0;//No mostrarï¿½ mensaje
 					}
 				}
 				else
@@ -25159,14 +25338,14 @@ int CDlgCapturarAbono::checarHoraInvitacion()
 					else
 					{
 						iFlagMsjAfore = 0;//No se actualiza Tabla 
-						iMensaje = 0;//No mostrará mensaje
+						iMensaje = 0;//No mostrarï¿½ mensaje
 					}
 				}
 			}
 		}
 	}
 
-	if (iMensaje == 1) //Si mostrará mensaje ...
+	if (iMensaje == 1) //Si mostrarï¿½ mensaje ...
 	{
 		bCambioStatusAfore = true;
 		switch (iStatusAfore)
@@ -25222,7 +25401,7 @@ bool CDlgCapturarAbono::grabarTemporalCarteraBancoppel(long lSaldoNuevo, long lA
 
 	grabarLog("grabarTemporalCarteraBancoppel::Grabando Deuda Bancoppel en tabla temporal cartera");
 
-	CGrabarTmpAbonoCrPrestamosFija tmpCrBancoppel(&odbc_1); // conexión a la B.D cartera
+	CGrabarTmpAbonoCrPrestamosFija tmpCrBancoppel(&odbc_1); // conexiï¿½n a la B.D cartera
 
 	if (lSuPago > 0L)
 	{
@@ -25379,7 +25558,7 @@ void CDlgCapturarAbono::validarPopUpPrestamoPersonal()
 		}
 
 	}
-	grabarLog("CDlgCapturarAbono:: Salió de validarPopUpPrestamoPersonal()" );
+	grabarLog("CDlgCapturarAbono:: Saliï¿½ de validarPopUpPrestamoPersonal()" );
 }
 void CDlgCapturarAbono::mostrarPopUpPrestamoPersonal()
 {
@@ -25404,7 +25583,7 @@ void CDlgCapturarAbono::mostrarPopUpPrestamoPersonal()
 	parametros.iNumSistema = iSistema;
 
 
-	if (AfxMessageBox("¡Es un cliente puntual! Felicitalo, invítale a gozar del beneficio del Préstamo Personal, indicale la cantidad más alta de la que puede disponer." , MB_OKCANCEL) == IDOK )
+	if (AfxMessageBox("ï¿½Es un cliente puntual! Felicitalo, invï¿½tale a gozar del beneficio del Prï¿½stamo Personal, indicale la cantidad mï¿½s alta de la que puede disponer." , MB_OKCANCEL) == IDOK )
 	{
 		iInvitacion = 1;
 		sprintf_s(cLog, "CDlgCapturarAbono::mostrarPopUpPrestamoPersonal. El cliente ha aceptado la invitacion");
@@ -25438,7 +25617,7 @@ void CDlgCapturarAbono::mostrarPopUpPrestamoPersonal()
 		nombreArchivo( "CA0164.DLL", cDll, DIRECTORIO_CA );
 		CargarDLL dll(cDll, "CA0164", cArgvIN1, cArgvIN2, cArgvOUT1, cArgvOUT2);
 	}
-	grabarLog("CDlgCapturarAbono:: Salió de mostrarPopUpPrestamoPersonal()" );
+	grabarLog("CDlgCapturarAbono:: Saliï¿½ de mostrarPopUpPrestamoPersonal()" );
 }
 
 
@@ -25670,8 +25849,8 @@ int CDlgCapturarAbono::tiposDeEtp2()
 	while (bSalir)
 	{
 		char * opciones[] = {
-			"       F3         Efectivo Por Recuperación de Robo Ropa    ",
-			"       F4         Efectivo Por Recuperación de Robo muebles ",
+			"       F3         Efectivo Por Recuperaciï¿½n de Robo Ropa    ",
+			"       F4         Efectivo Por Recuperaciï¿½n de Robo muebles ",
 			"       F5         Estacionamiento                           ",
 			"       F6         Ficha Extraviada                          ",
 			"       Esc  Salir                                           ",
@@ -25685,7 +25864,7 @@ int CDlgCapturarAbono::tiposDeEtp2()
 		{
 		case F3:
 			{
-				m_mensaje.SetWindowText("E   Efectivo Por Recuperación de Robo Ropa                     ");
+				m_mensaje.SetWindowText("E   Efectivo Por Recuperaciï¿½n de Robo Ropa                     ");
 				iTipoEtp = 4;
 				cTipoEtp[0] = 'E';
 				bSalir = false;
@@ -25693,7 +25872,7 @@ int CDlgCapturarAbono::tiposDeEtp2()
 			break;
 		case F4:
 			{
-				m_mensaje.SetWindowText("J   Efectivo Por Recuperación de Robo Muebles                     ");
+				m_mensaje.SetWindowText("J   Efectivo Por Recuperaciï¿½n de Robo Muebles                     ");
 				iTipoEtp = 8;
 				cTipoEtp[0] = 'J';
 				bSalir = false;
@@ -25911,7 +26090,7 @@ bool CDlgCapturarAbono::imprimirClausulaClub(C_FormasPCL &xHoja, int iConyugal, 
 			memset(cTextoOut, 0, sizeof(cTextoOut));
 			sDato.Format("%s", ConsultaDescImpresion1.desc_mensaje);
 			sDato.Trim();
-			sDato.Replace('¿', '¨');
+			sDato.Replace('ï¿½', 'ï¿½');
 			sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 			ponerAcento(cTextoOut);
 			xHoja.poner(cTextoOut, iRen, iCol);
@@ -25950,7 +26129,7 @@ bool CDlgCapturarAbono::imprimirClausulaClub(C_FormasPCL &xHoja, int iConyugal, 
 				memset(cTextoOut, 0, sizeof(cTextoOut));
 				sDato.Format("%s", ConsultaDescImpresion2.desc_mensaje);
 				sDato.Trim();
-				sDato.Replace('¿', '¨');
+				sDato.Replace('ï¿½', 'ï¿½');
 				sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 				ponerAcento(cTextoOut);
 				xHoja.poner(cTextoOut, iRen, iCol);
@@ -25989,7 +26168,7 @@ bool CDlgCapturarAbono::imprimirClausulaClub(C_FormasPCL &xHoja, int iConyugal, 
 					memset(cTextoOut, 0, sizeof(cTextoOut));
 					sDato.Format("%s", ConsultaDescImpresion3.desc_mensaje);
 					sDato.Trim();
-					sDato.Replace('¿', '¨');
+					sDato.Replace('ï¿½', 'ï¿½');
 					sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 					ponerAcento(cTextoOut);
 					xHoja.poner(cTextoOut, iRen, iCol);
@@ -26041,7 +26220,7 @@ bool CDlgCapturarAbono::imprimirClausulaClub(C_FormasPCL &xHoja, int iConyugal, 
 						memset(cTextoOut, 0, sizeof(cTextoOut));
 						sDato.Format("%s", ConsultaDescImpresion4.desc_mensaje);
 						sDato.Trim();
-						sDato.Replace('¿', '¨');
+						sDato.Replace('ï¿½', 'ï¿½');
 						sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 						ponerAcento(cTextoOut);
 						xHoja.poner(cTextoOut, iRen, iCol);
@@ -26080,7 +26259,7 @@ bool CDlgCapturarAbono::imprimirClausulaClub(C_FormasPCL &xHoja, int iConyugal, 
 							memset(cTextoOut, 0, sizeof(cTextoOut));
 							sDato.Format("%s", ConsultaDescImpresion5.desc_mensaje);
 							sDato.Trim();
-							sDato.Replace('¿', '¨');
+							sDato.Replace('ï¿½', 'ï¿½');
 							sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 							ponerAcento(cTextoOut);
 							xHoja.poner(cTextoOut, iRen, iCol);
@@ -26123,7 +26302,7 @@ static int PantallaMenuBeneficiarios(void)
 	while (iFlag == 4)
 	{
 		char * opciones[] = {
-			" F1  CLUB DE PROTECCIÓN FAMILIAR ",
+			" F1  CLUB DE PROTECCIï¿½N FAMILIAR ",
 			" F2  CLUB ADICIONAL              ",
 			" Esc SALIR                       ",
 			"" };
@@ -26423,13 +26602,13 @@ void CDlgCapturarAbono::ventaClubProteccionAdicional()
 								sprintf_s(cTexto, "%s", (LPCTSTR)sTexto);
 
 								parametrosAdicional.lFolio = lFolioSeguro; //Folio del seguro titular
-								parametrosAdicional.iAnioNac = iAnioNacimiento; //Año de nacimiento del cliente
+								parametrosAdicional.iAnioNac = iAnioNacimiento; //Aï¿½o de nacimiento del cliente
 								parametrosAdicional.iDiaNac = iDiaNacimiento; //Dia de nacimiento del cliente
 								parametrosAdicional.iMesNac = iMesNacimiento; //Mes de nacimiento del cliente
 								parametrosAdicional.iFlagCapturaAbonos = 1;//Para saber que se llamo desde el modulo capturarabono
 								parametrosAdicional.iVentaSeguroClub = 1; //Para saber que es venta de seguro adicional
 								parametrosAdicional.iCantidadMeses = iNumMesesAdicional; //Numero de meses que se le cobraran al seguro adicional
-								parametrosAdicional.iAnioVenc = valor_campo(&cTexto[4], 4); //Año de vencimiento del seguro
+								parametrosAdicional.iAnioVenc = valor_campo(&cTexto[4], 4); //Aï¿½o de vencimiento del seguro
 								parametrosAdicional.iMesVenc = valor_campo(&cTexto[2], 2); //Mes de vencimiento del seguro
 								parametrosAdicional.iDiaVenc = valor_campo(&cTexto[0], 2); //Dia de vencimiento del seguro
 								sprintf_s(parametrosAdicional.cNombreCompleto, "%s %s %s", (LPCTSTR)sNombreCliente, (LPCTSTR)sApellidoPaterno, (LPCTSTR)sApellidoMaterno); //Nombre del completo del cliente
@@ -26439,7 +26618,7 @@ void CDlgCapturarAbono::ventaClubProteccionAdicional()
 								memcpy(cInputParam2, &parametrosAdicional, sizeof(EstructuraCliente));
 								// Ruta del archivo DLL a ejecutar
 								nombreArchivo("CA0149.DLL", cNombreProyecto, DIRECTORIO_CA);
-								// Nombre de la función principal en el DLL
+								// Nombre de la funciï¿½n principal en el DLL
 								sprintf_s(cNombreFuncionDLL, "CA0149");
 								CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
 								iRegresaDll = cargarDll.getResultado();
@@ -27097,7 +27276,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClubAdicional(int iFlagImpresoraTerm
 							memset(cTexto, 0, 80);
 							hoja.poner("Nombre del contratante: COPPEL S.A. DE C.V.", iRen, iCol);
 							iRen++;
-							sprintf_s(cTexto, "Num.de póliza: %s %s", cPoliza, cFechaVigencia);
+							sprintf_s(cTexto, "Num.de pï¿½liza: %s %s", cPoliza, cFechaVigencia);
 							hoja.poner(cTexto, iRen, iCol);
 							iRen++;
 
@@ -27128,7 +27307,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClubAdicional(int iFlagImpresoraTerm
 									memset(cTextoOut, 0, sizeof(cTextoOut));
 									sDato.Format("%s", ConsultaDescImpresion.desc_mensaje);
 									sDato.Trim();
-									sDato.Replace('¿', '¨');
+									sDato.Replace('ï¿½', 'ï¿½');
 									sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 									ponerAcento(cTextoOut);
 									hoja.poner(cTextoOut, iRen, iCol);
@@ -27169,7 +27348,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClubAdicional(int iFlagImpresoraTerm
 								hoja.poner(cTexto, iRen, 58 + iCol);
 								iRen = iRen + 3;
 
-								hoja.poner("Domicilio:(calle, numero, col, dlg ó mpio, estado, cp.)", iRen, iCol);
+								hoja.poner("Domicilio:(calle, numero, col, dlg ï¿½ mpio, estado, cp.)", iRen, iCol);
 								iRen++;
 								datosDeCliente(iCasa, iColonia, iCalle, iCiudad, lCodigoPostal, cNombreCalle, cNombreZona, cNombreCiudad);
 								memset(cTexto, ' ', 80);
@@ -27209,7 +27388,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClubAdicional(int iFlagImpresoraTerm
 
 								memset(cTexto, ' ', 80);
 								cOcupacion[20] = 0;
-								sprintf_s(cTexto, "Ocupación: %s  Curp:  ", cOcupacion);
+								sprintf_s(cTexto, "Ocupaciï¿½n: %s  Curp:  ", cOcupacion);
 								hoja.poner(cTexto, 3, iCol);
 
 								//se pinta e imprime monto asegurado.
@@ -27218,7 +27397,7 @@ bool CDlgCapturarAbono::imprimirPolizaSeguroClubAdicional(int iFlagImpresoraTerm
 								sprintf_s(cTexto, "Cobertura contratada: Fallecimiento. Suma Asegurada:  $%s", cMonto);
 								hoja.poner(cTexto, 4, iCol);
 
-								hoja.poner("Designación de Beneficiarios:", 5, iCol);
+								hoja.poner("Designaciï¿½n de Beneficiarios:", 5, iCol);
 								hoja.poner("Ap.Pat.        Ap.Mat.        Nombre(s)         PARENT:   PORC.", 6, iCol);
 
 								hoja.poner(cApPatBeneficiario1, 15, 7, iCol);
@@ -27444,7 +27623,7 @@ bool CDlgCapturarAbono::imprimirReciboSeguroClubAdicional(C_FormasPCL &hoja, cha
 					iPagina++;
 					iRenglon = 2;
 				}
-				sprintf_s(cTexto, "FOLIO:  %d AFILIADO AL CLUB DE PROTECCIÓN FAMILIAR CON %d SEGUROS ADICIONAL: $ %s VENCE %s ", lFolio, iNumSeguros, cTexto2, cRespuesta2);
+				sprintf_s(cTexto, "FOLIO:  %d AFILIADO AL CLUB DE PROTECCIï¿½N FAMILIAR CON %d SEGUROS ADICIONAL: $ %s VENCE %s ", lFolio, iNumSeguros, cTexto2, cRespuesta2);
 				hoja.poner(cTexto, iRenglon, 0);
 			}
 		}
@@ -27871,36 +28050,36 @@ void CDlgCapturarAbono::imprimirPromocionAsteriscoCoppel(C_FormasPCL &hoja, int 
 
 	if (iSistema == SISTEMA_MUEBLES || iSistema == SISTEMA_ROPA)
 	{
-		hoja.poner("¨Se agotó tu tiempo aire?", 4, 18);
+		hoja.poner("ï¿½Se agotï¿½ tu tiempo aire?", 4, 18);
 
 		hoja.poner("En Coppel puedes  recargar tiempo aire  desde", 6, 8);
 		hoja.poner("tu celular a cualquier hora,  desde cualquier", 7, 8);
-		hoja.poner("lugar y ­a crédito!.", 8, 8);
+		hoja.poner("lugar y ï¿½a crï¿½dito!.", 8, 8);
 
 		hoja.poner("Solo  acude  a  cualquier   tienda  Coppel  o", 10, 8);
 		hoja.poner("zapatera   Coppel   CANADA  y   registra  el", 11, 8);
-		hoja.poner("n£mero  de  celular (puedes  registrar  hasta", 12, 8);
+		hoja.poner("nï¿½mero  de  celular (puedes  registrar  hasta", 12, 8);
 		hoja.poner("tres).", 13, 8);
 
-		hoja.poner("Despu‚s  marca   desde  tu  celular   *Coppel", 15, 8);
-		hoja.poner("( *267735 ) y una grabación  te  indicar   de", 16, 8);
-		hoja.poner("manera f cil la forma de recargar tiempo aire", 17, 8);
+		hoja.poner("Despuï¿½s  marca   desde  tu  celular   *Coppel", 15, 8);
+		hoja.poner("( *267735 ) y una grabaciï¿½n  te  indicarï¿½  de", 16, 8);
+		hoja.poner("manera fï¿½cil la forma de recargar tiempo aire", 17, 8);
 		hoja.poner("a partir de $100.", 18, 8);
 
 		hoja.poner("Coppel.... Mejora tu vida.", 20, 8);
 	}
 	else if (iSistema == SISTEMA_CAJAS)
 	{
-		hoja.poner("¨Se agotó tu tiempo aire?", 2, 35);
+		hoja.poner("ï¿½Se agotï¿½ tu tiempo aire?", 2, 35);
 
 		hoja.poner("En Coppel puedes recargar  tiempo aire  desde tu  celular a cualquier hora,", 4, 8);
-		hoja.poner("desde cualquier lugar y ­a cr‚dito!.", 5, 8);
+		hoja.poner("desde cualquier lugar y ï¿½a crï¿½dito!.", 5, 8);
 
-		hoja.poner("Sólo   acude  a  cualquier  tienda  Coppel  o  zapater¡a  Coppel  CANADA  y", 7, 8);
-		hoja.poner("registra el n£mero de celular (puedes registrar hasta tres).", 8, 8);
+		hoja.poner("Sï¿½lo   acude  a  cualquier  tienda  Coppel  o  zapaterï¿½a  Coppel  CANADA  y", 7, 8);
+		hoja.poner("registra el nï¿½mero de celular (puedes registrar hasta tres).", 8, 8);
 
-		hoja.poner("Despu‚s  marca desde  tu celular  *Coppel ( *267735 )  y  una  grabación te", 10, 8);
-		hoja.poner("indicar  de manera f cil la forma de recargar tiempo aire a partir de $100.", 11, 8);
+		hoja.poner("Despuï¿½s  marca desde  tu celular  *Coppel ( *267735 )  y  una  grabaciï¿½n te", 10, 8);
+		hoja.poner("indicarï¿½ de manera fï¿½cil la forma de recargar tiempo aire a partir de $100.", 11, 8);
 
 		hoja.poner("Coppel.... Mejora tu vida.", 13, 8);
 	}
@@ -28022,7 +28201,7 @@ void CDlgCapturarAbono::imprimirPolizaSeguroClubTermica(long lFolio, short iSegu
 	memcpy(cInputParam1, &parametros, sizeof(SParametros));
 	// Ruta del archivo DLL a ejecutar
 	nombreArchivo("CA0157.DLL", cNombreProyecto, DIRECTORIO_CA);
-	// Nombre de la función principal en el DLL
+	// Nombre de la funciï¿½n principal en el DLL
 	sprintf_s(cNombreFuncionDLL, "CA0157");
 	CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
 	iRegresaDll = cargarDll.getResultado();
@@ -28165,12 +28344,12 @@ void CDlgCapturarAbono::imprimirMensajePromoDirectaCajas(C_FormasPCL &hoja)
 				break;
 			}
 
-			sTexto.Replace("á", " ");
-			sTexto.Replace('é', '‚');
-			sTexto.Replace('í', '¡');
-			sTexto.Replace("ó", "ó");
-			sTexto.Replace('ú', '£');
-			sTexto.Replace('ñ', '¤');
+			sTexto.Replace("ï¿½", "ï¿½");
+			sTexto.Replace('ï¿½', 'ï¿½');
+			sTexto.Replace('ï¿½', 'ï¿½');
+			sTexto.Replace("ï¿½", "ï¿½");
+			sTexto.Replace('ï¿½', 'ï¿½');
+			sTexto.Replace('ï¿½', 'ï¿½');
 
 			iLongitud = sTexto.GetLength();
 			sprintf_s(cTexto, "%s", (LPCTSTR)sTexto);
@@ -28242,7 +28421,7 @@ bool CDlgCapturarAbono::obtenerCiudadCandidata()
 
 	sprintf_s(cSql, "SELECT gnciudadcandidatapromocion('%ld')", iCiudadCliente);
 
-	CMaximo ciudadCandidata(&odbc, false); //conexión a tienda.nnnn
+	CMaximo ciudadCandidata(&odbc, false); //conexiï¿½n a tienda.nnnn
 	if (ciudadCandidata.Exec(cSql))
 	{
 		ciudadCandidata.activarCols();
@@ -28364,7 +28543,7 @@ void CDlgCapturarAbono::cargarSorteos()
 	}
 	else
 	{
-		sprintf(cLog, "808deddbdc19 - Se encontró una cantidad de registros inesperados");
+		sprintf(cLog, "808deddbdc19 - Se encontrï¿½ una cantidad de registros inesperados");
 		grabarLog(cLog);
 		bHayProblemas = true;
 	}
@@ -28551,6 +28730,9 @@ void CDlgCapturarAbono::fnLlamarCcuenta()
 	CCuentaWeb *pCuenta = new CCuentaWeb(m_grid.lCliente, cFechaTienda, (short)m_grid.iTienda, (short)iCiudadGnDominio, cIpServidorCartera, cIpServidorCCuentaWeb, (short)iFlagTimeOutCCuenta);
 
 	pCuenta->leerCliente();
+	//TODO: MRL  08/09/2025        
+	//enviarLogParams(hDbc, 10203, 240340, "este es el log....", "2025-08-20", 803, "este log viene de.....");
+	// se encontro al cliente en la cartera
 	pCuenta->leerTotales01();
 	pCuenta->leerLineaCredito();
 
@@ -28584,10 +28766,10 @@ void CDlgCapturarAbono::menuSegurosCoppel()
 
 	while (bSalir)
 	{
-		char * opciones[] = { "  F1   Club de Protección Familiar",
-			"  F2   Club de Protección Salud   ",
-			"  F3   Auto Protección Coppel     ",
-			"  F4   Reimprimir Pólizas         ",
+		char * opciones[] = { "  F1   Club de Protecciï¿½n Familiar",
+			"  F2   Club de Protecciï¿½n Salud   ",
+			"  F3   Auto Protecciï¿½n Coppel     ",
+			"  F4   Reimprimir Pï¿½lizas         ",
 			"  Esc  Salir                      ",
 			"" };
 
@@ -28611,7 +28793,7 @@ void CDlgCapturarAbono::menuSegurosCoppel()
 					else
 					{
 						memset(cMensaje, 0, sizeof(cMensaje));
-						consultarMensaje(859, cMensaje); // "EXISTEN CAMBIOS PENDIENTES DE APLICAR, SI DESEA CONTINUAR CON LA ACTUALIZACIÓN SE DEBERÁ ELIMINAR EL RECIBO ANTERIOR"
+						consultarMensaje(859, cMensaje); // "EXISTEN CAMBIOS PENDIENTES DE APLICAR, SI DESEA CONTINUAR CON LA ACTUALIZACIï¿½N SE DEBERï¿½ ELIMINAR EL RECIBO ANTERIOR"
 						AfxMessageBox(cMensaje, MB_ICONINFORMATION);
 						memset(cMensaje, 0, sizeof(cMensaje));
 					}
@@ -28748,7 +28930,7 @@ void CDlgCapturarAbono::ImpresionasteriscoCoppel()
 
 		if (iFlag != 1)
 		{
-			AfxMessageBox("Error al consultar el módulo GN0154");
+			AfxMessageBox("Error al consultar el mï¿½dulo GN0154");
 		}
 	}
 }
@@ -28872,7 +29054,7 @@ bool CDlgCapturarAbono::imprimirNotaImportante(C_FormasPCL &xHoja, int iCont)
 			memset(cTextoOut, 0, sizeof(cTextoOut));
 			sDato.Format("%s", ConsultaDescImpresion.desc_mensaje);
 			sDato.Trim();
-			sDato.Replace('¿', '¨');
+			sDato.Replace('ï¿½', 'ï¿½');
 			sprintf_s(cTextoOut, "%s", (LPCTSTR)sDato);
 			ponerAcento(cTextoOut);
 			xHoja.poner(cTextoOut, iRen, iCol);
@@ -28987,7 +29169,7 @@ bool CDlgCapturarAbono::consultarEdadesSeguroClub(short iTipoSeguro)
 	}
 	else
 	{
-		AfxMessageBox("Error al abrir conexión BD CARTERA");
+		AfxMessageBox("Error al abrir conexiï¿½n BD CARTERA");
 	}
 	cerrarConexionBD(&odbc_1);
 	return bRegresa;
@@ -29149,7 +29331,7 @@ bool CDlgCapturarAbono::consultarMaximoSegurosClubAdicional(short &iMaximoSeguro
 	{
 		bRegresa = false;
 		seguros.odbc->GetLastError(seguros.GetHstmt());
-		grabarMensajeError("C", iCajaDlg, (LPTSTR)(LPCTSTR)odbc_1.m_strServer, "CA0030", "CDlgCapturarDatosSeguro", "consultarMaximoSegurosClubAdicional", cSql, lEmpleadoDlg, "Error al Consultar Número Maximo de Seguros Adicional", seguros.odbc, iMuestraMsg);
+		grabarMensajeError("C", iCajaDlg, (LPTSTR)(LPCTSTR)odbc_1.m_strServer, "CA0030", "CDlgCapturarDatosSeguro", "consultarMaximoSegurosClubAdicional", cSql, lEmpleadoDlg, "Error al Consultar Nï¿½mero Maximo de Seguros Adicional", seguros.odbc, iMuestraMsg);
 	}
 	return bRegresa;
 }
@@ -29167,7 +29349,7 @@ void CDlgCapturarAbono::consultarMensajeSeguro()
 	sprintf_s(cSql, "SELECT des_mensaje FROM cat_mensajes WHERE idu_tipomensaje = 378");
 
 	//Mensaje por default
-	sprintf_s(cMensajeSeguro, "Estimado Cliente: Por el momento no le podemos realizar este movimiento del Club de Protección Familiar en Tienda Coppel,\nya que aparece con Estatus de Pendiente, favor de dirigirse a ventanillas de sucursal Bancoppel.");
+	sprintf_s(cMensajeSeguro, "Estimado Cliente: Por el momento no le podemos realizar este movimiento del Club de Protecciï¿½n Familiar en Tienda Coppel,\nya que aparece con Estatus de Pendiente, favor de dirigirse a ventanillas de sucursal Bancoppel.");
 
 	if (mensaje.Exec(cSql))
 	{
@@ -29833,7 +30015,7 @@ void CDlgCapturarAbono::obtenerSituacionEspecialRegla(int iArea, int iRegla, int
 
 	sprintf_s(cSql, "SELECT ccadenasituacion FROM fun_obtenersituacionclienteregla(%d, %d, %d, %ld)", iArea, iProceso, iRegla, lCliente);
 
-	CObtenerSituacionReglaCliente SitEsp(&odbc_1, false); //conexión a tienda.nnnn
+	CObtenerSituacionReglaCliente SitEsp(&odbc_1, false); //conexiï¿½n a tienda.nnnn
 
 	if (SitEsp.Exec(cSql))
 	{
@@ -30076,7 +30258,7 @@ bool CDlgCapturarAbono::fObtenerParametrosEncuesta()
 
 	if (!ObtenerParametrosEncuesta.Exec(cSql))
 	{
-		AfxMessageBox("Error al ejecutar la función fun_obtenerparametrosencuestas");
+		AfxMessageBox("Error al ejecutar la funciï¿½n fun_obtenerparametrosencuestas");
 		ObtenerParametrosEncuesta.Error();
 		bRegresa = false;
 	}
@@ -30110,7 +30292,7 @@ bool CDlgCapturarAbono::fun_obtenerdescripcionestatus()
 
 	if (!Descripcion.Exec(cSql))
 	{
-		AfxMessageBox("Error al ejecutar la función fun_obtenerpreguntaafore");
+		AfxMessageBox("Error al ejecutar la funciï¿½n fun_obtenerpreguntaafore");
 		Descripcion.Error();
 		bRegresa = false;
 	}
@@ -30195,7 +30377,7 @@ void CDlgCapturarAbono::ModificarClienteLocalizar()
 
 	sprintf_s(cSql, "SELECT gnbuscaclientelocalizar('%ld')", m_grid.lCliente);
 
-	CMaximo actualizarTienda(&odbc); //conexión a tienda.nnnn
+	CMaximo actualizarTienda(&odbc); //conexiï¿½n a tienda.nnnn
 
 	grabarLog(cSql);
 
@@ -30467,7 +30649,7 @@ int CDlgCapturarAbono::llamarModuloMigracion(long lFolioSegAMigrar)
 	cClienteCS.Format("%d", m_grid.lCliente);
 	cFolioSegCS.Format("%ld", lFolioSegAMigrar);
 
-	grabarLog("llamarModuloMigracion: F7   Migración de Seguros");
+	grabarLog("llamarModuloMigracion: F7   Migraciï¿½n de Seguros");
 
 	iResp = (int)_spawnl(P_WAIT, "C:\\SYS\\PROGS\\PuenteToCSharp.EXE", "C:\\SYS\\PROGS\\PuenteToCSharp.exe.EXE", cIPServidorTiendaNumero, cTiendaCS, "C:\\SYS\\PROGX\\CA\\CA0192.dll", "MigrarClubProteccionFamiliarCS.frmMigracion", cSistemaCS, cCajaCS, cEmpleadoCS, cClienteCS, cFolioSegCS, NULL);
 
@@ -30513,8 +30695,8 @@ int CDlgCapturarAbono::llamarModuloReimpresionPolizasSeguros()
 	parametros.iCajaActual = m_grid.iCaja;
 	parametros.iMuestraMsg = m_grid.iMuestraMsg;
 
-	parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ó SISTEMA_CLIENTESNUEVOS
-	parametros.lCliente = m_grid.lCliente; //Número de cliente al que se le va a vender seguro club
+	parametros.iNumSistema = SISTEMA_CAJAS; //SISTEMA_CAJAS ï¿½ SISTEMA_CLIENTESNUEVOS
+	parametros.lCliente = m_grid.lCliente; //Nï¿½mero de cliente al que se le va a vender seguro club
 	//parametros.iFlagGeneral = 1;
 	memcpy(cInputParam1, &parametros, sizeof(SParametros));
 
@@ -30522,7 +30704,7 @@ int CDlgCapturarAbono::llamarModuloReimpresionPolizasSeguros()
 	// Ruta del archivo DLL a ejecutar
 	nombreArchivo("CA0189.DLL", cNombreProyecto, DIRECTORIO_CA);
 
-	// Nombre de la función principal en el DLL
+	// Nombre de la funciï¿½n principal en el DLL
 	sprintf_s(cNombreFuncionDLL, "CA0189");
 
 	CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -30580,7 +30762,7 @@ bool CDlgCapturarAbono::realizarProcesoCambioPolizaSeguro(long lPolizaAnterior, 
 	sprintf_s(cLog, "FC0200805021522234 - entra - realizarProcesoCambioPolizaSeguro");
 	grabarLog(cLog);
 
-	sprintf_s(cTextoAux, "%s", "Entró realizarProcesoCambioPolizaSeguro");
+	sprintf_s(cTextoAux, "%s", "Entrï¿½ realizarProcesoCambioPolizaSeguro");
 	grabarLog(cTextoAux);
 
 	generarXMLBeneficiarios(lPolizaNueva, cXml);
@@ -30725,15 +30907,15 @@ int CDlgCapturarAbono::CargarMensajesInvitacion()
 	parametros.lEmpleado = m_grid.lEmpleado;
 	parametros.iCajaActual = m_grid.iCaja;
 	parametros.iMuestraMsg = m_grid.iMuestraMsg;
-	parametros.iNumSistema = iSistema; //SISTEMA_CAJAS ó SISTEMA_CLIENTESNUEVOS
-	parametros.lCliente = m_grid.lCliente; //Número de cliente al que se le va a vender seguro club
+	parametros.iNumSistema = iSistema; //SISTEMA_CAJAS ï¿½ SISTEMA_CLIENTESNUEVOS
+	parametros.lCliente = m_grid.lCliente; //Nï¿½mero de cliente al que se le va a vender seguro club
 	memcpy(cInputParam1, &parametros, sizeof(SParametros));
 
 	sprintf_s(cNombreProyecto, "");
 	// Ruta del archivo DLL a ejecutar
 	nombreArchivo("GN0229.DLL", cNombreProyecto, DIRECTORIO_GN);
 
-	// Nombre de la función principal en el DLL
+	// Nombre de la funciï¿½n principal en el DLL
 	sprintf_s(cNombreFuncionDLL, "GN0229");
 
 	CargarDLL cargarDll(cNombreProyecto, cNombreFuncionDLL, cInputParam1, cInputParam2, cOutputParam1, cOutputParam2);
@@ -30865,7 +31047,7 @@ bool CDlgCapturarAbono::grabarTmpCarteraRopaDetalle(long lSuPago, long lAbonoRop
 
 	grabarLog("grabarTmpCarteraRopaDetalle::Grabando ropadetalle en tabla temporal tmp_carteraropadetalle");
 
-	CGrabarTmpAbonoCrCropaDetalle tmpCrCropaDetalle(&odbc_1); // conexión a la B.D cartera
+	CGrabarTmpAbonoCrCropaDetalle tmpCrCropaDetalle(&odbc_1); // conexiï¿½n a la B.D cartera
 	{
 		tmpCrCropaDetalle.num_cliente = m_grid.lCliente;
 
@@ -31006,7 +31188,7 @@ short CDlgCapturarAbono::validaFlagPrestamoCteN(long lNumCliente)
 	}
 	else
 	{
-		AfxMessageBox("Error al abrir conexión BD CONECTA_CARTERA");
+		AfxMessageBox("Error al abrir conexiï¿½n BD CONECTA_CARTERA");
 	}
 	cerrarConexionBD(&odbc_1);
 	return lValidacion;
@@ -31140,7 +31322,7 @@ void CDlgCapturarAbono::MensajeReestructura()
 						cJsonConfiguracion.Replace(' ', '_');
 						cJsonReestructura.Replace(' ', '_');
 						cJsonParams.Format("%s %s", cJsonConfiguracion, cJsonReestructura);
-						m_msgCandidatoReestructura.SetWindowText("CANDIDATO PLAN PAGA MÁS FÁCIL");
+						m_msgCandidatoReestructura.SetWindowText("CANDIDATO PLAN PAGA Mï¿½S Fï¿½CIL");
 						sprintf_s(cMensajeRestructura, "Usted presenta un saldo vencido. Para que pueda cumplir con su abono mensual puntualmente, "
 							"\n puede disminuir su abono de $ %ld.00 a un nuevo abono de $ %ld.00", candidatoReestructura.lBaseTotal, iAbono);
 						sprintf_s(cTextoAux, "CDlgCapturarAbono::MensajeReestructura: %s", (LPCTSTR)cJsonConfiguracion);
@@ -31497,7 +31679,7 @@ void CDlgCapturarAbono::capturaDeDatosEcommerce(bool &bGrabo, bool &bSorteoEncon
 		}
 		else
 		{
-			grabarLog("82f356bf0c9b - if (bGrabo && !bSorteoEncontrado){..} <-- no cumplió");
+			grabarLog("82f356bf0c9b - if (bGrabo && !bSorteoEncontrado){..} <-- no cumpliï¿½");
 		}
 	}
 	else
@@ -33044,7 +33226,7 @@ bool CDlgCapturarAbono::grabartmpClienteCandidatomoratorio(char *cJsonPostLocal,
 	if (status==401)
 	{
 		sprintf_s(cLog, "FC020080502286524 - Token incorrecto");
-		AfxMessageBox("Advertencia:\nError al validar token de autenticación. Favor\nde comunicarse a mesa de servicio.");
+		AfxMessageBox("Advertencia:\nError al validar token de autenticaciï¿½n. Favor\nde comunicarse a mesa de servicio.");
 		bErrorWS = true;
 		bRegresa = true;
 		ErrorToken=true;
@@ -33499,7 +33681,7 @@ bool CDlgCapturarAbono::GrabarTdAutorizacionHuellas03()
 
 	if (!CAutorizaHuella.Exec(cSql))
 	{
-		AfxMessageBox("Error al ejecutar la función fun_grabarautorizacionhuella03");
+		AfxMessageBox("Error al ejecutar la funciï¿½n fun_grabarautorizacionhuella03");
 		CAutorizaHuella.Error();
 		bContinuar = false;
 	}
@@ -33681,7 +33863,7 @@ void CDlgCapturarAbono::IniciarContactabilidad()
 		util.GrabarLog("a408706c5601 - Identificado como titular en contactabilidad");
 		if (contactabilidad.GetEsActiva())
 		{
-			util.GrabarLog("FC0200805103819963 - Se ejecuta lógica activa");
+			util.GrabarLog("FC0200805103819963 - Se ejecuta lï¿½gica activa");
 			if (contactabilidad.GetEsSolicitable())
 			{                
 				contactabilidad.EjecutarAppCapturaValidacion();
@@ -33690,7 +33872,7 @@ void CDlgCapturarAbono::IniciarContactabilidad()
 	}
 	else
 	{
-		util.GrabarLog("9ae1a179a44b - lógica de contactabilidad ignorada por no ser titular");
+		util.GrabarLog("9ae1a179a44b - lï¿½gica de contactabilidad ignorada por no ser titular");
 	}
 	sprintf_s(cLog, "FC0200805021522439 - fin - IniciarContactabilidad");
 	grabarLog(cLog);
@@ -33894,9 +34076,9 @@ int CDlgCapturarAbono::GetIdSuborigen(short iComponente, int iNumSistemaSubOrige
 
 /// <summary>
 /// Establece y retorna el resultado de la pregunta que se le hace al cliente. Si no se ha ejecutado por primera vez,
-/// se levanta el AfxMessageBox, de lo contrario retorna el último valor obtenido.
+/// se levanta el AfxMessageBox, de lo contrario retorna el ï¿½ltimo valor obtenido.
 /// </summary>
-/// <returns>Resultante de la evaluación y establecimiento del mismo a nivel clase</returns>
+/// <returns>Resultante de la evaluaciï¿½n y establecimiento del mismo a nivel clase</returns>
 short CDlgCapturarAbono::GetSetCuestionTitular()
 {
 	char cLog[500] = { 0 };
@@ -33912,7 +34094,7 @@ short CDlgCapturarAbono::GetSetCuestionTitular()
 		grabarLog(cLog);
 		while (!(afxResponse == IDYES || afxResponse == IDNO))
 		{
-			afxResponse = AfxMessageBox("¿Usted es titular o adicional de la cuenta?", 
+			afxResponse = AfxMessageBox("ï¿½Usted es titular o adicional de la cuenta?", 
 				MB_YESNO | MB_ICONQUESTION | MB_TOPMOST | MB_APPLMODAL);
 			this->iTipoCuestion = afxResponse == IDYES ? RESPUESTA_CUESTION_POSITIVA : RESPUESTA_CUESTION_NEGATIVA;
 		}
@@ -33932,10 +34114,10 @@ short CDlgCapturarAbono::GetSetCuestionTitular()
 
 /// <summary>
 /// Establece y retorna el resultado de toma de huellas del CHW. Si no se ha ejecutado por primera vez,
-/// se levanta la captura de huellas, de lo contrario retorna el último valor obtenido.
+/// se levanta la captura de huellas, de lo contrario retorna el ï¿½ltimo valor obtenido.
 /// </summary>
-/// <param name="iProcesoEjecutor">Nemónico y valor del proceso que realiza la invocación</param> 
-/// <returns>Resultante de la evaluación y establecimiento del mismo a nivel clase</returns>
+/// <param name="iProcesoEjecutor">Nemï¿½nico y valor del proceso que realiza la invocaciï¿½n</param> 
+/// <returns>Resultante de la evaluaciï¿½n y establecimiento del mismo a nivel clase</returns>
 short CDlgCapturarAbono::GetSetTipoBiometrizado(int iProcesoEjecutor)
 {
 	char cLog[500] = { 0 };
@@ -34525,7 +34707,7 @@ void CDlgCapturarAbono::ConsultarValorAbonosPuntuales(short &iValorAbonosPuntual
 }
 bool CDlgCapturarAbono::leerCandidatoPrestamoBRM(long lCliente)
 {	
-	grabarLog("CDlgCapturarAbono::leerCandidatoPrestamoBRM. Entró a leerCandidatoPrestamoBRM(long lCliente)" );
+	grabarLog("CDlgCapturarAbono::leerCandidatoPrestamoBRM. Entrï¿½ a leerCandidatoPrestamoBRM(long lCliente)" );
 	bool bRegresa = false;
 	CString sUrl = "", sContenido = "", sAux = "",  sAutorizacion="";
 	int iResult = 0;
@@ -34584,14 +34766,14 @@ bool CDlgCapturarAbono::leerCandidatoPrestamoBRM(long lCliente)
 				delete sData;
 				grabarLog("CDlgCapturarAbono Se Libera --> sData 34538 Cambio Softtek");
 
-				grabarLog( "CDlgCapturarAbono:: Finalizó Restreb" );
+				grabarLog( "CDlgCapturarAbono:: Finalizï¿½ Restreb" );
 			}
 			catch(...)
 			{				
 				iRetorno = sprintf_s(sMensaje, sizeof(sMensaje), "%s", "ERROR CDlgCapturarAbono::leerCandidatoPrestamoBRM()"); //Dangerous Functions
 				grabarLog( sMensaje );      
 				bRegresa=false;
-				AfxMessageBox("No se pudo obtener información del BRM.");
+				AfxMessageBox("No se pudo obtener informaciï¿½n del BRM.");
 
 			}
 
@@ -34691,7 +34873,7 @@ bool CDlgCapturarAbono::leerCandidatoPrestamoBRM(long lCliente)
 			AfxMessageBox("Ha ocurrido un problema al consultar al cliente mediante el BRM. Favor de comunicarse con Mesa de Ayuda.");
 		} 
 	}
-	grabarLog("CDlgCapturarAbono:: Salió de leerCandidatoPrestamoBRM(long lCliente)" );
+	grabarLog("CDlgCapturarAbono:: Saliï¿½ de leerCandidatoPrestamoBRM(long lCliente)" );
 	return bRegresa; 
 }
 long CDlgCapturarAbono::leerCandidatoPrestamoCCuenta(CString sServer, int iTienda, long lEmpleado, int iCaja, int iMuestra, long lCliente, int iSistema)
@@ -34807,11 +34989,11 @@ void CDlgCapturarAbono::limpiarFolioRezagado(bool bTipoEjecucion)
 
 								CMaximo actualizaTdCheque(&odbc);
 								if (actualizaTdCheque.Exec(cSql)) {
-									sprintf( cMensajeSeguimiento, "Se almacenan los datos en la tdCheques donde si existe número de sesion  %I64d  " , consulta.sesion_temp);
+									sprintf( cMensajeSeguimiento, "Se almacenan los datos en la tdCheques donde si existe nï¿½mero de sesion  %I64d  " , consulta.sesion_temp);
 									grabarLog(cMensajeSeguimiento);
 								}
 								else {
-									sprintf( cMensajeSeguimiento, "Error en almacenar los datos en la tdCheques donde si existe número de sesion  %I64d  " , consulta.sesion_temp);
+									sprintf( cMensajeSeguimiento, "Error en almacenar los datos en la tdCheques donde si existe nï¿½mero de sesion  %I64d  " , consulta.sesion_temp);
 									grabarLog(cMensajeSeguimiento);
 								}
 						} 
@@ -34884,7 +35066,7 @@ void CDlgCapturarAbono::ValidarClienteSanaTuDeuda()
 
 	if (iFlagSanaTuDeuda != 1)
 	{
-		grabarLog("Flag para validación de cliente candidato a Sana Tu Deuda apagada.");
+		grabarLog("Flag para validaciï¿½n de cliente candidato a Sana Tu Deuda apagada.");
 		return;
 	}
 

@@ -555,6 +555,21 @@
     <ClCompile Include="Clases\ApiSanaTuDeudaClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json\src\jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLogBonificacionDiaria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="CapturarAbono.def">
@@ -791,6 +806,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Clases\ParametrosApiSanaTuDeuda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLogBonificacionDiaria.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
