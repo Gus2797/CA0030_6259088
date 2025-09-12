@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------
     Fecha    : 25/10/04 13:01  ( dd-mm-aa )
-    Elabor¢  : Joel Armando Arana Garcia
-    Solicit¢ : Lic. Jos‚ G. Mendoza
+    Elaborï¿½  : Joel Armando Arana Garcia
+    Solicitï¿½ : Lic. Josï¿½ G. Mendoza
     Actividad: Captura de Abonos
    -------------------------------------------------------------------- */
 
@@ -51,7 +51,8 @@ int CA0030(char *cInput1, char *cInput2)
     SecureZeroMemory(&sParametros, sizeof(SParametros));
 	if(memcpy_s(&sParametros, sizeof(sParametros), cInput1, sizeof(SParametros)) < 0){;}
 
-    if (checarLink(sParametros.iLink))
+    //if (checarLink(sParametros.iLink)) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR RMS, FLUJO DE guardarCertificacionAbonos
+    if (!checarLink(sParametros.iLink)) //TODO: 01/09/2025, AGREGADO POR RMS, FLUJO DE guardarCertificacionAbonos
     {
         CDlgCapturarAbono dlg;
 
@@ -279,9 +280,8 @@ int CA0030(char *cInput1, char *cInput2)
         else
         {
             cerrarConexionBD(&odbc);
-            AfxMessageBox("Error al abrir conexión BD TIENDA.####");
+            AfxMessageBox("Error al abrir conexiï¿½n BD TIENDA.####");
         }
-
         if (iFlagConexion == 1)
         {
             if (dlg.iSistema != SISTEMA_ROPA && dlg.iSistema != SISTEMA_MUEBLES)
@@ -309,7 +309,7 @@ int CA0030(char *cInput1, char *cInput2)
 
 						if (dlg.obtenerFlag('C', 301, dlg.iFlagMenuInicial))
 						{
-							// SI ESTÁ PRENDIDO EL FLAG MUESTRA EL MENU
+							// SI ESTï¿½ PRENDIDO EL FLAG MUESTRA EL MENU
 							if (dlg.iFlagMenuInicial == 1)
 							{
 								C_Menu menu("  C A J A S    D E    A B O N O S  ", opciones, respuesta);
@@ -318,13 +318,13 @@ int CA0030(char *cInput1, char *cInput2)
 							}
 							else
 							{
-								// SI NO ESTÁ PRENDIDO SE MUESTRA DIRECTAMENTE LA OPCION F1
+								// SI NO ESTï¿½ PRENDIDO SE MUESTRA DIRECTAMENTE LA OPCION F1
 								dlg.iOpcionSeleccionadaMenuInicial = F1;
 							}
 						}
 						else
 						{
-							// SI NO SE HACE LA CONSULTA NO SE MUESTRA EL MENÚ
+							// SI NO SE HACE LA CONSULTA NO SE MUESTRA EL MENï¿½
 							dlg.iOpcionSeleccionadaMenuInicial = F1;
 						}
 
@@ -344,7 +344,7 @@ int CA0030(char *cInput1, char *cInput2)
                                 if (iEncontroDerechos != 1)
                                 {
                                     CString sTexto;
-                                    sTexto.Format("EL EMPLEADO %ld NO TIENE DERECHOS EN CAJAS, POR LO CUAL NO SERA TOMADO EN CUENTA\nEN EL REPORTE DE LA EFICIENCIA DE LAS CAJERAS, USE LA OPCIÓN DE ALTA DE CLAVES", dlg.m_grid.lEmpleado);
+                                    sTexto.Format("EL EMPLEADO %ld NO TIENE DERECHOS EN CAJAS, POR LO CUAL NO SERA TOMADO EN CUENTA\nEN EL REPORTE DE LA EFICIENCIA DE LAS CAJERAS, USE LA OPCIï¿½N DE ALTA DE CLAVES", dlg.m_grid.lEmpleado);
                                     AfxMessageBox(sTexto);
                                 }
                                 iEncontroDerechos = 0;
