@@ -51,7 +51,7 @@
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>CargarDllCSharp.lib;lmaxwt2012.lib;lmaxw2012.lib;ugmfc2012.lib;gTermica20122.lib;ggn2012.lib;gca2012.lib;gcn2012.lib;giniciodiacajas2012.lib;general2012.lib;dlgml2012.lib;CCuentaWeb2012.lib;gnPlanDeLealtad2012.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CargarDllCSharp.lib;lmaxwt2012.lib;lmaxw2012.lib;ugmfc2012.lib;gTermica20122.lib;ggn2012.lib;gca2012.lib;gcn2012.lib;giniciodiacajas2012.lib;general2012.lib;dlgml2012.lib;CCuentaWeb2012local.lib;gnPlanDeLealtad2012.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)CA0030.DLL</OutputFile>
       <AdditionalLibraryDirectories>.\;C:\progs_lnx2\TdasW2012\LIB;C:\progs_lnx2\disco_c\cpp\Lmaxw2012DLL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\CapturarAbono.def</ModuleDefinitionFile>
