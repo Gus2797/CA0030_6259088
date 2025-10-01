@@ -1,6 +1,6 @@
 ; CCuentaWeb.def : Declares the module parameters for the DLL.
 
-LIBRARY      "CCuentaWeb2012"
+LIBRARY      "CCuentaWeb2012local"
 
 EXPORTS
     ; Explicit exports can go here
