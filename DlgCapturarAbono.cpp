@@ -5265,7 +5265,7 @@ int CDlgCapturarAbono::desplegarDatosCliente() //TODO: 01/09/2025, GAHL, FLUJO D
 																			}
 																		}
 																	} else {
-																		AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
+																		AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
 																	}
 																	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - FIN
 																	iCantidadCuentaMuebles++;
