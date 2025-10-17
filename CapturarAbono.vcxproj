@@ -117,6 +117,7 @@
     <ClCompile Include="DlgCapturarNumEmpleSupervisor.cpp" />
     <ClCompile Include="DlgEncuesta.cpp" />
     <ClCompile Include="dlgreestructuracion.CPP" />
+    <ClCompile Include="generarLogBonificax.cpp" />
     <ClCompile Include="GridCapturarAbono.CPP" />
     <ClCompile Include="GridDesplegarTotal.CPP" />
     <ClCompile Include="JsonAbonos\JsonAbonoCelularesC.cpp" />
