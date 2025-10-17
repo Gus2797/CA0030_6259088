@@ -942,6 +942,7 @@ public:
     bool grabarBeneficiariosCartera(long lFolio);
     bool funVerificarFoco(long lCampo);
     void grabarLog(char *cTexto);
+	void grabarBonificaLog(char *cTexto); // TODO: 10/10/2025 17:13 HRS, GAHL, AGREGANDO DEFINICION DE grabarBonificaLog
 	void grabarLogBeneficiarios(char *cTexto); 
     bool fObtenerParametrosEncuesta();
     bool fun_obtenerdescripcionestatus();
@@ -1189,4 +1190,5 @@ public:
     afx_msg void OnEnChangeCliente();
 	//afx_msg void OnStnClickedLeyendaAclaracionsdo();
 	//afx_msg void OnStnClickedEdad();
+	void generarLogBonificax(char * nomfuncion,const char * mensaje, long numCte, long numFactura, char * fechaCompra, int numTienda);
 };

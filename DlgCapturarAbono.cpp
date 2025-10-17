@@ -1,3 +1,8 @@
+/****************************************************************************************************************
+* PROGRAMADOR: MIGUEL RODRIGUEZ LUNA
+* FECHA: 15-10-2025
+* DESCRIPCION: Se aplica la función: generarLogBonificax() para la implementación de nuevos logs
+****************************************************************************************************************/ 
 /* --------------------------------------------------------------------
 Fecha    :25/10/04 6:21  ( dd-mm-aa )
 Elabor�  :Joel Armando Arana Garcia
@@ -182,6 +187,7 @@ obtenerFechaPrimerAbono(int i);
 #include "CConsultaFacturaSesionTemp.hpp"
 #include "CConsultatdchequesesion.hpp"
 #include "CLogBonificacionDiaria.hpp" //TODO: 11/09/2025, AGREGADO POR GAHL, CONECTANDO CON ODBC
+
 
 
 #ifdef _DEBUG
@@ -1149,6 +1155,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL,
 
 	lGteHuella = 0;
 	iOpcionTecleada = (int)pMsg->wParam;
+
 	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 	/*if (pMsg->message == WM_LBUTTONDOWN || pMsg->message == WM_LBUTTONDBLCLK ||
 		pMsg->message == WM_RBUTTONDOWN || pMsg->message == WM_RBUTTONDBLCLK)
@@ -1194,19 +1201,23 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL,
 	//if (m_grid.lCliente > 0L) //TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	if (true) //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	{
-		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
-		/*iFlagServicio = 1;
-
-		if (pMsg->message == WM_KEYDOWN)
+		//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos
+		//iFlagServicio = 1;
+		//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos
+		//if (pMsg->message == WM_KEYDOWN)
+		if (true) //TODO: 10/10/2025 16:40 HRS, AGREGADO POR GAHL, FLUJO DE menuAyudaAbonos
 		{
 			if (pMsg->wParam == VK_F1)
 			{
-				if (iFoco == 1)
+				//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos - INICIO
+				/*if (iFoco == 1)
 				{
 					if (iTeclaAnterior != VK_CONTROL)
-					{
+					{*/
+				//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos - FINAL
 						iOpcionTecleada = menuAyudaAbonos();
-						m_grid.RedrawAll();
+				//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos - INICIO
+						/*m_grid.RedrawAll();
 						if (iOpcionTecleada != 0)
 						{
 							pMsg->wParam = iOpcionTecleada;
@@ -1218,7 +1229,8 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL,
 						}
 
 					}
-				}
+				}*/
+			//TODO: 10/10/2025 16:40 HRS, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE menuAyudaAbonos - FINAL
 			}
 			else
 			{
@@ -1332,8 +1344,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL,
 					}
 				}
 			}
-		}*/
-		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+		}
 		iContador = 1; // TODO: AGREGADO POR GAHL
 		if (iContador == 1)
 		{
@@ -2094,6 +2105,7 @@ BOOL CDlgCapturarAbono::PreTranslateMessage(MSG* pMsg) //TODO: 29/08/2025, GAHL,
 							}
 						
 							m_grid.obtenerTotalAbono();*/
+
 							//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 							desplegarDatosCliente(); //TODO: 02/09/2025, AGREGADO POR RMS, FLUJO DE guardarCertificacionAbonos
 							pedirPago();
@@ -3376,9 +3388,26 @@ int CDlgCapturarAbono::desplegarDatosCliente() //TODO: 01/09/2025, GAHL, FLUJO D
 	char cDias[5] = { 0 }, cInteresprestamo[100] = { 0 }, cIplazo[5] = { 0 }, cFechaPrestamo[10] = { 0 }, cCuentaP[2] = { 0 };
 	string sJsonPostDescuentoMoratorio, sJsonPostDescmora;
 	CConsumoAPICuentasSeguros *pCuentasSeguros = new CConsumoAPICuentasSeguros();
-
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS REALES
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+	m_grid.sServer = "10.75.221.38";
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 14/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000]={};
+	char fuente[1000]={};
+	
 	sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> Inicia busqueda del cliente[%ld]", m_grid.lCliente);
 	grabarLog(cMensajeSeguimiento);
+	
+	//TODO: GMLC 15/10/2025, INICIO 
+	sprintf_s(mensaje, cMensajeSeguimiento);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::desplegarDatosCliente, Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 14/10/2025, FUNCION LOG
+
 
 	datosCliente = "";
 	bClienteReestructurado = false;
@@ -3558,27 +3587,39 @@ int CDlgCapturarAbono::desplegarDatosCliente() //TODO: 01/09/2025, GAHL, FLUJO D
 										sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> Inicia CCuentaWeb");
 										grabarLog(cMensajeSeguimiento);
 
-										CCuentaWeb *pCuentaCliente = new CCuentaWeb(); //TODO: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 6
+										CCuentaWeb *pCuentaCliente = new CCuentaWeb(); //: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 6
 										pCuentaCliente->iniciarCCuenta(m_grid.lCliente, cFechaTienda, (short)m_grid.iTienda, (short)iCiudadGnDominio, cIpServidorCartera, cIpServidorCCuentaWeb, (short)iFlagTimeOutCCuenta);
 										pCuentaCliente->leerCliente();
 
-										//TODO: MRL  08/09/2025        
+										//: MRL  08/09/2025        
 										//enviarLogParams(hDbc, 10203, 240340, "este es el log....", "2025-08-20", 803, "este log viene de.....");
 										// se encontro al cliente en la cartera
+										*/
+										
+										//TODO: gacc: quitar
+										CCuentaWeb *pCuentaCliente = new CCuentaWeb(); //: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 6
 
+										pCuentaCliente->bClienteValido = 987654321;
 										sprintf_s(cMensajeSeguimiento, "CDlgCapturarAbono::desplegarDatosCliente--> bClienteValido = %d", pCuentaCliente->bClienteValido);
-										grabarLog(cMensajeSeguimiento);*/
-										//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
-										{
+										
+										grabarLog(cMensajeSeguimiento);
+										
+										
+										{									
+											//TODO: GMLC 15/10/2025, INICIO
+											sprintf_s(mensaje, "%s, IP del servidor: %s, Tienda: %d", cMensajeSeguimiento, m_grid.sServer, m_grid.iTienda);
+											sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::desplegarDatosCliente, Linea: %d", __LINE__);
+											generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+											//TODO: GMLC 15/09/2025, FUNCION LOG
 											// se encontro al cliente en la cartera
 											//if (pCuentaCliente->bClienteValido || m_grid.lCliente == 1708) //TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos
-											if (true) //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
+											
+											if (true) //01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 											{
-												//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
+												//01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 												/*memset(&candidatoReestructura, 0, sizeof(SCandidatoReestructura));
-												pCuentaCliente->leerTienda01(); //TODO: 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 7
-	
-												//TODO: MRL  08/09/2025        
+												pCuentaCliente->leerTienda01(); // 04/09/2025, GAHL, CARGA DE LA FECHA COMPRA PASO 7
+												// MRL  08/09/2025        
 												//enviarLogParams(hDbc, 10203, 240340, "este es el log....", "2025-08-20", 803, "este log viene de.....");
 												// se encontro al cliente en la cartera
 
@@ -5237,37 +5278,11 @@ int CDlgCapturarAbono::desplegarDatosCliente() //TODO: 01/09/2025, GAHL, FLUJO D
 																	stDatosCertificacion[iCantidadCuentaMuebles].iInteresadicionalPrimerMesc = atoi(sDato);
 																	sprintf_s(stDatosCertificacion[iCantidadCuentaMuebles].cFechaMovto, "%08d", 20250724);
 																	
-																	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - INICIO
-																	char mensaje[1000] = {0};
-																	char fuente[500] = {0};
-																	char cSql[10000] = {0};
-
+																	//TODO: GMLC 15/10/2025, INICIO
 																	sprintf_s(mensaje, "CCuentaWeb(TipoCuenta: %d, Factura: %d, Tienda: %d, FechaCompra: %04d%02d%02d, Plazo: %d, ImporteVenta: %d, InteresSobreCompra: %d, AbonoBase: %d, SaldaCon: %d, DiasTranscurridos: %d, Bonificacion: %d, PorcentajeBonificacion: %d, SaldoVencido: %d, InteresAdicional: %d, SaldoAnterior: %d, InteresAdicionalPrimerMes: %d)", pCuentaCliente->pCuenta[i].iTipoDeCuenta, (int)pCuentaCliente->pCuenta[i].lFactura, (int)pCuentaCliente->pCuenta[i].iTienda, pCuentaCliente->pCuenta[i].tFechaVenta.ano(), pCuentaCliente->pCuenta[i].tFechaVenta.mes(), pCuentaCliente->pCuenta[i].tFechaVenta.dia(), (int)pCuentaCliente->pCuenta[i].iPlazo, (int)pCuentaCliente->pCuenta[i].lImporteVenta, (int)pCuentaCliente->pCuenta[i].lInteresSobreCompra, (int)pCuentaCliente->pCuenta[i].lBase, (int)pCuentaCliente->pCuenta[i].lSaldaCon, (int)pCuentaCliente->pCuenta[i].iDiasTranscurridos, (int)pCuentaCliente->pCuenta[i].lBonificacion, (int)pCuentaCliente->pCuenta[i].iPorcentajeBonificacion, (int)pCuentaCliente->pCuenta[i].lVencido, (int)pCuentaCliente->pCuenta[i].lInteresAdicional, (int)pCuentaCliente->pCuenta[i].lSaldo, (int)pCuentaCliente->pCuenta[i].lInteresAdicionalPrimerMes);		
-																	sprintf_s(fuente, "DlgCapturarAbono.cpp; desplegarDatosCliente(); Linea: %d", __LINE__);
-																	sprintf_s(cSql, "SELECT estado, mensaje FROM fun_guardarlogbonificaciondiaria(%d, %d, '%s', '%s', %d, '%s');", stDatosCertificacion[iCantidadCuentaMuebles].iCliente, (int)pCuentaCliente->pCuenta[i].lFactura, mensaje, stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, (int)pCuentaCliente->pCuenta[i].iTienda, fuente);
-																	
-																	grabarLog(cSql);
-																	CLogBonificacionDiaria cLogBonificacionDiaria(&odbc, false);
-																	
-																	if (cLogBonificacionDiaria.Exec(cSql))
-																	{
-																		cLogBonificacionDiaria.activarCols();
-																		if (cLogBonificacionDiaria.Leer())
-																		{
-																			if (cLogBonificacionDiaria.estado != 0)
-																			{
-																				AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-																				grabarLog("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-																			}else
-																			{
-																				AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
-																				grabarLog("DlgCapturarAbono.cpp; desplegarDatosCliente(); Se grabo el log en fun_guardarlogbonificaciondiaria");
-																			}
-																		}
-																	} else {
-																		AfxMessageBox("DlgCapturarAbono.cpp; desplegarDatosCliente(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-																	}
-																	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - FIN
+																	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::desplegarDatosCliente, Linea: %d", __LINE__);
+																	generarLogBonificax(fuente, mensaje, stDatosCertificacion[iCantidadCuentaMuebles].iCliente, (int)pCuentaCliente->pCuenta[i].lFactura, stDatosCertificacion[iCantidadCuentaMuebles].cFechaCompra, (int)pCuentaCliente->pCuenta[i].iTienda);
+																	//TODO: GMLC 15/10/2025, FUNCION LOG - FIN
 																	iCantidadCuentaMuebles++;
 																}
 																//TODO: 01/09/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
@@ -9435,12 +9450,30 @@ void CDlgCapturarAbono::pedirPago() //TODO: 29/08/2025, GAHL, FLUJO DE guardarCe
 	CString sPagoCte;
 	char cIpTiendaNumero[20] = { 0 };
 	long lClienteAux = m_grid.lCliente;
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS REALES
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+	m_grid.sServer = "10.75.221.38";
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 14/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000] = {};
+	char fuente[1000] = {};
 
 	sprintf_s(cLog, "FC0200805021521204 - entra - pedirPago");
 	grabarLog(cLog);
 
-	sprintf_s(cLog, "pedirPago::Empieza grabado del abono Cliente = %ld", lClienteAux);
+	sprintf_s(cLog, "pedirPago::Empieza grabadox del abonox Clientex = %ld", lClienteAux);
 	grabarLog(cLog);
+
+	//generarLogBonificax("pedirPago()", cLog, m_grid.lCliente, 0, "2030-01-01", 0);
+
+	//TODO: GMLC 15/10/2025, INICIO
+	sprintf_s(mensaje, cLog);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::pedirPago, Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 15/10/2025, FUNCION LOG
 
 	iRecibePago = 0;
 	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
@@ -9466,10 +9499,16 @@ void CDlgCapturarAbono::pedirPago() //TODO: 29/08/2025, GAHL, FLUJO DE guardarCe
 		recibirPagoCa(); //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 		//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 		/*if (recibirPagoCa())
-		{
+		{*/
 			sprintf_s(cLog, "pedirPago::Inicializando captura");
 			grabarLog(cLog);
-
+	
+			//TODO: GMLC 15/10/2025, INICIO
+			sprintf_s(mensaje, cLog);
+			sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::pedirPago, Linea: %d", __LINE__);
+			generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+			//TODO: GMLC 15/10/2025, FUNCION LOG
+		/*
 			if ((iFlagReactivo == 1 || iFlagNuevo == 1) && iFlagPago == 1)
 			{
 				seguroReactivado();
@@ -9501,6 +9540,12 @@ void CDlgCapturarAbono::pedirPago() //TODO: 29/08/2025, GAHL, FLUJO DE guardarCe
 	}
 	sprintf_s(cLog, "FC0200805021521206 - fin - pedirPago - Termina grabado del abono cliente = %ld", lClienteAux);
 	grabarLog(cLog);
+
+	//TODO: GMLC 15/10/2025, INICIO
+	sprintf_s(mensaje, cLog);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::pedirPago, Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 15/10/2025, FUNCION LOG
 }
 
 long CDlgCapturarAbono::obtenerTotalImporteConvenios()
@@ -9983,9 +10028,26 @@ bool CDlgCapturarAbono::recibirPagoCa(void) //TODO: 29/08/2025, GAHL, FLUJO DE g
 	int iFlag = 0, iHora = 0, iMinutos = 0, iSegundos = 0, iModulo = 0, iFlagTelefonos = 0;
 	char cSqlTxt[255] = { 0 }, cSer[20] = { 0 };
 	char cArchivo[80] = { 0 }, cMensaje[200] = { 0 };
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS REALES
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+	m_grid.sServer = "10.75.221.38";
+	m_grid2.lTotalAbonos = 1000;
+	m_grid.lEmpleado = 123456789;
+	m_grid.iCaja = 5;
+	iDiaActual = 15;
+	iMesActual = 10;
+	iAnioActual = 2025;
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 14/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000] = {};
+	char fuente[1000] = {};
 
 	sprintf_s(cLog, "FC0200805021521233 - entra - recibirPagoCa");
 	grabarLog(cLog);
+
 	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 	/*consultarFolioCajas();
 
@@ -9994,6 +10056,13 @@ bool CDlgCapturarAbono::recibirPagoCa(void) //TODO: 29/08/2025, GAHL, FLUJO DE g
 
 	obtenerTotalAbonoCuentasPagoServicio(m_grid2.lTotalAbonos);
 	lTotalAPagar = m_grid2.lTotalAbonos;*/
+
+	//TODO: GMLC 15/10/2025, INICIO
+	sprintf_s(mensaje, "Cliente: %d, Total a pagar: %d, Tienda: %d, Empleado: %d, Caja: %d, Dia: %d, Mes: %d, Ano: %d", m_grid.lCliente, m_grid2.lTotalAbonos, m_grid.iTienda, m_grid.lEmpleado, m_grid.iCaja, iDiaActual, iMesActual, iAnioActual);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::pedirPago, Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 15/10/2025, FUNCION LOG
+
 	//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 	lTotalAPagar = 1; //TODO: 29/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 	if ((m_grid.lCliente == 1708L) || (lTotalAPagar != 0L) || (iFlagConvenioTerminado == 1))
@@ -10087,6 +10156,9 @@ bool CDlgCapturarAbono::recibirPagoCa(void) //TODO: 29/08/2025, GAHL, FLUJO DE g
 						//TODO: 29/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 						/*if (grabarAbono())
 						{
+						*/
+
+						/*
 							iFlagGraboAbono = 1;
 						}
 
@@ -14430,9 +14502,28 @@ bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardar
 
 	int  iImprimeComprobantes = 0, iTipoProcesoComprobante = 0;
 
+	//TODO: GMLC 15/10/2025, INICIALIZA DATOS REALES 
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+	m_grid.sServer = "10.75.221.38";
+	//TODO: GMLC 15/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 15/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000]={};
+	char fuente[1000]={};
+	//____________________________________________________________
+
 	sprintf_s(cLog, "ff164d0888ca - entra - grabarAbono - Cliente: %ld", m_grid.lCliente);
 	grabarLog(cLog);
 
+
+	//TODO: GMLC 15/10/2025, INICIO
+	sprintf_s(mensaje, cLog);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::grabarAbono(), Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+	
 	iTotalAbonos = 0;
 	iTotalAbonoSeg = 0;
 	iTotalAbonoInte = 0;
@@ -14972,9 +15063,16 @@ bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardar
 					decrementarFolioRecibo();
 				}
 			}
-
+			*/
 			sprintf_s(cMensaje, "grabarAbono::Termino grabado Cliente = %ld, Recibo = %ld, bGrabo = %d", m_grid.lCliente, lNumeroRecibo, bGrabo);
-			grabarLog(cMensaje);*/
+			grabarLog(cMensaje);
+
+				//TODO: GMLC 15/10/2025, INICIO
+				sprintf_s(mensaje, cMensaje);
+				sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::grabarAbono(), Linea: %d", __LINE__);
+				generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+				//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
 			//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 			bGrabo = true; //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 			if (bGrabo) //si todo se hizo bien al grabar el abono
@@ -15040,12 +15138,20 @@ bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardar
 				iSistema = 1; //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
 				if ((iFlagImpresoraTermica == 1 && iSistema == SISTEMA_CAJAS) || iSistema == SISTEMA_ROPA || iSistema == SISTEMA_MUEBLES)
 				{
+						
+						//TODO: GMLC 14/10/2025, FUNCION LOG FIN
 					//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 					/*if (iFlagTiendaLocal >= 1)
 					{
 						obtenerFechaCartera();
 					}
-
+					*/
+						//TODO: GMLC 15/10/2025, INICIO
+						sprintf_s(mensaje, "Impresora térmica");
+						sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::grabarAbono(), Linea: %d", __LINE__);
+						generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+						//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+					/*
 					termica = new CGenerarImpresion(cArchivoImpresion, true);*/
 					//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 					imprimirRecibo();
@@ -15058,6 +15164,14 @@ bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardar
 				bool bContinuar = true;
 				if (iSistema == SISTEMA_CAJERA_CAPTURISTA || iFlagImpresoraTermica != 1)
 				{
+				*/
+					//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+					sprintf_s(mensaje, "Impresora NO térmica");
+					sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::grabarAbono(), Linea: %d", __LINE__);
+					generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+					//TODO: GMLC 15/10/2025, FUNCION LOG FIN		
+				
+				/*
 					bContinuar = imprimirReciboCajas(sArchivo, lImporteServicio);
 				}
 
@@ -15240,11 +15354,18 @@ bool CDlgCapturarAbono::grabarAbono() //TODO: 28/08/2025, GAHL, FLUJO DE guardar
 
 	cargarMerca360();			  
 	grabarLog("grabarAbono::Termino");
-
+	*/
 	sprintf_s(cLog, "FC0200805021521360 - fin - grabarAbono - Cliente: %ld, bGrabo=%s", m_grid.lCliente,
 		bGrabo ? "VERDADERO" : "FALSO");
-	grabarLog(cLog);*/
+	grabarLog(cLog);
 	//TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
+
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+	sprintf_s(mensaje, cLog);
+	sprintf_s(fuente, "Archivo: DlgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::grabarAbono(), Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+	
 	return bGrabo;
 }
 
@@ -16241,6 +16362,22 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 	sprintf_s(cLog, "FC0200805021521396 - entra - menuAyudaAbonos");
 	grabarLog(cLog);
 
+	//TODO: GMLC 16/10/2025, INICIALIZA DATOS REALES INICIO
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+		//TODO: GMLC 16/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 14/10/2025, INICIALIZA DATOS REALES
+	//TODO: 10/09/2025, AGREGADO POR MRL, FUNCION LOG - INICIO
+	char mensaje[1000] = {0};
+	char fuente[500] = {0};
+	char cSql[10000] = {0};
+	//TODO: GMLC 16/10/2025, INICIO
+	sprintf_s(mensaje, "Se grabo el log con exito");
+	sprintf_s(fuente, "Archivo: ClgCapturarAbono.cpp, Funcion: CDlgCapturarAbono::menuAyudaAbonos(), Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje,m_grid.lCliente, iFactura, cFechaCompra,m_grid.iTienda);
+	//TODO: GMLC 16/10/2025, FUNCION LOG FIN
 	while (bSalir)
 	{
 		if ((iSistema == SISTEMA_ROPA && iFlagMenuDomiciliacionDeRopa == 1) || (iSistema == SISTEMA_MUEBLES && iFlagMenuDomiciliacionDeMuebles == 1))
@@ -16290,6 +16427,8 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 			{
 			sprintf_s( cMensaje, "       CTRL_F1 Seguros Club de Protecci�n   " );
 			}*/
+
+
 			sprintf_s(cMensaje, "       CTRL_F1 Seguros Club de Protecci�n   ");
 			if (iSistema == SISTEMA_CAJAS && iFlagDomiciliacionCuentas == 1)
 			{
@@ -16297,7 +16436,7 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 					"       F1   Ayuda                           ",
 					"       F2   Imprimir Recibo                 ",
 					"       F3   Convenio                        ",
-					"       F4   Agua, Luz y Telefono            ",
+					"       F4    Agua, Luz y Telefono.          ",
 					"       F5   Seguros de Vida                 ",
 					"       F6   Saldar Cuenta                   ",
 					"       F7   Pago Minimo                     ",
@@ -16305,7 +16444,7 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 					"       F9   Pago Minimo Total               ",
 					"       F10  Calculadora                     ",
 					cMensaje,
-					"       CTRL_F7 Menu Domiciliacion           ",
+					"       CTRL_F7 Menu Domiciliacion.           ",
 					"       Esc  Salir                           ",
 					"" };
 
@@ -16319,7 +16458,7 @@ int CDlgCapturarAbono::menuAyudaAbonos()
 					"       F1   Ayuda                           ",
 					"       F2   Imprimir Recibo                 ",
 					"       F3   Convenio                        ",
-					"       F4   Agua, Luz y Telefono            ",
+					"       F4   Agua, Luz y Telefono.            ",
 					"       F5   Seguros de Vida                 ",
 					"       F6   Saldar Cuenta                   ",
 					"       F7   Pago Minimo                     ",
@@ -22708,10 +22847,10 @@ bool CDlgCapturarAbono::validarNumeroCliente(char *cTextoMsj)
 	sprintf_s(cLog, "FC0200805021521690 - fin -validarNumeroCliente: Fin bValorRegresa = %d", bValorRegresa);
 	grabarLog(cLog);
 
-    //6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
-    limpiarFolioRezagado(false);
+	//6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
+	limpiarFolioRezagado(false);
 	eliminarRegistroTemporalSesionTarjetaIniciarProcesoFacturacion();
-    //6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
+	//6267707 Cajas/Legado no hay registro en tdcheques ni en SOA
 
 	return bValorRegresa;
 }
@@ -29687,6 +29826,25 @@ void CDlgCapturarAbono::grabarLog(char *cTexto)
 
 	util.GrabarLog(cTexto);
 }
+// TODO: 10/10/2025 16:19 HRS, GAHL, AGREGANDO grabarBonificaLog - INICIO
+void CDlgCapturarAbono::grabarBonificaLog(char *cTexto)
+{
+	char sArch[80] = { 0 };
+	int iTamanio = strlen(cTexto) + 100;
+	char *cTextoGrabar = new char[iTamanio];
+	memset(cTextoGrabar, 0, iTamanio);
+	CTime tFecha = CTime::GetCurrentTime();
+
+	sprintf_s(sArch, "C:\\sys\\mem\\bonificalog%02d%02d.txt", tFecha.GetMonth(), tFecha.GetDay());
+
+	sprintf_s(cTextoGrabar, iTamanio, "%04d-%02d-%02d %02d:%02d:%02d %s\n", tFecha.GetYear(), tFecha.GetMonth(), tFecha.GetDay(), tFecha.GetHour(), tFecha.GetMinute(), tFecha.GetSecond(), cTexto);
+	C_Archivo arch(sArch, &cTextoGrabar, sizeof(cTextoGrabar));
+	arch.posicionar((long)0, BASE_FINAL);
+	arch.grabar(cTextoGrabar, (unsigned int)strlen(cTextoGrabar));
+
+	delete[]cTextoGrabar;
+}
+// TODO: 10/10/2025 16:19 HRS, GAHL, AGREGANDO grabarBonificaLog - FINAL
 void CDlgCapturarAbono::grabarLogBeneficiarios(char *cTexto) 
 {
 	char sArch[80] = { 0 };
@@ -34972,7 +35130,7 @@ void CDlgCapturarAbono::limpiarFolioRezagado(bool bTipoEjecucion)
 								grabarLog("Entra a if 5");
 
 								if (iMesajeExiteCobro==1) {
-                                  grabarLog("Entra a if 6");
+								  grabarLog("Entra a if 6");
 
 								  AfxMessageBox("ES NECESARIO QUE PASES A CANCELAR EL O LOS VOUCHERS A CONSULTAR/CANCELAR PAGO CON TARJETAS", MB_ICONERROR); 
 								  iMesajeExiteCobro=2;
@@ -34980,7 +35138,7 @@ void CDlgCapturarAbono::limpiarFolioRezagado(bool bTipoEjecucion)
 								
 								sCliente.Format("%d",consulta.cliente_temp);
 								sprintf(cMensajeSeguimiento,"Cliente: %ld",sCliente);
-                                grabarLog(cMensajeSeguimiento);
+								grabarLog(cMensajeSeguimiento);
 
 								sprintf(cSql, "SELECT fun_proceso_tdcheques04('%d','%d','%d','%d','%s','%d','%s','%s','%ld','%d','%I64d','%d','%s','%I64d','%d','%s','0','0','%d','%d');", 
 								1, m_grid.iSistema, m_grid.iCaja,2, sCliente, consulta.monto_temp, consulta.banco_temp,consulta.localforaneo_temp, m_grid.lEmpleado, 0,consulta.numerocheque_temp,0,consulta.codautorizacionbanco_temp,
@@ -35008,8 +35166,8 @@ void CDlgCapturarAbono::limpiarFolioRezagado(bool bTipoEjecucion)
 
 void CDlgCapturarAbono::eliminarRegistroTemporalSesionTarjetaIniciarProcesoFacturacion()
 {
-    CString sSql = "";
-    char cMensajeSeguimiento[100] = {0};
+	CString sSql = "";
+	char cMensajeSeguimiento[100] = {0};
 	char msgbuferror[2000];
 	
 	strcpy(msgbuferror, "Insert into his_respuestapagotarjeta ");
@@ -35021,35 +35179,35 @@ void CDlgCapturarAbono::eliminarRegistroTemporalSesionTarjetaIniciarProcesoFactu
 	strcat(msgbuferror, " cargo_transaccion,cargo_mensaje,recupera_soap,recupera_estado,recupera_transaccion,recupera_mensaje, caja, cliente, recuperacargo, area, clavemovimiento, dllactivo ");
 	strcat(msgbuferror, " From muFacturaSesiontmp WHERE caja = %d;"); 
 
-    sSql.Format( msgbuferror, m_grid.iCaja);
-    CMaximo respaldoTarjeta(&odbc);
-    if (respaldoTarjeta.Exec(sSql)) {
-        grabarLog ( "***** CI 6267707 *****" );
-        sprintf ( cMensajeSeguimiento,"Se respalda los datos del pago con tarjeta al iniciar proceso de facturacion caja %d ", m_grid.iCaja);
-        grabarLog (cMensajeSeguimiento );
-        grabarLog ( "***** CI 6267707 *****");
+	sSql.Format( msgbuferror, m_grid.iCaja);
+	CMaximo respaldoTarjeta(&odbc);
+	if (respaldoTarjeta.Exec(sSql)) {
+		grabarLog ( "***** CI 6267707 *****" );
+		sprintf ( cMensajeSeguimiento,"Se respalda los datos del pago con tarjeta al iniciar proceso de facturacion caja %d ", m_grid.iCaja);
+		grabarLog (cMensajeSeguimiento );
+		grabarLog ( "***** CI 6267707 *****");
 	}
 	else {
-        grabarLog ( "***** CI 6267707 *****");
-        sprintf ( cMensajeSeguimiento,"No se realizo el respaldo de datos del pago con tarjeta al iniciar proceso de facturacion caja %d  ", m_grid.iCaja);
-        grabarLog (cMensajeSeguimiento);
-        grabarLog ( "***** CI 6267707 *****");
+		grabarLog ( "***** CI 6267707 *****");
+		sprintf ( cMensajeSeguimiento,"No se realizo el respaldo de datos del pago con tarjeta al iniciar proceso de facturacion caja %d  ", m_grid.iCaja);
+		grabarLog (cMensajeSeguimiento);
+		grabarLog ( "***** CI 6267707 *****");
 	}
 
-    sSql.Format("DELETE FROM muFacturaSesiontmp WHERE caja = %d;", m_grid.iCaja);
-    CMaximo consulta(&odbc);
-    if (consulta.Exec(sSql)) {
-        grabarLog ( "***** CI 6267707 *****");
-        sprintf ( cMensajeSeguimiento,"Se elimino la sesion de tarjeta en temporal al iniciar proceso de facturacion caja %d ", m_grid.iCaja);
-        grabarLog (cMensajeSeguimiento );
-        grabarLog ( "***** CI 6267707 *****");
-    }
-    else {
-        grabarLog ( "***** CI 6267707 *****");
-        sprintf ( cMensajeSeguimiento,"No se elimino la sesion de tarjeta en temporal al iniciar proceso de facturacion caja %d  ", m_grid.iCaja);
-        grabarLog (cMensajeSeguimiento);
-        grabarLog ( "***** CI 6267707 *****");
-    }
+	sSql.Format("DELETE FROM muFacturaSesiontmp WHERE caja = %d;", m_grid.iCaja);
+	CMaximo consulta(&odbc);
+	if (consulta.Exec(sSql)) {
+		grabarLog ( "***** CI 6267707 *****");
+		sprintf ( cMensajeSeguimiento,"Se elimino la sesion de tarjeta en temporal al iniciar proceso de facturacion caja %d ", m_grid.iCaja);
+		grabarLog (cMensajeSeguimiento );
+		grabarLog ( "***** CI 6267707 *****");
+	}
+	else {
+		grabarLog ( "***** CI 6267707 *****");
+		sprintf ( cMensajeSeguimiento,"No se elimino la sesion de tarjeta en temporal al iniciar proceso de facturacion caja %d  ", m_grid.iCaja);
+		grabarLog (cMensajeSeguimiento);
+		grabarLog ( "***** CI 6267707 *****");
+	}
 	
 }
 //**** 6267707 Cajas/Legado no hay registro en tdcheques ni en SOA *****

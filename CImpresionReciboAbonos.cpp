@@ -1,3 +1,10 @@
+/****************************************************************************************************************
+* PROGRAMADOR: MIGUEL RODRIGUEZ LUNA
+* FECHA: 15-10-2025
+* DESCRIPCION: Se aplica la función: generarLogBonificax() para la implementación de nuevos logs
+* FECHA: 16-10-2025
+* DESCRIPCION: Se aplica la función: generarLogBonificax() para la implementación de nuevos logs; Se corrgien llamados de los parametros en la funcion:fun_guardarcertificacionbonificaciondiaria01, se activa el guardado en logs de: certificacionAbono.estado
+****************************************************************************************************************/ 
 #pragma once
 //Jafet Vazquez Olvera - 01/09/2025
 #include "stdafx.h"
@@ -5,6 +12,8 @@
 #include "CGRABARCERTIFICACIONABONO.HPP" 
 #include "COBTENERFECHAPRIMERABONO.HPP"
 #include "CLogBonificacionDiaria.hpp" //TODO: 11/09/2025, AGREGADO POR GAHL, CONECTANDO CON ODBC
+#include "CFechaGnDominio.hpp" //TODO: 13/10/2025, AGREGADO POR GAHL, REFERENCIA A CFechaGnDominio.hpp
+
 
 #define TOTAL_DETALLES 11           // Total de conceptos que salen impresos en el recibo de abono.
 #define LONGITUD_COLUMNA_CTAS 115   // Ancho de las columnas para las cuentas.
@@ -73,6 +82,17 @@ void CDlgCapturarAbono::imprimirReciboTermica() //TODO: 28/08/2025, GAHL, FLUJO 
     char cMensajeAlCliente[100] = { 0 };
 
     iConvenios = 0;
+
+		//TODO: GMLC 15/10/2025, INICIALIZA DATOS REALES
+	m_grid.iTienda = 211;
+	m_grid.lCliente = 123456789;
+	//TODO: GMLC 15/10/2025, INICIALIZA DATOS FALSOS
+	char cFechaCompra[20] = "2030-01-01";
+	int iFactura = 0;
+	//TODO: GMLC 15/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000]={};
+	char fuente[1000]={};
+
     //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
     /*termica->iniciarImpresion("BIXOLON SAMSUNG SRP-350plus", false); // se agrega false para que no cheque los sensores
 
@@ -105,6 +125,14 @@ void CDlgCapturarAbono::imprimirReciboTermica() //TODO: 28/08/2025, GAHL, FLUJO 
     iRenglon += 22; termica->ponerTermica(iRenglon, 50, "Atrasado:");
     iRenglon += 23; termica->ponerTermica(iRenglon, 50, "Salda Con:");
     iRenglon += 22; termica->ponerTermica(iRenglon, 50, "Hasta el d�a");*/
+
+	//TODO: GMLC 15/10/2025, INICIO *si
+	sprintf_s(mensaje,"%d", m_grid.lCliente);
+	sprintf_s(fuente, "Archivo: CImpresionReciboAbonos.cpp, Funcion: CDlgCapturarAbono::imprimirReciboTermica(), Linea: %d", __LINE__);
+	generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
     //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
     /***********  PONER CUENTAS DEL CLIENTE  ************/
     //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
@@ -633,6 +661,22 @@ void CDlgCapturarAbono::imprimirCuenta(int iTipoDetalle, long &lSuAbono, long &l
     sprintf_s(cMensaje, "imprimirCuenta::Imprimiendo cuenta");
     grabarLog(cMensaje);
     iTotalCuentas = 1; // TODO: AGREGADO POR GAHL
+
+
+	//TODO: GMLC 14/10/2025, INICIALIZA VARIABLES MENSAJE Y FUENTE
+	char mensaje[1000]={};
+	char fuente[1000]={};
+
+
+	//TODO: GMLC 15/10/2025, INICIO *si
+	sprintf_s(mensaje, cMensaje);
+	sprintf_s(fuente, "Archivo: CImpresionReciboAbonos.cpp, Funcion: CDlgCapturarAbono::imprimircuenta(), Linea: %d", __LINE__);
+	//generarLogBonificax(fuente, mensaje, m_grid.lCliente, iFactura, cFechaCompra, m_grid.iTienda);
+	generarLogBonificax(fuente, mensaje, stDatosCertificacion[iContMuebles].iCliente, stDatosCertificacion[iContMuebles].iFactura, stDatosCertificacion[iContMuebles].cFechaCompra, stDatosCertificacion[iContMuebles].iTienda);
+
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
+
     for (iContCtas = iCtasAImp; iContCtas < iTotalCuentas; iContCtas++)
     {
         //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
@@ -1635,7 +1679,7 @@ void CDlgCapturarAbono::imprimirCuenta(int iTipoDetalle, long &lSuAbono, long &l
 
                             sDato.Format("%ld", lSaldoDespues);
                             stDatosCertificacion[iContMuebles].iSaldoDespues = strtol(sDato, NULL, 10);
-
+							
                             obtenerFechaPrimerAbono(iContMuebles);*/
                             //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
                             //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos (DESPLIEGUE DE stDatosCertificacion) - INICIO
@@ -1646,7 +1690,16 @@ void CDlgCapturarAbono::imprimirCuenta(int iTipoDetalle, long &lSuAbono, long &l
                             //TODO: 01/09/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos (DESPLIEGUE DE stDatosCertificacion) - FIN
                             //TODO: 04/09/2025, GAHL, IMPLEMENTAR LOG CON stDatosCertificacion[iContMuebles].cFechaCompra SUGERIDO POR GACC
                             iFlagCertificacionBonidicacion = 1; //TODO: 28/08/2025, AGREGADO POR GAHL, FLUJO DE guardarCertificacionAbonos
-                            if(iFlagCertificacionBonidicacion == 1)
+
+							//TODO: GMLC 15/10/2025, INICIO *si
+							sprintf_s(mensaje, "Cliente: %d flag: %d", stDatosCertificacion[iContMuebles].iCliente , iFlagCertificacionBonidicacion);
+							sprintf_s(fuente, "Archivo: CImpresionReciboAbonos.cpp, Funcion: CDlgCapturarAbono::imprimircuenta(), Linea: %d", __LINE__);
+							generarLogBonificax(fuente, mensaje, stDatosCertificacion[iContMuebles].iCliente, stDatosCertificacion[iContMuebles].iFactura, stDatosCertificacion[iContMuebles].cFechaCompra, stDatosCertificacion[iContMuebles].iTienda);
+							//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
+
+
+							if(iFlagCertificacionBonidicacion == 1)
 							{
 								guardarCertificacionAbonos(iContMuebles);
 							}
@@ -2358,47 +2411,32 @@ void CDlgCapturarAbono::guardarCertificacionAbonos(int i) //TODO: 28/08/2025, GA
 
     idOrigen = 1; // Tienda
 
-    if(sprintf_s(sSqlGrabarCertificacion, "SELECT estado, mensaje FROM fun_guardarcertificacionbonificaciondiaria01('%d', '%d', %d, %d, %d, '%d', '%s', '%s', '%d', %d, %d, %d, %d, '%s', %d, %d, %d, '%d', %d, '%d', %d, %d, %d, %d, %d);",
-		idOrigen, stDatosCertificacion[i].iTipoCuenta, stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, stDatosCertificacion[i].iTienda, stDatosCertificacion[i].iCaja, stDatosCertificacion[i].cFechaCompra, stDatosCertificacion[i].cFechaApartir, stDatosCertificacion[i].iPlazo, stDatosCertificacion[i].iContado, stDatosCertificacion[i].iIsc, stDatosCertificacion[i].iCredito, stDatosCertificacion[i].iAbonoBase, stDatosCertificacion[i].cFechaMovto, stDatosCertificacion[i].iAbono, stDatosCertificacion[i].iAbonoInteres, stDatosCertificacion[i].iSaldaCon, stDatosCertificacion[i].iDiasTranscurridos, stDatosCertificacion[i].iBonificacion, stDatosCertificacion[i].iPorcBonificacion, stDatosCertificacion[i].iSaldoVencido, stDatosCertificacion[i].iInteresAdicional, stDatosCertificacion[i].iSaldoAnterior, stDatosCertificacion[i].iSaldoDespues, stDatosCertificacion[i].iInteresadicionalPrimerMesc) < 0){;}
-    
-	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - INICIO
+	char sSqlGrabarLogCertificacion[900] = { 0 };
+
+	//TODO: GMLC 15/10/2025, INICIO
 	char mensaje[1000] = {0};
 	char fuente[500] = {0};
 	char cSql[10000] = {0};
+
+	if(sprintf_s(sSqlGrabarCertificacion, "SELECT estado, mensaje FROM fun_guardarcertificacionbonificaciondiaria01('%d', '%d', %d, %d, %d, '%d', '%s', '%s', '%d', %d, %d, %d, %d, '%s', %d, %d, %d, '%d', %d, '%d', %d, %d, %d, %d, %d);",
+		idOrigen, stDatosCertificacion[i].iTipoCuenta, stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, stDatosCertificacion[i].iTienda, stDatosCertificacion[i].iCaja, stDatosCertificacion[i].cFechaCompra, stDatosCertificacion[i].cFechaApartir, stDatosCertificacion[i].iPlazo, stDatosCertificacion[i].iContado, stDatosCertificacion[i].iIsc, stDatosCertificacion[i].iCredito, stDatosCertificacion[i].iAbonoBase, stDatosCertificacion[i].cFechaMovto, stDatosCertificacion[i].iAbono, stDatosCertificacion[i].iAbonoInteres, stDatosCertificacion[i].iSaldaCon, stDatosCertificacion[i].iDiasTranscurridos, stDatosCertificacion[i].iBonificacion, stDatosCertificacion[i].iPorcBonificacion, stDatosCertificacion[i].iSaldoVencido, stDatosCertificacion[i].iInteresAdicional, stDatosCertificacion[i].iSaldoAnterior, stDatosCertificacion[i].iSaldoDespues, stDatosCertificacion[i].iInteresadicionalPrimerMesc) < 0){;}
+
+	sprintf_s(sSqlGrabarLogCertificacion, "SELECT estado, mensaje FROM fun_guardarcertificacionbonificaciondiaria01(%d, %d, %d, %d, %d, %d, %04d%02d%02d, %04d%02d%02d, %d, %d, %d, %d, %d, %04d%02d%02d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d);", (int)idOrigen,  (int)stDatosCertificacion[i].iTipoCuenta, (int)stDatosCertificacion[i].iCliente, (int)stDatosCertificacion[i].iFactura, (int)stDatosCertificacion[i].iTienda, (int)stDatosCertificacion[i].iCaja, stDatosCertificacion[i].cFechaCompra, stDatosCertificacion[i].cFechaApartir, (int)stDatosCertificacion[i].iPlazo, (int)stDatosCertificacion[i].iContado, (int)stDatosCertificacion[i].iIsc, (int)stDatosCertificacion[i].iCredito, (int)stDatosCertificacion[i].iAbonoBase, stDatosCertificacion[i].cFechaMovto, (int)stDatosCertificacion[i].iAbono, (int)stDatosCertificacion[i].iAbonoInteres, (int)stDatosCertificacion[i].iSaldaCon, (int)stDatosCertificacion[i].iDiasTranscurridos, (int)stDatosCertificacion[i].iBonificacion, (int)stDatosCertificacion[i].iPorcBonificacion, (int)stDatosCertificacion[i].iSaldoVencido, (int)stDatosCertificacion[i].iInteresAdicional, (int)stDatosCertificacion[i].iSaldoAnterior, (int)stDatosCertificacion[i].iSaldoDespues,(int)stDatosCertificacion[i].iInteresadicionalPrimerMesc);
 	
-	sprintf_s(mensaje, "fun_guardarlogbonificaciondiaria(idOrigen: %d, TipoCuenta: %d, Cliente: %d, Factura: %d, Tienda: %d, Caja: %d, FechaCompra: %s, FechaApartir %s, Plazo: %d, Contado: %d, InteresSobreCompra: %d, Credito: %d, AbonoBase: %d, FechaMovimiento: %s, Abono: %d, AbonoInteres: %d, SaldaCon: %d, DiasTranscurridos: %d, Bonificacion: %d, PorcentajeBonificacion: %d, SaldoVencido: %d, InteresAdicional: %d, SaldoAnterior: %d, SaldoDespues: %d, InteresAdicionalPrimerMes: %d)", idOrigen, stDatosCertificacion[i].iTipoCuenta, stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, stDatosCertificacion[i].iTienda, stDatosCertificacion[i].iCaja, stDatosCertificacion[i].cFechaCompra, stDatosCertificacion[i].cFechaApartir, stDatosCertificacion[i].iPlazo, stDatosCertificacion[i].iContado, stDatosCertificacion[i].iIsc, stDatosCertificacion[i].iCredito, stDatosCertificacion[i].iAbonoBase, stDatosCertificacion[i].cFechaMovto, stDatosCertificacion[i].iAbono, stDatosCertificacion[i].iAbonoInteres, stDatosCertificacion[i].iSaldaCon, stDatosCertificacion[i].iDiasTranscurridos, stDatosCertificacion[i].iBonificacion, stDatosCertificacion[i].iPorcBonificacion, stDatosCertificacion[i].iSaldoVencido, stDatosCertificacion[i].iInteresAdicional, stDatosCertificacion[i].iSaldoAnterior, stDatosCertificacion[i].iSaldoDespues, stDatosCertificacion[i].iInteresadicionalPrimerMesc);
-	sprintf_s(fuente, "CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Linea: %d", __LINE__);
-	sprintf_s(cSql, "SELECT estado, mensaje FROM fun_guardarlogbonificaciondiaria(%d, %d, '%s', '%s', %d, '%s');", stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, mensaje, stDatosCertificacion[i].cFechaCompra, stDatosCertificacion[i].iTienda, fuente);
+	sprintf_s(fuente,"Archivo: CImpresionReciboAbonos.cpp, Funcion: guardarCertificacionAbonos(), Linea: %d", __LINE__);
+
+	generarLogBonificax(fuente, sSqlGrabarLogCertificacion, stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, stDatosCertificacion[i].cFechaCompra,stDatosCertificacion[i].iTienda);
 	
-	grabarLog(cSql);
-	CLogBonificacionDiaria cLogBonificacionDiaria(&odbc, false);
-																	
-	if (cLogBonificacionDiaria.Exec(cSql))
-	{
-		cLogBonificacionDiaria.activarCols();
-		if (cLogBonificacionDiaria.Leer())
-		{
-			if (cLogBonificacionDiaria.estado != 0)
-			{
-				AfxMessageBox("CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-				grabarLog("CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-			}else
-			{
-				AfxMessageBox("CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Se grabo el log en fun_guardarlogbonificaciondiaria");
-				grabarLog("CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Se grabo el log en fun_guardarlogbonificaciondiaria");
-			}
-		}
-	} else {
-		AfxMessageBox("CImpresionReciboAbonos.cpp; guardarCertificacionAbonos(); Error al grabar el log en fun_guardarlogbonificaciondiaria");
-	}
+	//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
 	//TODO: 03/09/2025, AGREGADO POR RMS, FUNCION LOG - FIN
 	//TODO: 28/08/2025, AGREGADO POR GAHL, FUNCION LOG - INICIO
     CString mensaje_certificacion(sSqlGrabarCertificacion);
-    AfxMessageBox(mensaje_certificacion);
+	AfxMessageBox("Fin del proceso");
     //TODO: 28/08/2025, AGREGADO POR GAHL, FUNCION LOG - INICIO
     //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - INICIO
 	//TODO: 04/09/2025, GAHL, IMPLEMENTAR LOG CON sSqlGrabarCertificacion   
-    /*grabarLog(sSqlGrabarCertificacion);
+    grabarLog(sSqlGrabarCertificacion);
 	
     CGrabarCertificacionAbono certificacionAbono(&odbc, false);
 
@@ -2407,14 +2445,19 @@ void CDlgCapturarAbono::guardarCertificacionAbonos(int i) //TODO: 28/08/2025, GA
         certificacionAbono.activarCols();
         if (certificacionAbono.Leer())
         {
+			//TODO: GMLC 15/10/2025, INICIO
+			sprintf_s(mensaje,"%d",certificacionAbono.estado );
+			sprintf_s(fuente, "Archivox: CImpresionReciboAbonos.cpp, Funcion: guardarCertificacionAbonos(), Linea: %d", __LINE__);
+			generarLogBonificax(fuente, mensaje,stDatosCertificacion[i].iCliente, stDatosCertificacion[i].iFactura, stDatosCertificacion[i].cFechaCompra,stDatosCertificacion[i].iTienda);
+			//TODO: GMLC 15/10/2025, FUNCION LOG FIN
+
             if (certificacionAbono.estado != 0)
             {
                 certificacionAbono.odbc->GetLastError(certificacionAbono.GetHstmt());
                 grabarMensajeError("C", m_grid.iCaja, (LPTSTR)(LPCTSTR)m_grid.sServer, "CapturarAbono", "CImpresionReciboAbonos", "guardarCertificacionAbonos", sSqlGrabarCertificacion, m_grid.lEmpleado, "ERROR EN LA CONSULTA(fun_guardarcertificacionbonificaciondiaria)", certificacionAbono.odbc, m_grid.iMuestraMsg);
-
             }
         }
-    }*/
+    }
    //TODO: 28/08/2025, CODIGO ORIGINAL COMENTADO POR GAHL, FLUJO DE guardarCertificacionAbonos - FIN
 }
 
